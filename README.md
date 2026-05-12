@@ -12,6 +12,7 @@ To use this program, do the following steps:
 1. Clone the repositority (`git clone https://github.com/nishikigoi-koi/Software-Engineering-Nutrition-App.git` in terminal).
 2. Run `cd ./Node ; npm install ; cd ..` inside of your terminal to install all required npm packages
 3. Run `cd ./Node ; npm start` inside of your terminal to start the API server (to stop it press ctrl + c).
+<br> (for Dev env use `cd ./Node ; npm run dev` instead) 
 4. Open a **New** terminal window and navigate back to the main directory of the program
 5. Run `flutter run` and select Chrome to run the Flutter frontend in Chrome.
 
