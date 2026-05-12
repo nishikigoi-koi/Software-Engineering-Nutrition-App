@@ -7,8 +7,9 @@ This program is intended to be used by Bachelor of Nursing / Bachelor of Applied
 ### Usage
 To use this program, do the following steps:
 1. Clone the repositority (`git clone https://github.com/nishikigoi-koi/Software-Engineering-Nutrition-App.git` in terminal).
-2. Run `node [serverfile]` inside of your ID to start the server.
-3. Run `flutter run` and select Chrome to run the Flutter frontend in Chrome.
+2. Run `npm install`
+3. Run `node [serverfile]` inside of your ID to start the server.
+4. Run `flutter run` and select Chrome to run the Flutter frontend in Chrome.
 
 ### Example of flutter run
 ```
