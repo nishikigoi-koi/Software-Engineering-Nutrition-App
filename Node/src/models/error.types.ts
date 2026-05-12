@@ -1,7 +1,7 @@
 class CustomerError extends Error {
     statusCode: number;
 
-    constructor(message: string = "Internal Server Error", statusCode: number = 500) {
+    constructor(statusCode: number = 500,message: string = "Internal Server Error") {
         super(message);
         this.statusCode = statusCode;
     }
