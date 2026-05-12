@@ -4,6 +4,9 @@
 ### Overview
 This program is intended to be used by Bachelor of Nursing / Bachelor of Applied Science (Exercise) students to record, analyse, and compare someone's dietary intake to RDIs / Nutritional Requirements.
 
+### Prerequisites
+Have [Node.js & npm Installed](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+
 ### Usage
 To use this program, do the following steps:
 1. Clone the repositority (`git clone https://github.com/nishikigoi-koi/Software-Engineering-Nutrition-App.git` in terminal).
