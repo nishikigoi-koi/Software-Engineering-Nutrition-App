@@ -8,5 +8,5 @@ export interface User {
 
 export interface CreateUserDTO {
     username: string;
-    passwordHash: string;
+    password: string;
 }
