@@ -1,4 +1,4 @@
-import { BaseEntity } from "./base.entity";
+import { BaseEntity } from "./base.entity.ts";
 import { Column, Entity } from "typeorm";
 
 @Entity({ name: "users" })
@@ -7,5 +7,5 @@ export class UserEntity extends BaseEntity {
     username: string;
 
     @Column()
-    password: string;
+    passwordHash: string;
 }

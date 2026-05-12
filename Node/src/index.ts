@@ -1,8 +1,14 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
+
 import mainRoute from './routes/main.route.ts';
+import userRoute from './routes/user.route.ts';
+
 import "./database/db.connect.ts";
+
+import { handlerError } from './middleware/error.middleware.ts';
+
 
 
 dotenv.config({
@@ -16,6 +22,9 @@ app.use(cors({ origin: ['*'], credentials: true }));
 
 
 app.use('/api', mainRoute);
+app.use('/api/users', userRoute);
+
+app.use(handlerError);
 
 const PORT = parseInt(process.env.PORT as string) || 3000;
 const HOST = process.env.HOST || 'localhost';
