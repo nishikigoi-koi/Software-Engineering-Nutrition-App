@@ -9,6 +9,9 @@
     "skipLibCheck": true, // Skip type-checking declaration files (faster builds)
     "outDir": "./dist", // Specifies output directory for compiled files
     "baseUrl": "./",
+    "strictPropertyInitialization": false,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "paths": {
       "*": ["node_modules/*"]
     },
