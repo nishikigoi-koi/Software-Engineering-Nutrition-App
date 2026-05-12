@@ -11,8 +11,9 @@ Have [Node.js & npm Installed](https://docs.npmjs.com/downloading-and-installing
 To use this program, do the following steps:
 1. Clone the repositority (`git clone https://github.com/nishikigoi-koi/Software-Engineering-Nutrition-App.git` in terminal).
 2. Run `cd ./Node ; npm install ; cd ..` inside of your terminal to install all required npm packages
-3. Run `cd ./Node ; npm start ; cd ..` inside of your terminal to start the API server in background (to stop it press ctrl + c).
-4. Run `flutter run` and select Chrome to run the Flutter frontend in Chrome.
+3. Run `cd ./Node ; npm start` inside of your terminal to start the API server in background (to stop it press ctrl + c).
+4. Run `cd ..` to get back to main directory
+5. Run `flutter run` and select Chrome to run the Flutter frontend in Chrome.
 
 ### Example of flutter run
 ```
