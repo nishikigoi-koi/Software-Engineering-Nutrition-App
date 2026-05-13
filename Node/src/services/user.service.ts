@@ -12,7 +12,8 @@ export async function CreateUser(req: Request, res: Response, next: NextFunction
         }
         const passwordHash = await hashPassword(password);
 
-        const user = await userRepository.create({ username, passwordHash });
+        const user = await userRepository.save({ username, passwordHash });
+        
         res.status(201).json(user);
     } catch (error) {
         next(error);
