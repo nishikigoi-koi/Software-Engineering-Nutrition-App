@@ -93,7 +93,7 @@ For example<br>
 </details>
 
 #### Returns
-**status**: 200
+**status**: 201
 <details>
 <summary>Format</summary>
 <pre>{

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -75,7 +77,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   width: 400,
                   height: 49,
                   child: ElevatedButton(
-                    onPressed: () {
+                    onPressed: () async {
                       // Check if username or password are empty
                       if (_usernameController.text.trim().isEmpty ||
                           _passwordController.text.trim().isEmpty) {
@@ -90,10 +92,31 @@ class _SignUpPageState extends State<SignUpPage> {
                         return;
                       }
 
-                      // Return to Login page for now.
-                      // TODO: Connect to database, compare against existing credentials. | SIGN UP
-                      Navigator.pop(context);
+                      // Call sign-up API
+                      final response = await http.post(
+                        Uri.parse(
+                          'http://localhost:3000/api/users/create-user',
+                        ),
+                        headers: {'Content-Type': 'application/json'},
+                        body: jsonEncode({
+                          'username': _usernameController.text,
+                          'password': _passwordController.text,
+                        }),
+                      );
+
+                      // On success (201), go back to login
+                      if (response.statusCode == 201) {
+                        Navigator.pop(context);
+                      } else {
+                        showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                            content: Text("Sorry, this username is already taken."),
+                          ),
+                        );
+                      }
                     },
+
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xFF3B62FF),
                       shape: RoundedRectangleBorder(

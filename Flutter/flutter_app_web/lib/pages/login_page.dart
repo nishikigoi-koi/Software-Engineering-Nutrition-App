@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'signup_page.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -78,38 +80,54 @@ class _LoginPageState extends State<LoginPage> {
                   width: 400,
                   height: 49,
                   child: ElevatedButton(
-                    onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (context) {
-                          // Check if username or password are empty
-                          if (_usernameController.text.trim().isEmpty ||
-                              _passwordController.text.trim().isEmpty) {
-                            return AlertDialog(
-                              content: Text(
-                                "Please make sure you have filled both fields.",
-                              ),
-                            );
-                          }
-
-                          // Print details for now.
-                          // TODO: Connect to database, compare against existing credentials. | LOGIN
-                          return AlertDialog(
-                            content: Text(
-                              "Username: ${_usernameController.text}\nPassword: ${_passwordController.text}",
-                            ),
-                          );
-                        },
+                    onPressed: () async {
+                      // Check if username or password are empty
+                      if (_usernameController.text.trim().isEmpty ||
+                          _passwordController.text.trim().isEmpty) {
+                        showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                            content: Text("Please make sure you have filled both fields."),
+                          ),
+                        );
+                        return;
+                      }
+ 
+                      // Call login API
+                      final response = await http.post(
+                        Uri.parse('http://localhost:3000/api/users/check-password'),
+                        headers: {'Content-Type': 'application/json'},
+                        body: jsonEncode({
+                          'username': _usernameController.text,
+                          'password': _passwordController.text,
+                        }),
                       );
+ 
+                      // TODO: Navigate to home page
+                      if (response.statusCode == 200) {
+                        showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                            content: Text("Login successful!"),
+                          ),
+                        );
+                      } else {
+                        showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                            content: Text("Invalid username or password."),
+                          ),
+                        );
+                      }
                     },
-
+ 
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xFF3B62FF),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-
+ 
                     child: Text(
                       'Login',
                       style: TextStyle(
@@ -120,10 +138,10 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ),
-
+ 
                 SizedBox(height: 10),
-
-                // Clickable text for viewing Sign In page
+ 
+                // Clickable text for viewing Sign Up page
                 GestureDetector(
                   onTap: () {
                     Navigator.push(
