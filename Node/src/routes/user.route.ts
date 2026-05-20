@@ -3,11 +3,11 @@ import { GetUserById, CreateUser, GetAllUsers, UpdateUser, DeleteUser , CheckUse
 
 const router = express.Router();
 
-router.post('/', CreateUser);
-router.get('/:id', GetUserById);
-router.get('/', GetAllUsers);
-router.put('/:id', UpdateUser);
-router.delete('/:id', DeleteUser);
+router.post('/create-user', CreateUser);
+router.get('/get-by-id/:id', GetUserById);
+router.get('/all-users', GetAllUsers);
+router.put('/update-user/:id', UpdateUser);
+router.delete('/delete-user/:id', DeleteUser);
 router.post('/check-password', CheckUserPassword);
 
 export default router;

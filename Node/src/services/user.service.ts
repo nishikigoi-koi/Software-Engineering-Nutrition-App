@@ -11,9 +11,8 @@ export async function CreateUser(req: Request, res: Response, next: NextFunction
             throw new CustomerError(400, 'Username and password are required');
         }
         const passwordHash = await hashPassword(password);
-
         const user = await userRepository.save({ username, passwordHash });
-        
+        user.passwordHash = undefined as unknown as string;
         res.status(201).json(user);
     } catch (error) {
         next(error);
@@ -29,6 +28,7 @@ export async function GetUserById(req: Request, res: Response, next: NextFunctio
         if (!user) {
             throw new CustomerError(404, 'User not found');
         }
+        user.passwordHash = undefined as unknown as string;
         res.status(200 as number).json(user);
     } catch (error) {
         next(error);
@@ -41,6 +41,7 @@ export async function GetAllUsers(req: Request, res: Response, next: NextFunctio
         if (!users || users.length === 0) {
             throw new CustomerError(404, 'User not found');
         }
+        users.forEach(user => user.passwordHash = undefined as unknown as string);
         res.status(200).json(users);
     } catch (error) {
         next(error);
@@ -56,7 +57,7 @@ export async function UpdateUser(req: Request, res: Response, next: NextFunction
         if (!user) {
             throw new CustomerError(404, 'User not found');
         }
-        res.status(200).json(user);
+        res.status(200).json({ message: 'User updated successfully' });
     } catch (error) {
         next(error);
     }
