@@ -10,11 +10,12 @@ Have [Node.js & npm Installed](https://docs.npmjs.com/downloading-and-installing
 ### Usage
 To use this program, do the following steps:
 1. Clone the repositority (`git clone https://github.com/nishikigoi-koi/Software-Engineering-Nutrition-App.git` in terminal).
-2. Run `cd ./Node ; npm install ; cd ..` inside of your terminal to install all required npm packages
-3. Run `cd ./Node ; npm start` inside of your terminal to start the API server (to stop it press ctrl + c).
-<br> (for Dev env use `cd ./Node ; npm run dev` instead) 
-4. Open a **New** terminal window and navigate back to the main directory of the program
-5. Run `flutter run -d chrome` to run the Flutter frontend in Chrome.
+2. Run `cd ./Node ; npm install` inside of your terminal to move into the node directory and install all required npm packages
+3. Run `Copy-Item -Path ".env.example" -Destination ".env"` to copy and rename the "example.env" file to be ".env" <br> (skip this step if you have your own .env set up)
+4. Run `npm start` inside of your terminal to start the API server (to stop it press ctrl + c).
+<br> (for Dev env use `npm run dev` instead) 
+5. Open a **New** terminal window and navigate back to the main directory of the program
+6. Run `flutter run -d chrome` to run the Flutter frontend in Chrome.
 
 ### Example of flutter run
 ```
