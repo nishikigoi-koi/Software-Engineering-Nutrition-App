@@ -14,7 +14,7 @@ To use this program, do the following steps:
 3. Run `cd ./Node ; npm start` inside of your terminal to start the API server (to stop it press ctrl + c).
 <br> (for Dev env use `cd ./Node ; npm run dev` instead) 
 4. Open a **New** terminal window and navigate back to the main directory of the program
-5. Run `flutter run` and select Chrome to run the Flutter frontend in Chrome.
+5. Run `flutter run -d chrome` to run the Flutter frontend in Chrome.
 
 ### Example of flutter run
 ```
