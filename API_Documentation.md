@@ -187,13 +187,21 @@ For example<br>
 <details>
 <summary>Format</summary>
 <pre>{
-    "PasswordMatch": Bool,
+    "id": String,
+    "createdAt": String,
+    "updatedAt": String,
+    "deletedAt": String?,
+    "username": String
 }</pre>
 </details>
 
 <details>
 <summary>Example</summary>
 <pre>{
-    "PasswordMatch": true
+    "id": "9ad83156-5ed1-4e2f-8358-c6e2ce906f3a",
+    "createdAt": "2026-05-12T23:52:18.000Z",
+    "updatedAt": "2026-05-12T23:52:18.000Z",
+    "deletedAt": null,
+    "username": "newuser"
 }</pre>
 </details>
