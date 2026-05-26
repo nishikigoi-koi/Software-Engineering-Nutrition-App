@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'signup_page.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:flutter_app_web/models/user.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -105,12 +106,24 @@ class _LoginPageState extends State<LoginPage> {
  
                       // TODO: Navigate to home page
                       if (response.statusCode == 200) {
-                        showDialog(
-                          context: context,
-                          builder: (context) => AlertDialog(
-                            content: Text("Login successful!"),
-                          ),
-                        );
+                        try {
+                          Map<String, dynamic> userDetails = jsonDecode(response.body);
+                          final user = User.fromJson(userDetails);
+
+                          showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              content: Text("Login successful!"),
+                            ),
+                          );
+                        } catch(e) {
+                          showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              content: Text("Error: $e"),
+                            ),
+                          );
+                        }
                       } else {
                         showDialog(
                           context: context,
