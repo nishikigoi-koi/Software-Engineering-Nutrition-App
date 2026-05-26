@@ -89,7 +89,8 @@ export async function CheckUserPassword(req: Request, res: Response, next: NextF
         if (!isMatch) {
             throw new CustomerError(401, 'Username or password is invalid');
         }
-        res.status(200 as number).json({ PasswordMatch: isMatch });
+        user.passwordHash = undefined as unknown as string;
+        res.status(200 as number).json(user);
     } catch (error) {
         next(error);
     }
