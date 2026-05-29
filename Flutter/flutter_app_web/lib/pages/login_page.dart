@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'signup_page.dart';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-// import 'package:flutter_app_web/models/user.dart';
+import 'package:flutter_app_web/models/user.dart';
+import 'package:flutter_app_web/services/session_manager.dart';
+import 'signup_page.dart';
+import 'session_test_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -107,16 +110,27 @@ class _LoginPageState extends State<LoginPage> {
                       // TODO: Navigate to home page
                       if (response.statusCode == 200) {
                         try {
-                          // Map<String, dynamic> userDetails = jsonDecode(response.body);
-                          // final user = User.fromJson(userDetails);
 
-                          showDialog(
-                            context: context,
-                            builder: (context) => AlertDialog(
-                              // content: Text("Login successful! ${user.username}, ${user.id}")
-                              content: Text("Login successful!"),
-                            ),
+                          // Turn json response into user object, and store in current session.
+                          Map<String, dynamic> userDetails = jsonDecode(response.body);
+                          final user = User.fromJson(userDetails);
+                          SessionManager().currentUser = user;
+
+                          // Debug statements for console
+                          debugPrint('Session loaded:');
+                          debugPrint('  ID: ${user.id}');
+                          debugPrint('  Username: ${user.username}');
+                          debugPrint('  Created At: ${user.createdAt}');
+                          debugPrint('  Updated At: ${user.updatedAt}');
+                          debugPrint('  Deleted At: ${user.deletedAt}');
+
+                          // Remove all previous items from navigation queue, so pressing back does nothing.
+                          Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(builder: (context) => SessionTestPage()),
+                            (route) => false,
                           );
+
                         } catch(e) {
                           showDialog(
                             context: context,
