@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter_app_web/models/user.dart';
 import 'package:flutter_app_web/services/session_manager.dart';
 import 'signup_page.dart';
-import 'session_test_page.dart';
+import 'home_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -99,7 +98,7 @@ class _LoginPageState extends State<LoginPage> {
  
                       // Call login API
                       final response = await http.post(
-                        Uri.parse('http://localhost:3000/api/users/check-password'),
+                        Uri.parse('http://localhost:3000/api/users/login'),
                         headers: {'Content-Type': 'application/json'},
                         body: jsonEncode({
                           'username': _usernameController.text,
@@ -112,9 +111,12 @@ class _LoginPageState extends State<LoginPage> {
                         try {
 
                           // Turn json response into user object, and store in current session.
-                          Map<String, dynamic> userDetails = jsonDecode(response.body);
-                          final user = User.fromJson(userDetails);
+                          // Also store JWT in session.
+                          Map<String, dynamic> responseBody = jsonDecode(response.body);
+                          final user = User.fromJson(responseBody['user']);
+                          final token = responseBody['token'];
                           SessionManager().currentUser = user;
+                          SessionManager().token = token;
 
                           // Debug statements for console
                           debugPrint('Session loaded:');
@@ -123,11 +125,13 @@ class _LoginPageState extends State<LoginPage> {
                           debugPrint('  Created At: ${user.createdAt}');
                           debugPrint('  Updated At: ${user.updatedAt}');
                           debugPrint('  Deleted At: ${user.deletedAt}');
+                          debugPrint('  JWT: $token');
 
                           // Remove all previous items from navigation queue, so pressing back does nothing.
+                          // TODO: Create home page
                           Navigator.pushAndRemoveUntil(
                             context,
-                            MaterialPageRoute(builder: (context) => SessionTestPage()),
+                            MaterialPageRoute(builder: (context) => HomePage()),
                             (route) => false,
                           );
 

@@ -7,11 +7,13 @@ class SessionManager {
   SessionManager._internal();
 
   User? currentUser;
+  String? token;
 
   void clear() {
     // Debug statement for console
     debugPrint('Session cleared.');
     
     currentUser = null;
+    token = null;
   }
 }
