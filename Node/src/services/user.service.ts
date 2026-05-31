@@ -3,6 +3,8 @@ import { CreateUserDTO , User} from "../models/user.types.ts";
 import CustomerError from '../models/error.types.ts';
 import { userRepository } from '../database/repostitories.ts';
 import { comparePassword, hashPassword } from '../controllers/user.controller.ts';
+import { generateToken } from '../controllers/user.controller.ts';
+
 
 export async function CreateUser(req: Request, res: Response, next: NextFunction) {
     try {
@@ -76,7 +78,7 @@ export async function DeleteUser(req: Request, res: Response, next: NextFunction
     }
 }
 
-export async function CheckUserPassword(req: Request, res: Response, next: NextFunction) {
+export async function LoginUser(req: Request, res: Response, next: NextFunction) {
     try {
         const {username, password} = req.body as { username: string, password: string };
         const user = await userRepository.findOneBy({
@@ -89,8 +91,11 @@ export async function CheckUserPassword(req: Request, res: Response, next: NextF
         if (!isMatch) {
             throw new CustomerError(401, 'Username or password is invalid');
         }
+
+        const token = generateToken(user.id);
+
         user.passwordHash = undefined as unknown as string;
-        res.status(200 as number).json(user);
+        res.status(200 as number).json({ token , user});
     } catch (error) {
         next(error);
     }

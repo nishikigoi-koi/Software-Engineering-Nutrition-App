@@ -1,0 +1,40 @@
+import { NextFunction, Request, Response } from 'express';
+import jwt from 'jsonwebtoken';
+import CustomerError from '../models/error.types.ts';
+
+const JWT_SECRET = process.env.JWT_SECRET as string;
+
+
+export interface JwtPayload {
+    userId: string;
+    username: string;
+    iat?: number;
+    exp?: number;
+}
+
+export function authenticateJWT(req: Request, res: Response, next: NextFunction) {
+    try {
+        const authHeader = req.headers.authorization;
+        if (!authHeader || !authHeader.startsWith('Bearer ')) {
+            return res.status(401).json({ message: 'Missing authorization token' });
+        }
+        const token = authHeader.split(' ')[1];
+        try {
+            const payload = jwt.verify(token, JWT_SECRET) as JwtPayload;
+            (req as any).user = payload;
+            next();
+        } catch (err) {
+            return res.status(401).json({ message: 'Invalid or expired token' });
+        }
+    } catch (error) {
+        next(error);
+    }
+}
+
+export function authUser(req: Request, res: Response, next: NextFunction) {
+    const authUser = (req as any).user as JwtPayload;
+    if (authUser.userId !== req.params.id) {
+        throw new CustomerError(403, 'Forbidden');
+    }
+    next();
+}
