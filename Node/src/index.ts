@@ -4,6 +4,7 @@ import cors from 'cors';
 
 import mainRoute from './routes/main.route.ts';
 import userRoute from './routes/user.route.ts';
+import patientRoute from './routes/patient.route.ts';
 
 import "./database/db.connect.ts";
 
@@ -23,6 +24,7 @@ app.use(cors({origin: '*'}));
 
 app.use('/api', mainRoute);
 app.use('/api/users', userRoute);
+app.use('/api/patients', patientRoute);
 
 app.use(handlerError);
 
