@@ -48,7 +48,7 @@ class UserService {
     );
   }
 
-  static Future<http.Response> updateUser(String id, String newUsername, String newPassword) async {
+  static Future<http.Response> updateUser(String id, String username, String password) async {
     final token = SessionManager().token;
     
     return await http.put(
@@ -58,8 +58,8 @@ class UserService {
         'Authorization': 'Bearer $token'
       },
       body: jsonEncode({
-        'username': newUsername,
-        'password': newPassword
+        'username': username,
+        'password': password
       }),
     );
   }
