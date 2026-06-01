@@ -264,7 +264,7 @@ User needs to be Signed in and have the same ID to access this endpoint
     "ethnicity": String,
     "weight": Number,
     "height": Number,
-    "activity level": String
+    "activityLevel": String
 }</pre>
 </details>
 
@@ -279,7 +279,7 @@ User needs to be Signed in and have the same ID to access this endpoint
     "ethnicity": "Caucasian",
     "weight": 70,
     "height": 180,
-    "activity level": "Moderate"
+    "activityLevel": "Moderate"
 }</pre>
 </details>
 
@@ -303,7 +303,7 @@ User needs to be Signed in and have the same ID as the userId to access this end
     "ethnicity": String,
     "weight": Number,
     "height": Number,
-    "activity level": String
+    "activityLevel": String
 }</pre>
 </details>
 
@@ -319,7 +319,7 @@ User needs to be Signed in and have the same ID as the userId to access this end
     "ethnicity": "Caucasian",
     "weight": 70,
     "height": 180,
-    "activity level": "Moderate"
+    "activityLevel": "Moderate"
 }</pre>
 </details>
 
@@ -350,7 +350,7 @@ User needs to be Signed in and have the same ID as the userId to access this end
         "ethnicity": String,
         "weight": Number,
         "height": Number,
-        "activity level": String
+        "activityLevel": String
     }
 ]</pre>
 </details>
@@ -368,7 +368,7 @@ User needs to be Signed in and have the same ID as the userId to access this end
         "ethnicity": "Caucasian",
         "weight": 70,
         "height": 180,
-        "activity level": "Moderate"
+        "activityLevel": "Moderate"
     }
 ]</pre>
 </details>
@@ -399,7 +399,7 @@ User needs to be Signed in and have the same ID as the userId of the patient to 
     "ethnicity": String,
     "weight": Number,
     "height": Number,
-    "activity level": String
+    "activityLevel": String
 }</pre>
 </details>
 
@@ -415,7 +415,7 @@ User needs to be Signed in and have the same ID as the userId of the patient to 
     "ethnicity": "Caucasian",
     "weight": 70,
     "height": 180,
-    "activity level": "Moderate"
+    "activityLevel": "Moderate"
 }</pre>
 </details>
 
@@ -435,7 +435,7 @@ For example<br>
     "ethnicity": String,
     "weight": Number,
     "height": Number,
-    "activity level": String
+    "activityLevel": String
 }</pre>
 </details>
 
@@ -449,7 +449,7 @@ For example<br>
     "ethnicity": "Caucasian",
     "weight": 65,
     "height": 165,
-    "activity level": "Low"
+    "activityLevel": "Low"
 }</pre>
 </details>
 
