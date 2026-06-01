@@ -63,6 +63,7 @@ class PatientService {
   }
 
   static Future<http.Response> updatePatient(
+    String patientID,
     String firstName,
     String lastName,
     String birthDate,
@@ -75,7 +76,7 @@ class PatientService {
     final token = SessionManager().token;
 
     return await http.put(
-      Uri.parse('$_base/create-patient'),
+      Uri.parse('$_base/update-patient/$patientID'),
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $token'
