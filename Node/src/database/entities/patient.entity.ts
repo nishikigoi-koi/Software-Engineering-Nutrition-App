@@ -1,6 +1,7 @@
 import { BaseEntity } from "./base.entity.ts";
-import { Column, Entity, ManyToOne, JoinColumn, OneToMany } from "typeorm";
+import { Column, Entity, ManyToOne, JoinColumn, ManyToMany } from "typeorm";
 import { UserEntity } from "./user.entity.ts";
+import { DietaryRestrictionEntity } from "./dietaryRestriction.entity.ts";
 
 
 @Entity({ name: "patients" })
@@ -32,4 +33,7 @@ export class PatientEntity extends BaseEntity {
 
     @Column()
     activityLevel: string;
+
+    @ManyToMany(() => DietaryRestrictionEntity, (DietaryRestrictionEntity) => DietaryRestrictionEntity.patients)
+    dietaryRestrictions: DietaryRestrictionEntity[];
 }
