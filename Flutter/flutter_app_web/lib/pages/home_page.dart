@@ -1,6 +1,8 @@
+// TODO: Remove unused imports
 import 'package:flutter/material.dart';
 import 'package:flutter_app_web/services/session_manager.dart';
-import 'package:http/http.dart' as http;
+import 'package:flutter_app_web/services/user_service.dart';
+// import 'package:http/http.dart' as http;
 import 'login_page.dart';
  
 class HomePage extends StatefulWidget {
@@ -28,9 +30,7 @@ class _HomePageState extends State<HomePage> {
  
   @override
   Widget build(BuildContext context) {
-
-    final token = SessionManager().token;
-
+    // TODO: Redesign Home Page.
     return Scaffold(
       body: Center(
         child: ConstrainedBox(
@@ -67,13 +67,15 @@ class _HomePageState extends State<HomePage> {
                   height: 49,
                   child: ElevatedButton(
                     onPressed: () async {
-                      final response = await http.get(
-                        Uri.parse('http://localhost:3000/api/users/all-users'),
-                        headers: {
-                              'Content-Type': 'application/json',
-                              'Authorization': 'Bearer $token',
-                        }
-                      );
+                      // final response = await http.get(
+                      //   Uri.parse('http://localhost:3000/api/users/all-users'),
+                      //   headers: {
+                      //         'Content-Type': 'application/json',
+                      //         'Authorization': 'Bearer $token',
+                      //   }
+                      // );
+
+                      final response = await UserService.getAllUsers();
 
                       if (response.statusCode == 200) {
                         showDialog(

@@ -1,6 +1,8 @@
+// TODO: Remove unused imports
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+// import 'package:http/http.dart' as http;
+import 'package:flutter_app_web/services/user_service.dart';
+// import 'dart:convert';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -78,9 +80,12 @@ class _SignUpPageState extends State<SignUpPage> {
                   height: 49,
                   child: ElevatedButton(
                     onPressed: () async {
+                      final username = _usernameController.text.trim();
+                      final password = _passwordController.text.trim();
+
                       // Check if username or password are empty
-                      if (_usernameController.text.trim().isEmpty ||
-                          _passwordController.text.trim().isEmpty) {
+                      if (username.isEmpty ||
+                          password.isEmpty) {
                         showDialog(
                           context: context,
                           builder: (context) => AlertDialog(
@@ -92,17 +97,20 @@ class _SignUpPageState extends State<SignUpPage> {
                         return;
                       }
 
-                      // Call sign-up API
-                      final response = await http.post(
-                        Uri.parse(
-                          'http://localhost:3000/api/users/create-user',
-                        ),
-                        headers: {'Content-Type': 'application/json'},
-                        body: jsonEncode({
-                          'username': _usernameController.text,
-                          'password': _passwordController.text,
-                        }),
-                      );
+                      // // Call sign-up API
+                      // final response = await http.post(
+                      //   Uri.parse(
+                      //     'http://localhost:3000/api/users/create-user',
+                      //   ),
+                      //   headers: {'Content-Type': 'application/json'},
+                      //   body: jsonEncode({
+                      //     'username': _usernameController.text,
+                      //     'password': _passwordController.text,
+                      //   }),
+                      // );
+
+                      // New call to sign-up API
+                      final response = await UserService.createUser(username, password);
 
                       // On success (201), go back to login
                       if (response.statusCode == 201) {

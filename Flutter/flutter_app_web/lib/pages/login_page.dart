@@ -1,8 +1,10 @@
+// TODO: Remove unused imports
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+// import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter_app_web/models/user.dart';
 import 'package:flutter_app_web/services/session_manager.dart';
+import 'package:flutter_app_web/services/user_service.dart';
 import 'signup_page.dart';
 import 'home_page.dart';
 
@@ -84,9 +86,12 @@ class _LoginPageState extends State<LoginPage> {
                   height: 49,
                   child: ElevatedButton(
                     onPressed: () async {
+                      final username = _usernameController.text.trim();
+                      final password = _passwordController.text.trim();
+
                       // Check if username or password are empty
-                      if (_usernameController.text.trim().isEmpty ||
-                          _passwordController.text.trim().isEmpty) {
+                      if (username.isEmpty ||
+                          password.isEmpty) {
                         showDialog(
                           context: context,
                           builder: (context) => AlertDialog(
@@ -96,16 +101,19 @@ class _LoginPageState extends State<LoginPage> {
                         return;
                       }
  
-                      // Call login API
-                      final response = await http.post(
-                        Uri.parse('http://localhost:3000/api/users/login'),
-                        headers: {'Content-Type': 'application/json'},
-                        body: jsonEncode({
-                          'username': _usernameController.text,
-                          'password': _passwordController.text,
-                        }),
-                      );
- 
+                      // // Call login API
+                      // final response = await http.post(
+                      //   Uri.parse('http://localhost:3000/api/users/login'),
+                      //   headers: {'Content-Type': 'application/json'},
+                      //   body: jsonEncode({
+                      //     'username': _usernameController.text,
+                      //     'password': _passwordController.text,
+                      //   }),
+                      // );
+
+                      // New call to login API
+                      final response = await UserService.login(username, password);
+
                       // TODO: Navigate to home page
                       if (response.statusCode == 200) {
                         try {
