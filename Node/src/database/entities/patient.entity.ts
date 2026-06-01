@@ -7,7 +7,7 @@ import { MedicalConditionEntity } from "./medicalConditions.entity.ts";
 
 @Entity({ name: "patients" })
 export class PatientEntity extends BaseEntity {
-    @ManyToOne(() => UserEntity, (UserEntity) => UserEntity.patients)
+    @ManyToOne(() => UserEntity, (UserEntity) => UserEntity.patients, { cascade: true })
     @JoinColumn({ name: "userId" })
     user: UserEntity;
 
