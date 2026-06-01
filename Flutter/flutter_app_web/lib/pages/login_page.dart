@@ -1,6 +1,4 @@
-// TODO: Remove unused imports
 import 'package:flutter/material.dart';
-// import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter_app_web/models/user.dart';
 import 'package:flutter_app_web/services/session_manager.dart';
@@ -100,18 +98,8 @@ class _LoginPageState extends State<LoginPage> {
                         );
                         return;
                       }
- 
-                      // // Call login API
-                      // final response = await http.post(
-                      //   Uri.parse('http://localhost:3000/api/users/login'),
-                      //   headers: {'Content-Type': 'application/json'},
-                      //   body: jsonEncode({
-                      //     'username': _usernameController.text,
-                      //     'password': _passwordController.text,
-                      //   }),
-                      // );
 
-                      // New call to login API
+                      // Call Login API
                       final response = await UserService.login(username, password);
 
                       // TODO: Navigate to home page
