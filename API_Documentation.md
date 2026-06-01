@@ -294,7 +294,7 @@ User needs to be Signed in and have the same ID as the userId to access this end
 <details>
 <summary>Format</summary>
 <pre>{
-    "PatientId": String,
+    "id": String,
     "userId": String,
     "firstName": String,
     "lastName": String,
@@ -310,7 +310,7 @@ User needs to be Signed in and have the same ID as the userId to access this end
 <details>
 <summary>Example</summary>
 <pre>{
-    "PatientId": "9ad83156-5ed1-4e2f-8358-abcdef12345",
+    "id": "9ad83156-5ed1-4e2f-8358-abcdef12345",
     "userId": "9ad83156-5ed1-4e2f-8358-c6e2ce906f3a",
     "firstName": "John",
     "lastName": "Doe",
@@ -341,7 +341,7 @@ User needs to be Signed in and have the same ID as the userId to access this end
 <summary>Format</summary>
 <pre>[
     {
-        "PatientId": String,
+        "id": String,
         "userId": String,
         "firstName": String,
         "lastName": String,
@@ -359,7 +359,7 @@ User needs to be Signed in and have the same ID as the userId to access this end
 <summary>Example</summary>
 <pre>[
     {
-        "PatientId": "9ad83156-5ed1-4e2f-8358-abcdef12345",
+        "id": "9ad83156-5ed1-4e2f-8358-abcdef12345",
         "userId": "9ad83156-5ed1-4e2f-8358-c6e2ce906f3a",
         "firstName": "John",
         "lastName": "Doe",
@@ -390,7 +390,7 @@ User needs to be Signed in and have the same ID as the userId of the patient to 
 <details>
 <summary>Format</summary>
 <pre>{
-    "PatientId": String,
+    "id": String,
     "userId": String,
     "firstName": String,
     "lastName": String,
@@ -406,7 +406,7 @@ User needs to be Signed in and have the same ID as the userId of the patient to 
 <details>
 <summary>Example</summary>
 <pre>{
-    "PatientId": "9ad83156-5ed1-4e2f-8358-abcdef12345",
+    "id": "9ad83156-5ed1-4e2f-8358-abcdef12345",
     "userId": "9ad83156-5ed1-4e2f-8358-c6e2ce906f3a",
     "firstName": "John",
     "lastName": "Doe",
@@ -522,7 +522,7 @@ User needs to be Signed in to access this endpoint
 <details>
 <summary>Format</summary>
 <pre>{
-    "DietaryRestrictionId": String,
+    "id": String,
     "name": String,
     "description": String
 }</pre>
@@ -531,7 +531,7 @@ User needs to be Signed in to access this endpoint
 <details>
 <summary>Example</summary>
 <pre>{
-    "DietaryRestrictionId": "9ad83156-5ed1-4e2f-8358-54321fedcba",
+    "id": "9ad83156-5ed1-4e2f-8358-54321fedcba",
     "name": "Gluten Free",
     "description": "Avoid all products containing gluten"
 }</pre>
@@ -546,7 +546,7 @@ User needs to be Signed in to access this endpoint
 <summary>Format</summary>
 <pre>[
     {
-        "DietaryRestrictionId": String,
+        "id": String,
         "name": String,
         "description": String
     }
@@ -557,7 +557,7 @@ User needs to be Signed in to access this endpoint
 <summary>Example</summary>
 <pre>[
     {
-        "DietaryRestrictionId": "9ad83156-5ed1-4e2f-8358-54321fedcba",
+        "id": "9ad83156-5ed1-4e2f-8358-54321fedcba",
         "name": "Gluten Free",
         "description": "Avoid all products containing gluten"
     }
@@ -576,7 +576,7 @@ For example<br>
 <details>
 <summary>Format</summary>
 <pre>{
-    "DietaryRestrictionId": String,
+    "id": String,
     "name": String,
     "description": String
 }</pre>
@@ -585,7 +585,7 @@ For example<br>
 <details>
 <summary>Example</summary>
 <pre>{
-    "DietaryRestrictionId": "9ad83156-5ed1-4e2f-8358-54321fedcba",
+    "id": "9ad83156-5ed1-4e2f-8358-54321fedcba",
     "name": "Gluten Free",
     "description": "Avoid all products containing gluten"
 }</pre>
@@ -736,7 +736,7 @@ User needs to be Signed in and have the same ID as the userId of the patient to 
 <summary>Format</summary>
 <pre>[
     {
-        "DietaryRestrictionId": String,
+        "id": String,
         "name": String,
         "description": String
     }
@@ -747,7 +747,7 @@ User needs to be Signed in and have the same ID as the userId of the patient to 
 <summary>Example</summary>
 <pre>[
     {
-        "DietaryRestrictionId": "9ad83156-5ed1-4e2f-8358-54321fedcba",
+        "id": "9ad83156-5ed1-4e2f-8358-54321fedcba",
         "name": "Gluten Free",
         "description": "Avoid all products containing gluten"
     }
@@ -787,7 +787,7 @@ User needs to be Signed in to access this endpoint
 <details>
 <summary>Format</summary>
 <pre>{
-    "MedicalConditionId": String,
+    "id": String,
     "name": String,
     "description": String
 }</pre>
@@ -796,7 +796,7 @@ User needs to be Signed in to access this endpoint
 <details>
 <summary>Example</summary>
 <pre>{
-    "MedicalConditionId": "9ad83156-5ed1-4e2f-8358-44444condid",
+    "id": "9ad83156-5ed1-4e2f-8358-44444condid",
     "name": "Diabetes",
     "description": "Chronic condition that affects how the body processes blood sugar"
 }</pre>
@@ -811,7 +811,7 @@ User needs to be Signed in to access this endpoint
 <summary>Format</summary>
 <pre>[
     {
-        "MedicalConditionId": String,
+        "id": String,
         "name": String,
         "description": String
     }
@@ -822,7 +822,7 @@ User needs to be Signed in to access this endpoint
 <summary>Example</summary>
 <pre>[
     {
-        "MedicalConditionId": "9ad83156-5ed1-4e2f-8358-44444condid",
+        "id": "9ad83156-5ed1-4e2f-8358-44444condid",
         "name": "Diabetes",
         "description": "Chronic condition that affects how the body processes blood sugar"
     }
@@ -838,7 +838,7 @@ User needs to be Signed in to access this endpoint
 <details>
 <summary>Format</summary>
 <pre>{
-    "MedicalConditionId": String,
+    "id": String,
     "name": String,
     "description": String
 }</pre>
@@ -847,7 +847,7 @@ User needs to be Signed in to access this endpoint
 <details>
 <summary>Example</summary>
 <pre>{
-    "MedicalConditionId": "9ad83156-5ed1-4e2f-8358-44444condid",
+    "id": "9ad83156-5ed1-4e2f-8358-44444condid",
     "name": "Diabetes",
     "description": "Chronic condition that affects how the body processes blood sugar"
 }</pre>
@@ -992,7 +992,7 @@ User needs to be Signed in and have the same ID as the userId of the patient to 
 <summary>Format</summary>
 <pre>[
     {
-        "MedicalConditionId": String,
+        "id": String,
         "name": String,
         "description": String
     }
@@ -1003,7 +1003,7 @@ User needs to be Signed in and have the same ID as the userId of the patient to 
 <summary>Example</summary>
 <pre>[
     {
-        "MedicalConditionId": "9ad83156-5ed1-4e2f-8358-44444condid",
+        "id": "9ad83156-5ed1-4e2f-8358-44444condid",
         "name": "Diabetes",
         "description": "Chronic condition that affects how the body processes blood sugar"
     }
