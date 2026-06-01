@@ -52,11 +52,28 @@ export function authCreatePatient(req: Request, res: Response, next: NextFunctio
 }
 
 // Middleware to ensure the authenticated user is the owner of the patient record being accessed or modified
-export async function authPatient(req: Request, res: Response, next: NextFunction) {
+export async function authPatientIdInParams(req: Request, res: Response, next: NextFunction) {
     try {
         const authUser = (req as any).user as JwtPayload;
-        const patientId = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
+        const patientId = req.params.id as string;
         const patient = await patientRepository.findOne({ where: { id: patientId }, relations: ['user'] })
+        if (!patient) {
+            throw new CustomerError(404, 'Patient not found');
+        }
+        if (patient.user.id !== authUser.userId) {
+            throw new CustomerError(403, 'Forbidden');
+        }
+        next();
+    } catch (error) {
+        next(error);
+    }
+}
+
+export async function authPatientIdInBody(req: Request, res: Response, next: NextFunction) {
+    try {
+        const authUser = (req as any).user as JwtPayload;
+        const patientId = req.body.patientId as string;
+        const patient = await patientRepository.findOne({ where: { id: patientId }, relations: ['user'] });
         if (!patient) {
             throw new CustomerError(404, 'Patient not found');
         }
