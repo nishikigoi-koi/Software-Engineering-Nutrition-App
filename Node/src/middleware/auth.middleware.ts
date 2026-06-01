@@ -1,6 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import CustomerError from '../models/error.types.ts';
+import { PatientEntity } from 'src/database/entities/patient.entity.ts';
+import { patientRepository } from 'src/database/repostitories.ts';
 
 const JWT_SECRET = process.env.JWT_SECRET as string;
 
@@ -41,10 +43,23 @@ export function authUser(req: Request, res: Response, next: NextFunction) {
 }
 
 
+// Middleware to ensure the authenticated user is the owner of the patient record being created
+export function authCreatePatient(req: Request, res: Response, next: NextFunction) {
+    const authUser = (req as any).user as JwtPayload;
+    if (authUser.userId !== req.body.userId) {
+        throw new CustomerError(403, 'Forbidden');
+    }
+    next();
+}
+
 // Middleware to ensure the authenticated user is the owner of the patient record being accessed or modified
 export function authPatient(req: Request, res: Response, next: NextFunction) {
     const authUser = (req as any).user as JwtPayload;
-    if (authUser.userId !== req.body.userId) {
+    const patient = patientRepository.findOne({ where: { id: req.params.id }, relations: ['user'] })
+    if (!patient) {
+        throw new CustomerError(404, 'Patient not found');
+    }
+    if (patient.user.id !== authUser.userId) {
         throw new CustomerError(403, 'Forbidden');
     }
     next();
