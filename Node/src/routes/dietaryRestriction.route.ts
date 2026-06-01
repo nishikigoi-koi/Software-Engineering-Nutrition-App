@@ -1,5 +1,5 @@
 import express from "express";
-import { authenticateJWT } from '../middleware/auth.middleware.ts';
+import { authenticateJWT, authPatient, authPatientIdInBody } from '../middleware/auth.middleware.ts';
 import { CreateDietaryRestriction, GetAllDietaryRestrictions, GetDietaryRestrictionById, UpdateDietaryRestriction, DeleteDietaryRestriction } from '../services/dietaryRestriction.service.ts';
 
 const router = express.Router();
@@ -9,5 +9,9 @@ router.get('/all-dietary-restrictions', GetAllDietaryRestrictions);
 router.get('/get-dietary-restriction-by-id/:id', GetDietaryRestrictionById);
 router.put('/update-dietary-restriction/:id', authenticateJWT, UpdateDietaryRestriction);
 router.delete('/delete-dietary-restriction/:id', authenticateJWT, DeleteDietaryRestriction);
+
+router.post('/assign-to-patient', authenticateJWT, authPatientIdInBody, assignDietaryRestrictionToPatient):
+router.post('/remove-from-patient', authenticateJWT, authPatientIdInBody, removeDietaryRestrictionFromPatient);
+router.get('/get-patient-dietary-restrictions/:id', authenticateJWT, authPatient, getPatientDietaryRestrictions);
 
 export default router;
