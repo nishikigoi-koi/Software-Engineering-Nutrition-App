@@ -264,6 +264,7 @@ User needs to be Signed in and have the same ID to access this endpoint
     "ethnicity": String,
     "weight": Number,
     "height": Number,
+    "activity level": String
 }</pre>
 </details>
 
@@ -277,7 +278,8 @@ User needs to be Signed in and have the same ID to access this endpoint
     "gender": "Male",
     "ethnicity": "Caucasian",
     "weight": 70,
-    "height": 180
+    "height": 180,
+    "activity level": "Moderate"
 }</pre>
 </details>
 
