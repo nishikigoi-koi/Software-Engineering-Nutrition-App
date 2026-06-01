@@ -301,6 +301,7 @@ User needs to be Signed in and have the same ID as the userId to access this end
     "ethnicity": String,
     "weight": Number,
     "height": Number,
+    "activity level": String
 }</pre>
 </details>
 
@@ -315,7 +316,8 @@ User needs to be Signed in and have the same ID as the userId to access this end
     "gender": "Male",
     "ethnicity": "Caucasian",
     "weight": 70,
-    "height": 180
+    "height": 180,
+    "activity level": "Moderate"
 }</pre>
 </details>
 
@@ -346,6 +348,7 @@ User needs to be Signed in and have the same ID as the userId to access this end
         "ethnicity": String,
         "weight": Number,
         "height": Number,
+        "activity level": String
     }
 ]</pre>
 </details>
@@ -362,7 +365,8 @@ User needs to be Signed in and have the same ID as the userId to access this end
         "gender": "Male",
         "ethnicity": "Caucasian",
         "weight": 70,
-        "height": 180
+        "height": 180,
+        "activity level": "Moderate"
     }
 ]</pre>
 </details>
@@ -393,6 +397,7 @@ User needs to be Signed in and have the same ID as the userId of the patient to 
     "ethnicity": String,
     "weight": Number,
     "height": Number,
+    "activity level": String
 }</pre>
 </details>
 
@@ -407,7 +412,8 @@ User needs to be Signed in and have the same ID as the userId of the patient to 
     "gender": "Male",
     "ethnicity": "Caucasian",
     "weight": 70,
-    "height": 180
+    "height": 180,
+    "activity level": "Moderate"
 }</pre>
 </details>
 
@@ -426,7 +432,8 @@ For example<br>
     "gender": String,
     "ethnicity": String,
     "weight": Number,
-    "height": Number
+    "height": Number,
+    "activity level": String
 }</pre>
 </details>
 
@@ -439,7 +446,8 @@ For example<br>
     "gender": "Female",
     "ethnicity": "Caucasian",
     "weight": 65,
-    "height": 165
+    "height": 165,
+    "activity level": "Low"
 }</pre>
 </details>
 
