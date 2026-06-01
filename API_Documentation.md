@@ -247,5 +247,755 @@ User needs to be Signed in and have the same ID to access this endpoint
 ### Returns
 **status**: 204
 
+# Patient API
+
+## Create Patient
+```POST: http://localhost:3000/api/patients/create-patient```
+
+### Body data
+<details>
+<summary>Format</summary>
+<pre>{
+    "userId": String,
+    "firstName": String,
+    "lastName": String,
+    "birthDate": String,
+    "gender": String,
+    "ethnicity": String,
+    "weight": Number,
+    "height": Number,
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "userId": "9ad83156-5ed1-4e2f-8358-c6e2ce906f3a",
+    "firstName": "John",
+    "lastName": "Doe",
+    "birthDate": "1990-01-01",
+    "gender": "Male",
+    "ethnicity": "Caucasian",
+    "weight": 70,
+    "height": 180
+}</pre>
+</details>
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the userId to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "PatientId": String,
+    "userId": String,
+    "firstName": String,
+    "lastName": String,
+    "birthDate": String,
+    "gender": String,
+    "ethnicity": String,
+    "weight": Number,
+    "height": Number,
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "PatientId": "9ad83156-5ed1-4e2f-8358-abcdef12345",
+    "userId": "9ad83156-5ed1-4e2f-8358-c6e2ce906f3a",
+    "firstName": "John",
+    "lastName": "Doe",
+    "birthDate": "1990-01-01",
+    "gender": "Male",
+    "ethnicity": "Caucasian",
+    "weight": 70,
+    "height": 180
+}</pre>
+</details>
+
+## Get All Patients For a User
+```GET: http://localhost:3000/api/patients/all-patients/:userId``` <br>
+<br>
+For example<br>
+```GET: http://localhost:3000/api/patients/all-patients/9ad83156-5ed1-4e2f-8358-c6e2ce906f3a```
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the userId to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>[
+    {
+        "PatientId": String,
+        "userId": String,
+        "firstName": String,
+        "lastName": String,
+        "birthDate": String,
+        "gender": String,
+        "ethnicity": String,
+        "weight": Number,
+        "height": Number,
+    }
+]</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>[
+    {
+        "PatientId": "9ad83156-5ed1-4e2f-8358-abcdef12345",
+        "userId": "9ad83156-5ed1-4e2f-8358-c6e2ce906f3a",
+        "firstName": "John",
+        "lastName": "Doe",
+        "birthDate": "1990-01-01",
+        "gender": "Male",
+        "ethnicity": "Caucasian",
+        "weight": 70,
+        "height": 180
+    }
+]</pre>
+</details>
+
+## Get Patient By ID
+
+```GET: http://localhost:3000/api/patients/get-by-id/:id``` <br>
+<br>
+For example<br>
+```GET: http://localhost:3000/api/patients/get-by-id/9ad83156-5ed1-4e2f-8358-abcdef12345```
+
+### Headers
+Authorization: Bearer {token}
+### Authorization   
+User needs to be Signed in and have the same ID as the userId of the patient to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "PatientId": String,
+    "userId": String,
+    "firstName": String,
+    "lastName": String,
+    "birthDate": String,
+    "gender": String,
+    "ethnicity": String,
+    "weight": Number,
+    "height": Number,
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "PatientId": "9ad83156-5ed1-4e2f-8358-abcdef12345",
+    "userId": "9ad83156-5ed1-4e2f-8358-c6e2ce906f3a",
+    "firstName": "John",
+    "lastName": "Doe",
+    "birthDate": "1990-01-01",
+    "gender": "Male",
+    "ethnicity": "Caucasian",
+    "weight": 70,
+    "height": 180
+}</pre>
+</details>
+
+## Update Patient
+```PUT: http://localhost:3000/api/patients/update-patient/:id``` <br>
+<br>
+For example<br>
+```PUT: http://localhost:3000/api/patients/update-patient/9ad83156-5ed1-4e2f-8358-abcdef12345```
+### Body Data
+<details>
+<summary>Format</summary>
+<pre>{
+    "firstName": String,
+    "lastName": String,
+    "birthDate": String,
+    "gender": String,
+    "ethnicity": String,
+    "weight": Number,
+    "height": Number
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "firstName": "Jane",
+    "lastName": "Doe",
+    "birthDate": "1990-01-01",
+    "gender": "Female",
+    "ethnicity": "Caucasian",
+    "weight": 65,
+    "height": 165
+}</pre>
+</details>
+
+### Headers
+Authorization: Bearer {token}
+### Authorization
+User needs to be Signed in and have the same ID as the userId of the patient to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "message": String,
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "message": "Patient updated successfully"
+}</pre>
+</details>
+
+## Delete Patient
+```DELETE: http://localhost:3000/api/patients/delete-patient/:id``` <br>
+<br>
+For example<br>
+```DELETE: http://localhost:3000/api/patients/delete-patient/9ad83156-5ed1-4e2f-8358-abcdef12345```
+
+### Headers
+Authorization: Bearer {token}
+### Authorization
+User needs to be Signed in and have the same ID as the userId of the patient to access this endpoint
+
+### Returns
+**status**: 204
 
 
+# Dietary Restriction API
+
+## Create Dietary Restriction
+```POST: http://localhost:3000/api/dietary-restrictions/create-dietary-restriction```
+
+### Body data
+<details>
+<summary>Format</summary>
+<pre>{
+    "name": String,
+    "description": String
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "name": "Gluten Free",
+    "description": "Avoid all products containing gluten"
+}</pre>
+</details>
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "DietaryRestrictionId": String,
+    "name": String,
+    "description": String
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "DietaryRestrictionId": "9ad83156-5ed1-4e2f-8358-54321fedcba",
+    "name": "Gluten Free",
+    "description": "Avoid all products containing gluten"
+}</pre>
+</details>
+
+## Get All Dietary Restrictions
+```GET: http://localhost:3000/api/dietary-restrictions/all-dietary-restrictions```
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>[
+    {
+        "DietaryRestrictionId": String,
+        "name": String,
+        "description": String
+    }
+]</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>[
+    {
+        "DietaryRestrictionId": "9ad83156-5ed1-4e2f-8358-54321fedcba",
+        "name": "Gluten Free",
+        "description": "Avoid all products containing gluten"
+    }
+]</pre>
+</details>
+
+## Get Dietary Restriction By ID
+
+```GET: http://localhost:3000/api/dietary-restrictions/get-by-id/:id``` <br>
+<br>
+For example<br>
+```GET: http://localhost:3000/api/dietary-restrictions/get-by-id/9ad83156-5ed1-4e2f-8358-54321fedcba```
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "DietaryRestrictionId": String,
+    "name": String,
+    "description": String
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "DietaryRestrictionId": "9ad83156-5ed1-4e2f-8358-54321fedcba",
+    "name": "Gluten Free",
+    "description": "Avoid all products containing gluten"
+}</pre>
+</details>
+
+## Update Dietary Restriction
+```PUT: http://localhost:3000/api/dietary-restrictions/update-dietary-restriction/:id``` <br>
+<br>
+For example<br>
+```PUT: http://localhost:3000/api/dietary-restrictions/update-dietary-restriction/9ad83156-5ed1-4e2f-8358-54321fedcba```
+
+### Body Data
+<details>
+<summary>Format</summary>
+<pre>{
+    "name": String,
+    "description": String
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "name": "Vegan",
+    "description": "Avoid all animal products"
+}</pre>
+</details>
+
+### Headers
+Authorization: Bearer {token}
+### Authorization
+User needs to be Signed in to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "message": String,
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "message": "Dietary restriction updated successfully"
+}</pre>
+</details>
+
+## Delete Dietary Restriction
+```DELETE: http://localhost:3000/api/dietary-restrictions/delete-dietary-restriction/:id``` <br>
+<br>
+For example<br>
+```DELETE: http://localhost:3000/api/dietary-restrictions/delete-dietary-restriction/9ad83156-5ed1-4e2f-8358-54321fedcba```
+
+### Headers
+Authorization: Bearer {token}
+### Authorization
+User needs to be Signed in to access this endpoint
+
+### Returns
+**status**: 204
+
+## Assign Dietary Restriction to Patient
+```POST: http://localhost:3000/api/dietary-restrictions/assign-to-patient```
+### Body data
+<details>
+<summary>Format</summary>
+<pre>{
+    "patientId": String,
+    "dietaryRestrictionId": String
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "patientId": "9ad83156-5ed1-4e2f-8358-abcdef12345",
+    "dietaryRestrictionId": "9ad83156-5ed1-4e2f-8358-54321fedcba"
+}</pre>
+</details>
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the userId of the patient to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "message": String,
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "message": "Dietary restriction assigned to patient successfully"
+}</pre>
+</details>
+
+## Remove Dietary Restriction from Patient
+```DELETE: http://localhost:3000/api/dietary-restrictions/remove-from-patient```
+### Body data
+<details>
+<summary>Format</summary>
+<pre>{
+    "patientId": String,
+    "dietaryRestrictionId": String
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "patientId": "9ad83156-5ed1-4e2f-8358-abcdef12345",
+    "dietaryRestrictionId": "9ad83156-5ed1-4e2f-8358-54321fedcba"
+}</pre>
+</details>
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the userId of the patient to access this endpoint
+
+### Returns
+**status**: 204
+
+## Get All Dietary Restrictions for a Patient
+```GET: http://localhost:3000/api/dietary-restrictions/patient-dietary-restrictions/:patientId``` <br>
+<br>
+For example<br>
+```GET: http://localhost:3000/api/dietary-restrictions/patient-dietary-restrictions/9ad83156-5ed1-4e2f-8358-abcdef12345```
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the userId of the patient to access this endpoint'
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>[
+    {
+        "DietaryRestrictionId": String,
+        "name": String,
+        "description": String
+    }
+]</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>[
+    {
+        "DietaryRestrictionId": "9ad83156-5ed1-4e2f-8358-54321fedcba",
+        "name": "Gluten Free",
+        "description": "Avoid all products containing gluten"
+    }
+]</pre>
+</details>
+
+# Medical Conditions API
+
+## Create Medical Condition
+```POST: http://localhost:3000/api/medical-conditions/create-medical-condition```
+
+### Body data
+<details>
+<summary>Format</summary>
+<pre>{
+    "name": String,
+    "description": String
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "name": "Diabetes",
+    "description": "Chronic condition that affects how the body processes blood sugar"
+}</pre>
+</details>
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "MedicalConditionId": String,
+    "name": String,
+    "description": String
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "MedicalConditionId": "9ad83156-5ed1-4e2f-8358-44444condid",
+    "name": "Diabetes",
+    "description": "Chronic condition that affects how the body processes blood sugar"
+}</pre>
+</details>
+
+## Get All Medical Conditions
+```GET: http://localhost:3000/api/medical-conditions/all-medical-conditions```
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>[
+    {
+        "MedicalConditionId": String,
+        "name": String,
+        "description": String
+    }
+]</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>[
+    {
+        "MedicalConditionId": "9ad83156-5ed1-4e2f-8358-44444condid",
+        "name": "Diabetes",
+        "description": "Chronic condition that affects how the body processes blood sugar"
+    }
+]</pre>
+</details>
+
+## Get Medical Condition By ID
+
+```GET: http://localhost:3000/api/medical-conditions/get-by-id/:id```
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "MedicalConditionId": String,
+    "name": String,
+    "description": String
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "MedicalConditionId": "9ad83156-5ed1-4e2f-8358-44444condid",
+    "name": "Diabetes",
+    "description": "Chronic condition that affects how the body processes blood sugar"
+}</pre>
+</details>
+
+## Update Medical Condition
+```PUT: http://localhost:3000/api/medical-conditions/update-medical-condition/:id```
+
+### Body Data
+<details>
+<summary>Format</summary>
+<pre>{
+    "name": String,
+    "description": String
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "name": "Type 2 Diabetes",
+    "description": "Metabolic disorder characterized by high blood sugar, insulin resistance"
+}</pre>
+</details>
+
+### Headers
+Authorization: Bearer {token}
+### Authorization
+User needs to be Signed in to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "message": String,
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "message": "Medical condition updated successfully"
+}</pre>
+</details>
+
+## Delete Medical Condition
+```DELETE: http://localhost:3000/api/medical-conditions/delete-medical-condition/:id```
+
+### Headers
+Authorization: Bearer {token}
+### Authorization
+User needs to be Signed in to access this endpoint
+
+### Returns
+**status**: 204
+
+## Assign Medical Condition to Patient
+```POST: http://localhost:3000/api/medical-conditions/assign-to-patient```
+### Body data
+<details>
+<summary>Format</summary>
+<pre>{
+    "patientId": String,
+    "medicalConditionId": String
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "patientId": "9ad83156-5ed1-4e2f-8358-abcdef12345",
+    "medicalConditionId": "9ad83156-5ed1-4e2f-8358-44444condid"
+}</pre>
+</details>
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the userId of the patient to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "message": String,
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "message": "Medical condition assigned to patient successfully"
+}</pre>
+</details>
+
+## Remove Medical Condition from Patient
+```DELETE: http://localhost:3000/api/medical-conditions/remove-from-patient```
+### Body data
+<details>
+<summary>Format</summary>
+<pre>{
+    "patientId": String,
+    "medicalConditionId": String
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "patientId": "9ad83156-5ed1-4e2f-8358-abcdef12345",
+    "medicalConditionId": "9ad83156-5ed1-4e2f-8358-44444condid"
+}</pre>
+</details>
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the userId of the patient to access this endpoint
+
+### Returns
+**status**: 204
+
+## Get All Medical Conditions for a Patient
+```GET: http://localhost:3000/api/medical-conditions/patient-medical-conditions/:patientId```
+
+For example
+```GET: http://localhost:3000/api/medical-conditions/patient-medical-conditions/9ad83156-5ed1-4e2f-8358-abcdef12345```
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the userId of the patient to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>[
+    {
+        "MedicalConditionId": String,
+        "name": String,
+        "description": String
+    }
+]</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>[
+    {
+        "MedicalConditionId": "9ad83156-5ed1-4e2f-8358-44444condid",
+        "name": "Diabetes",
+        "description": "Chronic condition that affects how the body processes blood sugar"
+    }
+]</pre>
+</details>
