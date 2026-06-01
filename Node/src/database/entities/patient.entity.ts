@@ -26,10 +26,10 @@ export class PatientEntity extends BaseEntity {
     @Column()
     ethnicity: string;
 
-    @Column()
+    @Column({ type: "float" })
     weight: number;
 
-    @Column()
+    @Column({ type: "float" })
     height: number;
 
     @Column()
