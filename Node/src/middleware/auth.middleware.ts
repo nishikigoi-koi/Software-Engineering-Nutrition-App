@@ -31,9 +31,20 @@ export function authenticateJWT(req: Request, res: Response, next: NextFunction)
     }
 }
 
+// Middleware to ensure the authenticated user is the owner of the user record being accessed or modified
 export function authUser(req: Request, res: Response, next: NextFunction) {
     const authUser = (req as any).user as JwtPayload;
     if (authUser.userId !== req.params.id) {
+        throw new CustomerError(403, 'Forbidden');
+    }
+    next();
+}
+
+
+// Middleware to ensure the authenticated user is the owner of the patient record being accessed or modified
+export function authPatient(req: Request, res: Response, next: NextFunction) {
+    const authUser = (req as any).user as JwtPayload;
+    if (authUser.userId !== req.body.userId) {
         throw new CustomerError(403, 'Forbidden');
     }
     next();
