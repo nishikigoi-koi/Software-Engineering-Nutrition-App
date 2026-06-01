@@ -10,6 +10,7 @@ export class MedicalConditionEntity extends BaseEntity {
     @Column()
     description: string;
 
-    @ManyToMany(() => PatientEntity, (PatientEntity) => PatientEntity.medicalConditions)
-    patients: PatientEntity[];
+    @ManyToOne(() => PatientEntity, (PatientEntity) => PatientEntity.patientConditions)
+    @JoinColumn()
+    patientConditions: PatientEntity [];
 }
