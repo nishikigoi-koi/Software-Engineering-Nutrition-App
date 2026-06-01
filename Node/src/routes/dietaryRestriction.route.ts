@@ -1,5 +1,6 @@
 import express from "express";
 import { authenticateJWT } from '../middleware/auth.middleware.ts';
+import { CreateDietaryRestriction, GetAllDietaryRestrictions, GetDietaryRestrictionById, UpdateDietaryRestriction, DeleteDietaryRestriction } from '../services/dietaryRestriction.service.ts';
 
 const router = express.Router();
 
