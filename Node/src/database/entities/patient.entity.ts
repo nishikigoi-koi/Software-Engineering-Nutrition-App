@@ -12,10 +12,10 @@ export class PatientEntity extends BaseEntity {
     user: UserEntity;
 
     @Column()
-    firstname: string;
+    firstName: string;
 
     @Column()
-    lastname: string;
+    lastName: string;
 
     @Column()
     birthDate: string;

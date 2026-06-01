@@ -1,8 +1,8 @@
 export interface Patient {
     id: string | undefined;
     userId: string;
-    firstname: string;
-    lastname: string;
+    firstName: string;
+    lastName: string;
     birthDate: string;
     gender: string;
     ethnicity: string;
@@ -13,8 +13,8 @@ export interface Patient {
 
 export interface PatientDTO {
     userId: string;
-    firstname: string;
-    lastname: string;
+    firstName: string;
+    lastName: string;
     birthDate: string;
     gender: string;
     ethnicity: string;
