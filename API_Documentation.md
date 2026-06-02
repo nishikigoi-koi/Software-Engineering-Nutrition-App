@@ -18,7 +18,11 @@ Some endpoints require the user to be authenticated and authorized. To access th
 # User API
 
 ## Create User
+
 ```POST: http://localhost:3000/api/users/create-user```
+
+### Description
+Creates as user in the database
 
 ### Body data
 <details>
@@ -63,6 +67,10 @@ Some endpoints require the user to be authenticated and authorized. To access th
 
 ## Login User
 ```POST: http://localhost:3000/api/users/login```
+
+### Description
+Logs in the user by checking their username and password against the database and returns the user objected with a JWT used as auth in most other endpoints
+
 ### Body data
 <details>
 <summary>Format</summary>
@@ -114,6 +122,9 @@ Some endpoints require the user to be authenticated and authorized. To access th
 
 ```GET: http://localhost:3000/api/users/all-users```
 
+### Description
+Gets all user objects from the database
+
 ### Headers
 Authorization: Bearer {token}
 
@@ -155,6 +166,9 @@ User needs to be Signed in to access this endpoint
 For example<br>
 ```GET: http://localhost:3000/api/users/get-by-id/9ad83156-5ed1-4e2f-8358-c6e2ce906f3a```
 
+### Description
+Gets a single user object from the database where the id numbers match
+
 ### Headers
 Authorization: Bearer {token}
 
@@ -192,6 +206,9 @@ User needs to be Signed in and have the same ID to access this endpoint
 <br>
 For example<br>
 ```PUT: http://localhost:3000/api/users/update-user/9ad83156-5ed1-4e2f-8358-c6e2ce906f3a```
+
+### Description
+updates a user object in the database that matches the ID 
 
 ### Body Data
 <details>
@@ -238,6 +255,9 @@ User needs to be Signed in and have the same ID to access this endpoint
 For example<br>
 ```DELETE: http://localhost:3000/api/users/delete-user/9ad83156-5ed1-4e2f-8358-c6e2ce906f3a```
 
+### Description 
+Deletes a User object from the database where the IDs match
+
 ### Headers
 Authorization: Bearer {token}
 
@@ -247,5 +267,820 @@ User needs to be Signed in and have the same ID to access this endpoint
 ### Returns
 **status**: 204
 
+# Patient API
+
+## Create Patient
+```POST: http://localhost:3000/api/patients/create-patient```
+
+### Description
+Creates a Patient object in the database and returns back the same object with an id number added 
+
+### Body data
+<details>
+<summary>Format</summary>
+<pre>{
+    "userId": String,
+    "firstName": String,
+    "lastName": String,
+    "birthDate": String,
+    "gender": String,
+    "ethnicity": String,
+    "weight": Number,
+    "height": Number,
+    "activityLevel": String
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "userId": "9ad83156-5ed1-4e2f-8358-c6e2ce906f3a",
+    "firstName": "John",
+    "lastName": "Doe",
+    "birthDate": "1990-01-01",
+    "gender": "Male",
+    "ethnicity": "Caucasian",
+    "weight": 70,
+    "height": 180,
+    "activityLevel": "Moderate"
+}</pre>
+</details>
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the userId to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "id": String,
+    "userId": String,
+    "firstName": String,
+    "lastName": String,
+    "birthDate": String,
+    "gender": String,
+    "ethnicity": String,
+    "weight": Number,
+    "height": Number,
+    "activityLevel": String
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "id": "9ad83156-5ed1-4e2f-8358-abcdef12345",
+    "userId": "9ad83156-5ed1-4e2f-8358-c6e2ce906f3a",
+    "firstName": "John",
+    "lastName": "Doe",
+    "birthDate": "1990-01-01",
+    "gender": "Male",
+    "ethnicity": "Caucasian",
+    "weight": 70,
+    "height": 180,
+    "activityLevel": "Moderate"
+}</pre>
+</details>
+
+## Get All Patients For a User
+```GET: http://localhost:3000/api/patients/all-patients/:userId``` <br>
+<br>
+For example<br>
+```GET: http://localhost:3000/api/patients/all-patients/9ad83156-5ed1-4e2f-8358-c6e2ce906f3a```
+
+### Description
+Gets all Patient objects from the database that have a user ID the same as what is in the params
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the userId to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>[
+    {
+        "id": String,
+        "userId": String,
+        "firstName": String,
+        "lastName": String,
+        "birthDate": String,
+        "gender": String,
+        "ethnicity": String,
+        "weight": Number,
+        "height": Number,
+        "activityLevel": String
+    }
+]</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>[
+    {
+        "id": "9ad83156-5ed1-4e2f-8358-abcdef12345",
+        "userId": "9ad83156-5ed1-4e2f-8358-c6e2ce906f3a",
+        "firstName": "John",
+        "lastName": "Doe",
+        "birthDate": "1990-01-01",
+        "gender": "Male",
+        "ethnicity": "Caucasian",
+        "weight": 70,
+        "height": 180,
+        "activityLevel": "Moderate"
+    }
+]</pre>
+</details>
+
+## Get Patient By ID
+
+```GET: http://localhost:3000/api/patients/get-by-id/:id``` <br>
+<br>
+For example<br>
+```GET: http://localhost:3000/api/patients/get-by-id/9ad83156-5ed1-4e2f-8358-abcdef12345```
+
+### Description
+Gets the Patient object from the database with the same ID as in params
+
+### Headers
+Authorization: Bearer {token}
+### Authorization   
+User needs to be Signed in and have the same ID as the userId of the patient to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "id": String,
+    "userId": String,
+    "firstName": String,
+    "lastName": String,
+    "birthDate": String,
+    "gender": String,
+    "ethnicity": String,
+    "weight": Number,
+    "height": Number,
+    "activityLevel": String
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "id": "9ad83156-5ed1-4e2f-8358-abcdef12345",
+    "userId": "9ad83156-5ed1-4e2f-8358-c6e2ce906f3a",
+    "firstName": "John",
+    "lastName": "Doe",
+    "birthDate": "1990-01-01",
+    "gender": "Male",
+    "ethnicity": "Caucasian",
+    "weight": 70,
+    "height": 180,
+    "activityLevel": "Moderate"
+}</pre>
+</details>
+
+## Update Patient
+```PUT: http://localhost:3000/api/patients/update-patient/:id``` <br>
+<br>
+For example<br>
+```PUT: http://localhost:3000/api/patients/update-patient/9ad83156-5ed1-4e2f-8358-abcdef12345```
+
+### Description
+Updates the patient object in the database that has the same id as params
+
+### Body Data
+<details>
+<summary>Format</summary>
+<pre>{
+    "firstName": String,
+    "lastName": String,
+    "birthDate": String,
+    "gender": String,
+    "ethnicity": String,
+    "weight": Number,
+    "height": Number,
+    "activityLevel": String
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "firstName": "Jane",
+    "lastName": "Doe",
+    "birthDate": "1990-01-01",
+    "gender": "Female",
+    "ethnicity": "Caucasian",
+    "weight": 65,
+    "height": 165,
+    "activityLevel": "Low"
+}</pre>
+</details>
+
+### Headers
+Authorization: Bearer {token}
+### Authorization
+User needs to be Signed in and have the same ID as the userId of the patient to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "message": String,
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "message": "Patient updated successfully"
+}</pre>
+</details>
+
+## Delete Patient
+```DELETE: http://localhost:3000/api/patients/delete-patient/:id``` <br>
+<br>
+For example<br>
+```DELETE: http://localhost:3000/api/patients/delete-patient/9ad83156-5ed1-4e2f-8358-abcdef12345```
+### Description
+Deletes Patient object in the database that matches the ID in params
+
+### Headers
+Authorization: Bearer {token}
+### Authorization
+User needs to be Signed in and have the same ID as the userId of the patient to access this endpoint
+
+### Returns
+**status**: 204
 
 
+# Dietary Restriction API
+
+## Create Dietary Restriction
+```POST: http://localhost:3000/api/dietary-restrictions/create-dietary-restriction```
+### Description
+creates Dietary Restriction object in the database and returns the same object with a generated ID
+
+### Body data
+<details>
+<summary>Format</summary>
+<pre>{
+    "name": String,
+    "description": String
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "name": "Gluten Free",
+    "description": "Avoid all products containing gluten"
+}</pre>
+</details>
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "id": String,
+    "name": String,
+    "description": String
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "id": "9ad83156-5ed1-4e2f-8358-54321fedcba",
+    "name": "Gluten Free",
+    "description": "Avoid all products containing gluten"
+}</pre>
+</details>
+
+## Get All Dietary Restrictions
+```GET: http://localhost:3000/api/dietary-restrictions/all-dietary-restrictions```
+### Description
+Gets all Dietary restrication objects from the database 
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>[
+    {
+        "id": String,
+        "name": String,
+        "description": String
+    }
+]</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>[
+    {
+        "id": "9ad83156-5ed1-4e2f-8358-54321fedcba",
+        "name": "Gluten Free",
+        "description": "Avoid all products containing gluten"
+    }
+]</pre>
+</details>
+
+## Get Dietary Restriction By ID
+
+```GET: http://localhost:3000/api/dietary-restrictions/get-by-id/:id``` <br>
+<br>
+For example<br>
+```GET: http://localhost:3000/api/dietary-restrictions/get-by-id/9ad83156-5ed1-4e2f-8358-54321fedcba```
+### Description
+Gets a single Dietary restriction object from the database with the matching id from params
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "id": String,
+    "name": String,
+    "description": String
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "id": "9ad83156-5ed1-4e2f-8358-54321fedcba",
+    "name": "Gluten Free",
+    "description": "Avoid all products containing gluten"
+}</pre>
+</details>
+
+## Update Dietary Restriction
+```PUT: http://localhost:3000/api/dietary-restrictions/update-dietary-restriction/:id``` <br>
+<br>
+For example<br>
+```PUT: http://localhost:3000/api/dietary-restrictions/update-dietary-restriction/9ad83156-5ed1-4e2f-8358-54321fedcba```
+### Description
+Updates the Dietary restriction object in the database that has the same id as in params 
+
+### Body Data
+<details>
+<summary>Format</summary>
+<pre>{
+    "name": String,
+    "description": String
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "name": "Vegan",
+    "description": "Avoid all animal products"
+}</pre>
+</details>
+
+### Headers
+Authorization: Bearer {token}
+### Authorization
+User needs to be Signed in to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "message": String,
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "message": "Dietary restriction updated successfully"
+}</pre>
+</details>
+
+## Delete Dietary Restriction
+```DELETE: http://localhost:3000/api/dietary-restrictions/delete-dietary-restriction/:id``` <br>
+<br>
+For example<br>
+```DELETE: http://localhost:3000/api/dietary-restrictions/delete-dietary-restriction/9ad83156-5ed1-4e2f-8358-54321fedcba```
+### Description
+Deletes the Dietary restriction in the database that has the same ID as params
+
+### Headers
+Authorization: Bearer {token}
+### Authorization
+User needs to be Signed in to access this endpoint
+
+### Returns
+**status**: 204
+
+## Assign Dietary Restriction to Patient
+```POST: http://localhost:3000/api/dietary-restrictions/assign-to-patient```
+### Description
+Links a Patient Object with a Dietary restriction object in the database 
+
+### Body data
+<details>
+<summary>Format</summary>
+<pre>{
+    "patientId": String,
+    "dietaryRestrictionId": String
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "patientId": "9ad83156-5ed1-4e2f-8358-abcdef12345",
+    "dietaryRestrictionId": "9ad83156-5ed1-4e2f-8358-54321fedcba"
+}</pre>
+</details>
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the userId of the patient to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "patientId": String,
+    "dietaryRestrictionId": String
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "patientId": "9ad83156-5ed1-4e2f-8358-abcdef12345",
+    "dietaryRestrictionId": "9ad83156-5ed1-4e2f-8358-54321fedcba"
+}</pre>
+</details>
+
+## Remove Dietary Restriction from Patient
+```DELETE: http://localhost:3000/api/dietary-restrictions/remove-from-patient```
+### Description
+removes the link between a Patient Object with a Dietary restriction in the database
+
+### Body data
+<details>
+<summary>Format</summary>
+<pre>{
+    "patientId": String,
+    "dietaryRestrictionId": String
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "patientId": "9ad83156-5ed1-4e2f-8358-abcdef12345",
+    "dietaryRestrictionId": "9ad83156-5ed1-4e2f-8358-54321fedcba"
+}</pre>
+</details>
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the userId of the patient to access this endpoint
+
+### Returns
+**status**: 204
+
+## Get All Dietary Restrictions for a Patient
+```GET: http://localhost:3000/api/dietary-restrictions/patient-dietary-restrictions/:patientId``` <br>
+<br>
+For example<br>
+```GET: http://localhost:3000/api/dietary-restrictions/patient-dietary-restrictions/9ad83156-5ed1-4e2f-8358-abcdef12345```
+### Description
+Gets all the Dietary Restriction objects for a Patient from the database that has the same ID as params
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the userId of the patient to access this endpoint'
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>[
+    {
+        "id": String,
+        "name": String,
+        "description": String
+    }
+]</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>[
+    {
+        "id": "9ad83156-5ed1-4e2f-8358-54321fedcba",
+        "name": "Gluten Free",
+        "description": "Avoid all products containing gluten"
+    }
+]</pre>
+</details>
+
+# Medical Conditions API
+
+## Create Medical Condition
+```POST: http://localhost:3000/api/medical-conditions/create-medical-condition```
+### Description
+Creates a Medical condition object in the database
+
+### Body data
+<details>
+<summary>Format</summary>
+<pre>{
+    "name": String,
+    "description": String
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "name": "Diabetes",
+    "description": "Chronic condition that affects how the body processes blood sugar"
+}</pre>
+</details>
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "id": String,
+    "name": String,
+    "description": String
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "id": "9ad83156-5ed1-4e2f-8358-44444condid",
+    "name": "Diabetes",
+    "description": "Chronic condition that affects how the body processes blood sugar"
+}</pre>
+</details>
+
+## Get All Medical Conditions
+```GET: http://localhost:3000/api/medical-conditions/all-medical-conditions```
+### Description
+Gets all medical condition objects from the database
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>[
+    {
+        "id": String,
+        "name": String,
+        "description": String
+    }
+]</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>[
+    {
+        "id": "9ad83156-5ed1-4e2f-8358-44444condid",
+        "name": "Diabetes",
+        "description": "Chronic condition that affects how the body processes blood sugar"
+    }
+]</pre>
+</details>
+
+## Get Medical Condition By ID
+
+```GET: http://localhost:3000/api/medical-conditions/get-by-id/:id```
+### Description
+Gets a medical condition object from the database that has the matching ID in params
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "id": String,
+    "name": String,
+    "description": String
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "id": "9ad83156-5ed1-4e2f-8358-44444condid",
+    "name": "Diabetes",
+    "description": "Chronic condition that affects how the body processes blood sugar"
+}</pre>
+</details>
+
+## Update Medical Condition
+```PUT: http://localhost:3000/api/medical-conditions/update-medical-condition/:id```
+### Description
+Updates the medical condition object  in the database that has the same Id as params
+
+### Body Data
+<details>
+<summary>Format</summary>
+<pre>{
+    "name": String,
+    "description": String
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "name": "Type 2 Diabetes",
+    "description": "Metabolic disorder characterized by high blood sugar, insulin resistance"
+}</pre>
+</details>
+
+### Headers
+Authorization: Bearer {token}
+### Authorization
+User needs to be Signed in to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "message": String,
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "message": "Medical condition updated successfully"
+}</pre>
+</details>
+
+## Delete Medical Condition
+```DELETE: http://localhost:3000/api/medical-conditions/delete-medical-condition/:id```
+### Description
+Deletes the medical condition object in the database that has the same id as params 
+
+### Headers
+Authorization: Bearer {token}
+### Authorization
+User needs to be Signed in to access this endpoint
+
+### Returns
+**status**: 204
+
+## Assign Medical Condition to Patient
+```POST: http://localhost:3000/api/medical-conditions/assign-to-patient```
+### Description
+Creates a link between a Medical conditon object and a patient object in the database
+
+### Body data
+<details>
+<summary>Format</summary>
+<pre>{
+    "patientId": String,
+    "medicalConditionId": String
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "patientId": "9ad83156-5ed1-4e2f-8358-abcdef12345",
+    "medicalConditionId": "9ad83156-5ed1-4e2f-8358-44444condid"
+}</pre>
+</details>
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the userId of the patient to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "patientId": String,
+    "medicalConditionId": String
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "patientId": "9ad83156-5ed1-4e2f-8358-abcdef12345",
+    "medicalConditionId": "9ad83156-5ed1-4e2f-8358-44444condid"
+}</pre>
+</details>
+
+## Remove Medical Condition from Patient
+```DELETE: http://localhost:3000/api/medical-conditions/remove-from-patient```
+### Description
+Removes the link between Medical conditon object and a patient object in the database
+
+### Body data
+<details>
+<summary>Format</summary>
+<pre>{
+    "patientId": String,
+    "medicalConditionId": String
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "patientId": "9ad83156-5ed1-4e2f-8358-abcdef12345",
+    "medicalConditionId": "9ad83156-5ed1-4e2f-8358-44444condid"
+}</pre>
+</details>
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the userId of the patient to access this endpoint
+
+### Returns
+**status**: 204
+
+## Get All Medical Conditions for a Patient
+```GET: http://localhost:3000/api/medical-conditions/patient-medical-conditions/:patientId```
+
+For example
+```GET: http://localhost:3000/api/medical-conditions/patient-medical-conditions/9ad83156-5ed1-4e2f-8358-abcdef12345```
+### Description
+Gets all Medical condition objects a patient object is linked to with the same ID as params
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the userId of the patient to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>[
+    {
+        "id": String,
+        "name": String,
+        "description": String
+    }
+]</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>[
+    {
+        "id": "9ad83156-5ed1-4e2f-8358-44444condid",
+        "name": "Diabetes",
+        "description": "Chronic condition that affects how the body processes blood sugar"
+    }
+]</pre>
+</details>
