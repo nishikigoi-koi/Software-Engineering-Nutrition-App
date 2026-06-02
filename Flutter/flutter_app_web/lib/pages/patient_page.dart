@@ -6,6 +6,8 @@ import 'package:flutter_app_web/services/patient_service.dart';
 import 'package:flutter_app_web/utils/dialog_utils.dart';
 import 'dart:convert';
 import 'login_page.dart';
+import 'medical_conditions_page.dart';
+import 'diet_restrictions_page.dart';
 
 class PatientPage extends StatefulWidget {
   const PatientPage({super.key});
@@ -497,7 +499,14 @@ class _PatientPageState extends State<PatientPage> {
                             SizedBox(height: 12),
                             ElevatedButton(
                               onPressed: _selectedPatient != null
-                                  ? () => DialogUtils.showComingSoon(context)
+                                  ? () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (_) => const MedicalConditionsPage(),
+                                        ),
+                                      );
+                                    }
                                   : null,
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Color(0xFF3B62FF),
@@ -516,8 +525,15 @@ class _PatientPageState extends State<PatientPage> {
                             SizedBox(height: 12),
                             ElevatedButton(
                               onPressed: _selectedPatient != null
-                                  ? () => DialogUtils.showComingSoon(context)
-                                  : null,
+                                ? () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (_) => const DietRestrictionsPage(),
+                                      ),
+                                    );
+                                  }
+                                : null,
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Color(0xFF3B62FF),
                                 disabledBackgroundColor: Color(0xFFCCCCCC),
