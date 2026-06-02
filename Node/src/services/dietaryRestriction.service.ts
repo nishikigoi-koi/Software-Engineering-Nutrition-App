@@ -82,7 +82,7 @@ export async function DeleteDietaryRestriction(req: Request, res: Response, next
             throw new CustomerError(404, 'Dietary Restriction not found');
         }
         await dietaryRestrictionRepository.delete(id);
-        res.status(200).json({ message: 'Dietary Restriction deleted successfully' });
+        res.status(204).send();
     } catch (error) {
         next(error);
     }
