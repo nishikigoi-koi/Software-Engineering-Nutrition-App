@@ -679,14 +679,16 @@ User needs to be Signed in and have the same ID as the userId of the patient to 
 <details>
 <summary>Format</summary>
 <pre>{
-    "message": String,
+    "patientId": String,
+    "dietaryRestrictionId": String
 }</pre>
 </details>
 
 <details>
 <summary>Example</summary>
 <pre>{
-    "message": "Dietary restriction assigned to patient successfully"
+    "patientId": "9ad83156-5ed1-4e2f-8358-abcdef12345",
+    "dietaryRestrictionId": "9ad83156-5ed1-4e2f-8358-54321fedcba"
 }</pre>
 </details>
 
@@ -935,14 +937,16 @@ User needs to be Signed in and have the same ID as the userId of the patient to 
 <details>
 <summary>Format</summary>
 <pre>{
-    "message": String,
+    "patientId": String,
+    "medicalConditionId": String
 }</pre>
 </details>
 
 <details>
 <summary>Example</summary>
 <pre>{
-    "message": "Medical condition assigned to patient successfully"
+    "patientId": "9ad83156-5ed1-4e2f-8358-abcdef12345",
+    "medicalConditionId": "9ad83156-5ed1-4e2f-8358-44444condid"
 }</pre>
 </details>
 
