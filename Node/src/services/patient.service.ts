@@ -58,7 +58,7 @@ export async function GetAllPatients(req: Request, res: Response, next: NextFunc
 
 export async function GetPatientById(req: Request, res: Response, next: NextFunction) {
     try {
-        const patientId = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
+        const patientId = req.params.id as string;
         const patient = await patientRepository.findOne({ where: { id: patientId }, relations: ['user'] });
         if (!patient) {
             throw new CustomerError(404, 'Patient not found');
