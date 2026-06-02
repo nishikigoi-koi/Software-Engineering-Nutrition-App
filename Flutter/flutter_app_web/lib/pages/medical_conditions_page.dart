@@ -78,8 +78,7 @@ class _MedicalConditionsPageState extends State<MedicalConditionsPage> {
       _descController.text = condition.description;
       _assignedPatientIds.clear();
     });
-
-    // IMPORTANT: current API limitation (N requests)
+    
     for (final p in _patients) {
       final res =
           await MedicalConditionService.getPatientConditions(p.id);
