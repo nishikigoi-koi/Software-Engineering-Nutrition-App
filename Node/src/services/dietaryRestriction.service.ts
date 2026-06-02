@@ -92,7 +92,11 @@ export async function assignDietaryRestrictionToPatient(req: Request, res: Respo
     try {
         const { patientId, dietaryRestrictionId } = req.body as { patientId: string, dietaryRestrictionId: string };
         const patientRestriction = await patientRestrictionRepository.save({ patientId, dietaryRestrictionId });
-        res.status(200).json(patientRestriction);
+        const returnedPatientRestriction = {
+            patientId: patientRestriction.patientId,
+            dietaryRestrictionId: patientRestriction.dietaryRestrictionId
+        }
+        res.status(200).json(returnedPatientRestriction);
     } catch (error) {
         next(error);
     }
