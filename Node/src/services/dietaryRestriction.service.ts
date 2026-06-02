@@ -110,7 +110,7 @@ export async function removeDietaryRestrictionFromPatient(req: Request, res: Res
             throw new CustomerError(404, 'Patient Restriction not found');
         }
         await patientRestrictionRepository.delete({ patientId, dietaryRestrictionId });
-        res.status(200).json({ message: 'Dietary Restriction removed from patient successfully' });
+        res.status(204).send();
     } catch (error) {
         next(error);
     }
