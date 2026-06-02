@@ -12,7 +12,7 @@ router.delete('/delete-dietary-restriction/:id', authenticateJWT, DeleteDietaryR
 
 
 router.post('/assign-to-patient', authenticateJWT, authPatientIdInBody, assignDietaryRestrictionToPatient);
-router.post('/remove-from-patient', authenticateJWT, authPatientIdInBody, removeDietaryRestrictionFromPatient);
+router.delete('/remove-from-patient', authenticateJWT, authPatientIdInBody, removeDietaryRestrictionFromPatient);
 router.get('/get-patient-dietary-restrictions/:id', authenticateJWT, authPatientIdInParams, getPatientDietaryRestrictions);
 
 export default router;
