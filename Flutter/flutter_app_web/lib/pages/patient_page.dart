@@ -161,7 +161,14 @@ class _PatientPageState extends State<PatientPage> {
     setState(() {
       _selectedPatient = null;
       _isNewPatient = true;
-      _clearForm();
+      _firstNameController.clear();
+      _lastNameController.clear();
+      _birthDateController.clear();
+      _ethnicityController.clear();
+      _weightController.clear();
+      _heightController.clear();
+      _selectedGender = null;
+      _selectedActivityLevel = null;
     });
   }
 

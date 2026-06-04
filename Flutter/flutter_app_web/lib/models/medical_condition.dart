@@ -11,7 +11,7 @@ class MedicalCondition {
 
   factory MedicalCondition.fromJson(Map<String, dynamic> json) {
     return MedicalCondition(
-      id: json['MedicalConditionId'],
+      id: json['id'],
       name: json['name'],
       description: json['description']
     );

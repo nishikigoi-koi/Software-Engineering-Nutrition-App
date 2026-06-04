@@ -11,7 +11,7 @@ class DietRestriction {
 
   factory DietRestriction.fromJson(Map<String, dynamic> json) {
     return DietRestriction(
-      id: json['DietaryRestrictionId'],
+      id: json['id'],
       name: json['name'],
       description: json['description']
     );
