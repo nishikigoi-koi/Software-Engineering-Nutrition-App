@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "module": "ESNext", // Use Node-compatible ESM output
+    "target": "ESNext", // Compile to the latest ECMAScript version
+    "moduleResolution": "node", // Resolve modules using Node.js ESM style
+    "esModuleInterop": true, // Enables interop between ES modules and CommonJS
+    "allowSyntheticDefaultImports": true, // Allows default imports from modules with no default export
+    "strict": true, // Enables strict type-checking
+    "skipLibCheck": true, // Skip type-checking declaration files (faster builds)
+    "outDir": "./dist", // Specifies output directory for compiled files
+    "baseUrl": "./",
+    "strictPropertyInitialization": false,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "paths": {
+      "*": ["node_modules/*"]
+    },
+    "allowImportingTsExtensions": true, // Allows importing TypeScript files without specifying the extension
+    "ignoreDeprecations": "6.0",
+    "noEmit": true, // Do not emit outputs
+  },
+  "include": ["src/**/*"] 
+}
