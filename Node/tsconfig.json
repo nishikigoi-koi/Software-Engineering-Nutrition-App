@@ -19,5 +19,5 @@
     "ignoreDeprecations": "6.0",
     "noEmit": true, // Do not emit outputs
   },
-  "include": ["src/**/*"] 
+  "include": ["src/**/*", "tests/**/*"] 
 }
