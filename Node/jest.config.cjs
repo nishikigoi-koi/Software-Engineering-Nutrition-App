@@ -4,9 +4,7 @@ module.exports = {
   moduleFileExtensions: ['ts', 'js', 'json'],
   testMatch: ['**/tests/**/*.test.ts'],
   extensionsToTreatAsEsm: ['.ts'],
-  globals: {
-    'ts-jest': {
-      useESM: true,
-    },
+  transform: {
+    '^.+\\.(ts|tsx)$': ['ts-jest', { useESM: true }],
   },
 };

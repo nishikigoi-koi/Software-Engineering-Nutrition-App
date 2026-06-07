@@ -18,6 +18,7 @@
     "allowImportingTsExtensions": true, // Allows importing TypeScript files without specifying the extension
     "ignoreDeprecations": "6.0",
     "noEmit": true, // Do not emit outputs
+    "types": ["jest", "node"]
   },
   "include": ["src/**/*", "tests/**/*"] 
 }
