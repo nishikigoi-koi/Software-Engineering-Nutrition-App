@@ -1,10 +1,15 @@
-export interface MedicalCondition {
+export interface medicalCondition {
     id: string;
     name: string;
     description: string;
 }
 
-export interface MedicalConditionDTO {
+export interface medicalConditionDTO {
     name: string;
     description: string;
+}
+
+export interface patientCondition {
+    patientId: string,
+    medicalConditionId: string
 }
