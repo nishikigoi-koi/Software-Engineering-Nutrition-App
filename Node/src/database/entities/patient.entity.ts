@@ -2,7 +2,7 @@ import { BaseEntity } from "./base.entity.ts";
 import { Column, Entity, ManyToOne, JoinColumn, ManyToMany, OneToMany } from "typeorm";
 import { UserEntity } from "./user.entity.ts";
 import { DietaryRestrictionEntity } from "./dietaryRestriction.entity.ts";
-import { MedicalConditionEntity } from "./medicalConditions.entity.ts";
+import { MedicalConditionEntity } from "./medicalCondition.entity.ts";
 import { PatientRestrictionEntity } from "./patientRestriction.entity.ts";
 import { PatientConditionEntity } from "./patientConditions.entity.ts";
 
