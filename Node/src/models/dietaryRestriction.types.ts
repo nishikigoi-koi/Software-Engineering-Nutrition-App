@@ -8,3 +8,8 @@ export interface dietaryRestrictionDTO {
     name: string,
     description: string
 }
+
+export interface patientRestriction {
+    patientId: string,
+    dietaryRestrictionId: string
+}
