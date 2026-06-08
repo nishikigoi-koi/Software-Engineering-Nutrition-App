@@ -35,7 +35,7 @@ export async function GetAllMedicalConditionsFromDatabase(databaseRepo:Repositor
     medicalConditions.forEach((medicalCondition:MedicalConditionEntity) => {
         returnedMedicalConditions.push(mapEntityToMedicalCondition(medicalCondition));
     });
-    return(medicalConditions)
+    return(returnedMedicalConditions)
 }
 
 export async function GetMedicalConditionByIdFromDatabase(id: string, databaseRepo:Repository<MedicalConditionEntity>): Promise<medicalCondition>{
@@ -71,9 +71,9 @@ export async function GetPatientMedicalConditionsFromDatabase(patientId: string,
 }
 
 export async function RemoveMedicalConditionFromPatientInDatabase(patientCondition: patientCondition, databaseRepo:Repository<PatientConditionEntity>){
-    const { patientId, medicalConditionId } = patientCondition
-    await databaseRepo.findOne({ where: { patientId, medicalConditionId } });
-    if (!patientCondition) {
+    const { patientId, medicalConditionId } = patientCondition; 
+    const existingPatientCondition = await databaseRepo.findOne({ where: { patientId, medicalConditionId } });
+    if (!existingPatientCondition) {
         throw new CustomerError(404, 'Patient Condition not found');
     }
     await databaseRepo.delete({ patientId, medicalConditionId });

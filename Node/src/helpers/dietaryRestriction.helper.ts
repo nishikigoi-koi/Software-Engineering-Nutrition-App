@@ -35,7 +35,7 @@ export async function GetAllDietaryRestrictionsFromDatabase(databaseRepo:Reposit
     dietaryRestrictions.forEach((dietaryRestriction:DietaryRestrictionEntity) => {
         returnedDietaryRestrictions.push(mapEntityToDietaryRestriction(dietaryRestriction));
     });
-    return(dietaryRestrictions)
+    return returnedDietaryRestrictions;
 }
 
 export async function GetDietaryRestrictionByIdFromDatabase(id: string, databaseRepo:Repository<DietaryRestrictionEntity>): Promise<dietaryRestriction>{
@@ -71,9 +71,9 @@ export async function GetPatientDietaryRestrictionsFromDatabase(patientId: strin
 }
 
 export async function RemoveDietaryRestrictionFromPatientInDatabase(patientRestriction: patientRestriction, databaseRepo:Repository<PatientRestrictionEntity>){
-    const { patientId, dietaryRestrictionId } = patientRestriction
-    await databaseRepo.findOne({ where: { patientId, dietaryRestrictionId } });
-    if (!patientRestriction) {
+    const { patientId, dietaryRestrictionId } = patientRestriction;
+    const existingPatientRestriction = await databaseRepo.findOne({ where: { patientId, dietaryRestrictionId } });
+    if (!existingPatientRestriction) {
         throw new CustomerError(404, 'Patient Restriction not found');
     }
     await databaseRepo.delete({ patientId, dietaryRestrictionId });
