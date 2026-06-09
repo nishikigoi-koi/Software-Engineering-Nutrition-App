@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_web/pages/meal_log_page.dart';
 import 'package:flutter_app_web/services/session_manager.dart';
 import 'login_page.dart';
 import 'patient_page.dart';
@@ -106,7 +107,13 @@ class _HomePageState extends State<HomePage> {
                     (route) => false,
                   );
                 }),
-                _navButton('Meals', Icons.restaurant, () {}),
+                _navButton('Meals', Icons.restaurant, () {
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => MealLogPage()),
+                    (route) => false,
+                  );
+                }),
                 _navButton('Reports', Icons.bar_chart, () {}),
                 _navButton('Settings', Icons.settings, () {}),
               ],
