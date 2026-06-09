@@ -1,13 +1,14 @@
 import { BaseEntity } from "./base.entity.ts";
-import { Column, Entity, ManyToOne, JoinColumn, ManyToMany, OneToMany } from "typeorm";
+import { Column, Entity, ManyToOne, JoinColumn, ManyToMany, OneToMany, Relation } from "typeorm";
 import { UserEntity } from "./user.entity.ts";
 import { CustomFoodNutrients } from '../../models/customFood.types.ts';
+import { FoodLogEntity } from "./foodLog.entity.ts";
 
 @Entity({ name: "customFood" })
 export class CustomFoodEntity extends BaseEntity {
     @ManyToOne(() => UserEntity, (UserEntity) => UserEntity.customFoods, { cascade: true })
     @JoinColumn({ name: "userId" })
-    user: UserEntity;
+    user: Relation<UserEntity>;
 
     @Column()
     foodName: string;
@@ -122,4 +123,7 @@ export class CustomFoodEntity extends BaseEntity {
 
     @Column()
     sodium_qty_per_100: string;
+
+    @OneToMany(() => FoodLogEntity, (FoodLogEntity) => FoodLogEntity.customFood)
+    foodLogs: FoodLogEntity[];
 }

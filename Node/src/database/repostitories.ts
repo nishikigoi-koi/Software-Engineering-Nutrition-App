@@ -6,6 +6,7 @@ import { MedicalConditionEntity } from "./entities/medicalCondition.entity.ts";
 import { PatientRestrictionEntity } from "./entities/patientRestriction.entity.ts";
 import { PatientConditionEntity } from "./entities/patientConditions.entity.ts";
 import { CustomFoodEntity } from "./entities/customFood.entity.ts";
+import { FoodLogEntity } from "./entities/foodLog.entity.ts";
 
 
 export const userRepository = AppDataSource.getRepository(UserEntity);
@@ -21,3 +22,5 @@ export const patientRestrictionRepository = AppDataSource.getRepository(PatientR
 export const patientConditionRepository = AppDataSource.getRepository(PatientConditionEntity);
 
 export const customFoodRepository = AppDataSource.getRepository(CustomFoodEntity)
+
+export const foodLogRepository = AppDataSource.getRepository(FoodLogEntity)

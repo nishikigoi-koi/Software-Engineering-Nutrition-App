@@ -5,6 +5,7 @@ import { MedicalConditionEntity } from "./entities/medicalCondition.entity.ts";
 import { PatientRestrictionEntity } from "./entities/patientRestriction.entity.ts";
 import { PatientConditionEntity } from "./entities/patientConditions.entity.ts";
 import { CustomFoodEntity } from "./entities/customFood.entity.ts";
+import { FoodLogEntity } from "./entities/foodLog.entity.ts";
 
 export const entities = [
     UserEntity, 
@@ -13,5 +14,6 @@ export const entities = [
     MedicalConditionEntity, 
     PatientRestrictionEntity, 
     PatientConditionEntity,
-    CustomFoodEntity
+    CustomFoodEntity,
+    FoodLogEntity
 ];
