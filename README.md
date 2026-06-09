@@ -5,7 +5,9 @@
 This program is intended to be used by Bachelor of Nursing / Bachelor of Applied Science (Exercise) students to record, analyse, and compare someone's dietary intake to RDIs / Nutritional Requirements.
 
 ### Prerequisites
-Have [Node.js & npm Installed](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+Have [Node.js & npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) installed.<br>
+Have [Flutter & Dart](https://docs.flutter.dev/install) installed.<br>
+Have [Google Chrome](https://www.google.com/chrome/) installed.<br>
 
 ### Usage
 To use this program, do the following steps:
@@ -15,7 +17,7 @@ To use this program, do the following steps:
 4. Run `npm start` inside of your terminal to start the API server (to stop it press ctrl + c).
 <br> (for Dev env use `npm run dev` instead) 
 5. Open a **New** terminal window and navigate back to the main directory of the program
-6. Run `flutter run -d chrome` to run the Flutter frontend in Chrome.
+6. Run `cd .\Flutter\flutter_web_app\; flutter run -d chrome` inside of this new terminal to run the Flutter UI inside of Chrome.
 
 ### Example of flutter run
 ```
