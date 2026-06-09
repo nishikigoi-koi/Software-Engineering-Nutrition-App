@@ -124,7 +124,7 @@ describe('patient.helper.ts with in-memory database', () => {
                 {
                     id: "H1023",
                     foodName: "Curry, butter chicken, ready to eat, Indian, takeaway",
-                    sortName: "Curry, butter chicken, Indian, takeaway",
+                    shortName: "Curry, butter chicken, Indian, takeaway",
                     description: null,
                     serving_size: 258.0,
                     group: "Fast foods and ready to eat meals",
@@ -147,7 +147,7 @@ describe('patient.helper.ts with in-memory database', () => {
         } as SearchResult
 
         ButterChickenFoodFile = {
-            Id: "H1023",
+            id: "H1023",
             foodName: "Curry, butter chicken, ready to eat, Indian, takeaway",
             shortName: "Curry, butter chicken, Indian, takeaway",
             description: null,
@@ -156,11 +156,11 @@ describe('patient.helper.ts with in-memory database', () => {
             serving_size_unit: "g",
             measure_description: "1 cup",
             energy: {
-                unit: "KJ",
+                unit: "kJ",
                 qty_per_serving: "1900",
                 percent_RQI: "22",
                 qty_per_100: "750"
-            } as FoodFileNutrients,
+            },
             protein: {
                 unit: "g",
                 qty_per_serving: "30",
@@ -203,7 +203,7 @@ describe('patient.helper.ts with in-memory database', () => {
                 percent_RQI: "43",
                 qty_per_100: "380"
             } as FoodFileNutrients
-        } as FoodFile
+        }  as FoodFile
     });
     
     afterAll(async () => {
@@ -219,14 +219,14 @@ describe('patient.helper.ts with in-memory database', () => {
     });
 
     it('SearchFoodFileAndCustomInDatabaseAndAPI throws if no user id is invalid', async () => {
-        await expect(SearchFoodFileAndCustomInDatabaseAndAPI('butter chicken','notindatabase',customFoodRepository)).rejects.toThrow()
-        await expect(SearchFoodFileAndCustomInDatabaseAndAPI('butter chichen','notindatabase',customFoodRepository)).rejects.toThrow()
+        await expect(SearchFoodFileAndCustomInDatabaseAndAPI('butter chicken','notindatabase',customFoodRepository,userRepository)).rejects.toThrow()
+        await expect(SearchFoodFileAndCustomInDatabaseAndAPI('butter chichen','notindatabase',customFoodRepository,userRepository)).rejects.toThrow()
     });
 
     it('SearchFoodFileAndCustomInDatabaseAndAPI returns food that matches', async () =>{
         const expectedSearchResult = {...ButterChickenSearchResult}
 
-        const result = await SearchFoodFileAndCustomInDatabaseAndAPI('butter chicken',user1.id,customFoodRepository)
+        const result = await SearchFoodFileAndCustomInDatabaseAndAPI('butter chicken',user1.id,customFoodRepository,userRepository)
         
 
         const resultFoodFile = result.foodFile[0]
@@ -252,23 +252,40 @@ describe('patient.helper.ts with in-memory database', () => {
         const result = await SearchGetFoodFileFromAPI('H1023');
 
         const keys = Object.keys(expectResult) as Array<keyof FoodFile>
-        for (const key of keys){
-            expect(result[key]).toBe(expectResult[key]);
+        console.log(result)
+
+        for (const key of keys) {
+            const expected = expectResult[key];
+            const actual = result[key];
+            if (expected && typeof expected === 'object') {
+                expect(actual).toStrictEqual(expected);
+            } else {
+                expect(actual).toBe(expected);
+            }
         }
     });
 
     it('SearchGetCustomFromDatabase throws if no food found', async () =>{
-        await expect(SearchGetCustomFromDatabase('notindatabase')).rejects.toThrow()
+        await expect(SearchGetCustomFromDatabase('notindatabase',customFoodRepository)).rejects.toThrow()
     });
 
     it('SearchGetCustomFromDatabase returns food file that matches', async () =>{
         const expectResult = {...baseCustomFood}
 
-        const result = await SearchGetCustomFromDatabase(CustomFood1.id,user1.id,customFoodRepository);
+        const result = await SearchGetCustomFromDatabase(CustomFood1.id,customFoodRepository);
 
-        const keys = Object.keys(expectResult) as Array<keyof CustomFood>
-        for (const key of keys){
-            expect(result[key]).toBe(expectResult[key]);
+        const keys = Object.keys(expectResult) as Array<keyof CustomFoodDTO>
+        
+        expect(result).toBeDefined();
+
+        for (const key of keys) {
+            const expected = expectResult[key];
+            const actual = result[key];
+            if (expected && typeof expected === 'object') {
+                expect(actual).toStrictEqual(expected);
+            } else {
+                expect(actual).toBe(expected);
+            }
         }
     });
 });
