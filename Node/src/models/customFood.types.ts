@@ -37,10 +37,10 @@ export interface CustomFoodDTO {
 }
 
 export interface CustomFoodNutrients {
-    unit: "mg",
-    qty_per_serving: "990",
-    percent_RQI: "43",
-    qty_per_100: "380"
+    unit: string,
+    qty_per_serving: string,
+    percent_RQI: string,
+    qty_per_100: string
 }
 
 export interface CustomFoodShort {
