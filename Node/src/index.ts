@@ -9,6 +9,7 @@ import dietaryRestrictionRoute from './routes/dietaryRestriction.route.ts';
 import medicalConditionRoute from './routes/medicalCondition.route.ts';
 import customFoodRoute from './routes/customFood.route.ts'
 import foodLogRoute from './routes/foodLog.routes.ts'
+import searchRoute from './routes/search.route.ts'
 
 import "./database/db.connect.ts";
 
@@ -34,7 +35,7 @@ app.use('/api/dietary-restrictions', dietaryRestrictionRoute);
 app.use('/api/medical-conditions', medicalConditionRoute);
 app.use('/api/customfood', customFoodRoute);
 app.use('/api/log',foodLogRoute)
-
+app.use('/api/search',searchRoute)
 
 app.use(handlerError);
 
