@@ -1638,7 +1638,7 @@ User needs to be Signed in and have the same ID as the user id in the patient th
 ]</pre>
 </details>
 
-## Get food log by date and patient id
+## Get food log by patient id
 ``` GET: http://localhost:3000/api/log/getbypatient/:id``` <br>
 
 For example <br>
