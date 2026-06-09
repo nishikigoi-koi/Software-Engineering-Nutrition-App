@@ -1592,28 +1592,11 @@ User needs to be Signed in and have the same ID as the user id in the patient th
 **status**: 204
 
 ## Get food log by date and patient id
-``` GET: http://localhost:3000/api/log/getbypatientanddate ```
-
+``` GET: http://localhost:3000/api/log/getbypatientanddate?date=:date&patientid=:patientId ``` <br>
+For example <br>
+``` GET: http://localhost:3000/api/log/getbypatientanddate?date=:2026-05-12&patientid=9ad83156-5ed1-4e2f-8358-abcdef12345 ``` <br>
 ### Description 
 get all food logs for a given day for a patient
-
-### Body data
-
-<details>
-<summary>Format</summary>
-<pre>{
-    "date": string,
-    "patientId": string,
-}</pre>
-</details>
-
-<details>
-<summary>Example</summary>
-<pre>{
-    "date": "2026-05-12",
-    "patientId": "9ad83156-5ed1-4e2f-8358-abcdef12345",
-}</pre>
-</details
 
 ### Headers
 Authorization: Bearer {token}
