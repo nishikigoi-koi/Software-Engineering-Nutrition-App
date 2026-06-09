@@ -5,7 +5,7 @@ import { CustomFoodNutrients } from '../../models/customFood.types.ts';
 
 @Entity({ name: "customFood" })
 export class CustomFoodEntity extends BaseEntity {
-    @ManyToOne(() => UserEntity, (UserEntity) => UserEntity.patients, { cascade: true })
+    @ManyToOne(() => UserEntity, (UserEntity) => UserEntity.customFoods, { cascade: true })
     @JoinColumn({ name: "userId" })
     user: UserEntity;
 
