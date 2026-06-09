@@ -60,7 +60,7 @@ describe('patient.helper.ts with in-memory database', () => {
                 percent_RQI: "22",
                 qty_per_100: "750"
             } as CustomFoodNutrients,
-            "protein": {
+            protein: {
                 unit: "g",
                 qty_per_serving: "30",
                 percent_RQI: "60",
