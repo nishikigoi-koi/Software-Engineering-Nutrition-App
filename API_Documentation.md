@@ -1048,9 +1048,9 @@ User needs to be Signed in and have the same ID as the userId of the patient to 
 **status**: 204
 
 ## Get All Medical Conditions for a Patient
-```GET: http://localhost:3000/api/medical-conditions/patient-medical-conditions/:patientId```
+```GET: http://localhost:3000/api/medical-conditions/patient-medical-conditions/:patientId``` <br>
 
-For example
+For example <br>
 ```GET: http://localhost:3000/api/medical-conditions/patient-medical-conditions/9ad83156-5ed1-4e2f-8358-abcdef12345```
 ### Description
 Gets all Medical condition objects a patient object is linked to with the same ID as params
@@ -1084,3 +1084,1356 @@ User needs to be Signed in and have the same ID as the userId of the patient to 
     }
 ]</pre>
 </details>
+
+# Search API
+
+## Search for Food
+```GET: http://localhost:3000/api/search/:foodname ``` <br>
+For example <br>
+```GET: http://localhost:3000/api/search/apple ```
+
+## Description
+Gets a list of foods that match or contain the given foodname from the database custom foods that the user has linked and the foodfiles API
+
+### Body data
+<details>
+<summary>Format</summary>
+<pre>{
+    "userId": String
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "userId": "9ad83156-5ed1-4e2f-8358-c6e2ce906f3a"
+}</pre>
+</details>
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "foodFile":[
+        {
+            "id": string,
+            "foodName": string,
+            "sortName": string,
+            "description": string,
+            "serving_size": float,
+            "group": string,
+            "serving_size_unit": string,
+            "measure_description": string
+        }
+    ],
+    "customFood":[
+        {
+            "id": string,
+            "userId": string,
+            "foodName": string,
+            "description": string,
+            "serving_size": float,
+            "group": string,
+            "serving_size_unit": string,
+            "measure_description": string
+        }
+    ]
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "foodFile":[
+        {
+            "id": "L1151",
+            "foodName": "Apple, flesh & skin, raw, 'Braeburn'",
+            "sortName": "Apple, 'Braeburn', flesh & skin, raw",
+            "description": null,
+            "serving_size": 145.0,
+            "group": "Fruits",
+            "serving_size_unit": "g",
+            "measure_description": "1 apple"
+        }
+    ],
+    "customFood":[
+        {
+            "id": "9ad83156-5ed1-4e2f-8358-111111111111",
+            "userId" : "9ad83156-5ed1-4e2f-8358-c6e2ce906f3a"
+            "foodName": "Butter Chicken with rice",
+            "description": "A curry made from chicken cooked in a spiced tomato and butter-based gravy served with rice",
+            "serving_size": 350.0,
+            "group": "Meal",
+            "serving_size_unit": "g",
+            "measure_description": "1 bowl"
+        }
+    ]
+}</pre>
+</details>
+
+## Get food from foodfile
+```GET: http://localhost:3000/api/search-get/foodfile/:id ``` <br>
+
+For example <br>
+```GET: http://localhost:3000/api/search-get/foodfile/L1151 ```
+
+## Description  
+Gets the matching food with the same id from the food files api
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "id": string,
+    "foodName": string,
+    "sortName": string,
+    "description": string,
+    "serving_size": float,
+    "group": string,
+    "serving_size_unit": string,
+    "measure_description": string
+    "energy" : {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "protein": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "totalFat": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "saturatedFat": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "carbohydrate": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "sugars": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "fiber": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "sodium": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    }
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "id": "L1151",
+    "foodName": "Apple, flesh & skin, raw, 'Braeburn'",
+    "sortName": "Apple, 'Braeburn', flesh & skin, raw",
+    "description": null,
+    "serving_size": 145.0,
+    "group": "Fruits",
+    "serving_size_unit": "g",
+    "measure_description": "1 apple",
+    "energy" : {
+        "unit": "KJ,
+        "qty_per_serving": "270",
+        "percent_RQI": "3",
+        "gty_per_100": "190"
+    },
+    "protein": {
+        "unit": "g",
+        "qty_per_serving": "0.3",
+        "percent_RQI": "1",
+        "gty_per_100": "0.2"
+    },
+    "totalFat": {
+        "unit": "g",
+        "qty_per_serving": "0.4",
+        "percent_RQI": "1",
+        "gty_per_100": "0.3"
+    },
+    "saturatedFat": {
+        "unit": "g",
+        "qty_per_serving": "0.03",
+        "percent_RQI": "0",
+        "gty_per_100": "0.02"
+    },
+    "carbohydrate": {
+        "unit": "g",
+        "qty_per_serving": "14",
+        "percent_RQI": "4",
+        "gty_per_100": "9.3"
+    },
+    "sugars": {
+        "unit": "g",
+        "qty_per_serving": "13",
+        "percent_RQI": "14",
+        "gty_per_100": "9.0"
+    },
+    "fiber": {
+        "unit": "g",
+        "qty_per_serving": "2.8",
+        "percent_RQI": "9",
+        "gty_per_100": "1.9"
+    },
+    "sodium": {
+        "unit": "mg",
+        "qty_per_serving": "1",
+        "percent_RQI": "0",
+        "gty_per_100": "1"
+    }
+}</pre>
+</details>
+
+## Get custom food/meal 
+```GET: http://localhost:3000/api/search-get/customfood/:id ``` <br>
+
+For example <br>
+```GET: http://localhost:3000/api/search-get/customfood/9ad83156-5ed1-4e2f-8358-111111111111 ```
+
+## Description  
+Gets the matching food or meal with the same id from the custom foods table in the database
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same user id as the userId to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "id": string,
+    "userId": string,
+    "foodName": string,
+    "description": string,
+    "serving_size": float,
+    "group": string,
+    "serving_size_unit": string,
+    "measure_description": string
+    "energy" : {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "protein": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "totalFat": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "saturatedFat": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "carbohydrate": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "sugars": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "fiber": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "sodium": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    }
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "id": "9ad83156-5ed1-4e2f-8358-111111111111",
+    "userId" : "9ad83156-5ed1-4e2f-8358-c6e2ce906f3a"
+    "foodName": "Butter Chicken with rice",
+    "description": "A curry made from chicken cooked in a spiced tomato and butter-based gravy served with rice",
+    "serving_size": 350.0,
+    "group": "Meal",
+    "serving_size_unit": "g",
+    "measure_description": "1 bowl",
+    "energy" : {
+        "unit": "KJ,
+        "qty_per_serving": "1900",
+        "percent_RQI": "22",
+        "gty_per_100": "750"
+    },
+    "protein": {
+        "unit": "g",
+        "qty_per_serving": "30",
+        "percent_RQI": "60",
+        "gty_per_100": "12"
+    },
+    "totalFat": {
+        "unit": "g",
+        "qty_per_serving": "31",
+        "percent_RQI": "44",
+        "gty_per_100": "12"
+    },
+    "saturatedFat": {
+        "unit": "g",
+        "qty_per_serving": "14",
+        "percent_RQI": "60",
+        "gty_per_100": "5.6"
+    },
+    "carbohydrate": {
+        "unit": "g",
+        "qty_per_serving": "13",
+        "percent_RQI": "4",
+        "gty_per_100": "5.1"
+    },
+    "sugars": {
+        "unit": "g",
+        "qty_per_serving": "13",
+        "percent_RQI": "14",
+        "gty_per_100": "5.0"
+    },
+    "fiber": {
+        "unit": "g",
+        "qty_per_serving": "5.7",
+        "percent_RQI": "19",
+        "gty_per_100": "2.2"
+    },
+    "sodium": {
+        "unit": "mg",
+        "qty_per_serving": "990",
+        "percent_RQI": "43",
+        "gty_per_100": "380"
+    }
+}</pre>
+</details>
+
+# Log intake
+
+## Create Log 
+``` POST: http://localhost:3000/api/log/create ```
+
+## Description
+creates a log in the database that links a patient and the food item they ate with the amount, time and meal type ( only one of "CustomFoodId" or "FCDBFoodId" should be specified)  
+
+### Body data
+<details>
+<summary>Format</summary>
+<pre>{
+    "patientId": String,
+    "FCDBFoodId": string,
+    "CustomFoodId": string,
+    "dateTime": string,
+    "amount" : float,
+    "unit" : string,
+    "mealType" : string
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "patientId": "9ad83156-5ed1-4e2f-8358-abcdef12345",
+    "FCDBFoodId": "L1151",
+    "CustomFoodId": null,
+    "dateTime": "2026-05-12T23:52:18.000Z",
+    "amount" : 130,
+    "unit" : "g",
+    "mealType" : "snack"
+}</pre>
+</details>
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the user id in the patient that is linked to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "id": string,
+    "patientId": String,
+    "FCDBFoodId": string,
+    "CustomFoodId": string,
+    "dateTime": string,
+    "amount" : float,
+    "unit": string,
+    "mealType": string
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "id": "9ad83156-5ed1-4e2f-8358-22222222222",
+    "patientId": "9ad83156-5ed1-4e2f-8358-abcdef12345",
+    "FCDBFoodId": "L1151",
+    "CustomFoodId": null,
+    "dateTime": "2026-05-12T23:52:18.000Z",
+    "amount": 130,
+    "unit": "g",
+    "mealType": "snack"
+}</pre>
+</details>
+
+## Update Log
+``` PUT: http://localhost:3000/api/log/update/:id ``` <br>
+
+For example <br>
+``` PUT: http://localhost:3000/api/log/update/9ad83156-5ed1-4e2f-8358-22222222222 ```
+### Description 
+updates food log in the database that matches the given id
+
+### Body data
+<details>
+<summary>Format</summary>
+<pre>{
+    "patientId": String,
+    "FCDBFoodId": string,
+    "CustomFoodId": string,
+    "dateTime": string,
+    "amount" : float,
+    "unit" : string,
+    "mealType" : string
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "patientId": "9ad83156-5ed1-4e2f-8358-abcdef12345",
+    "FCDBFoodId": "L1101",
+    "CustomFoodId": null,
+    "dateTime": "2026-05-13T12:52:18.000Z",
+    "amount" : 111,
+    "unit" : "g",
+    "mealType" : "snack"
+}</pre>
+</details>
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the user id in the patient that is alread linked in the databse to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "message": String,
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "message": "Food log updated successfully"
+}</pre>
+</details>
+
+## Delete food log 
+``` DELETE: http://localhost:3000/api/log/delete/:id ``` <br>
+
+For example <br>
+``` DELETE: http://localhost:3000/api/log/delete/9ad83156-5ed1-4e2f-8358-22222222222 ```
+
+### Description 
+Deletes the food log in the database that has the same id 
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the user id in the patient that is linked in the databse to access this endpoint
+
+### Returns
+**status**: 204
+
+## Get food log by date and patient id
+``` GET: http://localhost:3000/api/log/getbypatientanddate ```
+
+### Description 
+get all food logs for a given day for a patient
+
+### Body data
+
+<details>
+<summary>Format</summary>
+<pre>{
+    "date": string,
+    "patientId": string,
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "date": "2026-05-12",
+    "patientId": "9ad83156-5ed1-4e2f-8358-abcdef12345",
+}</pre>
+</details
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the user id in the patient that is linked to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>[
+    {
+        "id": string,
+        "patientId": String,
+        "FCDBFoodId": string,
+        "CustomFoodId": string,
+        "dateTime": string,
+        "amount" : float,
+        "unit": string,
+        "mealType": string
+    }
+]</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>[
+    {
+        "id": "9ad83156-5ed1-4e2f-8358-22222222222",
+        "patientId": "9ad83156-5ed1-4e2f-8358-abcdef12345",
+        "FCDBFoodId": "L1151",
+        "CustomFoodId": null,
+        "dateTime": "2026-05-12T23:52:18.000Z",
+        "amount": 130,
+        "unit": "g",
+        "mealType": "snack"
+    }
+]</pre>
+</details>
+
+## Get food log by date and patient id
+``` GET: http://localhost:3000/api/log/getbypatient/:id``` <br>
+
+For example <br>
+``` GET: http://localhost:3000/api/log/getbypatient/9ad83156-5ed1-4e2f-8358-abcdef12345```
+
+### Description 
+get all food logs for a patient
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the user id in the patient that is linked to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>[
+    {
+        "id": string,
+        "patientId": String,
+        "FCDBFoodId": string,
+        "CustomFoodId": string,
+        "dateTime": string,
+        "amount" : float,
+        "unit": string,
+        "mealType": string
+    }
+]</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>[
+    {
+        "id": "9ad83156-5ed1-4e2f-8358-22222222222",
+        "patientId": "9ad83156-5ed1-4e2f-8358-abcdef12345",
+        "FCDBFoodId": "L1151",
+        "CustomFoodId": null,
+        "dateTime": "2026-05-12T23:52:18.000Z",
+        "amount": 130,
+        "unit": "g",
+        "mealType": "snack"
+    }
+]</pre>
+</details>
+
+# Custom foods/meals
+
+## create
+``` POST: http://localhost:3000/api/customfood/create```
+
+### Description
+creates a custom food item or meal in the databse linked to a user
+
+### Body data
+<details>
+<summary>Format</summary>
+<pre>{
+    "userId": string,
+    "foodName": string,
+    "description": string,
+    "serving_size": float,
+    "group": string,
+    "serving_size_unit": string,
+    "measure_description": string
+    "energy" : {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "protein": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "totalFat": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "saturatedFat": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "carbohydrate": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "sugars": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "fiber": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "sodium": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    }
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "userId" : "9ad83156-5ed1-4e2f-8358-c6e2ce906f3a"
+    "foodName": "Butter Chicken with rice",
+    "description": "A curry made from chicken cooked in a spiced tomato and butter-based gravy served with rice",
+    "serving_size": 350.0,
+    "group": "Meal",
+    "serving_size_unit": "g",
+    "measure_description": "1 bowl",
+    "energy" : {
+        "unit": "KJ,
+        "qty_per_serving": "1900",
+        "percent_RQI": "22",
+        "gty_per_100": "750"
+    },
+    "protein": {
+        "unit": "g",
+        "qty_per_serving": "30",
+        "percent_RQI": "60",
+        "gty_per_100": "12"
+    },
+    "totalFat": {
+        "unit": "g",
+        "qty_per_serving": "31",
+        "percent_RQI": "44",
+        "gty_per_100": "12"
+    },
+    "saturatedFat": {
+        "unit": "g",
+        "qty_per_serving": "14",
+        "percent_RQI": "60",
+        "gty_per_100": "5.6"
+    },
+    "carbohydrate": {
+        "unit": "g",
+        "qty_per_serving": "13",
+        "percent_RQI": "4",
+        "gty_per_100": "5.1"
+    },
+    "sugars": {
+        "unit": "g",
+        "qty_per_serving": "13",
+        "percent_RQI": "14",
+        "gty_per_100": "5.0"
+    },
+    "fiber": {
+        "unit": "g",
+        "qty_per_serving": "5.7",
+        "percent_RQI": "19",
+        "gty_per_100": "2.2"
+    },
+    "sodium": {
+        "unit": "mg",
+        "qty_per_serving": "990",
+        "percent_RQI": "43",
+        "gty_per_100": "380"
+    }
+}</pre>
+</details>
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the userId to access this endpoint
+
+### Returns
+**statu**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "id": string,
+    "userId": string,
+    "foodName": string,
+    "description": string,
+    "serving_size": float,
+    "group": string,
+    "serving_size_unit": string,
+    "measure_description": string
+    "energy" : {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "protein": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "totalFat": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "saturatedFat": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "carbohydrate": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "sugars": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "fiber": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "sodium": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    }
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "id": "9ad83156-5ed1-4e2f-8358-111111111111",
+    "userId" : "9ad83156-5ed1-4e2f-8358-c6e2ce906f3a"
+    "foodName": "Butter Chicken with rice",
+    "description": "A curry made from chicken cooked in a spiced tomato and butter-based gravy served with rice",
+    "serving_size": 350.0,
+    "group": "Meal",
+    "serving_size_unit": "g",
+    "measure_description": "1 bowl",
+    "energy" : {
+        "unit": "KJ,
+        "qty_per_serving": "1900",
+        "percent_RQI": "22",
+        "gty_per_100": "750"
+    },
+    "protein": {
+        "unit": "g",
+        "qty_per_serving": "30",
+        "percent_RQI": "60",
+        "gty_per_100": "12"
+    },
+    "totalFat": {
+        "unit": "g",
+        "qty_per_serving": "31",
+        "percent_RQI": "44",
+        "gty_per_100": "12"
+    },
+    "saturatedFat": {
+        "unit": "g",
+        "qty_per_serving": "14",
+        "percent_RQI": "60",
+        "gty_per_100": "5.6"
+    },
+    "carbohydrate": {
+        "unit": "g",
+        "qty_per_serving": "13",
+        "percent_RQI": "4",
+        "gty_per_100": "5.1"
+    },
+    "sugars": {
+        "unit": "g",
+        "qty_per_serving": "13",
+        "percent_RQI": "14",
+        "gty_per_100": "5.0"
+    },
+    "fiber": {
+        "unit": "g",
+        "qty_per_serving": "5.7",
+        "percent_RQI": "19",
+        "gty_per_100": "2.2"
+    },
+    "sodium": {
+        "unit": "mg",
+        "qty_per_serving": "990",
+        "percent_RQI": "43",
+        "gty_per_100": "380"
+    }
+}</pre>
+</details>
+
+## update 
+``` PUT: http://localhost:3000/api/log/customfood/update/:id``` <br>
+For example <br>
+``` PUT: http://localhost:3000/api/log/customfood/update/9ad83156-5ed1-4e2f-8358-111111111111```
+
+### Description
+updates the custome food item that has the same id
+
+### Body data
+<details>
+<summary>Format</summary>
+<pre>{
+    "userId": string,
+    "foodName": string,
+    "description": string,
+    "serving_size": float,
+    "group": string,
+    "serving_size_unit": string,
+    "measure_description": string
+    "energy" : {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "protein": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "totalFat": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "saturatedFat": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "carbohydrate": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "sugars": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "fiber": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "sodium": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    }
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "userId" : "9ad83156-5ed1-4e2f-8358-c6e2ce906f3a"
+    "foodName": "Butter Chicken without rice",
+    "description": "A curry made from chicken cooked in a spiced tomato and butter-based gravy served with rice",
+    "serving_size": 350.0,
+    "group": "Meal",
+    "serving_size_unit": "g",
+    "measure_description": "1 bowl",
+    "energy" : {
+        "unit": "KJ,
+        "qty_per_serving": "1900",
+        "percent_RQI": "22",
+        "gty_per_100": "750"
+    },
+    "protein": {
+        "unit": "g",
+        "qty_per_serving": "30",
+        "percent_RQI": "60",
+        "gty_per_100": "12"
+    },
+    "totalFat": {
+        "unit": "g",
+        "qty_per_serving": "31",
+        "percent_RQI": "44",
+        "gty_per_100": "12"
+    },
+    "saturatedFat": {
+        "unit": "g",
+        "qty_per_serving": "14",
+        "percent_RQI": "60",
+        "gty_per_100": "5.6"
+    },
+    "carbohydrate": {
+        "unit": "g",
+        "qty_per_serving": "13",
+        "percent_RQI": "4",
+        "gty_per_100": "5.1"
+    },
+    "sugars": {
+        "unit": "g",
+        "qty_per_serving": "13",
+        "percent_RQI": "14",
+        "gty_per_100": "5.0"
+    },
+    "fiber": {
+        "unit": "g",
+        "qty_per_serving": "5.7",
+        "percent_RQI": "19",
+        "gty_per_100": "2.2"
+    },
+    "sodium": {
+        "unit": "mg",
+        "qty_per_serving": "990",
+        "percent_RQI": "43",
+        "gty_per_100": "380"
+    }
+}</pre>
+</details>
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the userId to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "message": String,
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "message": "Custom food item updated successfully"
+}</pre>
+</details>
+
+## delete
+``` DELETE: http://localhost:3000/api/log/customfood/delte/{id}``` <br>
+For example <br>
+``` PUT: http://localhost:3000/api/log/customfood/update/9ad83156-5ed1-4e2f-8358-111111111111```
+### Description
+deletes food item with the same id 
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the userId to access this endpoint
+
+### Returns
+**status**: 204
+
+## Get custom food/meal 
+```GET: http://localhost:3000/api/customfood/get/:id ``` <br>
+
+For example <br>
+```GET: http://localhost:3000/api/customfood/get/9ad83156-5ed1-4e2f-8358-111111111111 ```
+
+## Description  
+Gets the matching food or meal with the same id from the custom foods table in the database
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same user id as the userId to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "id": string,
+    "userId": string,
+    "foodName": string,
+    "description": string,
+    "serving_size": float,
+    "group": string,
+    "serving_size_unit": string,
+    "measure_description": string
+    "energy" : {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "protein": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "totalFat": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "saturatedFat": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "carbohydrate": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "sugars": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "fiber": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    },
+    "sodium": {
+        "unit": string,
+        "qty_per_serving": string,
+        "percent_RQI": string,
+        "gty_per_100": string
+    }
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "id": "9ad83156-5ed1-4e2f-8358-111111111111",
+    "userId" : "9ad83156-5ed1-4e2f-8358-c6e2ce906f3a"
+    "foodName": "Butter Chicken with rice",
+    "description": "A curry made from chicken cooked in a spiced tomato and butter-based gravy served with rice",
+    "serving_size": 350.0,
+    "group": "Meal",
+    "serving_size_unit": "g",
+    "measure_description": "1 bowl",
+    "energy" : {
+        "unit": "KJ,
+        "qty_per_serving": "1900",
+        "percent_RQI": "22",
+        "gty_per_100": "750"
+    },
+    "protein": {
+        "unit": "g",
+        "qty_per_serving": "30",
+        "percent_RQI": "60",
+        "gty_per_100": "12"
+    },
+    "totalFat": {
+        "unit": "g",
+        "qty_per_serving": "31",
+        "percent_RQI": "44",
+        "gty_per_100": "12"
+    },
+    "saturatedFat": {
+        "unit": "g",
+        "qty_per_serving": "14",
+        "percent_RQI": "60",
+        "gty_per_100": "5.6"
+    },
+    "carbohydrate": {
+        "unit": "g",
+        "qty_per_serving": "13",
+        "percent_RQI": "4",
+        "gty_per_100": "5.1"
+    },
+    "sugars": {
+        "unit": "g",
+        "qty_per_serving": "13",
+        "percent_RQI": "14",
+        "gty_per_100": "5.0"
+    },
+    "fiber": {
+        "unit": "g",
+        "qty_per_serving": "5.7",
+        "percent_RQI": "19",
+        "gty_per_100": "2.2"
+    },
+    "sodium": {
+        "unit": "mg",
+        "qty_per_serving": "990",
+        "percent_RQI": "43",
+        "gty_per_100": "380"
+    }
+}</pre>
+</details>
+
+## Get custom food/meal for a user by id
+```GET: http://localhost:3000/api/customfood/getbyuserid/:id ``` <br>
+
+For example <br>
+```GET: http://localhost:3000/api/customfood/get/9ad83156-5ed1-4e2f-8358-c6e2ce906f3a ```
+
+## Description  
+Gets all the matching custom food items that have the same user id linked
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same user id as the userId to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>[
+    {
+        "id": string,
+        "userId": string,
+        "foodName": string,
+        "description": string,
+        "serving_size": float,
+        "group": string,
+        "serving_size_unit": string,
+        "measure_description": string
+        "energy" : {
+            "unit": string,
+            "qty_per_serving": string,
+            "percent_RQI": string,
+            "gty_per_100": string
+        },
+        "protein": {
+            "unit": string,
+            "qty_per_serving": string,
+            "percent_RQI": string,
+            "gty_per_100": string
+        },
+        "totalFat": {
+            "unit": string,
+            "qty_per_serving": string,
+            "percent_RQI": string,
+            "gty_per_100": string
+        },
+        "saturatedFat": {
+            "unit": string,
+            "qty_per_serving": string,
+            "percent_RQI": string,
+            "gty_per_100": string
+        },
+        "carbohydrate": {
+            "unit": string,
+            "qty_per_serving": string,
+            "percent_RQI": string,
+            "gty_per_100": string
+        },
+        "sugars": {
+            "unit": string,
+            "qty_per_serving": string,
+            "percent_RQI": string,
+            "gty_per_100": string
+        },
+        "fiber": {
+            "unit": string,
+            "qty_per_serving": string,
+            "percent_RQI": string,
+            "gty_per_100": string
+        },
+        "sodium": {
+            "unit": string,
+            "qty_per_serving": string,
+            "percent_RQI": string,
+            "gty_per_100": string
+        }
+    }
+]</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>[
+        {
+        "id": "9ad83156-5ed1-4e2f-8358-111111111111",
+        "userId" : "9ad83156-5ed1-4e2f-8358-c6e2ce906f3a"
+        "foodName": "Butter Chicken with rice",
+        "description": "A curry made from chicken cooked in a spiced tomato and butter-based gravy served with rice",
+        "serving_size": 350.0,
+        "group": "Meal",
+        "serving_size_unit": "g",
+        "measure_description": "1 bowl",
+        "energy" : {
+            "unit": "KJ,
+            "qty_per_serving": "1900",
+            "percent_RQI": "22",
+            "gty_per_100": "750"
+        },
+        "protein": {
+            "unit": "g",
+            "qty_per_serving": "30",
+            "percent_RQI": "60",
+            "gty_per_100": "12"
+        },
+        "totalFat": {
+            "unit": "g",
+            "qty_per_serving": "31",
+            "percent_RQI": "44",
+            "gty_per_100": "12"
+        },
+        "saturatedFat": {
+            "unit": "g",
+            "qty_per_serving": "14",
+            "percent_RQI": "60",
+            "gty_per_100": "5.6"
+        },
+        "carbohydrate": {
+            "unit": "g",
+            "qty_per_serving": "13",
+            "percent_RQI": "4",
+            "gty_per_100": "5.1"
+        },
+        "sugars": {
+            "unit": "g",
+            "qty_per_serving": "13",
+            "percent_RQI": "14",
+            "gty_per_100": "5.0"
+        },
+        "fiber": {
+            "unit": "g",
+            "qty_per_serving": "5.7",
+            "percent_RQI": "19",
+            "gty_per_100": "2.2"
+        },
+        "sodium": {
+            "unit": "mg",
+            "qty_per_serving": "990",
+            "percent_RQI": "43",
+            "gty_per_100": "380"
+        }
+    }
+]</pre>
+</details>
+
