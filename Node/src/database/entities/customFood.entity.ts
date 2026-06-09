@@ -11,6 +11,9 @@ export class CustomFoodEntity extends BaseEntity {
     user: Relation<UserEntity>;
 
     @Column()
+    userId: string;
+
+    @Column()
     foodName: string;
 
     @Column()
