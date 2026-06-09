@@ -1088,27 +1088,12 @@ User needs to be Signed in and have the same ID as the userId of the patient to 
 # Search API
 
 ## Search for Food
-```GET: http://localhost:3000/api/search/:foodname ``` <br>
+```GET: http://localhost:3000/api/search?foodname=:foodname&userid=:userId ``` <br>
 For example <br>
-```GET: http://localhost:3000/api/search/apple ```
+```GET: http://localhost:3000/api/search?foodname=apple&userid=9ad83156-5ed1-4e2f-8358-c6e2ce906f3a ```
 
 ## Description
 Gets a list of foods that match or contain the given foodname from the database custom foods that the user has linked and the foodfiles API
-
-### Body data
-<details>
-<summary>Format</summary>
-<pre>{
-    "userId": String
-}</pre>
-</details>
-
-<details>
-<summary>Example</summary>
-<pre>{
-    "userId": "9ad83156-5ed1-4e2f-8358-c6e2ce906f3a"
-}</pre>
-</details>
 
 ### Headers
 Authorization: Bearer {token}
@@ -2136,9 +2121,9 @@ User needs to be Signed in and have the same ID as the userId to access this end
 </details>
 
 ## delete
-``` DELETE: http://localhost:3000/api/log/customfood/delte/{id}``` <br>
+``` DELETE: http://localhost:3000/api/log/customfood/delete/{id}``` <br>
 For example <br>
-``` PUT: http://localhost:3000/api/log/customfood/update/9ad83156-5ed1-4e2f-8358-111111111111```
+``` DELETE: http://localhost:3000/api/log/customfood/delete/9ad83156-5ed1-4e2f-8358-111111111111```
 ### Description
 deletes food item with the same id 
 
