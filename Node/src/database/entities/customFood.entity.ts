@@ -11,6 +11,9 @@ export class CustomFoodEntity extends BaseEntity {
     user: Relation<UserEntity>;
 
     @Column()
+    userId: string;
+
+    @Column()
     foodName: string;
 
     @Column()
@@ -26,7 +29,7 @@ export class CustomFoodEntity extends BaseEntity {
     serving_size_unit: string;
 
     @Column()
-    measuring_description: string;
+    measure_description: string;
 
     @Column()
     energy_unit: string;

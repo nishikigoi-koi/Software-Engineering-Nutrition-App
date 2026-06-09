@@ -183,7 +183,7 @@ describe('patient.helper.ts with in-memory database', () => {
         for (const key of keysFCDB) {
             const incompleteFoodLog = {...testFoodLogFCDB};
 
-            if (key.toString() != 'CustomFoodId'){
+            if (key.toString() !== 'CustomFoodId'){
                 delete incompleteFoodLog[key];
 
                 await expect(CreateFoodLogInDatabase(incompleteFoodLog, foodLogRepository)).rejects.toThrow();
@@ -235,21 +235,19 @@ describe('patient.helper.ts with in-memory database', () => {
     });
 
     it('CreateFoodLogInDatabase returns sanitized object', async () =>{
-        const testFoodLogCustom = {...baseTestFoodLogCustom};
-
-        const resultCustom = await CreateFoodLogInDatabase(testFoodLogCustom, foodLogRepository);
-
+        const testFoodLogCustom = {...baseTestFoodLogCustom} as FoodLogDTO;
         const keysCustom = Object.keys(testFoodLogCustom) as Array<keyof FoodLogDTO>;
+
+        const resultCustom = await CreateFoodLogInDatabase({...testFoodLogCustom}, foodLogRepository);
 
         for (const key of keysCustom) {
             expect(resultCustom[key]).toBe(testFoodLogCustom[key]);
         }
 
         const testFoodLogFCDB = {...baseTestFoodLogFCDB};
-
-        const resultFCDB = await CreateFoodLogInDatabase(testFoodLogFCDB, foodLogRepository);
-
         const keysFCDB = Object.keys(testFoodLogFCDB) as Array<keyof FoodLogDTO>;
+
+        const resultFCDB = await CreateFoodLogInDatabase({...testFoodLogFCDB}, foodLogRepository);
 
         for (const key of keysFCDB) {
             expect(resultFCDB[key]).toBe(testFoodLogFCDB[key]);
@@ -262,11 +260,10 @@ describe('patient.helper.ts with in-memory database', () => {
 
     it('GetFoodLogByIdFromDatabase returns', async () =>{
         const testFoodLog = {...baseTestFoodLogCustom}
-        const created = await CreateFoodLogInDatabase(testFoodLog, foodLogRepository);
+        const keys = Object.keys(testFoodLog) as Array<keyof FoodLogDTO>;
+        const created = await CreateFoodLogInDatabase({...testFoodLog}, foodLogRepository);
 
         const result = await GetFoodLogByIdFromDatabase(created.id, foodLogRepository);
-
-        const keys = Object.keys(testFoodLog) as Array<keyof FoodLogDTO>;
 
         for (const key of keys) {
             expect(result[key]).toBe(testFoodLog[key]);
@@ -283,12 +280,12 @@ describe('patient.helper.ts with in-memory database', () => {
         const created1 = await CreateFoodLogInDatabase(testFoodLog1, foodLogRepository);
 
         const testFoodLog2 = {...baseTestFoodLogCustom}
-        testFoodLog2.patientId = patient2.id;
+        testFoodLog2.patientId = patient2.id as string
         testFoodLog2.mealType = 'Lunch'
         const created2 = await CreateFoodLogInDatabase(testFoodLog2, foodLogRepository);
 
-        const result1 = await GetFoodLogByPatientIdFromDatabase(patient1.id,foodLogRepository)
-        const result2 = await GetFoodLogByPatientIdFromDatabase(patient2.id,foodLogRepository)
+        const result1 = await GetFoodLogByPatientIdFromDatabase(patient1.id as string,foodLogRepository)
+        const result2 = await GetFoodLogByPatientIdFromDatabase(patient2.id as string,foodLogRepository)
 
         expect(result1[0].mealType).toBe(testFoodLog1.mealType)
         expect(result2[0].mealType).toBe(testFoodLog2.mealType)
@@ -296,9 +293,9 @@ describe('patient.helper.ts with in-memory database', () => {
 
     it('GetFoodLogsByDateAndPatientIdFromDatabase throws if no patient id or date or they are invalid', async () =>{
         await expect(GetFoodLogsByDateAndPatientIdFromDatabase('2026-05-12', 'notindatabase', foodLogRepository)).rejects.toThrow()
-        await expect(GetFoodLogsByDateAndPatientIdFromDatabase('notindatabase', patient1.id, foodLogRepository)).rejects.toThrow()
+        await expect(GetFoodLogsByDateAndPatientIdFromDatabase('notindatabase', patient1.id as string, foodLogRepository)).rejects.toThrow()
         await expect(GetFoodLogsByDateAndPatientIdFromDatabase('2026-05-12', '', foodLogRepository)).rejects.toThrow()
-        await expect(GetFoodLogsByDateAndPatientIdFromDatabase('', patient1.id, foodLogRepository)).rejects.toThrow()
+        await expect(GetFoodLogsByDateAndPatientIdFromDatabase('', patient1.id as string, foodLogRepository)).rejects.toThrow()
         await expect(GetFoodLogsByDateAndPatientIdFromDatabase('', '', foodLogRepository)).rejects.toThrow()
     });
 
@@ -312,20 +309,20 @@ describe('patient.helper.ts with in-memory database', () => {
         const createdP1T2 = await CreateFoodLogInDatabase(testFoodLogP1T2, foodLogRepository);
 
         const testFoodLogP2T1 = {...baseTestFoodLogCustom}
-        testFoodLogP2T1.patientId = patient2.id;
+        testFoodLogP2T1.patientId = patient2.id as string;
         testFoodLogP2T1.mealType = 'Lunch'
         const createdP2T1 = await CreateFoodLogInDatabase(testFoodLogP2T1, foodLogRepository);
 
         const testFoodLogP2T2 = {...baseTestFoodLogCustom}
-        testFoodLogP2T2.patientId = patient2.id;
+        testFoodLogP2T2.patientId = patient2.id as string;
         testFoodLogP2T2.dateTime = '2026-05-13T23:52:18.000Z'
         testFoodLogP2T2.mealType = 'Breakfast'
         const createdP2T2 = await CreateFoodLogInDatabase(testFoodLogP2T2, foodLogRepository);
 
-        const resultP1T1 = await GetFoodLogsByDateAndPatientIdFromDatabase('2026-05-12', patient1.id, foodLogRepository);
-        const resultP1T2 = await GetFoodLogsByDateAndPatientIdFromDatabase('2026-05-13', patient1.id, foodLogRepository);
-        const resultP2T1 = await GetFoodLogsByDateAndPatientIdFromDatabase('2026-05-12', patient2.id, foodLogRepository);
-        const resultP2T2 = await GetFoodLogsByDateAndPatientIdFromDatabase('2026-05-13', patient2.id, foodLogRepository);
+        const resultP1T1 = await GetFoodLogsByDateAndPatientIdFromDatabase('2026-05-12', patient1.id as string, foodLogRepository);
+        const resultP1T2 = await GetFoodLogsByDateAndPatientIdFromDatabase('2026-05-13', patient1.id as string, foodLogRepository);
+        const resultP2T1 = await GetFoodLogsByDateAndPatientIdFromDatabase('2026-05-12', patient2.id as string, foodLogRepository);
+        const resultP2T2 = await GetFoodLogsByDateAndPatientIdFromDatabase('2026-05-13', patient2.id as string, foodLogRepository);
 
         expect(resultP1T1[0].mealType).toBe(testFoodLogP1T1.mealType);
         expect(resultP1T2[0].mealType).toBe(testFoodLogP1T2.mealType);
@@ -350,7 +347,7 @@ describe('patient.helper.ts with in-memory database', () => {
         const updatedFoodLog = {...baseTestFoodLogCustom}
         updatedFoodLog.mealType = 'Lunch'
 
-        await UpdateFoodLogInDatabase('notindatabase', updatedFoodLog, foodLogRepository);
+        await expect(UpdateFoodLogInDatabase('notindatabase', updatedFoodLog, foodLogRepository)).rejects.toThrow();
     });
 
     it('DeleteFoodLogInDatabase removes a food log', async () => {

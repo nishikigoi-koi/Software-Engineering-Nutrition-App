@@ -120,7 +120,7 @@ describe('patient.helper.ts with in-memory database', () => {
     });
 
     it('CreateCustomFoodInDatabase throws when any param is missing', async () =>{
-        const testCustomFood = {...baseTestCustomFood}
+        const testCustomFood = {...baseTestCustomFood} as CustomFoodDTO
 
         const keys = Object.keys(testCustomFood) as Array<keyof CustomFoodDTO>
 
@@ -141,14 +141,20 @@ describe('patient.helper.ts with in-memory database', () => {
     });
 
     it('CreateCustomFoodInDatabase returns sanitized object', async () =>{
-        const testCustomFood = {...baseTestCustomFood}
+        const testCustomFood = {...baseTestCustomFood} as CustomFoodDTO
 
         const result = await CreateCustomFoodInDatabase(testCustomFood,customFoodRepository);
 
         const keys = Object.keys(testCustomFood) as Array<keyof CustomFoodDTO>
 
         for (const key of keys) {
-            expect(result[key]).toBe(testCustomFood[key]);
+            const expected = testCustomFood[key];
+            const actual = result[key];
+            if (expected && typeof expected === 'object') {
+                expect(actual).toStrictEqual(expected);
+            } else {
+                expect(actual).toBe(expected);
+            }
         }
     });
 
@@ -168,7 +174,13 @@ describe('patient.helper.ts with in-memory database', () => {
         expect(result).toBeDefined();
 
         for (const key of keys) {
-            expect(result[key]).toBe(testCustomFood[key]);
+            const expected = testCustomFood[key];
+            const actual = result[key];
+            if (expected && typeof expected === 'object') {
+                expect(actual).toStrictEqual(expected);
+            } else {
+                expect(actual).toBe(expected);
+            }
         }
     });
 
