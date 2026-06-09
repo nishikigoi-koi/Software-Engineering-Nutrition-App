@@ -10,11 +10,17 @@ export class FoodLogEntity extends BaseEntity {
     patient: Relation<PatientEntity>;
 
     @Column()
-    FCDBFoodId: string
+    patientId: string
+
+    @Column({type: "varchar", nullable: true })
+    FCDBFoodId: string | null
 
     @ManyToOne(() => CustomFoodEntity, (CustomFoodEntity) => CustomFoodEntity.foodLogs, { cascade: true })
     @JoinColumn({ name: "CustomFoodId" })
     customFood: Relation<CustomFoodEntity>;
+
+    @Column({nullable: true })
+    CustomFoodId: string | null
 
     @Column()
     dateTime: string
