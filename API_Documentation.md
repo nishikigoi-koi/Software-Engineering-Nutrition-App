@@ -1951,9 +1951,9 @@ User needs to be Signed in and have the same ID as the userId to access this end
 </details>
 
 ## update 
-``` PUT: http://localhost:3000/api/log/customfood/update/:id``` <br>
+``` PUT: http://localhost:3000/api/customfood/update/:id``` <br>
 For example <br>
-``` PUT: http://localhost:3000/api/log/customfood/update/9ad83156-5ed1-4e2f-8358-111111111111```
+``` PUT: http://localhost:3000/api/customfood/update/9ad83156-5ed1-4e2f-8358-111111111111```
 
 ### Description
 updates the custome food item that has the same id
@@ -2104,9 +2104,9 @@ User needs to be Signed in and have the same ID as the userId to access this end
 </details>
 
 ## delete
-``` DELETE: http://localhost:3000/api/log/customfood/delete/{id}``` <br>
+``` DELETE: http://localhost:3000/api/customfood/delete/{id}``` <br>
 For example <br>
-``` DELETE: http://localhost:3000/api/log/customfood/delete/9ad83156-5ed1-4e2f-8358-111111111111```
+``` DELETE: http://localhost:3000/api/customfood/delete/9ad83156-5ed1-4e2f-8358-111111111111```
 ### Description
 deletes food item with the same id 
 
