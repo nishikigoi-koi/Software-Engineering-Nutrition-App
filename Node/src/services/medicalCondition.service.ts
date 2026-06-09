@@ -16,7 +16,7 @@ export async function CreateMedicalCondition(req: Request, res: Response, next: 
 
 export async function GetAllMedicalConditions(req: Request, res: Response, next: NextFunction) {
     try {
-        const returnedMedicalConditions = GetAllMedicalConditionsFromDatabase(medicalConditionRepository);
+        const returnedMedicalConditions = await GetAllMedicalConditionsFromDatabase(medicalConditionRepository);
         res.status(200).json(returnedMedicalConditions);
     } catch (error) {
         next(error);
@@ -25,7 +25,7 @@ export async function GetAllMedicalConditions(req: Request, res: Response, next:
 
 export async function GetMedicalConditionById(req: Request, res: Response, next: NextFunction) {
     try {
-        const returnedMedicalCondition = GetMedicalConditionByIdFromDatabase(req.params.id as string, medicalConditionRepository);
+        const returnedMedicalCondition = await GetMedicalConditionByIdFromDatabase(req.params.id as string, medicalConditionRepository);
         res.status(200).json(returnedMedicalCondition);
     } catch (error) {
         next(error);

@@ -16,7 +16,7 @@ export async function CreateDietaryRestriction(req: Request, res: Response, next
 
 export async function GetAllDietaryRestrictions(req: Request, res: Response, next: NextFunction) {
     try {
-        const returnedDietaryRestrictions = GetAllDietaryRestrictionsFromDatabase(dietaryRestrictionRepository);
+        const returnedDietaryRestrictions = await GetAllDietaryRestrictionsFromDatabase(dietaryRestrictionRepository);
         res.status(200).json(returnedDietaryRestrictions);
     } catch (error) {
         next(error);
@@ -25,7 +25,7 @@ export async function GetAllDietaryRestrictions(req: Request, res: Response, nex
 
 export async function GetDietaryRestrictionById(req: Request, res: Response, next: NextFunction) {
     try {
-        const returnedDietaryRestriction = GetDietaryRestrictionByIdFromDatabase(req.params.id as string, dietaryRestrictionRepository);
+        const returnedDietaryRestriction = await GetDietaryRestrictionByIdFromDatabase(req.params.id as string, dietaryRestrictionRepository);
         res.status(200).json(returnedDietaryRestriction);
     } catch (error) {
         next(error);
