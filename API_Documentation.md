@@ -1151,7 +1151,7 @@ User needs to be Signed in to access this endpoint
     "customFood":[
         {
             "id": "9ad83156-5ed1-4e2f-8358-111111111111",
-            "userId" : "9ad83156-5ed1-4e2f-8358-c6e2ce906f3a"
+            "userId" : "9ad83156-5ed1-4e2f-8358-c6e2ce906f3a",
             "foodName": "Butter Chicken with rice",
             "description": "A curry made from chicken cooked in a spiced tomato and butter-based gravy served with rice",
             "serving_size": 350.0,
@@ -1254,7 +1254,7 @@ User needs to be Signed in to access this endpoint
     "serving_size_unit": "g",
     "measure_description": "1 apple",
     "energy" : {
-        "unit": "KJ,
+        "unit": "KJ",
         "qty_per_serving": "270",
         "percent_RQI": "3",
         "qty_per_100": "190"
@@ -1387,7 +1387,7 @@ User needs to be Signed in and have the same user id as the userId to access thi
 <summary>Example</summary>
 <pre>{
     "id": "9ad83156-5ed1-4e2f-8358-111111111111",
-    "userId" : "9ad83156-5ed1-4e2f-8358-c6e2ce906f3a"
+    "userId" : "9ad83156-5ed1-4e2f-8358-c6e2ce906f3a",
     "foodName": "Butter Chicken with rice",
     "description": "A curry made from chicken cooked in a spiced tomato and butter-based gravy served with rice",
     "serving_size": 350.0,
@@ -1395,7 +1395,7 @@ User needs to be Signed in and have the same user id as the userId to access thi
     "serving_size_unit": "g",
     "measure_description": "1 bowl",
     "energy" : {
-        "unit": "KJ,
+        "unit": "KJ",
         "qty_per_serving": "1900",
         "percent_RQI": "22",
         "qty_per_100": "750"
@@ -1760,7 +1760,7 @@ creates a custom food item or meal in the databse linked to a user
 <details>
 <summary>Example</summary>
 <pre>{
-    "userId" : "9ad83156-5ed1-4e2f-8358-c6e2ce906f3a"
+    "userId" : "9ad83156-5ed1-4e2f-8358-c6e2ce906f3a",
     "foodName": "Butter Chicken with rice",
     "description": "A curry made from chicken cooked in a spiced tomato and butter-based gravy served with rice",
     "serving_size": 350.0,
@@ -1768,7 +1768,7 @@ creates a custom food item or meal in the databse linked to a user
     "serving_size_unit": "g",
     "measure_description": "1 bowl",
     "energy" : {
-        "unit": "KJ,
+        "unit": "KJ",
         "qty_per_serving": "1900",
         "percent_RQI": "22",
         "qty_per_100": "750"
@@ -1892,7 +1892,7 @@ User needs to be Signed in and have the same ID as the userId to access this end
 <summary>Example</summary>
 <pre>{
     "id": "9ad83156-5ed1-4e2f-8358-111111111111",
-    "userId" : "9ad83156-5ed1-4e2f-8358-c6e2ce906f3a"
+    "userId" : "9ad83156-5ed1-4e2f-8358-c6e2ce906f3a",
     "foodName": "Butter Chicken with rice",
     "description": "A curry made from chicken cooked in a spiced tomato and butter-based gravy served with rice",
     "serving_size": 350.0,
@@ -1900,7 +1900,7 @@ User needs to be Signed in and have the same ID as the userId to access this end
     "serving_size_unit": "g",
     "measure_description": "1 bowl",
     "energy" : {
-        "unit": "KJ,
+        "unit": "KJ",
         "qty_per_serving": "1900",
         "percent_RQI": "22",
         "qty_per_100": "750"
@@ -2023,7 +2023,7 @@ updates the custome food item that has the same id
 <details>
 <summary>Example</summary>
 <pre>{
-    "userId" : "9ad83156-5ed1-4e2f-8358-c6e2ce906f3a"
+    "userId" : "9ad83156-5ed1-4e2f-8358-c6e2ce906f3a",
     "foodName": "Butter Chicken without rice",
     "description": "A curry made from chicken cooked in a spiced tomato and butter-based gravy served with rice",
     "serving_size": 350.0,
@@ -2031,7 +2031,7 @@ updates the custome food item that has the same id
     "serving_size_unit": "g",
     "measure_description": "1 bowl",
     "energy" : {
-        "unit": "KJ,
+        "unit": "KJ",
         "qty_per_serving": "1900",
         "percent_RQI": "22",
         "qty_per_100": "750"
@@ -2202,7 +2202,7 @@ User needs to be Signed in and have the same user id as the userId to access thi
 <summary>Example</summary>
 <pre>{
     "id": "9ad83156-5ed1-4e2f-8358-111111111111",
-    "userId" : "9ad83156-5ed1-4e2f-8358-c6e2ce906f3a"
+    "userId" : "9ad83156-5ed1-4e2f-8358-c6e2ce906f3a",
     "foodName": "Butter Chicken with rice",
     "description": "A curry made from chicken cooked in a spiced tomato and butter-based gravy served with rice",
     "serving_size": 350.0,
@@ -2210,7 +2210,7 @@ User needs to be Signed in and have the same user id as the userId to access thi
     "serving_size_unit": "g",
     "measure_description": "1 bowl",
     "energy" : {
-        "unit": "KJ,
+        "unit": "KJ",
         "qty_per_serving": "1900",
         "percent_RQI": "22",
         "qty_per_100": "750"
@@ -2346,7 +2346,7 @@ User needs to be Signed in and have the same user id as the userId to access thi
 <pre>[
         {
         "id": "9ad83156-5ed1-4e2f-8358-111111111111",
-        "userId" : "9ad83156-5ed1-4e2f-8358-c6e2ce906f3a"
+        "userId" : "9ad83156-5ed1-4e2f-8358-c6e2ce906f3a",
         "foodName": "Butter Chicken with rice",
         "description": "A curry made from chicken cooked in a spiced tomato and butter-based gravy served with rice",
         "serving_size": 350.0,
@@ -2354,7 +2354,7 @@ User needs to be Signed in and have the same user id as the userId to access thi
         "serving_size_unit": "g",
         "measure_description": "1 bowl",
         "energy" : {
-            "unit": "KJ,
+            "unit": "KJ",
             "qty_per_serving": "1900",
             "percent_RQI": "22",
             "qty_per_100": "750"
