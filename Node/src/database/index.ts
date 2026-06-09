@@ -4,5 +4,14 @@ import { DietaryRestrictionEntity } from "./entities/dietaryRestriction.entity.t
 import { MedicalConditionEntity } from "./entities/medicalCondition.entity.ts";
 import { PatientRestrictionEntity } from "./entities/patientRestriction.entity.ts";
 import { PatientConditionEntity } from "./entities/patientConditions.entity.ts";
+import { CustomFoodEntity } from "./entities/customFood.entity.ts";
 
-export const entities = [UserEntity, PatientEntity, DietaryRestrictionEntity, MedicalConditionEntity, PatientRestrictionEntity, PatientConditionEntity];
+export const entities = [
+    UserEntity, 
+    PatientEntity, 
+    DietaryRestrictionEntity, 
+    MedicalConditionEntity, 
+    PatientRestrictionEntity, 
+    PatientConditionEntity,
+    CustomFoodEntity
+];
