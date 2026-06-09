@@ -19,8 +19,8 @@ export class FoodLogEntity extends BaseEntity {
     @Column()
     dateTime: string
 
-    @Column()
-    amount: string
+    @Column({ type: "float" })
+    amount: number
 
     @Column()
     unit: string
