@@ -109,3 +109,41 @@ export async function authCustomFoodIdInParams(req: Request, res: Response, next
         next(error);
     }
 }
+
+export async function authFoodLogIdInParams(req: Request, res: Response, next: NextFunction) {
+    try {
+        const authUser = (req as any).user as JwtPayload;
+        const foodLogId = req.params.id as string;
+        const foodLog = await GetFoodLogByIdFromDatabase(foodLogId, foodLogRepository)
+        const patient = await patientRepository.findOne({ where: { id: foodLog.patientId }});
+        if (!patient) {
+            throw new CustomerError(404, 'Patient not found');
+        }
+        if (patient.userId !== authUser.userId) {
+            throw new CustomerError(403, 'Forbidden');
+        }
+        next();
+    } catch (error) {
+        next(error);
+    }
+}
+
+export async function authPatientIdInQuery(req: Request, res: Response, next: NextFunction) {
+    try {
+        const authUser = (req as any).user as JwtPayload;
+        const patientId = req.query.patientid as string;
+        const patient = await patientRepository.findOne({ where: { id: patientId }})
+        if (!patient) {
+            throw new CustomerError(404, 'Patient not found');
+        }
+        if (patient.userId !== authUser.userId) {
+            console.log(patientId)
+            console.log(patient.userId)
+            console.log(authUser.userId)
+            throw new CustomerError(403, 'Forbidden');
+        }
+        next();
+    } catch (error) {
+        next(error);
+    }
+}
