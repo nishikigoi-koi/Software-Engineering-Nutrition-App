@@ -13,6 +13,9 @@ export class PatientEntity extends BaseEntity {
     user: UserEntity;
 
     @Column()
+    userId: string;
+
+    @Column()
     firstName: string;
 
     @Column()
