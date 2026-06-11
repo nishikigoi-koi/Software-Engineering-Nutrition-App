@@ -2,10 +2,10 @@ import { Repository } from "typeorm";
 import { CustomFood, CustomFoodShort } from "../models/customFood.types";
 import { FoodFile,FoodFileShort,SearchResult,FoodFileNutrients } from "../models/search.types";
 import { CustomFoodEntity } from "../database/entities/customFood.entity";
-import { GetCustomFoodByIdFromDatabase } from "./customFood.helper";
-import CustomerError from "../models/error.types";
+import { GetCustomFoodByIdFromDatabase } from "./customFood.helper.ts";
+import CustomerError from "../models/error.types.ts";
 import { UserEntity } from "../database/entities/user.entity";
-import { GetUserFromDatabase } from "./user.helper";
+import { GetUserFromDatabase } from "./user.helper.ts";
 
 function mapEntityToCustomFood(customFood:CustomFoodEntity): CustomFood{
     return{
