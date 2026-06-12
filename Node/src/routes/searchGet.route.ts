@@ -3,6 +3,7 @@ import { authCustomFoodIdInParams, authenticateJWT, authFoodLogIdInParams, authP
 import { SearchFoodFileAndCustom, SearchGetCustom, SearchGetFoodFile } from "../services/search.service.ts";
 const router = express.Router();
 
-router.get('', authenticateJWT, SearchFoodFileAndCustom);
+router.get('/foodfile/:id', authenticateJWT, SearchGetFoodFile);
+router.get('/customfood/:id', authenticateJWT, authUser, SearchGetCustom);
 
 export default router;
