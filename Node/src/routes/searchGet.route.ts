@@ -4,6 +4,6 @@ import { SearchFoodFileAndCustom, SearchGetCustom, SearchGetFoodFile } from "../
 const router = express.Router();
 
 router.get('/foodfile/:id', authenticateJWT, SearchGetFoodFile);
-router.get('/customfood/:id', authenticateJWT, authUser, SearchGetCustom);
+router.get('/customfood/:id', authenticateJWT, authCustomFoodIdInParams, SearchGetCustom);
 
 export default router;
