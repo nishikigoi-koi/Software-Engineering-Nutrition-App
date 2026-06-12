@@ -1110,7 +1110,7 @@ User needs to be Signed in to access this endpoint
         {
             "id": string,
             "foodName": string,
-            "sortName": string,
+            "shortName": string,
             "description": string,
             "serving_size": float,
             "group": string,
@@ -1140,7 +1140,7 @@ User needs to be Signed in to access this endpoint
         {
             "id": "L1151",
             "foodName": "Apple, flesh & skin, raw, 'Braeburn'",
-            "sortName": "Apple, 'Braeburn', flesh & skin, raw",
+            "shortName": "Apple, 'Braeburn', flesh & skin, raw",
             "description": null,
             "serving_size": 145.0,
             "group": "Fruits",
@@ -1185,7 +1185,7 @@ User needs to be Signed in to access this endpoint
 <pre>{
     "id": string,
     "foodName": string,
-    "sortName": string,
+    "shortName": string,
     "description": string,
     "serving_size": float,
     "group": string,
@@ -1247,7 +1247,7 @@ User needs to be Signed in to access this endpoint
 <pre>{
     "id": "L1151",
     "foodName": "Apple, flesh & skin, raw, 'Braeburn'",
-    "sortName": "Apple, 'Braeburn', flesh & skin, raw",
+    "shortName": "Apple, 'Braeburn', flesh & skin, raw",
     "description": null,
     "serving_size": 145.0,
     "group": "Fruits",

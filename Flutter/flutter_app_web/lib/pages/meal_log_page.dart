@@ -29,7 +29,7 @@ class _MealLogPageState extends State<MealLogPage> {
   List<dynamic> _mealLogs = [];
   bool _isLoading = true;
   bool _isLoadingMeals = false;
-
+  Map<String, String> _foodNames = {};
   // Search
   final _searchController = TextEditingController();
   List<FoodFileSearchResult> _foodFileResults = [];
@@ -45,10 +45,11 @@ class _MealLogPageState extends State<MealLogPage> {
   final _amountController = TextEditingController();
   String? _selectedUnit;
   String? _selectedMealType;
-  final _dateTimeController = TextEditingController();
+  DateTime? _selectedDate;
+  TimeOfDay? _selectedTime;
 
   // Date filter
-  final _dateFilterController = TextEditingController();
+  DateTime? _filterDate;
   bool _filterByDate = false;
 
   final List<String> _unitOptions = ['g', 'ml'];
@@ -74,8 +75,6 @@ class _MealLogPageState extends State<MealLogPage> {
   void dispose() {
     _searchController.dispose();
     _amountController.dispose();
-    _dateTimeController.dispose();
-    _dateFilterController.dispose();
     super.dispose();
   }
 
@@ -104,11 +103,12 @@ class _MealLogPageState extends State<MealLogPage> {
 
     http.Response response;
 
-    if (_filterByDate && _dateFilterController.text.isNotEmpty) {
+    if (_filterByDate && _filterDate != null) {
+      final dateString = '${_filterDate!.year}-${_filterDate!.month.toString().padLeft(2, '0')}-${_filterDate!.day.toString().padLeft(2, '0')}';
       response = await MealLogService.getPatientMealsByDate(
-        _dateFilterController.text,
-        _selectedPatient!.id,
-      );
+          dateString,
+          _selectedPatient!.id
+        );
     } else {
       response = await MealLogService.getPatientMeals(_selectedPatient!.id);
     }
@@ -119,11 +119,38 @@ class _MealLogPageState extends State<MealLogPage> {
         _mealLogs = data;
         _isLoadingMeals = false;
       });
+      await _loadFoodNames();
     } else {
       setState(() => _isLoadingMeals = false);
       DialogUtils.showError(context, 'Failed to load meals. (${response.statusCode})');
     }
   }
+
+  Future<void> _loadFoodNames() async {
+  for (final meal in _mealLogs) {
+    final fcdbId = meal['FCDBFoodId'];
+    final customId = meal['CustomFoodId'];
+
+    if (fcdbId != null && !_foodNames.containsKey(fcdbId)) {
+      final response = await FoodSearchService.searchFoodFiles(fcdbId);
+      debugPrint('Food lookup status: ${response.statusCode}');
+      debugPrint('Food lookup body: ${response.body}');
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+        _foodNames[fcdbId] = data['foodName'] ?? fcdbId;
+      }
+    }
+
+    if (customId != null && !_foodNames.containsKey(customId)) {
+      final response = await FoodSearchService.searchCustomFood(customId);
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+        _foodNames[customId] = data['foodName'] ?? customId;
+      }
+    }
+  }
+  setState(() {});
+}
 
   Future<void> _searchFood() async {
     if (_searchController.text.trim().isEmpty) return;
@@ -145,10 +172,10 @@ class _MealLogPageState extends State<MealLogPage> {
     if (response.statusCode == 200) {
       final Map<String, dynamic> data = jsonDecode(response.body);
       setState(() {
-        _foodFileResults = (data['foodFiles'] as List? ?? [])
+        _foodFileResults = (data['foodFile'] as List? ?? [])
             .map((f) => FoodFileSearchResult.fromJson(f))
             .toList();
-        _customFoodResults = (data['customFoods'] as List? ?? [])
+        _customFoodResults = (data['customFood'] as List? ?? [])
             .map((f) => CustomFoodSearchResult.fromJson(f))
             .toList();
         _isSearching = false;
@@ -175,10 +202,19 @@ class _MealLogPageState extends State<MealLogPage> {
     if (_amountController.text.trim().isEmpty ||
         _selectedUnit == null ||
         _selectedMealType == null ||
-        _dateTimeController.text.trim().isEmpty) {
+        _selectedDate == null ||
+        _selectedTime == null) {
       DialogUtils.showError(context, 'Please fill in all meal details.');
       return;
     }
+
+    final dateTime = DateTime(
+      _selectedDate!.year,
+      _selectedDate!.month,
+      _selectedDate!.day,
+      _selectedTime!.hour,
+      _selectedTime!.minute,
+    );
 
     final food = _selectedFoodFile != null
         ? FCDBFoodReference(_selectedFoodFile!.id)
@@ -187,7 +223,7 @@ class _MealLogPageState extends State<MealLogPage> {
     final log = MealLog(
       patientId: _selectedPatient!.id,
       food: food,
-      dateTime: DateTime.parse(_dateTimeController.text.trim()),
+      dateTime: dateTime,
       amount: double.tryParse(_amountController.text) ?? 0,
       unit: _selectedUnit!,
       mealType: _selectedMealType!,
@@ -235,7 +271,8 @@ class _MealLogPageState extends State<MealLogPage> {
       _amountController.clear();
       _selectedUnit = null;
       _selectedMealType = null;
-      _dateTimeController.clear();
+      _selectedDate = null;
+      _selectedTime = null;
       _searchController.clear();
       _foodFileResults = [];
       _customFoodResults = [];
@@ -325,7 +362,7 @@ class _MealLogPageState extends State<MealLogPage> {
                         ),
                       ),
 
-                      // ── Middle: Meal log + search ───────────────────────
+                      // ── Middle: Meal log ────────────────────────────────
                       Expanded(
                         child: _selectedPatient == null
                             ? Center(
@@ -343,7 +380,6 @@ class _MealLogPageState extends State<MealLogPage> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    // Patient name + date filter
                                     Row(
                                       children: [
                                         Expanded(
@@ -357,30 +393,32 @@ class _MealLogPageState extends State<MealLogPage> {
                                             ),
                                           ),
                                         ),
-                                        // Date filter
-                                        SizedBox(
-                                          width: 180,
-                                          child: TextField(
-                                            controller: _dateFilterController,
-                                            decoration: InputDecoration(
-                                              labelText: 'Filter by date (YYYY-MM-DD)',
-                                              border: OutlineInputBorder(),
-                                              contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-                                            ),
-                                            style: TextStyle(fontSize: 13),
+                                        OutlinedButton(
+                                          onPressed: () async {
+                                            final date = await showDatePicker(
+                                              context: context,
+                                              initialDate: _filterDate ?? DateTime.now(),
+                                              firstDate: DateTime(2000),
+                                              lastDate: DateTime.now(),
+                                            );
+                                            if (date != null) setState(() => _filterDate = date);
+                                          },
+                                          child: Text(
+                                            _filterDate != null
+                                                ? '${_filterDate!.year}-${_filterDate!.month.toString().padLeft(2, '0')}-${_filterDate!.day.toString().padLeft(2, '0')}'
+                                                : 'Filter by date',
+                                            style: TextStyle(fontFamily: 'Poppins', fontSize: 13),
                                           ),
                                         ),
                                         SizedBox(width: 8),
                                         ElevatedButton(
                                           onPressed: () {
-                                            setState(() => _filterByDate = _dateFilterController.text.isNotEmpty);
+                                            setState(() => _filterByDate = _filterDate != null);
                                             _loadMeals();
                                           },
                                           style: ElevatedButton.styleFrom(
                                             backgroundColor: Color(0xFF3B62FF),
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.circular(10),
-                                            ),
+                                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                                             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                                           ),
                                           child: Text('Filter', style: TextStyle(color: Colors.white, fontFamily: 'Poppins')),
@@ -388,8 +426,10 @@ class _MealLogPageState extends State<MealLogPage> {
                                         SizedBox(width: 8),
                                         TextButton(
                                           onPressed: () {
-                                            _dateFilterController.clear();
-                                            setState(() => _filterByDate = false);
+                                            setState(() {
+                                              _filterDate = null;
+                                              _filterByDate = false;
+                                            });
                                             _loadMeals();
                                           },
                                           child: Text('Clear', style: TextStyle(fontFamily: 'Poppins', color: Color(0xFF87879D))),
@@ -397,24 +437,20 @@ class _MealLogPageState extends State<MealLogPage> {
                                       ],
                                     ),
                                     SizedBox(height: 16),
-
-                                    // Meal log list
                                     Expanded(
                                       child: _isLoadingMeals
                                           ? Center(child: CircularProgressIndicator())
                                           : _mealLogs.isEmpty
                                               ? Text(
                                                   'No meals logged yet.',
-                                                  style: TextStyle(
-                                                    fontFamily: 'Poppins',
-                                                    fontSize: 13,
-                                                    color: Color(0xFF87879D),
-                                                  ),
+                                                  style: TextStyle(fontFamily: 'Poppins', fontSize: 13, color: Color(0xFF87879D)),
                                                 )
                                               : ListView.builder(
                                                   itemCount: _mealLogs.length,
                                                   itemBuilder: (context, index) {
                                                     final meal = _mealLogs[index];
+                                                    final foodId = meal['FCDBFoodId'] ?? meal['CustomFoodId'] ?? '';
+                                                    final foodName = _foodNames[foodId] ?? foodId;
                                                     return Container(
                                                       margin: EdgeInsets.only(bottom: 8),
                                                       padding: EdgeInsets.all(12),
@@ -428,34 +464,12 @@ class _MealLogPageState extends State<MealLogPage> {
                                                             child: Column(
                                                               crossAxisAlignment: CrossAxisAlignment.start,
                                                               children: [
-                                                                Text(
-                                                                  meal['mealType'] ?? '',
-                                                                  style: TextStyle(
-                                                                    fontFamily: 'Poppins',
-                                                                    fontWeight: FontWeight.bold,
-                                                                    fontSize: 14,
-                                                                    color: Color(0xFF1C1C1C),
-                                                                  ),
-                                                                ),
-                                                                Text(
-                                                                  meal['dateTime'] ?? '',
-                                                                  style: TextStyle(
-                                                                    fontFamily: 'Poppins',
-                                                                    fontSize: 12,
-                                                                    color: Color(0xFF87879D),
-                                                                  ),
-                                                                ),
+                                                                Text(foodName, style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.bold, fontSize: 14, color: Color(0xFF1C1C1C))),
+                                                                Text(meal['dateTime'] ?? '', style: TextStyle(fontFamily: 'Poppins', fontSize: 12, color: Color(0xFF87879D))),
                                                               ],
                                                             ),
                                                           ),
-                                                          Text(
-                                                            '${meal['amount']} ${meal['unit']}',
-                                                            style: TextStyle(
-                                                              fontFamily: 'Poppins',
-                                                              fontSize: 13,
-                                                              color: Color(0xFF1C1C1C),
-                                                            ),
-                                                          ),
+                                                          Text('${meal['amount']} ${meal['unit']}', style: TextStyle(fontFamily: 'Poppins', fontSize: 13, color: Color(0xFF1C1C1C))),
                                                         ],
                                                       ),
                                                     );
@@ -471,9 +485,7 @@ class _MealLogPageState extends State<MealLogPage> {
                       Container(
                         width: 320,
                         decoration: BoxDecoration(
-                          border: Border(
-                            left: BorderSide(color: Color(0xFFE0E0E0)),
-                          ),
+                          border: Border(left: BorderSide(color: Color(0xFFE0E0E0))),
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -482,23 +494,18 @@ class _MealLogPageState extends State<MealLogPage> {
                               padding: const EdgeInsets.all(16.0),
                               child: Text(
                                 'Log Meal',
-                                style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                  color: Color(0xFF1C1C1C),
-                                ),
+                                style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.bold, fontSize: 16, color: Color(0xFF1C1C1C)),
                               ),
                             ),
                             Divider(height: 1),
 
+                            // Scrollable search + results
                             Expanded(
                               child: SingleChildScrollView(
                                 padding: EdgeInsets.all(16),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.stretch,
                                   children: [
-
                                     // Search bar
                                     Row(
                                       children: [
@@ -520,9 +527,7 @@ class _MealLogPageState extends State<MealLogPage> {
                                           style: ElevatedButton.styleFrom(
                                             backgroundColor: Color(0xFF3B62FF),
                                             disabledBackgroundColor: Color(0xFFCCCCCC),
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.circular(10),
-                                            ),
+                                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                                             padding: EdgeInsets.symmetric(horizontal: 14, vertical: 14),
                                           ),
                                           child: _isSearching
@@ -536,18 +541,11 @@ class _MealLogPageState extends State<MealLogPage> {
                                     // Custom food button
                                     TextButton(
                                       onPressed: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(builder: (_) => CustomFoodPage()),
-                                        );
+                                        Navigator.push(context, MaterialPageRoute(builder: (_) => CustomFoodPage()));
                                       },
                                       child: Text(
                                         'Can\'t find it? Add a custom food →',
-                                        style: TextStyle(
-                                          fontFamily: 'Poppins',
-                                          fontSize: 12,
-                                          color: Color(0xFF3B62FF),
-                                        ),
+                                        style: TextStyle(fontFamily: 'Poppins', fontSize: 12, color: Color(0xFF3B62FF)),
                                       ),
                                     ),
 
@@ -555,10 +553,7 @@ class _MealLogPageState extends State<MealLogPage> {
                                     if (_hasSearched) ...[
                                       SizedBox(height: 8),
                                       if (_foodFileResults.isEmpty && _customFoodResults.isEmpty)
-                                        Text(
-                                          'No results found.',
-                                          style: TextStyle(fontFamily: 'Poppins', fontSize: 13, color: Color(0xFF87879D)),
-                                        )
+                                        Text('No results found.', style: TextStyle(fontFamily: 'Poppins', fontSize: 13, color: Color(0xFF87879D)))
                                       else ...[
                                         if (_foodFileResults.isNotEmpty) ...[
                                           Text('Database foods', style: TextStyle(fontFamily: 'Poppins', fontSize: 12, color: Color(0xFF87879D))),
@@ -572,9 +567,7 @@ class _MealLogPageState extends State<MealLogPage> {
                                                 padding: EdgeInsets.all(10),
                                                 decoration: BoxDecoration(
                                                   color: isSelected ? Color(0xFFEEF1FF) : Colors.transparent,
-                                                  border: Border.all(
-                                                    color: isSelected ? Color(0xFF3B62FF) : Color(0xFFE0E0E0),
-                                                  ),
+                                                  border: Border.all(color: isSelected ? Color(0xFF3B62FF) : Color(0xFFE0E0E0)),
                                                   borderRadius: BorderRadius.circular(8),
                                                 ),
                                                 child: Column(
@@ -601,9 +594,7 @@ class _MealLogPageState extends State<MealLogPage> {
                                                 padding: EdgeInsets.all(10),
                                                 decoration: BoxDecoration(
                                                   color: isSelected ? Color(0xFFEEF1FF) : Colors.transparent,
-                                                  border: Border.all(
-                                                    color: isSelected ? Color(0xFF3B62FF) : Color(0xFFE0E0E0),
-                                                  ),
+                                                  border: Border.all(color: isSelected ? Color(0xFF3B62FF) : Color(0xFFE0E0E0)),
                                                   borderRadius: BorderRadius.circular(8),
                                                 ),
                                                 child: Column(
@@ -619,95 +610,135 @@ class _MealLogPageState extends State<MealLogPage> {
                                         ],
                                       ],
                                     ],
+                                  ],
+                                ),
+                              ),
+                            ),
 
-                                    // Log form — shown when a food is selected
-                                    if (_selectedFoodFile != null || _selectedCustomFood != null) ...[
-                                      Divider(height: 24),
-                                      Text(
-                                        'Logging: ${_selectedFoodName()}',
-                                        style: TextStyle(fontFamily: 'Poppins', fontSize: 13, fontWeight: FontWeight.w500, color: Color(0xFF1C1C1C)),
-                                      ),
-                                      SizedBox(height: 12),
-
-                                      // Amount + unit
-                                      Row(
-                                        children: [
-                                          Expanded(
-                                            child: TextField(
-                                              controller: _amountController,
-                                              decoration: InputDecoration(
-                                                labelText: 'Amount',
-                                                border: OutlineInputBorder(),
-                                                contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-                                              ),
-                                              keyboardType: TextInputType.number,
-                                              style: TextStyle(fontSize: 13),
-                                            ),
+                            // Log form
+                            Container(
+                              decoration: BoxDecoration(
+                                border: Border(top: BorderSide(color: Color(0xFFE0E0E0))),
+                              ),
+                              padding: EdgeInsets.all(16),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: [
+                                  Text(
+                                    _selectedFoodFile != null || _selectedCustomFood != null
+                                        ? 'Logging: ${_selectedFoodName()}'
+                                        : 'Select a food to log',
+                                    style: TextStyle(fontFamily: 'Poppins', fontSize: 13, fontWeight: FontWeight.w500, color: Color(0xFF1C1C1C)),
+                                  ),
+                                  SizedBox(height: 12),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: TextField(
+                                          controller: _amountController,
+                                          decoration: InputDecoration(
+                                            labelText: 'Amount',
+                                            border: OutlineInputBorder(),
+                                            contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
                                           ),
-                                          SizedBox(width: 8),
-                                          Expanded(
-                                            child: DropdownButtonFormField<String>(
-                                              initialValue: _selectedUnit,
-                                              decoration: InputDecoration(
-                                                labelText: 'Unit',
-                                                border: OutlineInputBorder(),
-                                                contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-                                              ),
-                                              style: TextStyle(fontSize: 13, color: Color(0xFF1C1C1C)),
-                                              items: _unitOptions.map((u) => DropdownMenuItem(value: u, child: Text(u))).toList(),
-                                              onChanged: (v) => setState(() => _selectedUnit = v),
-                                            ),
+                                          keyboardType: TextInputType.number,
+                                          style: TextStyle(fontSize: 13),
+                                        ),
+                                      ),
+                                      SizedBox(width: 8),
+                                      Expanded(
+                                        child: DropdownButtonFormField<String>(
+                                          initialValue: _selectedUnit,
+                                          decoration: InputDecoration(
+                                            labelText: 'Unit',
+                                            border: OutlineInputBorder(),
+                                            contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
                                           ),
-                                        ],
-                                      ),
-                                      SizedBox(height: 12),
-
-                                      // Meal type
-                                      DropdownButtonFormField<String>(
-                                        initialValue: _selectedMealType,
-                                        decoration: InputDecoration(
-                                          labelText: 'Meal type',
-                                          border: OutlineInputBorder(),
-                                          contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                                          style: TextStyle(fontSize: 13, color: Color(0xFF1C1C1C)),
+                                          items: _unitOptions.map((u) => DropdownMenuItem(value: u, child: Text(u))).toList(),
+                                          onChanged: (v) => setState(() => _selectedUnit = v),
                                         ),
-                                        style: TextStyle(fontSize: 13, color: Color(0xFF1C1C1C)),
-                                        items: _mealTypeOptions.map((m) => DropdownMenuItem(value: m, child: Text(m))).toList(),
-                                        onChanged: (v) => setState(() => _selectedMealType = v),
                                       ),
-                                      SizedBox(height: 12),
-
-                                      // Date/time
-                                      TextField(
-                                        controller: _dateTimeController,
-                                        decoration: InputDecoration(
-                                          labelText: 'Date & time (YYYY-MM-DDTHH:MM:SS)',
-                                          border: OutlineInputBorder(),
-                                          contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-                                        ),
-                                        style: TextStyle(fontSize: 13),
-                                      ),
-                                      SizedBox(height: 16),
-
-                                      // Log button
-                                      ElevatedButton(
-                                        onPressed: _logMeal,
-                                        style: ElevatedButton.styleFrom(
-                                          backgroundColor: Color(0xFF3B62FF),
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(10),
+                                    ],
+                                  ),
+                                  SizedBox(height: 8),
+                                  DropdownButtonFormField<String>(
+                                    initialValue: _selectedMealType,
+                                    decoration: InputDecoration(
+                                      labelText: 'Meal type',
+                                      border: OutlineInputBorder(),
+                                      contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                                    ),
+                                    style: TextStyle(fontSize: 13, color: Color(0xFF1C1C1C)),
+                                    items: _mealTypeOptions.map((m) => DropdownMenuItem(value: m, child: Text(m))).toList(),
+                                    onChanged: (v) => setState(() => _selectedMealType = v),
+                                  ),
+                                  SizedBox(height: 8),
+                                  // Date and time pickers
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: OutlinedButton(
+                                          onPressed: () async {
+                                            final date = await showDatePicker(
+                                              context: context,
+                                              initialDate: _selectedDate ?? DateTime.now(),
+                                              firstDate: DateTime(2000),
+                                              lastDate: DateTime.now(),
+                                            );
+                                            if (date != null) setState(() => _selectedDate = date);
+                                          },
+                                          child: Text(
+                                            _selectedDate != null
+                                                ? '${_selectedDate!.year}-${_selectedDate!.month.toString().padLeft(2, '0')}-${_selectedDate!.day.toString().padLeft(2, '0')}'
+                                                : 'Pick date',
+                                            style: TextStyle(fontFamily: 'Poppins', fontSize: 13),
                                           ),
-                                          padding: EdgeInsets.symmetric(vertical: 14),
                                         ),
-                                        child: Text('Log Meal', style: TextStyle(color: Colors.white, fontFamily: 'Poppins', fontSize: 14)),
                                       ),
-                                      SizedBox(height: 8),
+                                      SizedBox(width: 8),
+                                      Expanded(
+                                        child: OutlinedButton(
+                                          onPressed: () async {
+                                            final time = await showTimePicker(
+                                              context: context,
+                                              initialTime: _selectedTime ?? TimeOfDay.now(),
+                                            );
+                                            if (time != null) setState(() => _selectedTime = time);
+                                          },
+                                          child: Text(
+                                            _selectedTime != null
+                                                ? '${_selectedTime!.hour.toString().padLeft(2, '0')}:${_selectedTime!.minute.toString().padLeft(2, '0')}'
+                                                : 'Pick time',
+                                            style: TextStyle(fontFamily: 'Poppins', fontSize: 13),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(height: 12),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: ElevatedButton(
+                                          onPressed: _selectedFoodFile != null || _selectedCustomFood != null ? _logMeal : null,
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor: Color(0xFF3B62FF),
+                                            disabledBackgroundColor: Color(0xFFCCCCCC),
+                                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                                            padding: EdgeInsets.symmetric(vertical: 14),
+                                          ),
+                                          child: Text('Log Meal', style: TextStyle(color: Colors.white, fontFamily: 'Poppins', fontSize: 14)),
+                                        ),
+                                      ),
+                                      SizedBox(width: 8),
                                       TextButton(
                                         onPressed: _clearLogForm,
                                         child: Text('Clear', style: TextStyle(fontFamily: 'Poppins', color: Color(0xFF87879D))),
                                       ),
                                     ],
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
                             ),
                           ],
@@ -765,11 +796,7 @@ class _MealLogPageState extends State<MealLogPage> {
             SizedBox(height: 4),
             Text(
               label,
-              style: TextStyle(
-                fontFamily: 'Poppins',
-                fontSize: 12,
-                color: Color(0xFF3B62FF),
-              ),
+              style: TextStyle(fontFamily: 'Poppins', fontSize: 12, color: Color(0xFF3B62FF)),
             ),
           ],
         ),

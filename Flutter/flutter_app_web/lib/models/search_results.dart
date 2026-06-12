@@ -1,7 +1,7 @@
 class FoodFileSearchResult {
   final String id;
   final String foodName;
-  final String sortName;
+  final String shortName;
   final String description;
   final double servingSize;
   final String group;
@@ -11,7 +11,7 @@ class FoodFileSearchResult {
   FoodFileSearchResult({
     required this.id,
     required this.foodName,
-    required this.sortName,
+    required this.shortName,
     required this.description,
     required this.servingSize,
     required this.group,
@@ -23,8 +23,8 @@ class FoodFileSearchResult {
     return FoodFileSearchResult(
       id: json['id'],
       foodName: json['foodName'],
-      sortName: json['sortName'],
-      description: json['description'],
+      shortName: json['shortName'],
+      description: json['description'] ?? '',
       servingSize: (json['serving_size'] as num).toDouble(),
       group: json['group'],
       servingUnit: json['serving_size_unit'],
