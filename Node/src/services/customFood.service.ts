@@ -43,7 +43,7 @@ export async function UpdateCustomFood(req: Request, res: Response, next: NextFu
 export async function DeleteCustomFood(req: Request, res: Response, next: NextFunction){
     try{
         await DeleteCustomFoodInDatabase(req.params.id as string, customFoodRepository)
-        res.status(204)
+        res.status(204).send()
     } catch(error){
         next(error)
     }
