@@ -1,7 +1,9 @@
 import { NextFunction, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import CustomerError from '../models/error.types.ts';
-import { patientRepository } from '../database/repostitories.ts';
+import { customFoodRepository, foodLogRepository, patientRepository } from '../database/repostitories.ts';
+import { GetCustomFoodByIdFromDatabase } from '../helpers/customFood.helper.ts';
+import { GetFoodLogByIdFromDatabase } from '../helpers/foodLog.helper.ts';
 
 const JWT_SECRET = process.env.JWT_SECRET as string;
 
@@ -34,21 +36,29 @@ export function authenticateJWT(req: Request, res: Response, next: NextFunction)
 
 // Middleware to ensure the authenticated user is the owner of the user record being accessed or modified
 export function authUser(req: Request, res: Response, next: NextFunction) {
-    const authUser = (req as any).user as JwtPayload;
-    if (authUser.userId !== req.params.id) {
-        throw new CustomerError(403, 'Forbidden');
+    try{
+        const authUser = (req as any).user as JwtPayload;
+        if (authUser.userId !== req.params.id) {
+            throw new CustomerError(403, 'Forbidden');
+        }
+        next();
+    } catch(error){
+        next(error)
     }
-    next();
 }
 
 
 // Middleware to ensure the authenticated user is the owner of the patient record being created
-export function authCreatePatient(req: Request, res: Response, next: NextFunction) {
-    const authUser = (req as any).user as JwtPayload;
-    if (authUser.userId !== req.body.userId) {
-        throw new CustomerError(403, 'Forbidden');
+export function authUserInBody(req: Request, res: Response, next: NextFunction) {
+    try{
+        const authUser = (req as any).user as JwtPayload;
+        if (authUser.userId !== req.body.userId) {
+            throw new CustomerError(403, 'Forbidden');
+        }
+        next();
+    } catch(error){
+        next(error)
     }
-    next();
 }
 
 // Middleware to ensure the authenticated user is the owner of the patient record being accessed or modified
@@ -56,11 +66,11 @@ export async function authPatientIdInParams(req: Request, res: Response, next: N
     try {
         const authUser = (req as any).user as JwtPayload;
         const patientId = req.params.id as string;
-        const patient = await patientRepository.findOne({ where: { id: patientId }, relations: ['user'] })
+        const patient = await patientRepository.findOne({ where: { id: patientId }})
         if (!patient) {
             throw new CustomerError(404, 'Patient not found');
         }
-        if (patient.user.id !== authUser.userId) {
+        if (patient.userId !== authUser.userId) {
             throw new CustomerError(403, 'Forbidden');
         }
         next();
@@ -73,11 +83,63 @@ export async function authPatientIdInBody(req: Request, res: Response, next: Nex
     try {
         const authUser = (req as any).user as JwtPayload;
         const patientId = req.body.patientId as string;
-        const patient = await patientRepository.findOne({ where: { id: patientId }, relations: ['user'] });
+        const patient = await patientRepository.findOne({ where: { id: patientId }});
         if (!patient) {
             throw new CustomerError(404, 'Patient not found');
         }
-        if (patient.user.id !== authUser.userId) {
+        if (patient.userId !== authUser.userId) {
+            throw new CustomerError(403, 'Forbidden');
+        }
+        next();
+    } catch (error) {
+        next(error);
+    }
+}
+
+export async function authCustomFoodIdInParams(req: Request, res: Response, next: NextFunction) {
+    try {
+        const authUser = (req as any).user as JwtPayload;
+        const customFoodId = req.params.id as string;
+        const customFood = await GetCustomFoodByIdFromDatabase(customFoodId,customFoodRepository)
+        if (customFood.userId !== authUser.userId) {
+            throw new CustomerError(403, 'Forbidden');
+        }
+        next();
+    } catch (error) {
+        next(error);
+    }
+}
+
+export async function authFoodLogIdInParams(req: Request, res: Response, next: NextFunction) {
+    try {
+        const authUser = (req as any).user as JwtPayload;
+        const foodLogId = req.params.id as string;
+        const foodLog = await GetFoodLogByIdFromDatabase(foodLogId, foodLogRepository)
+        const patient = await patientRepository.findOne({ where: { id: foodLog.patientId }});
+        if (!patient) {
+            throw new CustomerError(404, 'Patient not found');
+        }
+        if (patient.userId !== authUser.userId) {
+            throw new CustomerError(403, 'Forbidden');
+        }
+        next();
+    } catch (error) {
+        next(error);
+    }
+}
+
+export async function authPatientIdInQuery(req: Request, res: Response, next: NextFunction) {
+    try {
+        const authUser = (req as any).user as JwtPayload;
+        const patientId = req.query.patientid as string;
+        const patient = await patientRepository.findOne({ where: { id: patientId }})
+        if (!patient) {
+            throw new CustomerError(404, 'Patient not found');
+        }
+        if (patient.userId !== authUser.userId) {
+            console.log(patientId)
+            console.log(patient.userId)
+            console.log(authUser.userId)
             throw new CustomerError(403, 'Forbidden');
         }
         next();

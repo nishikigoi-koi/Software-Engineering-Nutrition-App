@@ -1,10 +1,9 @@
 import { BaseEntity } from "./base.entity.ts";
 import { Column, Entity, ManyToOne, JoinColumn, ManyToMany, OneToMany } from "typeorm";
 import { UserEntity } from "./user.entity.ts";
-import { DietaryRestrictionEntity } from "./dietaryRestriction.entity.ts";
-import { MedicalConditionEntity } from "./medicalCondition.entity.ts";
 import { PatientRestrictionEntity } from "./patientRestriction.entity.ts";
 import { PatientConditionEntity } from "./patientConditions.entity.ts";
+import { FoodLogEntity } from "./foodLog.entity.ts";
 
 
 @Entity({ name: "patients" })
@@ -12,6 +11,9 @@ export class PatientEntity extends BaseEntity {
     @ManyToOne(() => UserEntity, (UserEntity) => UserEntity.patients, { cascade: true })
     @JoinColumn({ name: "userId" })
     user: UserEntity;
+
+    @Column()
+    userId: string;
 
     @Column()
     firstName: string;
@@ -42,4 +44,7 @@ export class PatientEntity extends BaseEntity {
 
     @OneToMany(() => PatientConditionEntity, (PatientConditionEntity) => PatientConditionEntity.patients)
     patientConditions: PatientConditionEntity[];
+
+    @OneToMany(() => FoodLogEntity, (FoodLogEntity) => FoodLogEntity.patient)
+    foodLogs: FoodLogEntity[];
 }

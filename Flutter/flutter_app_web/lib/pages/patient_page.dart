@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_web/models/patient.dart';
 import 'package:flutter_app_web/pages/home_page.dart';
+import 'package:flutter_app_web/pages/meal_log_page.dart';
 import 'package:flutter_app_web/services/session_manager.dart';
 import 'package:flutter_app_web/services/patient_service.dart';
 import 'package:flutter_app_web/utils/dialog_utils.dart';
@@ -74,6 +75,11 @@ class _PatientPageState extends State<PatientPage> {
       final List<dynamic> data = jsonDecode(response.body);
       setState(() {
         _patients = data.map((p) => Patient.fromJson(p)).toList();
+        _isLoading = false;
+      });
+    } else if (response.statusCode == 404) {
+      setState(() {
+        _patients = [];
         _isLoading = false;
       });
     } else {
@@ -578,7 +584,13 @@ class _PatientPageState extends State<PatientPage> {
                   );
                 }),
                 _navButton('Patients', Icons.people, () {}),
-                _navButton('Meals', Icons.restaurant, () {}),
+                _navButton('Meals', Icons.restaurant, () {
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => MealLogPage()),
+                    (route) => false,
+                  );
+                }),
                 _navButton('Reports', Icons.bar_chart, () {}),
                 _navButton('Settings', Icons.settings, () {}),
               ],

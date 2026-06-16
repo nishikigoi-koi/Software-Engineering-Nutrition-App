@@ -1,6 +1,5 @@
 import { BaseEntity } from "./base.entity.ts";
-import { Column, Entity, ManyToOne, JoinColumn, OneToMany, ManyToMany } from "typeorm";
-import { PatientEntity } from "./patient.entity.ts";
+import { Column, Entity, OneToMany } from "typeorm";
 import { PatientRestrictionEntity } from "./patientRestriction.entity.ts";
 
 @Entity({ name: "dietaryRestrictions" })

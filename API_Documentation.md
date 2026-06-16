@@ -1110,7 +1110,7 @@ User needs to be Signed in to access this endpoint
         {
             "id": string,
             "foodName": string,
-            "sortName": string,
+            "shortName": string,
             "description": string,
             "serving_size": float,
             "group": string,
@@ -1140,7 +1140,7 @@ User needs to be Signed in to access this endpoint
         {
             "id": "L1151",
             "foodName": "Apple, flesh & skin, raw, 'Braeburn'",
-            "sortName": "Apple, 'Braeburn', flesh & skin, raw",
+            "shortName": "Apple, 'Braeburn', flesh & skin, raw",
             "description": null,
             "serving_size": 145.0,
             "group": "Fruits",
@@ -1185,7 +1185,7 @@ User needs to be Signed in to access this endpoint
 <pre>{
     "id": string,
     "foodName": string,
-    "sortName": string,
+    "shortName": string,
     "description": string,
     "serving_size": float,
     "group": string,
@@ -1247,7 +1247,7 @@ User needs to be Signed in to access this endpoint
 <pre>{
     "id": "L1151",
     "foodName": "Apple, flesh & skin, raw, 'Braeburn'",
-    "sortName": "Apple, 'Braeburn', flesh & skin, raw",
+    "shortName": "Apple, 'Braeburn', flesh & skin, raw",
     "description": null,
     "serving_size": 145.0,
     "group": "Fruits",
@@ -1590,6 +1590,53 @@ User needs to be Signed in and have the same ID as the user id in the patient th
 
 ### Returns
 **status**: 204
+
+## Get food log by date and patient id
+``` GET: http://localhost:3000/api/log/get/:id ``` <br>
+For example <br>
+``` GET: http://localhost:3000/api/log/get/9ad83156-5ed1-4e2f-8358-22222222222 ``` <br>
+### Description 
+get food logs for a given id of the log
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the user id in the patient that is linked to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>[
+    {
+        "id": string,
+        "patientId": String,
+        "FCDBFoodId": string,
+        "CustomFoodId": string,
+        "dateTime": string,
+        "amount" : float,
+        "unit": string,
+        "mealType": string
+    }
+]</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>[
+    {
+        "id": "9ad83156-5ed1-4e2f-8358-22222222222",
+        "patientId": "9ad83156-5ed1-4e2f-8358-abcdef12345",
+        "FCDBFoodId": "L1151",
+        "CustomFoodId": null,
+        "dateTime": "2026-05-12T23:52:18.000Z",
+        "amount": 130,
+        "unit": "g",
+        "mealType": "snack"
+    }
+]</pre>
+</details>
 
 ## Get food log by date and patient id
 ``` GET: http://localhost:3000/api/log/getbypatientanddate?date=:date&patientid=:patientId ``` <br>
