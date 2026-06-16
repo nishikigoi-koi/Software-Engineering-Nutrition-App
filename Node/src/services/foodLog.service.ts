@@ -51,7 +51,7 @@ export async function UpdateFoodLog(req: Request, res: Response , next :NextFunc
 export async function DeleteFoodLog(req: Request, res: Response , next :NextFunction){
     try{
         await DeleteFoodLogInDatabase(req.params.id as string, foodLogRepository)
-        res.status(204)
+        res.status(204).send()
     } catch (error){
         next(error)
     }
