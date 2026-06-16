@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'session_manager.dart';
 import '../models/meal_log.dart';
+import 'package:flutter/material.dart';
 
 class MealLogService {
   static const String _base = 'http://localhost:3000/api/log';
@@ -9,7 +10,7 @@ class MealLogService {
   static Future<http.Response> createMealLog(MealLog log) async {
     final token = SessionManager().token;
 
-    return http.post(
+    return await http.post(
       Uri.parse('$_base/create'),
       headers: {
         'Content-Type': 'application/json',
@@ -22,7 +23,7 @@ class MealLogService {
   static Future<http.Response> updateMealLog(String mealID, MealLog log) async {
     final token = SessionManager().token;
 
-    return http.put(
+    return await http.put(
       Uri.parse('$_base/update/$mealID'),
       headers: {
         'Content-Type': 'application/json',
@@ -35,19 +36,24 @@ class MealLogService {
   static Future<http.Response> deleteMealLog(String mealID) async {
     final token = SessionManager().token;
 
-    return http.delete(
+    final response = await http.delete(
       Uri.parse('$_base/delete/$mealID'),
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $token',
       },
     );
+
+    debugPrint('deleteMealLog status: ${response.statusCode}');
+    debugPrint('deleteMealLog body: ${response.body}');
+    return response;
+    
   }
 
   static Future<http.Response> getPatientMeals(String patientID) async {
     final token = SessionManager().token;
 
-    return http.get(
+    return await http.get(
       Uri.parse('$_base/getbypatient/$patientID'),
       headers: {
         'Content-Type': 'application/json',
@@ -70,7 +76,7 @@ class MealLogService {
       queryParameters: {'date': date, 'patientid': patientID},
     );
 
-    return http.get(
+    return await http.get(
       uri,
       headers: {
         'Content-Type': 'application/json',

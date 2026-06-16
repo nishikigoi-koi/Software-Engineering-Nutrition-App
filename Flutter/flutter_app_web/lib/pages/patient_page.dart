@@ -77,6 +77,11 @@ class _PatientPageState extends State<PatientPage> {
         _patients = data.map((p) => Patient.fromJson(p)).toList();
         _isLoading = false;
       });
+    } else if (response.statusCode == 404) {
+      setState(() {
+        _patients = [];
+        _isLoading = false;
+      });
     } else {
       setState(() => _isLoading = false);
       DialogUtils.showError(context, 'Failed to load patients. (${response.statusCode})');
