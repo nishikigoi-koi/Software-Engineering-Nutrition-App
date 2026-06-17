@@ -1238,7 +1238,16 @@ User needs to be Signed in to access this endpoint
         "qty_per_serving": string,
         "percent_RQI": string,
         "qty_per_100": string
-    }
+    },
+    "micronutrients": [
+        {
+            "name": string,
+            "unit": string,
+            "qty_per_serving": string,
+            "percent_RQI": string,
+            "qty_per_100": string
+        }
+    ]
 }</pre>
 </details>
 
@@ -1300,7 +1309,16 @@ User needs to be Signed in to access this endpoint
         "qty_per_serving": "1",
         "percent_RQI": "0",
         "qty_per_100": "1"
-    }
+    },
+    "micronutrients": [
+        {
+            "name": "Vitamin C",
+            "unit": "mg",
+            "qty_per_serving": "14",
+            "percent_RQI": "35",
+            "qty_per_100": "9.7"
+        }
+    ]
 }</pre>
 </details>
 
@@ -1379,7 +1397,17 @@ User needs to be Signed in and have the same user id as the userId to access thi
         "qty_per_serving": string,
         "percent_RQI": string,
         "qty_per_100": string
-    }
+    },
+    "micronutrients": [
+        {
+            "name": string,
+            "unit": string,
+            "qty_per_serving": string,
+            "percent_RQI": string,
+            "qty_per_100": string
+        }
+    ]
+
 }</pre>
 </details>
 
@@ -1441,7 +1469,16 @@ User needs to be Signed in and have the same user id as the userId to access thi
         "qty_per_serving": "990",
         "percent_RQI": "43",
         "qty_per_100": "380"
-    }
+    },
+    "micronutrients": [
+        {
+            "name": "Iron",
+            "unit": "mg",
+            "qty_per_serving": "4.6",
+            "percent_RQI": "38",
+            "qty_per_100": "1.8"
+        }
+    ]
 }</pre>
 </details>
 
@@ -1800,7 +1837,16 @@ creates a custom food item or meal in the databse linked to a user
         "qty_per_serving": string,
         "percent_RQI": string,
         "qty_per_100": string
-    }
+    },
+    "micronutrients": [
+        {
+            "name": string,
+            "unit": string,
+            "qty_per_serving": string,
+            "percent_RQI": string,
+            "qty_per_100": string
+        }
+    ]
 }</pre>
 </details>
 
@@ -1861,7 +1907,16 @@ creates a custom food item or meal in the databse linked to a user
         "qty_per_serving": "990",
         "percent_RQI": "43",
         "qty_per_100": "380"
-    }
+    },
+    "micronutrients": [
+        {
+            "name": "Iron",
+            "unit": "mg",
+            "qty_per_serving": "4.6",
+            "percent_RQI": "38",
+            "qty_per_100": "1.8"
+        }
+    ]
 }</pre>
 </details>
 
@@ -1931,7 +1986,16 @@ User needs to be Signed in and have the same ID as the userId to access this end
         "qty_per_serving": string,
         "percent_RQI": string,
         "qty_per_100": string
-    }
+    },
+    "micronutrients": [
+        {
+            "name": string,
+            "unit": string,
+            "qty_per_serving": string,
+            "percent_RQI": string,
+            "qty_per_100": string
+        }
+    ]
 }</pre>
 </details>
 
@@ -1993,7 +2057,16 @@ User needs to be Signed in and have the same ID as the userId to access this end
         "qty_per_serving": "990",
         "percent_RQI": "43",
         "qty_per_100": "380"
-    }
+    },
+    "micronutrients": [
+        {
+            "name": "Iron",
+            "unit": "mg",
+            "qty_per_serving": "4.6",
+            "percent_RQI": "38",
+            "qty_per_100": "1.8"
+        }
+    ]
 }</pre>
 </details>
 
@@ -2063,7 +2136,16 @@ updates the custome food item that has the same id
         "qty_per_serving": string,
         "percent_RQI": string,
         "qty_per_100": string
-    }
+    },
+    "micronutrients": [
+        {
+            "name": string,
+            "unit": string,
+            "qty_per_serving": string,
+            "percent_RQI": string,
+            "qty_per_100": string
+        }
+    ]
 }</pre>
 </details>
 
@@ -2124,7 +2206,16 @@ updates the custome food item that has the same id
         "qty_per_serving": "990",
         "percent_RQI": "43",
         "qty_per_100": "380"
-    }
+    },
+    "micronutrients": [
+        {
+            "name": "Iron",
+            "unit": "mg",
+            "qty_per_serving": "4.6",
+            "percent_RQI": "38",
+            "qty_per_100": "1.8"
+        }
+    ]
 }</pre>
 </details>
 
@@ -2241,7 +2332,16 @@ User needs to be Signed in and have the same user id as the userId to access thi
         "qty_per_serving": string,
         "percent_RQI": string,
         "qty_per_100": string
-    }
+    },
+    "micronutrients": [
+        {
+            "name": string,
+            "unit": string,
+            "qty_per_serving": string,
+            "percent_RQI": string,
+            "qty_per_100": string
+        }
+    ]
 }</pre>
 </details>
 
@@ -2303,7 +2403,16 @@ User needs to be Signed in and have the same user id as the userId to access thi
         "qty_per_serving": "990",
         "percent_RQI": "43",
         "qty_per_100": "380"
-    }
+    },
+    "micronutrients": [
+        {
+            "name": "Iron",
+            "unit": "mg",
+            "qty_per_serving": "4.6",
+            "percent_RQI": "38",
+            "qty_per_100": "1.8"
+        }
+    ]
 }</pre>
 </details>
 
@@ -2384,7 +2493,16 @@ User needs to be Signed in and have the same user id as the userId to access thi
             "percent_RQI": string,
             "qty_per_100": string
         }
-    }
+    },
+    "micronutrients": [
+        {
+            "name": string,
+            "unit": string,
+            "qty_per_serving": string,
+            "percent_RQI": string,
+            "qty_per_100": string
+        }
+    ]
 ]</pre>
 </details>
 
@@ -2448,7 +2566,16 @@ User needs to be Signed in and have the same user id as the userId to access thi
             "percent_RQI": "43",
             "qty_per_100": "380"
         }
-    }
+    },
+    "micronutrients": [
+        {
+            "name": "Iron",
+            "unit": "mg",
+            "qty_per_serving": "4.6",
+            "percent_RQI": "38",
+            "qty_per_100": "1.8"
+        }
+    ]
 ]</pre>
 </details>
 
