@@ -2420,7 +2420,7 @@ User needs to be Signed in and have the same user id as the userId to access thi
 ```GET: http://localhost:3000/api/customfood/getbyuserid/:id ``` <br>
 
 For example <br>
-```GET: http://localhost:3000/api/customfood/get/9ad83156-5ed1-4e2f-8358-c6e2ce906f3a ```
+```GET: http://localhost:3000/api/customfood/getbyuserid/9ad83156-5ed1-4e2f-8358-c6e2ce906f3a ```
 
 ## Description  
 Gets all the matching custom food items that have the same user id linked
@@ -2579,3 +2579,136 @@ User needs to be Signed in and have the same user id as the userId to access thi
 ]</pre>
 </details>
 
+# RDI
+
+## Calculate RDI off patient id 
+
+```GET: http://localhost:3000/api/rdi/:id ``` <br>
+
+For example <br>
+```GET: http://localhost:3000/api/rdi/9ad83156-5ed1-4e2f-8358-abcdef12345 ```
+
+### Description 
+Calculates RDI based off patient id using the Mifflin-St Jeor equation
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the user id in the patient that is linked to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "EnergyUnit": string,
+    "TotalEnergy": string,
+    "macronutrients": [
+        {
+            "name": string,
+            "unit": string,
+            "minAmount": string,
+            "maxAmount": string
+        }
+    ],
+    "micronutrients": [
+        {
+            "name": string,
+            "unit": string,
+            "amount": string
+        }
+    ]
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "EnergyUnit": "kJ",
+    "TotalEnergy": "8700",
+    "macronutrients": [
+        {
+            "name": "protien",
+            "unit": "g",
+            "minAmount": "78",
+            "maxAmount": "130"
+        },
+        {
+            "name": "carbohydrate",
+            "unit": "g",
+            "minAmount": "234",
+            "maxAmount": "338"
+        },
+        {
+            "name": "totalFat",
+            "unit": "g",
+            "minAmount": "46",
+            "maxAmount": "81"
+        },
+        {
+            "name": "saturatedFat",
+            "unit": "g",
+            "minAmount": "0",
+            "maxAmount": "23.5"
+        }
+    ],
+    "micronutrients": [
+        {
+            "name": "Vitamin A",
+            "unit": "µg RE",
+            "amount": "900"
+        },
+        {
+            "name": "Vitamin B1",
+            "unit": "mg",
+            "amount": "1.2"
+        },
+        {
+            "name": "Vitamin B2",
+            "unit": "mg",
+            "amount": "1.3"
+        },
+        {
+            "name": "Vitamin B3",
+            "unit": "mg NE",
+            "amount": "16"
+        },
+        {
+            "name": "Vitamin B6",
+            "unit": "mg",
+            "amount": "1.3"
+        },
+        {
+            "name": "Folate",
+            "unit": "µg",
+            "amount": "400"
+        },
+        {
+            "name": "Vitamin B12",
+            "unit": "µg",
+            "amount": "2.4"
+        },
+        {
+            "name": "Vitamin C",
+            "unit": "mg",
+            "amount": "45"
+        },
+        {
+            "name": "Vitamin D",
+            "unit": "µg",
+            "amount": "5"
+        },
+        {
+            "name": "Vitamin E",
+            "unit": "mg",
+            "amount": "10"
+        },
+        {
+            "name": "Vitamin K",
+            "unit": "µg",
+            "amount": "70"
+        }
+    ]
+}</pre>
+</details>
