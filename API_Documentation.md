@@ -2708,6 +2708,76 @@ User needs to be Signed in and have the same ID as the user id in the patient th
             "name": "Vitamin K",
             "unit": "µg",
             "amount": "70"
+        },
+        {
+            "name": "Calcium",
+            "unit": "mg",
+            "amount": "1000"
+        },
+        {
+            "name": "Iron",
+            "unit": "mg",
+            "amount": "8"
+        },
+        {
+            "name": "Magnesium",
+            "unit": "mg",
+            "amount": "400"
+        },
+        {
+            "name": "Zinc",
+            "unit": "mg",
+            "amount": "14"
+        },
+        {
+            "name": "Iodine",
+            "unit": "µg",
+            "amount": "150"
+        },
+        {
+            "name": "Selenium",
+            "unit": "µg",
+            "amount": "70"
+        },
+        {
+            "name": "Phosphorus",
+            "unit": "mg",
+            "amount": "1000"
+        },
+        {
+            "name": "Sodium",
+            "unit": "mg",
+            "amount": "460 - 920"
+        },
+        {
+            "name": "Potassium",
+            "unit": "mg",
+            "amount": "3800"
+        },
+        {
+            "name": "Copper",
+            "unit": "mg",
+            "amount": "3.0"
+        },
+        {
+            "name": "Chromium",
+            "unit": "µg",
+            "amount": "35"
+        },
+        {
+            "name": "Manganese",
+            "unit": "mg",
+            "amount": "5.5"
+        },
+        {
+            "name": "Fluoride",
+            "unit": "mg",
+            "amount": "4.0"
+        },
+        {
+            "name": "Molybdenum",
+            "unit": "µg",
+            "amount": "45"
         }
     ]
 }</pre>
