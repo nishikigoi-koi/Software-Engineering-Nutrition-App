@@ -3793,7 +3793,7 @@ User needs to be Signed in and have the same ID as the user id in the patient th
                 "name": "Vitamin B1",
                 "unit": "mg",
                 "RDI": "1.2",
-                "intake": ,
+                "intake": "1.2",
                 "direction": "in range"
             },
             {
