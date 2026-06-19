@@ -3376,3 +3376,60 @@ User needs to be Signed in and have the same ID as the user id in the patient th
     ]
 }</pre>
 </details>
+
+# flag lacking or too much nutrients 
+
+## flag lacking or too much nutrients for a day for a patient
+
+```GET: http://localhost:3000/api/flag/day/date=:date&patientid=:patientId ``` <br>
+
+For example <br>
+```GET: http://localhost:3000/api/flag/day/date=:2026-05-12&patientid=9ad83156-5ed1-4e2f-8358-abcdef12345 ```
+
+### Description 
+calculates the total nutrients intake and RDI then compares them and flags any that are out of range or more then 5% diffrent for a given day for a patient from their food logs
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the user id in the patient that is linked to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "flags": [
+        {
+            "name": string,
+            "unit": string,
+            "RDI": string,
+            "intake": string,
+            "direction": string
+        }
+    ]
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "flags": [
+        {
+            "name": "Vitamin B2",
+            "unit": "mg",
+            "RDI": "1.3",
+            "intake": "1.2",
+            "direction": "below"
+        },
+        {
+            "name": "Manganese",
+            "unit": "mg",
+            "RDI": "5.5",
+            "intake": "5.8",
+            "direction": "above"
+        }
+    ]
+}</pre>
+</details>
