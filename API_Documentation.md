@@ -2856,7 +2856,7 @@ User needs to be Signed in and have the same ID as the user id in the patient th
             "name": "Sodium",
             "unit": "mg",
             "amount": "460"
-        },
+        }
     ],
     "micronutrients": [
         {
@@ -3400,37 +3400,75 @@ User needs to be Signed in and have the same ID as the user id in the patient th
 <details>
 <summary>Format</summary>
 <pre>{
-    "flags": [
-        {
+    "flags": {
+        "energy": {
             "name": string,
             "unit": string,
             "RDI": string,
             "intake": string,
             "direction": string
-        }
-    ]
+        },
+        "macronutrients": [
+            {
+                "name": string,
+                "unit": string,
+                "minRDI": string,
+                "maxRDI": string,
+                "intake": string,
+                "direction": string
+            }
+        ],
+        "micronutrients": [
+            {
+                "name": string,
+                "unit": string,
+                "RDI": string,
+                "intake": string,
+                "direction": string
+            }
+        ]
+    }
 }</pre>
 </details>
 
 <details>
 <summary>Example</summary>
 <pre>{
-    "flags": [
-        {
-            "name": "Vitamin B2",
-            "unit": "mg",
-            "RDI": "1.3",
-            "intake": "1.2",
+    "flags": {
+        "energy": {
+            "name": "energy",
+            "unit": "kJ",
+            "RDI": "8700",
+            "intake": "8150",
             "direction": "below"
         },
-        {
-            "name": "Manganese",
-            "unit": "mg",
-            "RDI": "5.5",
-            "intake": "5.8",
-            "direction": "above"
-        }
-    ]
+        "macronutrients": [
+            {
+                "name": "carbohydrate",
+                "unit": "g",
+                "minRDI": "234",
+                "maxRDI": "338",
+                "intake": "220",
+                "direction": "below"
+            }
+        ],
+        "micronutrients": [
+            {
+                "name": "Vitamin B2",
+                "unit": "mg",
+                "RDI": "1.3",
+                "intake": "1.2",
+                "direction": "below"
+            },
+            {
+                "name": "Manganese",
+                "unit": "mg",
+                "RDI": "5.5",
+                "intake": "5.8",
+                "direction": "above"
+            }
+        ]
+    }
 }</pre>
 </details>
 
@@ -3455,37 +3493,75 @@ User needs to be Signed in and have the same ID as the user id in the patient th
 <details>
 <summary>Format</summary>
 <pre>{
-    "flags": [
-        {
+    "flags": {
+        "energy": {
             "name": string,
             "unit": string,
             "RDI": string,
             "intake": string,
             "direction": string
-        }
-    ]
+        },
+        "macronutrients": [
+            {
+                "name": string,
+                "unit": string,
+                "minRDI": string,
+                "maxRDI": string,
+                "intake": string,
+                "direction": string
+            }
+        ],
+        "micronutrients": [
+            {
+                "name": string,
+                "unit": string,
+                "RDI": string,
+                "intake": string,
+                "direction": string
+            }
+        ]
+    }
 }</pre>
 </details>
 
 <details>
 <summary>Example</summary>
 <pre>{
-    "flags": [
-        {
-            "name": "Vitamin B2",
-            "unit": "mg",
-            "RDI": "9.1",
-            "intake": "8.4",
+    "flags": {
+        "energy": {
+            "name": "energy",
+            "unit": "kJ",
+            "RDI": "60900",
+            "intake": "57000",
             "direction": "below"
         },
-        {
-            "name": "Manganese",
-            "unit": "mg",
-            "RDI": "38.5",
-            "intake": "40.6",
-            "direction": "above"
-        }
-    ]
+        "macronutrients": [
+            {
+                "name": "carbohydrate",
+                "unit": "g",
+                "minRDI": "1638",
+                "maxRDI": "2366",
+                "intake": "1540",
+                "direction": "below"
+            }
+        ],
+        "micronutrients": [
+            {
+                "name": "Vitamin B2",
+                "unit": "mg",
+                "RDI": "9.1",
+                "intake": "8.4",
+                "direction": "below"
+            },
+            {
+                "name": "Manganese",
+                "unit": "mg",
+                "RDI": "38.5",
+                "intake": "40.6",
+                "direction": "above"
+            }
+        ]
+    }
 }</pre>
 </details>
 
@@ -3510,13 +3586,77 @@ User needs to be Signed in and have the same ID as the user id in the patient th
 <details>
 <summary>Format</summary>
 <pre>{
-    "flags": [
-        {
+    "flags": {
+        "energy": {
             "name": string,
             "unit": string,
             "RDI": string,
             "intake": string,
             "direction": string
+        },
+        "macronutrients": [
+            {
+                "name": string,
+                "unit": string,
+                "minRDI": string,
+                "maxRDI": string,
+                "intake": string,
+                "direction": string
+            }
+        ],
+        "micronutrients": [
+            {
+                "name": string,
+                "unit": string,
+                "RDI": string,
+                "intake": string,
+                "direction": string
+            }
+        ]
+    }
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "flags": {
+        "energy": {
+            "name": "energy",
+            "unit": "kJ",
+            "RDI": "60900",
+            "intake": "57000",
+            "direction": "below"
+        },
+        "macronutrients": [
+            {
+                "name": "carbohydrate",
+                "unit": "g",
+                "minRDI": "1638",
+                "maxRDI": "2366",
+                "intake": "1540",
+                "direction": "below"
+            }
+        ],
+        "micronutrients": [
+            {
+                "name": "Vitamin B2",
+                "unit": "mg",
+                "RDI": "9.1",
+                "intake": "8.4",
+                "direction": "below"
+            },
+            {
+                "name": "Manganese",
+                "unit": "mg",
+                "RDI": "38.5",
+                "intake": "40.6",
+                "direction": "above"
+            }
+        ]
+    }
+}</pre>
+</details>
         }
     ]
 }</pre>
