@@ -3488,3 +3488,58 @@ User needs to be Signed in and have the same ID as the user id in the patient th
     ]
 }</pre>
 </details>
+
+## flag lacking nutrients for a custom time period for a patient
+
+```GET: http://localhost:3000/api/flag/customperiod/startdate=:date&enddate=:date&patientid=:patientId ``` <br>
+
+For example <br>
+```GET: http://localhost:3000/api/flag/customperiod/startdate=:2026-05-12&enddate=:2026-05-19&patientid=9ad83156-5ed1-4e2f-8358-abcdef12345 ```
+
+### Description 
+calculates the total nutrients intake and RDI then compares them and flags any that are out of range or more then 5% diffrent for a custom time period (days from the start date to the end date (inclusive)) for a patient from their food logs
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the user id in the patient that is linked to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "flags": [
+        {
+            "name": string,
+            "unit": string,
+            "RDI": string,
+            "intake": string,
+            "direction": string
+        }
+    ]
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "flags": [
+        {
+            "name": "Vitamin B2",
+            "unit": "mg",
+            "RDI": "9.1",
+            "intake": "8.4",
+            "direction": "below"
+        },
+        {
+            "name": "Manganese",
+            "unit": "mg",
+            "RDI": "38.5",
+            "intake": "40.6",
+            "direction": "above"
+        }
+    ]
+}</pre>
+</details>
