@@ -3954,13 +3954,593 @@ User needs to be Signed in and have the same ID as the user id in the patient th
     }
 }</pre>
 </details>
+
+## generate a weekly report
+
+```GET: http://localhost:3000/api/report/week/startdate=:date&patientid=:patientId ``` <br>
+
+For example <br>
+```GET: http://localhost:3000/api/report/week/startdate=:2026-05-12&patientid=9ad83156-5ed1-4e2f-8358-abcdef12345 ```
+
+### Description 
+Generates a report containing RDI compared to total intake and if there are any flags for a given week (7 days from the start date (inclusive)) for a patient
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the user id in the patient that is linked to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "title": string,
+    "date": string,
+    "patientName": string,
+    "foodLogs": [
         {
-            "name": "Manganese",
-            "unit": "mg",
-            "RDI": "38.5",
-            "intake": "40.6",
-            "direction": "above"
+            "foodLogId": string
         }
-    ]
+    ],
+    "RDIComparedToTotalIntake": {
+        "energy": {
+            "name": string,
+            "unit": string,
+            "RDI": string,
+            "intake": string,
+            "direction": string
+        },
+        "macronutrients": [
+            {
+                "name": string,
+                "unit": string,
+                "minRDI": string,
+                "maxRDI": string,
+                "intake": string,
+                "direction": string
+            }
+        ],
+        "micronutrients": [
+            {
+                "name": string,
+                "unit": string,
+                "RDI": string,
+                "intake": string,
+                "direction": string
+            }
+        ]
+    }
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "title": "Report For John Doe on the 12th of May 2026",
+    "date": "2026-05-12",
+    "patientName": "John Doe",
+    "foodLogs": [
+        {
+            "foodLogId": "9ad83156-5ed1-4e2f-8358-22222222222"
+        }
+    ],
+    "RDIComparedToTotalIntake": {
+        "energy": {
+            "name": "energy",
+            "unit": "kJ",
+            "RDI": "60900",
+            "intake": "57000",
+            "direction": "below"
+        },
+        "macronutrients": [
+            {
+                "name": "protien",
+                "unit": "g",
+                "minRDI": "546",
+                "maxRDI": "910",
+                "intake": "630",
+                "direction": "in range"
+            },
+            {
+                "name": "carbohydrate",
+                "unit": "g",
+                "minRDI": "1638",
+                "maxRDI": "2366",
+                "intake": "1890",
+                "direction": "in range"
+            },
+            {
+                "name": "totalFat",
+                "unit": "g",
+                "minRDI": "322",
+                "maxRDI": "567",
+                "intake": "455",
+                "direction": "in range"
+            },
+            {
+                "name": "saturatedFat",
+                "unit": "g",
+                "minRDI": "0",
+                "maxRDI": "164.5",
+                "intake": "70",
+                "direction": "in range"
+            },
+            {
+                "name": "Sodium",
+                "unit": "mg",
+                "minRDI": "3220",
+                "maxRDI": "6440",
+                "intake": "3220",
+                "direction": "in range"
+            }
+        ],
+        "micronutrients": [
+            {
+                "name": "Vitamin A",
+                "unit": "µg RE",
+                "RDI": "6300",
+                "intake": "6300",
+                "direction": "in range"
+            },
+            {
+                "name": "Vitamin B1",
+                "unit": "mg",
+                "RDI": "8.4,
+                "intake": "8.4",
+                "direction": "in range"
+            },
+            {
+                "name": "Vitamin B2",
+                "unit": "mg",
+                "RDI": "9.1",
+                "intake": "8.4",
+                "direction": "below"
+            },
+            {
+                "name": "Vitamin B3",
+                "unit": "mg NE",
+                "RDI": "112",
+                "intake": "112",
+                "direction": "in range"
+            },
+            {
+                "name": "Vitamin B6",
+                "unit": "mg",
+                "RDI": "9.1",
+                "intake": "9.1",
+                "direction": "in range"
+            },
+            {
+                "name": "Folate",
+                "unit": "µg",
+                "RDI": "2800",
+                "intake": "2800",
+                "direction": "in range"
+            },
+            {
+                "name": "Vitamin B12",
+                "unit": "µg",
+                "RDI": "16.8",
+                "intake": "16.8",
+                "direction": "in range"
+            },
+            {
+                "name": "Vitamin C",
+                "unit": "mg",
+                "RDI": "315",
+                "intake": "315",
+                "direction": "in range"
+            },
+            {
+                "name": "Vitamin D",
+                "unit": "µg",
+                "RDI": "35",
+                "intake": "35",
+                "direction": "in range"
+            },
+            {
+                "name": "Vitamin E",
+                "unit": "mg",
+                "RDI": "70",
+                "intake": "70",
+                "direction": "in range"
+            },
+            {
+                "name": "Vitamin K",
+                "unit": "µg",
+                "RDI": "490",
+                "intake": "490",
+                "direction": "in range"
+            },
+            {
+                "name": "Calcium",
+                "unit": "mg",
+                "RDI": "7000",
+                "intake": "7000",
+                "direction": "in range"
+            },
+            {
+                "name": "Iron",
+                "unit": "mg",
+                "RDI": "56",
+                "intake": "56",
+                "direction": "in range"
+            },
+            {
+                "name": "Magnesium",
+                "unit": "mg",
+                "RDI": "2800",
+                "intake": "2800",
+                "direction": "in range"
+            },
+            {
+                "name": "Zinc",
+                "unit": "mg",
+                "RDI": "98",
+                "intake": "98",
+                "direction": "in range"
+            },
+            {
+                "name": "Iodine",
+                "unit": "µg",
+                "RDI": "1050",
+                "intake": "1050",
+                "direction": "in range"
+            },
+            {
+                "name": "Selenium",
+                "unit": "µg",
+                "RDI": "490",
+                "intake": "490",
+                "direction": "in range"
+            },
+            {
+                "name": "Phosphorus",
+                "unit": "mg",
+                "RDI": "7000",
+                "intake": "7000",
+                "direction": "in range"
+            },
+            {
+                "name": "Potassium",
+                "unit": "mg",
+                "RDI": "26600",
+                "intake": "26600",
+                "direction": "in range"
+            },
+            {
+                "name": "Copper",
+                "unit": "mg",
+                "RDI": "21.0",
+                "intake": "21.0",
+                "direction": "in range"
+            },
+            {
+                "name": "Chromium",
+                "unit": "µg",
+                "RDI": "245",
+                "intake": "245",
+                "direction": "in range"
+            },
+            {
+                "name": "Manganese",
+                "unit": "mg",
+                "RDI": "38.5",
+                "intake": "40.6",
+                "direction": "above"
+            },
+            {
+                "name": "Fluoride",
+                "unit": "mg",
+                "RDI": "28.0",
+                "intake": "28.0",
+                "direction": "in range"
+            },
+            {
+                "name": "Molybdenum",
+                "unit": "µg",
+                "RDI": "315",
+                "intake": "315",
+                "direction": "in range"
+            }
+        ]
+    }
+}</pre>
+</details>
+
+## generate a custom time period report
+
+```GET: http://localhost:3000/api/report/customperiod/startdate=:date&enddate=:date&patientid=:patientId ``` <br>
+
+For example <br>
+```GET: http://localhost:3000/api/report/customperiod/startdate=:2026-05-12&enddate=:2026-05-19&patientid=9ad83156-5ed1-4e2f-8358-abcdef12345 ```
+
+### Description 
+Generates a report containing RDI compared to total intake and if there are any flags for a custom time period (days from the start date to the end date (inclusive)) for a patient
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the user id in the patient that is linked to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "title": string,
+    "date": string,
+    "patientName": string,
+    "foodLogs": [
+        {
+            "foodLogId": string
+        }
+    ],
+    "RDIComparedToTotalIntake": {
+        "energy": {
+            "name": string,
+            "unit": string,
+            "RDI": string,
+            "intake": string,
+            "direction": string
+        },
+        "macronutrients": [
+            {
+                "name": string,
+                "unit": string,
+                "minRDI": string,
+                "maxRDI": string,
+                "intake": string,
+                "direction": string
+            }
+        ],
+        "micronutrients": [
+            {
+                "name": string,
+                "unit": string,
+                "RDI": string,
+                "intake": string,
+                "direction": string
+            }
+        ]
+    }
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "title": "Report For John Doe on the 12th of May 2026",
+    "date": "2026-05-12",
+    "patientName": "John Doe",
+    "foodLogs": [
+        {
+            "foodLogId": "9ad83156-5ed1-4e2f-8358-22222222222"
+        }
+    ],
+    "RDIComparedToTotalIntake": {
+        "energy": {
+            "name": "energy",
+            "unit": "kJ",
+            "RDI": "60900",
+            "intake": "57000",
+            "direction": "below"
+        },
+        "macronutrients": [
+            {
+                "name": "protien",
+                "unit": "g",
+                "minRDI": "546",
+                "maxRDI": "910",
+                "intake": "630",
+                "direction": "in range"
+            },
+            {
+                "name": "carbohydrate",
+                "unit": "g",
+                "minRDI": "1638",
+                "maxRDI": "2366",
+                "intake": "1890",
+                "direction": "in range"
+            },
+            {
+                "name": "totalFat",
+                "unit": "g",
+                "minRDI": "322",
+                "maxRDI": "567",
+                "intake": "455",
+                "direction": "in range"
+            },
+            {
+                "name": "saturatedFat",
+                "unit": "g",
+                "minRDI": "0",
+                "maxRDI": "164.5",
+                "intake": "70",
+                "direction": "in range"
+            },
+            {
+                "name": "Sodium",
+                "unit": "mg",
+                "minRDI": "3220",
+                "maxRDI": "6440",
+                "intake": "3220",
+                "direction": "in range"
+            }
+        ],
+        "micronutrients": [
+            {
+                "name": "Vitamin A",
+                "unit": "µg RE",
+                "RDI": "6300",
+                "intake": "6300",
+                "direction": "in range"
+            },
+            {
+                "name": "Vitamin B1",
+                "unit": "mg",
+                "RDI": "8.4,
+                "intake": "8.4",
+                "direction": "in range"
+            },
+            {
+                "name": "Vitamin B2",
+                "unit": "mg",
+                "RDI": "9.1",
+                "intake": "8.4",
+                "direction": "below"
+            },
+            {
+                "name": "Vitamin B3",
+                "unit": "mg NE",
+                "RDI": "112",
+                "intake": "112",
+                "direction": "in range"
+            },
+            {
+                "name": "Vitamin B6",
+                "unit": "mg",
+                "RDI": "9.1",
+                "intake": "9.1",
+                "direction": "in range"
+            },
+            {
+                "name": "Folate",
+                "unit": "µg",
+                "RDI": "2800",
+                "intake": "2800",
+                "direction": "in range"
+            },
+            {
+                "name": "Vitamin B12",
+                "unit": "µg",
+                "RDI": "16.8",
+                "intake": "16.8",
+                "direction": "in range"
+            },
+            {
+                "name": "Vitamin C",
+                "unit": "mg",
+                "RDI": "315",
+                "intake": "315",
+                "direction": "in range"
+            },
+            {
+                "name": "Vitamin D",
+                "unit": "µg",
+                "RDI": "35",
+                "intake": "35",
+                "direction": "in range"
+            },
+            {
+                "name": "Vitamin E",
+                "unit": "mg",
+                "RDI": "70",
+                "intake": "70",
+                "direction": "in range"
+            },
+            {
+                "name": "Vitamin K",
+                "unit": "µg",
+                "RDI": "490",
+                "intake": "490",
+                "direction": "in range"
+            },
+            {
+                "name": "Calcium",
+                "unit": "mg",
+                "RDI": "7000",
+                "intake": "7000",
+                "direction": "in range"
+            },
+            {
+                "name": "Iron",
+                "unit": "mg",
+                "RDI": "56",
+                "intake": "56",
+                "direction": "in range"
+            },
+            {
+                "name": "Magnesium",
+                "unit": "mg",
+                "RDI": "2800",
+                "intake": "2800",
+                "direction": "in range"
+            },
+            {
+                "name": "Zinc",
+                "unit": "mg",
+                "RDI": "98",
+                "intake": "98",
+                "direction": "in range"
+            },
+            {
+                "name": "Iodine",
+                "unit": "µg",
+                "RDI": "1050",
+                "intake": "1050",
+                "direction": "in range"
+            },
+            {
+                "name": "Selenium",
+                "unit": "µg",
+                "RDI": "490",
+                "intake": "490",
+                "direction": "in range"
+            },
+            {
+                "name": "Phosphorus",
+                "unit": "mg",
+                "RDI": "7000",
+                "intake": "7000",
+                "direction": "in range"
+            },
+            {
+                "name": "Potassium",
+                "unit": "mg",
+                "RDI": "26600",
+                "intake": "26600",
+                "direction": "in range"
+            },
+            {
+                "name": "Copper",
+                "unit": "mg",
+                "RDI": "21.0",
+                "intake": "21.0",
+                "direction": "in range"
+            },
+            {
+                "name": "Chromium",
+                "unit": "µg",
+                "RDI": "245",
+                "intake": "245",
+                "direction": "in range"
+            },
+            {
+                "name": "Manganese",
+                "unit": "mg",
+                "RDI": "38.5",
+                "intake": "40.6",
+                "direction": "above"
+            },
+            {
+                "name": "Fluoride",
+                "unit": "mg",
+                "RDI": "28.0",
+                "intake": "28.0",
+                "direction": "in range"
+            },
+            {
+                "name": "Molybdenum",
+                "unit": "µg",
+                "RDI": "315",
+                "intake": "315",
+                "direction": "in range"
+            }
+        ]
+    }
 }</pre>
 </details>
