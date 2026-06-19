@@ -1678,7 +1678,7 @@ User needs to be Signed in and have the same ID as the user id in the patient th
 ## Get food log by date and patient id
 ``` GET: http://localhost:3000/api/log/getbypatientanddate?date=:date&patientid=:patientId ``` <br>
 For example <br>
-``` GET: http://localhost:3000/api/log/getbypatientanddate?date=:2026-05-12&patientid=9ad83156-5ed1-4e2f-8358-abcdef12345 ``` <br>
+``` GET: http://localhost:3000/api/log/getbypatientanddate?date=2026-05-12&patientid=9ad83156-5ed1-4e2f-8358-abcdef12345 ``` <br>
 ### Description 
 get all food logs for a given day for a patient
 
@@ -2791,7 +2791,7 @@ User needs to be Signed in and have the same ID as the user id in the patient th
 ```GET: http://localhost:3000/api/totalnutrients/day?date=:date&patientid=:patientId ``` <br>
 
 For example <br>
-```GET: http://localhost:3000/api/totalnutrients/day?date=:2026-05-12&patientid=9ad83156-5ed1-4e2f-8358-abcdef12345 ```
+```GET: http://localhost:3000/api/totalnutrients/day?date=2026-05-12&patientid=9ad83156-5ed1-4e2f-8358-abcdef12345 ```
 
 ### Description 
 calculates the total nutrients intake for a given day for a patient from their food logs
@@ -2988,7 +2988,7 @@ User needs to be Signed in and have the same ID as the user id in the patient th
 ```GET: http://localhost:3000/api/totalnutrients/week?startdate=:date&patientid=:patientId ``` <br>
 
 For example <br>
-```GET: http://localhost:3000/api/totalnutrients/week?startdate=:2026-05-12&patientid=9ad83156-5ed1-4e2f-8358-abcdef12345 ```
+```GET: http://localhost:3000/api/totalnutrients/week?startdate=2026-05-12&patientid=9ad83156-5ed1-4e2f-8358-abcdef12345 ```
 
 ### Description 
 calculates the total nutrients intake for a given week (7 days from the start date (inclusive)) for a patient from their food logs
@@ -3185,7 +3185,7 @@ User needs to be Signed in and have the same ID as the user id in the patient th
 ```GET: http://localhost:3000/api/totalnutrients/customperiod?startdate=:date&enddate=:date&patientid=:patientId ``` <br>
 
 For example <br>
-```GET: http://localhost:3000/api/totalnutrients/customperiod?startdate=:2026-05-12&enddate=:2026-05-19&patientid=9ad83156-5ed1-4e2f-8358-abcdef12345 ```
+```GET: http://localhost:3000/api/totalnutrients/customperiod?startdate=2026-05-12&enddate=2026-05-19&patientid=9ad83156-5ed1-4e2f-8358-abcdef12345 ```
 
 ### Description 
 calculates the total nutrients intake for a custom time period (days from the start date to the end date (inclusive)) for a patient from their food logs
@@ -3384,7 +3384,7 @@ User needs to be Signed in and have the same ID as the user id in the patient th
 ```GET: http://localhost:3000/api/flag/day?date=:date&patientid=:patientId ``` <br>
 
 For example <br>
-```GET: http://localhost:3000/api/flag/day?date=:2026-05-12&patientid=9ad83156-5ed1-4e2f-8358-abcdef12345 ```
+```GET: http://localhost:3000/api/flag/day?date=2026-05-12&patientid=9ad83156-5ed1-4e2f-8358-abcdef12345 ```
 
 ### Description 
 calculates the total nutrients intake and RDI then compares them and flags any that are out of range or more then 5% diffrent for a given day for a patient from their food logs
@@ -3477,7 +3477,7 @@ User needs to be Signed in and have the same ID as the user id in the patient th
 ```GET: http://localhost:3000/api/flag/week?startdate=:date&patientid=:patientId ``` <br>
 
 For example <br>
-```GET: http://localhost:3000/api/flag/week?startdate=:2026-05-12&patientid=9ad83156-5ed1-4e2f-8358-abcdef12345 ```
+```GET: http://localhost:3000/api/flag/week?startdate=2026-05-12&patientid=9ad83156-5ed1-4e2f-8358-abcdef12345 ```
 
 ### Description 
 calculates the total nutrients intake and RDI then compares them and flags any that are out of range or more then 5% diffrent for a given week (7 days from the start date (inclusive)) for a patient from their food logs
@@ -3570,7 +3570,7 @@ User needs to be Signed in and have the same ID as the user id in the patient th
 ```GET: http://localhost:3000/api/flag/customperiod?startdate=:date&enddate=:date&patientid=:patientId ``` <br>
 
 For example <br>
-```GET: http://localhost:3000/api/flag/customperiod?startdate=:2026-05-12&enddate=:2026-05-19&patientid=9ad83156-5ed1-4e2f-8358-abcdef12345 ```
+```GET: http://localhost:3000/api/flag/customperiod?startdate=2026-05-12&enddate=2026-05-19&patientid=9ad83156-5ed1-4e2f-8358-abcdef12345 ```
 
 ### Description 
 calculates the total nutrients intake and RDI then compares them and flags any that are out of range or more then 5% diffrent for a custom time period (days from the start date to the end date (inclusive)) for a patient from their food logs
@@ -3665,7 +3665,7 @@ User needs to be Signed in and have the same ID as the user id in the patient th
 ```GET: http://localhost:3000/api/report/day?date=:date&patientid=:patientId ``` <br>
 
 For example <br>
-```GET: http://localhost:3000/api/report/day?date=:2026-05-12&patientid=9ad83156-5ed1-4e2f-8358-abcdef12345 ```
+```GET: http://localhost:3000/api/report/day?date=2026-05-12&patientid=9ad83156-5ed1-4e2f-8358-abcdef12345 ```
 
 ### Description 
 Generates a report containing RDI compared to total intake and if there are any flags for a given day for a patient
@@ -3960,7 +3960,7 @@ User needs to be Signed in and have the same ID as the user id in the patient th
 ```GET: http://localhost:3000/api/report/week?startdate=:date&patientid=:patientId ``` <br>
 
 For example <br>
-```GET: http://localhost:3000/api/report/week?startdate=:2026-05-12&patientid=9ad83156-5ed1-4e2f-8358-abcdef12345 ```
+```GET: http://localhost:3000/api/report/week?startdate=2026-05-12&patientid=9ad83156-5ed1-4e2f-8358-abcdef12345 ```
 
 ### Description 
 Generates a report containing RDI compared to total intake and if there are any flags for a given week (7 days from the start date (inclusive)) for a patient
@@ -4255,7 +4255,7 @@ User needs to be Signed in and have the same ID as the user id in the patient th
 ```GET: http://localhost:3000/api/report/customperiod?startdate=:date&enddate=:date&patientid=:patientId ``` <br>
 
 For example <br>
-```GET: http://localhost:3000/api/report/customperiod?startdate=:2026-05-12&enddate=:2026-05-19&patientid=9ad83156-5ed1-4e2f-8358-abcdef12345 ```
+```GET: http://localhost:3000/api/report/customperiod?startdate=2026-05-12&enddate=2026-05-19&patientid=9ad83156-5ed1-4e2f-8358-abcdef12345 ```
 
 ### Description 
 Generates a report containing RDI compared to total intake and if there are any flags for a custom time period (days from the start date to the end date (inclusive)) for a patient
