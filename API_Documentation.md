@@ -2651,7 +2651,13 @@ User needs to be Signed in and have the same ID as the user id in the patient th
             "unit": "g",
             "minAmount": "0",
             "maxAmount": "23.5"
-        }
+        },
+        {
+            "name": "Sodium",
+            "unit": "mg",
+            "minAmount": "460",
+            "maxAmount": "920"
+        },
     ],
     "micronutrients": [
         {
@@ -2743,11 +2749,6 @@ User needs to be Signed in and have the same ID as the user id in the patient th
             "name": "Phosphorus",
             "unit": "mg",
             "amount": "1000"
-        },
-        {
-            "name": "Sodium",
-            "unit": "mg",
-            "amount": "460 - 920"
         },
         {
             "name": "Potassium",
@@ -2850,7 +2851,12 @@ User needs to be Signed in and have the same ID as the user id in the patient th
             "name": "saturatedFat",
             "unit": "g",
             "amount": "10",
-        }
+        },
+        {
+            "name": "Sodium",
+            "unit": "mg",
+            "amount": "460"
+        },
     ],
     "micronutrients": [
         {
@@ -2942,11 +2948,6 @@ User needs to be Signed in and have the same ID as the user id in the patient th
             "name": "Phosphorus",
             "unit": "mg",
             "amount": "1000"
-        },
-        {
-            "name": "Sodium",
-            "unit": "mg",
-            "amount": "460 - 920"
         },
         {
             "name": "Potassium",
