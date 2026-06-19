@@ -2782,3 +2782,203 @@ User needs to be Signed in and have the same ID as the user id in the patient th
     ]
 }</pre>
 </details>
+
+# total nutrients
+
+## get total nutrients for a day for a patient
+
+```GET: http://localhost:3000/api/totalnutrients/day/date=:date&patientid=:patientId ``` <br>
+
+For example <br>
+```GET: http://localhost:3000/api/totalnutrients/day/date=:2026-05-12&patientid=9ad83156-5ed1-4e2f-8358-abcdef12345 ```
+
+### Description 
+calculates the total nutrients intake for a given day for a patient from their food logs
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the user id in the patient that is linked to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "EnergyUnit": string,
+    "TotalEnergy": string,
+    "macronutrients": [
+        {
+            "name": string,
+            "unit": string,
+            "amount": string
+        }
+    ],
+    "micronutrients": [
+        {
+            "name": string,
+            "unit": string,
+            "amount": string
+        }
+    ]
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "EnergyUnit": "kJ",
+    "TotalEnergy": "8700",
+    "macronutrients": [
+        {
+            "name": "protien",
+            "unit": "g",
+            "amount": "90"
+        },
+        {
+            "name": "carbohydrate",
+            "unit": "g",
+            "amount": "270",
+        },
+        {
+            "name": "totalFat",
+            "unit": "g",
+            "amount": "65"
+        },
+        {
+            "name": "saturatedFat",
+            "unit": "g",
+            "amount": "10",
+        }
+    ],
+    "micronutrients": [
+        {
+            "name": "Vitamin A",
+            "unit": "µg RE",
+            "amount": "900"
+        },
+        {
+            "name": "Vitamin B1",
+            "unit": "mg",
+            "amount": "1.2"
+        },
+        {
+            "name": "Vitamin B2",
+            "unit": "mg",
+            "amount": "1.3"
+        },
+        {
+            "name": "Vitamin B3",
+            "unit": "mg NE",
+            "amount": "16"
+        },
+        {
+            "name": "Vitamin B6",
+            "unit": "mg",
+            "amount": "1.3"
+        },
+        {
+            "name": "Folate",
+            "unit": "µg",
+            "amount": "400"
+        },
+        {
+            "name": "Vitamin B12",
+            "unit": "µg",
+            "amount": "2.4"
+        },
+        {
+            "name": "Vitamin C",
+            "unit": "mg",
+            "amount": "45"
+        },
+        {
+            "name": "Vitamin D",
+            "unit": "µg",
+            "amount": "5"
+        },
+        {
+            "name": "Vitamin E",
+            "unit": "mg",
+            "amount": "10"
+        },
+        {
+            "name": "Vitamin K",
+            "unit": "µg",
+            "amount": "70"
+        },
+        {
+            "name": "Calcium",
+            "unit": "mg",
+            "amount": "1000"
+        },
+        {
+            "name": "Iron",
+            "unit": "mg",
+            "amount": "8"
+        },
+        {
+            "name": "Magnesium",
+            "unit": "mg",
+            "amount": "400"
+        },
+        {
+            "name": "Zinc",
+            "unit": "mg",
+            "amount": "14"
+        },
+        {
+            "name": "Iodine",
+            "unit": "µg",
+            "amount": "150"
+        },
+        {
+            "name": "Selenium",
+            "unit": "µg",
+            "amount": "70"
+        },
+        {
+            "name": "Phosphorus",
+            "unit": "mg",
+            "amount": "1000"
+        },
+        {
+            "name": "Sodium",
+            "unit": "mg",
+            "amount": "460 - 920"
+        },
+        {
+            "name": "Potassium",
+            "unit": "mg",
+            "amount": "3800"
+        },
+        {
+            "name": "Copper",
+            "unit": "mg",
+            "amount": "3.0"
+        },
+        {
+            "name": "Chromium",
+            "unit": "µg",
+            "amount": "35"
+        },
+        {
+            "name": "Manganese",
+            "unit": "mg",
+            "amount": "5.5"
+        },
+        {
+            "name": "Fluoride",
+            "unit": "mg",
+            "amount": "4.0"
+        },
+        {
+            "name": "Molybdenum",
+            "unit": "µg",
+            "amount": "45"
+        }
+    ]
+}</pre>
+</details>
+</details>
