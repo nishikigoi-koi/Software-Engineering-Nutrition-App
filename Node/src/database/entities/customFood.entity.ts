@@ -3,6 +3,7 @@ import { Column, Entity, ManyToOne, JoinColumn, ManyToMany, OneToMany, Relation 
 import { UserEntity } from "./user.entity.ts";
 import { CustomFoodNutrients } from '../../models/customFood.types.ts';
 import { FoodLogEntity } from "./foodLog.entity.ts";
+import { CustomFoodMicroNutrientsEntity } from "./customFoodMicroNutrients.entity.ts";
 
 @Entity({ name: "customFood" })
 export class CustomFoodEntity extends BaseEntity {
@@ -38,7 +39,7 @@ export class CustomFoodEntity extends BaseEntity {
     energy_qty_per_serving: string;
 
     @Column()
-    energy_percent_RQI: string;
+    energy_percent_RDI: string;
 
     @Column()
     energy_qty_per_100: string;
@@ -50,7 +51,7 @@ export class CustomFoodEntity extends BaseEntity {
     protein_qty_per_serving: string;
 
     @Column()
-    protein_percent_RQI: string;
+    protein_percent_RDI: string;
 
     @Column()
     protein_qty_per_100: string;
@@ -62,7 +63,7 @@ export class CustomFoodEntity extends BaseEntity {
     totalFat_qty_per_serving: string;
 
     @Column()
-    totalFat_percent_RQI: string;
+    totalFat_percent_RDI: string;
 
     @Column()
     totalFat_qty_per_100: string;
@@ -74,7 +75,7 @@ export class CustomFoodEntity extends BaseEntity {
     saturatedFat_qty_per_serving: string;
 
     @Column()
-    saturatedFat_percent_RQI: string;
+    saturatedFat_percent_RDI: string;
 
     @Column()
     saturatedFat_qty_per_100: string;
@@ -86,7 +87,7 @@ export class CustomFoodEntity extends BaseEntity {
     carbohydrate_qty_per_serving: string;
 
     @Column()
-    carbohydrate_percent_RQI: string;
+    carbohydrate_percent_RDI: string;
 
     @Column()
     carbohydrate_qty_per_100: string;
@@ -98,7 +99,7 @@ export class CustomFoodEntity extends BaseEntity {
     sugars_qty_per_serving: string;
 
     @Column()
-    sugars_percent_RQI: string;
+    sugars_percent_RDI: string;
 
     @Column()
     sugars_qty_per_100: string;
@@ -110,7 +111,7 @@ export class CustomFoodEntity extends BaseEntity {
     fiber_qty_per_serving: string;
 
     @Column()
-    fiber_percent_RQI: string;
+    fiber_percent_RDI: string;
 
     @Column()
     fiber_qty_per_100: string;
@@ -122,11 +123,14 @@ export class CustomFoodEntity extends BaseEntity {
     sodium_qty_per_serving: string;
 
     @Column()
-    sodium_percent_RQI: string;
+    sodium_percent_RDI: string;
 
     @Column()
     sodium_qty_per_100: string;
 
     @OneToMany(() => FoodLogEntity, (FoodLogEntity) => FoodLogEntity.customFood)
     foodLogs: FoodLogEntity[];
+
+    @OneToMany(() => CustomFoodMicroNutrientsEntity, (CustomFoodMicroNutrientsEntity) => CustomFoodMicroNutrientsEntity.customFood ,{cascade: true})
+    customFoodMicroNutrients: CustomFoodMicroNutrientsEntity[];
 }

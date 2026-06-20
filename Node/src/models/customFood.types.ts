@@ -15,7 +15,8 @@ export interface CustomFood {
     carbohydrate: CustomFoodNutrients,
     sugars: CustomFoodNutrients,
     fiber: CustomFoodNutrients,
-    sodium: CustomFoodNutrients
+    sodium: CustomFoodNutrients,
+    microNutrients: CustomFoodMicroNutrients[]
 }
 
 export interface CustomFoodDTO {
@@ -33,13 +34,22 @@ export interface CustomFoodDTO {
     carbohydrate: CustomFoodNutrients,
     sugars: CustomFoodNutrients,
     fiber: CustomFoodNutrients,
-    sodium: CustomFoodNutrients
+    sodium: CustomFoodNutrients,
+    microNutrients: CustomFoodMicroNutrients[]
 }
 
 export interface CustomFoodNutrients {
     unit: string,
     qty_per_serving: string,
-    percent_RQI: string,
+    percent_RDI: string,
+    qty_per_100: string
+}
+
+export interface CustomFoodMicroNutrients {
+    name: string,
+    unit: string,
+    qty_per_serving: string,
+    percent_RDI: string,
     qty_per_100: string
 }
 
