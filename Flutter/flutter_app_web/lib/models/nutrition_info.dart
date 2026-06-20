@@ -1,13 +1,13 @@
 class NutritionInfo {
   final String unit;
   final String qtyPerServing;
-  final String percentRQI;
+  final String percentRDI;
   final String qtyPer100;
 
   NutritionInfo({
     required this.unit,
     required this.qtyPerServing,
-    required this.percentRQI,
+    required this.percentRDI,
     required this.qtyPer100,
   });
 
@@ -15,7 +15,7 @@ class NutritionInfo {
     return {
       "unit": unit,
       "qty_per_serving": qtyPerServing,
-      "percent_RQI": percentRQI,
+      "percent_RDI": percentRDI,
       "qty_per_100": qtyPer100,
     };
   }
@@ -24,7 +24,7 @@ class NutritionInfo {
     return NutritionInfo(
       unit: json['unit'],
       qtyPerServing: json['qty_per_serving'],
-      percentRQI: json['percent_RQI'],
+      percentRDI: json['percent_RDI'],
       qtyPer100: json['qty_per_100'],
     );
   }

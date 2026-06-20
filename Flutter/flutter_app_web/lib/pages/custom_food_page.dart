@@ -19,16 +19,16 @@ class _CustomFoodPageState extends State<CustomFoodPage> {
   final _servingUnitController = TextEditingController();
   final _measureDescController = TextEditingController();
 
-  // Nutrition controllers — each nutrient has unit, qty_per_serving, percent_RQI, qty_per_100
+  // Nutrition controllers — each nutrient has unit, qty_per_serving, percent_RDI, qty_per_100
   final Map<String, Map<String, TextEditingController>> _nutritionControllers = {
-    'energy':       {'unit': TextEditingController(), 'qty_per_serving': TextEditingController(), 'percent_RQI': TextEditingController(), 'qty_per_100': TextEditingController()},
-    'protein':      {'unit': TextEditingController(), 'qty_per_serving': TextEditingController(), 'percent_RQI': TextEditingController(), 'qty_per_100': TextEditingController()},
-    'totalFat':     {'unit': TextEditingController(), 'qty_per_serving': TextEditingController(), 'percent_RQI': TextEditingController(), 'qty_per_100': TextEditingController()},
-    'saturatedFat': {'unit': TextEditingController(), 'qty_per_serving': TextEditingController(), 'percent_RQI': TextEditingController(), 'qty_per_100': TextEditingController()},
-    'carbohydrate': {'unit': TextEditingController(), 'qty_per_serving': TextEditingController(), 'percent_RQI': TextEditingController(), 'qty_per_100': TextEditingController()},
-    'sugars':       {'unit': TextEditingController(), 'qty_per_serving': TextEditingController(), 'percent_RQI': TextEditingController(), 'qty_per_100': TextEditingController()},
-    'fiber':        {'unit': TextEditingController(), 'qty_per_serving': TextEditingController(), 'percent_RQI': TextEditingController(), 'qty_per_100': TextEditingController()},
-    'sodium':       {'unit': TextEditingController(), 'qty_per_serving': TextEditingController(), 'percent_RQI': TextEditingController(), 'qty_per_100': TextEditingController()},
+    'energy':       {'unit': TextEditingController(), 'qty_per_serving': TextEditingController(), 'percent_RDI': TextEditingController(), 'qty_per_100': TextEditingController()},
+    'protein':      {'unit': TextEditingController(), 'qty_per_serving': TextEditingController(), 'percent_RDI': TextEditingController(), 'qty_per_100': TextEditingController()},
+    'totalFat':     {'unit': TextEditingController(), 'qty_per_serving': TextEditingController(), 'percent_RDI': TextEditingController(), 'qty_per_100': TextEditingController()},
+    'saturatedFat': {'unit': TextEditingController(), 'qty_per_serving': TextEditingController(), 'percent_RDI': TextEditingController(), 'qty_per_100': TextEditingController()},
+    'carbohydrate': {'unit': TextEditingController(), 'qty_per_serving': TextEditingController(), 'percent_RDI': TextEditingController(), 'qty_per_100': TextEditingController()},
+    'sugars':       {'unit': TextEditingController(), 'qty_per_serving': TextEditingController(), 'percent_RDI': TextEditingController(), 'qty_per_100': TextEditingController()},
+    'fiber':        {'unit': TextEditingController(), 'qty_per_serving': TextEditingController(), 'percent_RDI': TextEditingController(), 'qty_per_100': TextEditingController()},
+    'sodium':       {'unit': TextEditingController(), 'qty_per_serving': TextEditingController(), 'percent_RDI': TextEditingController(), 'qty_per_100': TextEditingController()},
   };
 
   bool _isSaving = false;
@@ -54,7 +54,7 @@ class _CustomFoodPageState extends State<CustomFoodPage> {
     return NutritionInfo(
       unit: c['unit']!.text,
       qtyPerServing: c['qty_per_serving']!.text,
-      percentRQI: c['percent_RQI']!.text,
+      percentRDI: c['percent_RDI']!.text,
       qtyPer100: c['qty_per_100']!.text,
     );
   }
@@ -113,7 +113,7 @@ class _CustomFoodPageState extends State<CustomFoodPage> {
             SizedBox(width: 8),
             Expanded(child: _field(c['qty_per_serving']!, 'Per serving')),
             SizedBox(width: 8),
-            Expanded(child: _field(c['percent_RQI']!, '% RQI')),
+            Expanded(child: _field(c['percent_RDI']!, '% RDI')),
             SizedBox(width: 8),
             Expanded(child: _field(c['qty_per_100']!, 'Per 100')),
           ],

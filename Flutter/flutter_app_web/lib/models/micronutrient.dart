@@ -18,7 +18,7 @@ class Micronutrient {
       "name": name,
       "unit": info.unit,
       "qty_per_serving": info.qtyPerServing,
-      "percent_RQI": info.percentRQI,
+      "percent_RDI": info.percentRDI,
       "qty_per_100": info.qtyPer100,
     };
   }
