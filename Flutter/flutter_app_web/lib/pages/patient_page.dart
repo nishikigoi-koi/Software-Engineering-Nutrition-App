@@ -26,7 +26,7 @@ class _PatientPageState extends State<PatientPage> {
   // Form controllers
   final _firstNameController = TextEditingController();
   final _lastNameController = TextEditingController();
-  final _birthDateController = TextEditingController();
+  DateTime? _selectedBirthDate;
   final _ethnicityController = TextEditingController();
   final _weightController = TextEditingController();
   final _heightController = TextEditingController();
@@ -57,11 +57,14 @@ class _PatientPageState extends State<PatientPage> {
   void dispose() {
     _firstNameController.dispose();
     _lastNameController.dispose();
-    _birthDateController.dispose();
     _ethnicityController.dispose();
     _weightController.dispose();
     _heightController.dispose();
     super.dispose();
+  }
+
+  String _formatDate(DateTime date) {
+    return '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}';
   }
 
   // API calls 
@@ -90,12 +93,29 @@ class _PatientPageState extends State<PatientPage> {
 
   Future<void> _createPatient() async {
     final userId = SessionManager().currentUser!.id;
+    final firstName = _firstNameController.text.trim();
+    final lastName = _lastNameController.text.trim();
+    final ethnicity = _ethnicityController.text.trim();
+    final weight = _weightController.text.trim();
+    final height = _heightController.text.trim();
+
+    if (firstName.isEmpty          ||
+        lastName.isEmpty           ||
+        ethnicity.isEmpty          ||
+        weight.isEmpty             ||
+        height.isEmpty             ||
+        _selectedBirthDate == null ||
+        _selectedGender == null    ||
+        _selectedActivityLevel == null) {
+      DialogUtils.showError(context, 'Please ensure all fields are filled out.');
+      return;
+    }
 
     final response = await PatientService.createPatient(
       userId,
       _firstNameController.text,
       _lastNameController.text,
-      _birthDateController.text,
+      _formatDate(_selectedBirthDate!),
       _selectedGender ?? '',
       _ethnicityController.text,
       double.tryParse(_weightController.text) ?? 0,
@@ -114,11 +134,29 @@ class _PatientPageState extends State<PatientPage> {
   Future<void> _updatePatient() async {
     if (_selectedPatient == null) return;
 
+    final firstName = _firstNameController.text.trim();
+    final lastName = _lastNameController.text.trim();
+    final ethnicity = _ethnicityController.text.trim();
+    final weight = _weightController.text.trim();
+    final height = _heightController.text.trim();
+
+    if (firstName.isEmpty          ||
+        lastName.isEmpty           ||
+        ethnicity.isEmpty          ||
+        weight.isEmpty             ||
+        height.isEmpty             ||
+        _selectedBirthDate == null ||
+        _selectedGender == null    ||
+        _selectedActivityLevel == null) {
+      DialogUtils.showError(context, 'Please ensure all fields are filled out.');
+      return;
+    }
+
     final response = await PatientService.updatePatient(
       _selectedPatient!.id,
       _firstNameController.text,
       _lastNameController.text,
-      _birthDateController.text,
+      _formatDate(_selectedBirthDate!),
       _selectedGender ?? '',
       _ethnicityController.text,
       double.tryParse(_weightController.text) ?? 0,
@@ -154,7 +192,7 @@ class _PatientPageState extends State<PatientPage> {
       _isNewPatient = false;
       _firstNameController.text = patient.firstName;
       _lastNameController.text = patient.lastName;
-      _birthDateController.text = patient.birthDate.toIso8601String().split('T')[0];
+      _selectedBirthDate = patient.birthDate;
       _ethnicityController.text = patient.ethnicity;
       _weightController.text = patient.weight.toString();
       _heightController.text = patient.height.toString();
@@ -169,7 +207,7 @@ class _PatientPageState extends State<PatientPage> {
       _isNewPatient = true;
       _firstNameController.clear();
       _lastNameController.clear();
-      _birthDateController.clear();
+      _selectedBirthDate = null;
       _ethnicityController.clear();
       _weightController.clear();
       _heightController.clear();
@@ -184,7 +222,7 @@ class _PatientPageState extends State<PatientPage> {
       _isNewPatient = false;
       _firstNameController.clear();
       _lastNameController.clear();
-      _birthDateController.clear();
+      _selectedBirthDate = null;
       _ethnicityController.clear();
       _weightController.clear();
       _heightController.clear();
@@ -338,11 +376,31 @@ class _PatientPageState extends State<PatientPage> {
                                 Row(
                                   children: [
                                     Expanded(
-                                      child: TextField(
-                                        controller: _birthDateController,
-                                        decoration: InputDecoration(
-                                          labelText: 'Birth Date (YYYY-MM-DD)',
-                                          border: OutlineInputBorder(),
+                                      child: InkWell(
+                                        onTap: () async {
+                                          final date = await showDatePicker(
+                                            context: context,
+                                            initialDate: _selectedBirthDate ?? DateTime(2000),
+                                            firstDate: DateTime(1900),
+                                            lastDate: DateTime.now(),
+                                          );
+                                          if (date != null) setState(() => _selectedBirthDate = date);
+                                        },
+                                        child: InputDecorator(
+                                          decoration: InputDecoration(
+                                            labelText: 'Birth Date',
+                                            border: OutlineInputBorder(),
+                                          ),
+                                          child: Text(
+                                            _selectedBirthDate != null
+                                                ? _formatDate(_selectedBirthDate!)
+                                                : '',
+                                            style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              fontSize: 16,
+                                              color: Color(0xFF1C1C1C),
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     ),
