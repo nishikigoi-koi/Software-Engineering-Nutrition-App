@@ -9,6 +9,7 @@ import 'dart:convert';
 import 'login_page.dart';
 import 'medical_conditions_page.dart';
 import 'diet_restrictions_page.dart';
+import 'settings_page.dart';
 
 class PatientPage extends StatefulWidget {
   const PatientPage({super.key});
@@ -583,7 +584,7 @@ class _PatientPageState extends State<PatientPage> {
                     (route) => false,
                   );
                 }),
-                _navButton('Patients', Icons.people, () {}),
+                _navButton('Patients', Icons.people, null),
                 _navButton('Meals', Icons.restaurant, () {
                   Navigator.pushAndRemoveUntil(
                     context,
@@ -592,7 +593,13 @@ class _PatientPageState extends State<PatientPage> {
                   );
                 }),
                 _navButton('Reports', Icons.bar_chart, () {}),
-                _navButton('Settings', Icons.settings, () {}),
+                _navButton('Settings', Icons.settings, () {
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => SettingsPage()),
+                    (route) => false,
+                  );
+                }),
               ],
             ),
           ),
