@@ -125,7 +125,7 @@ describe('RDI.helper.ts with in-memory database', () => {
                     maxAmount: 28.9
                 },
                 {
-                    name: "sodium",
+                    name: "Sodium",
                     unit: "mg",
                     minAmount: 460,
                     maxAmount: 920
@@ -264,7 +264,7 @@ describe('RDI.helper.ts with in-memory database', () => {
                     maxAmount: 20.4
                 },
                 {
-                    name: "sodium",
+                    name: "Sodium",
                     unit: "mg",
                     minAmount: 460,
                     maxAmount: 920
@@ -403,7 +403,7 @@ describe('RDI.helper.ts with in-memory database', () => {
                     maxAmount: 20.4
                 },
                 {
-                    name: "sodium",
+                    name: "Sodium",
                     unit: "mg",
                     minAmount: 460,
                     maxAmount: 920

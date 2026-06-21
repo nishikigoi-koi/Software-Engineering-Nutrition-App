@@ -19,7 +19,7 @@ import {GetTotalNutrientsDayFromDatabase, GetTotalNutrientsWeekFromDatabase ,Get
 import { TotalNutrients } from '../src/models/totalNutrients.types.ts';
 
 
-describe('foodLog.helper.ts with in-memory database', () => {
+describe('totalNutrients.helper.ts with in-memory database', () => {
     let dataSource: DataSource;
     let userRepository: Repository<UserEntity>;
     let patientRepository: Repository<PatientEntity>;
