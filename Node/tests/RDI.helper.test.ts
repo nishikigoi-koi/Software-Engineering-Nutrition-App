@@ -170,7 +170,7 @@ describe('RDI.helper.ts with in-memory database', () => {
                 {
                     name: "Manganese",
                     unit: "µg",
-                    amount: 5.5
+                    amount: 5500
                 },
                 {
                     name: "Niacin (vitamin B3)",
@@ -309,7 +309,7 @@ describe('RDI.helper.ts with in-memory database', () => {
                 {
                     name: "Manganese",
                     unit: "µg",
-                    amount: 5
+                    amount: 5000
                 },
                 {
                     name: "Niacin (vitamin B3)",
@@ -448,7 +448,7 @@ describe('RDI.helper.ts with in-memory database', () => {
                 {
                     name: "Manganese",
                     unit: "µg",
-                    amount: 5
+                    amount: 5000
                 },
                 {
                     name: "Niacin (vitamin B3)",

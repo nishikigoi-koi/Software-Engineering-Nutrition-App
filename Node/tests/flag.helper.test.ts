@@ -200,7 +200,7 @@ describe('flag.helper.ts with in-memory database', () => {
                 intake: "494",
                 direction: "below"
             },
-            "macronutrients": [
+            macronutrients: [
                 {
                     name: "protein",
                     unit: "g",
@@ -234,7 +234,7 @@ describe('flag.helper.ts with in-memory database', () => {
                     direction: "below"
                 }
             ],
-            "micronutrients": [
+            micronutrients: [
                 {
                     name: "Calcium",
                     unit: "mg",
@@ -287,9 +287,9 @@ describe('flag.helper.ts with in-memory database', () => {
                 {
                     name: "Manganese",
                     unit: "µg",
-                    RDI: "5.5",
+                    RDI: "5500",
                     intake: "80.6",
-                    direction: "above"
+                    direction: "below"
                 },
                 {
                     name: "Niacin (vitamin B3)",
@@ -389,7 +389,7 @@ describe('flag.helper.ts with in-memory database', () => {
                 intake: "1950",
                 direction: "below"
             },
-            "macronutrients": [
+            macronutrients: [
                 {
                     name: "protein",
                     unit: "g",
@@ -423,7 +423,7 @@ describe('flag.helper.ts with in-memory database', () => {
                     direction: "above"
                 }
             ],
-            "micronutrients": [
+            micronutrients: [
                 {
                     name: "Calcium",
                     unit: "mg",
@@ -476,7 +476,7 @@ describe('flag.helper.ts with in-memory database', () => {
                 {
                     name: "Manganese",
                     unit: "µg",
-                    RDI: "5.5",
+                    RDI: "5500",
                     intake: "0",
                     direction: "below"
                 },
@@ -575,7 +575,7 @@ describe('flag.helper.ts with in-memory database', () => {
                 intake: "2444",
                 direction: "below"
             },
-            "macronutrients": [
+            macronutrients: [
                 {
                     name: "protein",
                     unit: "g",
@@ -609,7 +609,7 @@ describe('flag.helper.ts with in-memory database', () => {
                     direction: "below"
                 }
             ],
-            "micronutrients": [
+            micronutrients: [
                 {
                     name: "Calcium",
                     unit: "mg",
@@ -662,9 +662,9 @@ describe('flag.helper.ts with in-memory database', () => {
                 {
                     name: "Manganese",
                     unit: "µg",
-                    RDI: "38.5",
+                    RDI: "38500",
                     intake: "80.6",
-                    direction: "above"
+                    direction: "below"
                 },
                 {
                     name: "Niacin (vitamin B3)",
@@ -767,14 +767,14 @@ describe('flag.helper.ts with in-memory database', () => {
         //await foodLogRepository.clear();
     });
 
-    it('GetTotalNutrientsDayFromDatabase throws if no date or patient id is invalid', async () => {
+    it('GetFlagsDayFromDatabase throws if no date or patient id is invalid', async () => {
             await expect(GetFlagsDayFromDatabase('','',foodLogRepository,customFoodRepository,patientRepository,patientConditionRepository)).rejects.toThrow()
             await expect(GetFlagsDayFromDatabase('notadate','',foodLogRepository,customFoodRepository,patientRepository,patientConditionRepository)).rejects.toThrow()
             await expect(GetFlagsDayFromDatabase('notadate','notinthedatabase',foodLogRepository,customFoodRepository,patientRepository,patientConditionRepository)).rejects.toThrow()
             await expect(GetFlagsDayFromDatabase('','notinthedatabase',foodLogRepository,customFoodRepository,patientRepository,patientConditionRepository)).rejects.toThrow()
         });
 
-    it('GetTotalNutrientsDayFromDatabase returns correct for foodfile', async () =>{
+    it('GetFlagsDayFromDatabase returns correct for foodfile', async () =>{
         const result = await GetFlagsDayFromDatabase('2026-05-12',patient1.id as string,foodLogRepository,customFoodRepository,patientRepository,patientConditionRepository)
 
         const keys = Object.keys(result) as Array<keyof Flags>
@@ -789,7 +789,7 @@ describe('flag.helper.ts with in-memory database', () => {
         }
     })
 
-    it('GetTotalNutrientsDayFromDatabase returns correct for custom food', async () =>{
+    it('GetFlagsDayFromDatabase returns correct for custom food', async () =>{
         const result = await GetFlagsDayFromDatabase('2026-05-13',patient1.id as string,foodLogRepository,customFoodRepository,patientRepository,patientConditionRepository)
 
         const keys = Object.keys(result) as Array<keyof Flags>
@@ -804,14 +804,14 @@ describe('flag.helper.ts with in-memory database', () => {
         }
     })
 
-    it('GetTotalNutrientsWeekFromDatabase throws if no date or patient id is invalid', async () => {
+    it('GetFlagsWeekFromDatabase throws if no date or patient id is invalid', async () => {
         await expect(GetFlagsWeekFromDatabase('','',foodLogRepository,customFoodRepository,patientRepository,patientConditionRepository)).rejects.toThrow()
         await expect(GetFlagsWeekFromDatabase('notadate','',foodLogRepository,customFoodRepository,patientRepository,patientConditionRepository)).rejects.toThrow()
         await expect(GetFlagsWeekFromDatabase('notadate','notinthedatabase',foodLogRepository,customFoodRepository,patientRepository,patientConditionRepository)).rejects.toThrow()
         await expect(GetFlagsWeekFromDatabase('','notinthedatabase',foodLogRepository,customFoodRepository,patientRepository,patientConditionRepository)).rejects.toThrow()
     });
 
-    it('GetTotalNutrientsDayFromDatabase returns correct for foodfile', async () =>{
+    it('GetFlagsWeekFromDatabase returns correct for foodfile', async () =>{
         const result = await GetFlagsWeekFromDatabase('2026-05-12',patient1.id as string,foodLogRepository,customFoodRepository,patientRepository,patientConditionRepository)
 
         const keys = Object.keys(result) as Array<keyof Flags>
@@ -826,7 +826,7 @@ describe('flag.helper.ts with in-memory database', () => {
         }
     })
 
-    it('GetTotalNutrientsCustomTimePeriodFromDatabase throws if no date or patient id is invalid', async () => {
+    it('GetFlagsCustomTimePeriodFromDatabase throws if no date or patient id is invalid', async () => {
         await expect(GetFlagsCustomTimePeriodFromDatabase('','','',foodLogRepository,customFoodRepository,patientRepository,patientConditionRepository)).rejects.toThrow()
         await expect(GetFlagsCustomTimePeriodFromDatabase('notadate','','',foodLogRepository,customFoodRepository,patientRepository,patientConditionRepository)).rejects.toThrow()
         await expect(GetFlagsCustomTimePeriodFromDatabase('notadate','notadate','',foodLogRepository,customFoodRepository,patientRepository,patientConditionRepository)).rejects.toThrow()
@@ -836,7 +836,7 @@ describe('flag.helper.ts with in-memory database', () => {
         await expect(GetFlagsCustomTimePeriodFromDatabase('','notadate','notinthedatabase',foodLogRepository,customFoodRepository,patientRepository,patientConditionRepository)).rejects.toThrow()
     });
 
-    it('GetTotalNutrientsCustomTimePeriodFromDatabase returns correct for foodfile', async () =>{
+    it('GetFlagsCustomTimePeriodFromDatabase returns correct for foodfile', async () =>{
         const result = await GetFlagsCustomTimePeriodFromDatabase('2026-05-12','2026-05-18',patient1.id as string,foodLogRepository,customFoodRepository,patientRepository,patientConditionRepository)
 
         const keys = Object.keys(result) as Array<keyof Flags>
