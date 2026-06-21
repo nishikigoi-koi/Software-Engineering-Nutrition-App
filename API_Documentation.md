@@ -1215,7 +1215,7 @@ User needs to be Signed in to access this endpoint
         "percent_RDI": string,
         "qty_per_100": string
     },
-    "carbohydrate": {
+    "carbohydrates": {
         "unit": string,
         "qty_per_serving": string,
         "percent_RDI": string,
@@ -1286,7 +1286,7 @@ User needs to be Signed in to access this endpoint
         "percent_RDI": "0",
         "qty_per_100": "0.02"
     },
-    "carbohydrate": {
+    "carbohydrates": {
         "unit": "g",
         "qty_per_serving": "14",
         "percent_RDI": "4",
@@ -1374,7 +1374,7 @@ User needs to be Signed in and have the same user id as the userId to access thi
         "percent_RDI": string,
         "qty_per_100": string
     },
-    "carbohydrate": {
+    "carbohydrates": {
         "unit": string,
         "qty_per_serving": string,
         "percent_RDI": string,
@@ -1446,7 +1446,7 @@ User needs to be Signed in and have the same user id as the userId to access thi
         "percent_RDI": "60",
         "qty_per_100": "5.6"
     },
-    "carbohydrate": {
+    "carbohydrates": {
         "unit": "g",
         "qty_per_serving": "13",
         "percent_RDI": "4",
@@ -1814,7 +1814,7 @@ creates a custom food item or meal in the databse linked to a user
         "percent_RDI": string,
         "qty_per_100": string
     },
-    "carbohydrate": {
+    "carbohydrates": {
         "unit": string,
         "qty_per_serving": string,
         "percent_RDI": string,
@@ -1884,7 +1884,7 @@ creates a custom food item or meal in the databse linked to a user
         "percent_RDI": "60",
         "qty_per_100": "5.6"
     },
-    "carbohydrate": {
+    "carbohydrates": {
         "unit": "g",
         "qty_per_serving": "13",
         "percent_RDI": "4",
@@ -1963,7 +1963,7 @@ User needs to be Signed in and have the same ID as the userId to access this end
         "percent_RDI": string,
         "qty_per_100": string
     },
-    "carbohydrate": {
+    "carbohydrates": {
         "unit": string,
         "qty_per_serving": string,
         "percent_RDI": string,
@@ -2034,7 +2034,7 @@ User needs to be Signed in and have the same ID as the userId to access this end
         "percent_RDI": "60",
         "qty_per_100": "5.6"
     },
-    "carbohydrate": {
+    "carbohydrates": {
         "unit": "g",
         "qty_per_serving": "13",
         "percent_RDI": "4",
@@ -2113,7 +2113,7 @@ updates the custome food item that has the same id
         "percent_RDI": string,
         "qty_per_100": string
     },
-    "carbohydrate": {
+    "carbohydrates": {
         "unit": string,
         "qty_per_serving": string,
         "percent_RDI": string,
@@ -2183,7 +2183,7 @@ updates the custome food item that has the same id
         "percent_RDI": "60",
         "qty_per_100": "5.6"
     },
-    "carbohydrate": {
+    "carbohydrates": {
         "unit": "g",
         "qty_per_serving": "13",
         "percent_RDI": "4",
@@ -2309,7 +2309,7 @@ User needs to be Signed in and have the same user id as the userId to access thi
         "percent_RDI": string,
         "qty_per_100": string
     },
-    "carbohydrate": {
+    "carbohydrates": {
         "unit": string,
         "qty_per_serving": string,
         "percent_RDI": string,
@@ -2380,7 +2380,7 @@ User needs to be Signed in and have the same user id as the userId to access thi
         "percent_RDI": "60",
         "qty_per_100": "5.6"
     },
-    "carbohydrate": {
+    "carbohydrates": {
         "unit": "g",
         "qty_per_serving": "13",
         "percent_RDI": "4",
@@ -2469,7 +2469,7 @@ User needs to be Signed in and have the same user id as the userId to access thi
             "percent_RDI": string,
             "qty_per_100": string
         },
-        "carbohydrate": {
+        "carbohydrates": {
             "unit": string,
             "qty_per_serving": string,
             "percent_RDI": string,
@@ -2542,7 +2542,7 @@ User needs to be Signed in and have the same user id as the userId to access thi
             "percent_RDI": "60",
             "qty_per_100": "5.6"
         },
-        "carbohydrate": {
+        "carbohydrates": {
             "unit": "g",
             "qty_per_serving": "13",
             "percent_RDI": "4",
@@ -2626,159 +2626,139 @@ User needs to be Signed in and have the same ID as the user id in the patient th
 <summary>Example</summary>
 <pre>{
     "EnergyUnit": "kJ",
-    "TotalEnergy": "8700",
+    "TotalEnergy": 10701,
     "macronutrients": [
         {
-            "name": "protien",
+            "name": "protein",
             "unit": "g",
-            "minAmount": "78",
-            "maxAmount": "130"
+            "minAmount": 94.4,
+            "maxAmount": 157.4
         },
         {
-            "name": "carbohydrate",
+            "name": "carbohydrates",
             "unit": "g",
-            "minAmount": "234",
-            "maxAmount": "338"
+            "minAmount": 283.3,
+            "maxAmount": 409.2
         },
         {
             "name": "totalFat",
             "unit": "g",
-            "minAmount": "46",
-            "maxAmount": "81"
+            "minAmount": 57.8,
+            "maxAmount": 101.2
         },
         {
             "name": "saturatedFat",
             "unit": "g",
-            "minAmount": "0",
-            "maxAmount": "23.5"
+            "minAmount": 0,
+            "maxAmount": 28.9
         },
         {
             "name": "Sodium",
             "unit": "mg",
-            "minAmount": "460",
-            "maxAmount": "920"
-        },
+            "minAmount": 460,
+            "maxAmount": 920
+        }
     ],
     "micronutrients": [
         {
-            "name": "Vitamin A",
-            "unit": "µg RE",
-            "amount": "900"
-        },
-        {
-            "name": "Vitamin B1",
-            "unit": "mg",
-            "amount": "1.2"
-        },
-        {
-            "name": "Vitamin B2",
-            "unit": "mg",
-            "amount": "1.3"
-        },
-        {
-            "name": "Vitamin B3",
-            "unit": "mg NE",
-            "amount": "16"
-        },
-        {
-            "name": "Vitamin B6",
-            "unit": "mg",
-            "amount": "1.3"
-        },
-        {
-            "name": "Folate",
-            "unit": "µg",
-            "amount": "400"
-        },
-        {
-            "name": "Vitamin B12",
-            "unit": "µg",
-            "amount": "2.4"
-        },
-        {
-            "name": "Vitamin C",
-            "unit": "mg",
-            "amount": "45"
-        },
-        {
-            "name": "Vitamin D",
-            "unit": "µg",
-            "amount": "5"
-        },
-        {
-            "name": "Vitamin E",
-            "unit": "mg",
-            "amount": "10"
-        },
-        {
-            "name": "Vitamin K",
-            "unit": "µg",
-            "amount": "70"
-        },
-        {
             "name": "Calcium",
             "unit": "mg",
-            "amount": "1000"
-        },
-        {
-            "name": "Iron",
-            "unit": "mg",
-            "amount": "8"
-        },
-        {
-            "name": "Magnesium",
-            "unit": "mg",
-            "amount": "400"
-        },
-        {
-            "name": "Zinc",
-            "unit": "mg",
-            "amount": "14"
-        },
-        {
-            "name": "Iodine",
-            "unit": "µg",
-            "amount": "150"
-        },
-        {
-            "name": "Selenium",
-            "unit": "µg",
-            "amount": "70"
-        },
-        {
-            "name": "Phosphorus",
-            "unit": "mg",
-            "amount": "1000"
-        },
-        {
-            "name": "Potassium",
-            "unit": "mg",
-            "amount": "3800"
+            "amount": 1000
         },
         {
             "name": "Copper",
             "unit": "mg",
-            "amount": "3.0"
+            "amount": 1.7
         },
         {
-            "name": "Chromium",
+            "name": "Iron",
+            "unit": "mg",
+            "amount": 8
+        },
+        {
+            "name": "Folate",
             "unit": "µg",
-            "amount": "35"
+            "amount": 400
+        },
+        {
+            "name": "Iodide (iodine)",
+            "unit": "µg",
+            "amount": 150
+        },
+        {
+            "name": "Potassium",
+            "unit": "mg",
+            "amount": 3800
+        },
+        {
+            "name": "Magnesium",
+            "unit": "mg",
+            "amount": 400
         },
         {
             "name": "Manganese",
-            "unit": "mg",
-            "amount": "5.5"
-        },
-        {
-            "name": "Fluoride",
-            "unit": "mg",
-            "amount": "4.0"
-        },
-        {
-            "name": "Molybdenum",
             "unit": "µg",
-            "amount": "45"
+            "amount": 5.5
+        },
+        {
+            "name": "Niacin (vitamin B3)",
+            "unit": "mg",
+            "amount": 16
+        },
+        {
+            "name": "Phosphorus",
+            "unit": "mg",
+            "amount": 1000
+        },
+        {
+            "name": "Riboflavin (vitamin B2)",
+            "unit": "mg",
+            "amount": 1.3
+        },
+        {
+            "name": "Selenium",
+            "unit": "µg",
+            "amount": 70
+        },
+        {
+            "name": "Thiamin (vitamin B1)",
+            "unit": "mg",
+            "amount": 1.2
+        },
+        {
+            "name": "Vitamin A, FSANZ",
+            "unit": "µg",
+            "amount": 900
+        },
+        {
+            "name": "Vitamin B12 (cobalamin)",
+            "unit": "µg",
+            "amount": 2.4
+        },
+        {
+            "name": "Vitamin B6 (pyridoxal phosphate)",
+            "unit": "mg",
+            "amount": 1.3
+        },
+        {
+            "name": "Vitamin C (ascorbic acid)",
+            "unit": "mg",
+            "amount": 45
+        },
+        {
+            "name": "Vitamin D",
+            "unit": "µg",
+            "amount": 5
+        },
+        {
+            "name": "Vitamin E (tocopherols)",
+            "unit": "mg",
+            "amount": 10
+        },
+        {
+            "name": "Zinc",
+            "unit": "mg",
+            "amount": 14
         }
     ]
 }</pre>
@@ -2808,19 +2788,19 @@ User needs to be Signed in and have the same ID as the user id in the patient th
 <summary>Format</summary>
 <pre>{
     "EnergyUnit": string,
-    "TotalEnergy": string,
+    "TotalEnergy": number,
     "macronutrients": [
         {
             "name": string,
             "unit": string,
-            "amount": string
+            "amount": number
         }
     ],
     "micronutrients": [
         {
             "name": string,
             "unit": string,
-            "amount": string
+            "amount": number
         }
     ]
 }</pre>
@@ -2829,155 +2809,135 @@ User needs to be Signed in and have the same ID as the user id in the patient th
 <details>
 <summary>Example</summary>
 <pre>{
-    "EnergyUnit": "kJ",
-    "TotalEnergy": "8700",
+    "EnergyUnit": "kj",
+    "TotalEnergy": 494,
     "macronutrients": [
         {
-            "name": "protien",
+            "name": "protein",
             "unit": "g",
-            "amount": "90"
+            "amount": 0.52
         },
         {
-            "name": "carbohydrate",
+            "name": "carbohydrates",
             "unit": "g",
-            "amount": "270",
+            "amount": 24.18
         },
         {
             "name": "totalFat",
             "unit": "g",
-            "amount": "65"
+            "amount": 0.78
         },
         {
             "name": "saturatedFat",
             "unit": "g",
-            "amount": "10",
+            "amount": 0.06
         },
         {
             "name": "Sodium",
             "unit": "mg",
-            "amount": "460"
+            "amount": 2.6
         }
     ],
     "micronutrients": [
         {
-            "name": "Vitamin A",
-            "unit": "µg RE",
-            "amount": "900"
-        },
-        {
-            "name": "Vitamin B1",
-            "unit": "mg",
-            "amount": "1.2"
-        },
-        {
-            "name": "Vitamin B2",
-            "unit": "mg",
-            "amount": "1.3"
-        },
-        {
-            "name": "Vitamin B3",
-            "unit": "mg NE",
-            "amount": "16"
-        },
-        {
-            "name": "Vitamin B6",
-            "unit": "mg",
-            "amount": "1.3"
-        },
-        {
-            "name": "Folate",
-            "unit": "µg",
-            "amount": "400"
-        },
-        {
-            "name": "Vitamin B12",
-            "unit": "µg",
-            "amount": "2.4"
-        },
-        {
-            "name": "Vitamin C",
-            "unit": "mg",
-            "amount": "45"
-        },
-        {
-            "name": "Vitamin D",
-            "unit": "µg",
-            "amount": "5"
-        },
-        {
-            "name": "Vitamin E",
-            "unit": "mg",
-            "amount": "10"
-        },
-        {
-            "name": "Vitamin K",
-            "unit": "µg",
-            "amount": "70"
-        },
-        {
             "name": "Calcium",
             "unit": "mg",
-            "amount": "1000"
-        },
-        {
-            "name": "Iron",
-            "unit": "mg",
-            "amount": "8"
-        },
-        {
-            "name": "Magnesium",
-            "unit": "mg",
-            "amount": "400"
-        },
-        {
-            "name": "Zinc",
-            "unit": "mg",
-            "amount": "14"
-        },
-        {
-            "name": "Iodine",
-            "unit": "µg",
-            "amount": "150"
-        },
-        {
-            "name": "Selenium",
-            "unit": "µg",
-            "amount": "70"
-        },
-        {
-            "name": "Phosphorus",
-            "unit": "mg",
-            "amount": "1000"
-        },
-        {
-            "name": "Potassium",
-            "unit": "mg",
-            "amount": "3800"
+            "amount": 10.4
         },
         {
             "name": "Copper",
             "unit": "mg",
-            "amount": "3.0"
+            "amount": 0.1
         },
         {
-            "name": "Chromium",
+            "name": "Iron",
+            "unit": "mg",
+            "amount": 0.32
+        },
+        {
+            "name": "Folate",
             "unit": "µg",
-            "amount": "35"
+            "amount": 0
+        },
+        {
+            "name": "Iodide (iodine)",
+            "unit": "µg",
+            "amount": 0.52
+        },
+        {
+            "name": "Potassium",
+            "unit": "mg",
+            "amount": 252.2
+        },
+        {
+            "name": "Magnesium",
+            "unit": "mg",
+            "amount": 10.4
         },
         {
             "name": "Manganese",
-            "unit": "mg",
-            "amount": "5.5"
-        },
-        {
-            "name": "Fluoride",
-            "unit": "mg",
-            "amount": "4.0"
-        },
-        {
-            "name": "Molybdenum",
             "unit": "µg",
-            "amount": "45"
+            "amount": 80.6
+        },
+        {
+            "name": "Niacin (vitamin B3)",
+            "unit": "mg",
+            "amount": 0.1
+        },
+        {
+            "name": "Phosphorus",
+            "unit": "mg",
+            "amount": 23.4
+        },
+        {
+            "name": "Riboflavin (vitamin B2)",
+            "unit": "mg",
+            "amount": 0.18
+        },
+        {
+            "name": "Selenium",
+            "unit": "µg",
+            "amount": 0
+        },
+        {
+            "name": "Thiamin (vitamin B1)",
+            "unit": "mg",
+            "amount": 0.02
+        },
+        {
+            "name": "Vitamin A, FSANZ",
+            "unit": "µg",
+            "amount": 5.2
+        },
+        {
+            "name": "Vitamin B12 (cobalamin)",
+            "unit": "µg",
+            "amount": 0
+        },
+        {
+            "name": "Vitamin B6 (pyridoxal phosphate)",
+            "unit": "mg",
+            "amount": 0.08
+        },
+        {
+            "name": "Vitamin C (ascorbic acid)",
+            "unit": "mg",
+            "amount": 25.22
+        },
+        {
+            "name": "Vitamin D",
+            "unit": "µg",
+            "amount": 0
+        },
+        {
+            "name": "Vitamin E (tocopherols)",
+            "unit": "mg",
+            "amount": 0.62
+        },
+        {
+            "name": "Zinc",
+            "unit": "mg",
+            "amount": 0.06
         }
     ]
 }</pre>
@@ -3005,19 +2965,19 @@ User needs to be Signed in and have the same ID as the user id in the patient th
 <summary>Format</summary>
 <pre>{
     "EnergyUnit": string,
-    "TotalEnergy": string,
+    "TotalEnergy": number,
     "macronutrients": [
         {
             "name": string,
             "unit": string,
-            "amount": string
+            "amount": number
         }
     ],
     "micronutrients": [
         {
             "name": string,
             "unit": string,
-            "amount": string
+            "amount": number
         }
     ]
 }</pre>
@@ -3026,155 +2986,135 @@ User needs to be Signed in and have the same ID as the user id in the patient th
 <details>
 <summary>Example</summary>
 <pre>{
-    "EnergyUnit": "kJ",
-    "TotalEnergy": "60900",
+    "EnergyUnit": "kj",
+    "TotalEnergy": 2444,
     "macronutrients": [
         {
-            "name": "protien",
+            "name": "protein",
             "unit": "g",
-            "amount": "630"
+            "amount": 31.72
         },
         {
-            "name": "carbohydrate",
+            "name": "carbohydrates",
             "unit": "g",
-            "amount": "1890",
+            "amount": 37.44
         },
         {
             "name": "totalFat",
             "unit": "g",
-            "amount": "455"
+            "amount": 31.98
         },
         {
             "name": "saturatedFat",
             "unit": "g",
-            "amount": "70",
+            "amount": 14.620000000000001
         },
         {
             "name": "Sodium",
             "unit": "mg",
-            "amount": "3220"
-        },
+            "amount": 990.6
+        }
     ],
     "micronutrients": [
         {
-            "name": "Vitamin A",
-            "unit": "µg RE",
-            "amount": "6300"
-        },
-        {
-            "name": "Vitamin B1",
-            "unit": "mg",
-            "amount": "8.4"
-        },
-        {
-            "name": "Vitamin B2",
-            "unit": "mg",
-            "amount": "9.1"
-        },
-        {
-            "name": "Vitamin B3",
-            "unit": "mg NE",
-            "amount": "112"
-        },
-        {
-            "name": "Vitamin B6",
-            "unit": "mg",
-            "amount": "8.4"
-        },
-        {
-            "name": "Folate",
-            "unit": "µg",
-            "amount": "2800"
-        },
-        {
-            "name": "Vitamin B12",
-            "unit": "µg",
-            "amount": "16.8"
-        },
-        {
-            "name": "Vitamin C",
-            "unit": "mg",
-            "amount": "315"
-        },
-        {
-            "name": "Vitamin D",
-            "unit": "µg",
-            "amount": "35"
-        },
-        {
-            "name": "Vitamin E",
-            "unit": "mg",
-            "amount": "70"
-        },
-        {
-            "name": "Vitamin K",
-            "unit": "µg",
-            "amount": "490"
-        },
-        {
             "name": "Calcium",
             "unit": "mg",
-            "amount": "7000"
-        },
-        {
-            "name": "Iron",
-            "unit": "mg",
-            "amount": "56"
-        },
-        {
-            "name": "Magnesium",
-            "unit": "mg",
-            "amount": "2800"
-        },
-        {
-            "name": "Zinc",
-            "unit": "mg",
-            "amount": "98"
-        },
-        {
-            "name": "Iodine",
-            "unit": "µg",
-            "amount": "1050"
-        },
-        {
-            "name": "Selenium",
-            "unit": "µg",
-            "amount": "490"
-        },
-        {
-            "name": "Phosphorus",
-            "unit": "mg",
-            "amount": "7000"
-        },
-        {
-            "name": "Potassium",
-            "unit": "mg",
-            "amount": "26600"
+            "amount": 10.4
         },
         {
             "name": "Copper",
             "unit": "mg",
-            "amount": "21.0"
+            "amount": 0.1
         },
         {
-            "name": "Chromium",
+            "name": "Iron",
+            "unit": "mg",
+            "amount": 5
+        },
+        {
+            "name": "Folate",
             "unit": "µg",
-            "amount": "245"
+            "amount": 0
+        },
+        {
+            "name": "Iodide (iodine)",
+            "unit": "µg",
+            "amount": 0.52
+        },
+        {
+            "name": "Potassium",
+            "unit": "mg",
+            "amount": 252.2
+        },
+        {
+            "name": "Magnesium",
+            "unit": "mg",
+            "amount": 10.4
         },
         {
             "name": "Manganese",
-            "unit": "mg",
-            "amount": "38.5"
-        },
-        {
-            "name": "Fluoride",
-            "unit": "mg",
-            "amount": "28.0"
-        },
-        {
-            "name": "Molybdenum",
             "unit": "µg",
-            "amount": "315"
+            "amount": 80.6
+        },
+        {
+            "name": "Niacin (vitamin B3)",
+            "unit": "mg",
+            "amount": 0.1
+        },
+        {
+            "name": "Phosphorus",
+            "unit": "mg",
+            "amount": 23.4
+        },
+        {
+            "name": "Riboflavin (vitamin B2)",
+            "unit": "mg",
+            "amount": 0.18
+        },
+        {
+            "name": "Selenium",
+            "unit": "µg",
+            "amount": 0
+        },
+        {
+            "name": "Thiamin (vitamin B1)",
+            "unit": "mg",
+            "amount": 0.02
+        },
+        {
+            "name": "Vitamin A, FSANZ",
+            "unit": "µg",
+            "amount": 5.2
+        },
+        {
+            "name": "Vitamin B12 (cobalamin)",
+            "unit": "µg",
+            "amount": 0
+        },
+        {
+            "name": "Vitamin B6 (pyridoxal phosphate)",
+            "unit": "mg",
+            "amount": 0.08
+        },
+        {
+            "name": "Vitamin C (ascorbic acid)",
+            "unit": "mg",
+            "amount": 25.22
+        },
+        {
+            "name": "Vitamin D",
+            "unit": "µg",
+            "amount": 0
+        },
+        {
+            "name": "Vitamin E (tocopherols)",
+            "unit": "mg",
+            "amount": 0.62
+        },
+        {
+            "name": "Zinc",
+            "unit": "mg",
+            "amount": 0.06
         }
     ]
 }</pre>
@@ -3202,19 +3142,19 @@ User needs to be Signed in and have the same ID as the user id in the patient th
 <summary>Format</summary>
 <pre>{
     "EnergyUnit": string,
-    "TotalEnergy": string,
+    "TotalEnergy": number,
     "macronutrients": [
         {
             "name": string,
             "unit": string,
-            "amount": string
+            "amount": number
         }
     ],
     "micronutrients": [
         {
             "name": string,
             "unit": string,
-            "amount": string
+            "amount": number
         }
     ]
 }</pre>
@@ -3223,155 +3163,135 @@ User needs to be Signed in and have the same ID as the user id in the patient th
 <details>
 <summary>Example</summary>
 <pre>{
-    "EnergyUnit": "kJ",
-    "TotalEnergy": "60900",
+    "EnergyUnit": "kj",
+    "TotalEnergy": 2444,
     "macronutrients": [
         {
-            "name": "protien",
+            "name": "protein",
             "unit": "g",
-            "amount": "630"
+            "amount": 31.72
         },
         {
-            "name": "carbohydrate",
+            "name": "carbohydrates",
             "unit": "g",
-            "amount": "1890",
+            "amount": 37.44
         },
         {
             "name": "totalFat",
             "unit": "g",
-            "amount": "455"
+            "amount": 31.98
         },
         {
             "name": "saturatedFat",
             "unit": "g",
-            "amount": "70",
+            "amount": 14.620000000000001
         },
         {
             "name": "Sodium",
             "unit": "mg",
-            "amount": "3220"
-        },
+            "amount": 990.6
+        }
     ],
     "micronutrients": [
         {
-            "name": "Vitamin A",
-            "unit": "µg RE",
-            "amount": "6300"
-        },
-        {
-            "name": "Vitamin B1",
-            "unit": "mg",
-            "amount": "8.4"
-        },
-        {
-            "name": "Vitamin B2",
-            "unit": "mg",
-            "amount": "9.1"
-        },
-        {
-            "name": "Vitamin B3",
-            "unit": "mg NE",
-            "amount": "112"
-        },
-        {
-            "name": "Vitamin B6",
-            "unit": "mg",
-            "amount": "8.4"
-        },
-        {
-            "name": "Folate",
-            "unit": "µg",
-            "amount": "2800"
-        },
-        {
-            "name": "Vitamin B12",
-            "unit": "µg",
-            "amount": "16.8"
-        },
-        {
-            "name": "Vitamin C",
-            "unit": "mg",
-            "amount": "315"
-        },
-        {
-            "name": "Vitamin D",
-            "unit": "µg",
-            "amount": "35"
-        },
-        {
-            "name": "Vitamin E",
-            "unit": "mg",
-            "amount": "70"
-        },
-        {
-            "name": "Vitamin K",
-            "unit": "µg",
-            "amount": "490"
-        },
-        {
             "name": "Calcium",
             "unit": "mg",
-            "amount": "7000"
-        },
-        {
-            "name": "Iron",
-            "unit": "mg",
-            "amount": "56"
-        },
-        {
-            "name": "Magnesium",
-            "unit": "mg",
-            "amount": "2800"
-        },
-        {
-            "name": "Zinc",
-            "unit": "mg",
-            "amount": "98"
-        },
-        {
-            "name": "Iodine",
-            "unit": "µg",
-            "amount": "1050"
-        },
-        {
-            "name": "Selenium",
-            "unit": "µg",
-            "amount": "490"
-        },
-        {
-            "name": "Phosphorus",
-            "unit": "mg",
-            "amount": "7000"
-        },
-        {
-            "name": "Potassium",
-            "unit": "mg",
-            "amount": "26600"
+            "amount": 10.4
         },
         {
             "name": "Copper",
             "unit": "mg",
-            "amount": "21.0"
+            "amount": 0.1
         },
         {
-            "name": "Chromium",
+            "name": "Iron",
+            "unit": "mg",
+            "amount": 5
+        },
+        {
+            "name": "Folate",
             "unit": "µg",
-            "amount": "245"
+            "amount": 0
+        },
+        {
+            "name": "Iodide (iodine)",
+            "unit": "µg",
+            "amount": 0.52
+        },
+        {
+            "name": "Potassium",
+            "unit": "mg",
+            "amount": 252.2
+        },
+        {
+            "name": "Magnesium",
+            "unit": "mg",
+            "amount": 10.4
         },
         {
             "name": "Manganese",
-            "unit": "mg",
-            "amount": "38.5"
-        },
-        {
-            "name": "Fluoride",
-            "unit": "mg",
-            "amount": "28.0"
-        },
-        {
-            "name": "Molybdenum",
             "unit": "µg",
-            "amount": "315"
+            "amount": 80.6
+        },
+        {
+            "name": "Niacin (vitamin B3)",
+            "unit": "mg",
+            "amount": 0.1
+        },
+        {
+            "name": "Phosphorus",
+            "unit": "mg",
+            "amount": 23.4
+        },
+        {
+            "name": "Riboflavin (vitamin B2)",
+            "unit": "mg",
+            "amount": 0.18
+        },
+        {
+            "name": "Selenium",
+            "unit": "µg",
+            "amount": 0
+        },
+        {
+            "name": "Thiamin (vitamin B1)",
+            "unit": "mg",
+            "amount": 0.02
+        },
+        {
+            "name": "Vitamin A, FSANZ",
+            "unit": "µg",
+            "amount": 5.2
+        },
+        {
+            "name": "Vitamin B12 (cobalamin)",
+            "unit": "µg",
+            "amount": 0
+        },
+        {
+            "name": "Vitamin B6 (pyridoxal phosphate)",
+            "unit": "mg",
+            "amount": 0.08
+        },
+        {
+            "name": "Vitamin C (ascorbic acid)",
+            "unit": "mg",
+            "amount": 25.22
+        },
+        {
+            "name": "Vitamin D",
+            "unit": "µg",
+            "amount": 0
+        },
+        {
+            "name": "Vitamin E (tocopherols)",
+            "unit": "mg",
+            "amount": 0.62
+        },
+        {
+            "name": "Zinc",
+            "unit": "mg",
+            "amount": 0.06
         }
     ]
 }</pre>
@@ -3444,7 +3364,7 @@ User needs to be Signed in and have the same ID as the user id in the patient th
         },
         "macronutrients": [
             {
-                "name": "carbohydrate",
+                "name": "carbohydrates",
                 "unit": "g",
                 "minRDI": "234",
                 "maxRDI": "338",
@@ -3537,7 +3457,7 @@ User needs to be Signed in and have the same ID as the user id in the patient th
         },
         "macronutrients": [
             {
-                "name": "carbohydrate",
+                "name": "carbohydrates",
                 "unit": "g",
                 "minRDI": "1638",
                 "maxRDI": "2366",
@@ -3630,7 +3550,7 @@ User needs to be Signed in and have the same ID as the user id in the patient th
         },
         "macronutrients": [
             {
-                "name": "carbohydrate",
+                "name": "carbohydrates",
                 "unit": "g",
                 "minRDI": "1638",
                 "maxRDI": "2366",
@@ -3749,7 +3669,7 @@ User needs to be Signed in and have the same ID as the user id in the patient th
                 "direction": "in range"
             },
             {
-                "name": "carbohydrate",
+                "name": "carbohydrates",
                 "unit": "g",
                 "minRDI": "234",
                 "maxRDI": "338",
@@ -4044,7 +3964,7 @@ User needs to be Signed in and have the same ID as the user id in the patient th
                 "direction": "in range"
             },
             {
-                "name": "carbohydrate",
+                "name": "carbohydrates",
                 "unit": "g",
                 "minRDI": "1638",
                 "maxRDI": "2366",
@@ -4339,7 +4259,7 @@ User needs to be Signed in and have the same ID as the user id in the patient th
                 "direction": "in range"
             },
             {
-                "name": "carbohydrate",
+                "name": "carbohydrates",
                 "unit": "g",
                 "minRDI": "1638",
                 "maxRDI": "2366",

@@ -81,16 +81,16 @@ export class CustomFoodEntity extends BaseEntity {
     saturatedFat_qty_per_100: string;
 
     @Column()
-    carbohydrate_unit: string;
+    carbohydrates_unit: string;
 
     @Column()
-    carbohydrate_qty_per_serving: string;
+    carbohydrates_qty_per_serving: string;
 
     @Column()
-    carbohydrate_percent_RDI: string;
+    carbohydrates_percent_RDI: string;
 
     @Column()
-    carbohydrate_qty_per_100: string;
+    carbohydrates_qty_per_100: string;
 
     @Column()
     sugars_unit: string;

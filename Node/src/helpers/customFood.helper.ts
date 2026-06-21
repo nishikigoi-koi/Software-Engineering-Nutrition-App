@@ -66,11 +66,11 @@ function mapEntityToCustomFood(customFood:CustomFoodEntity): CustomFood{
             percent_RDI: customFood.saturatedFat_percent_RDI,
             qty_per_100: customFood.saturatedFat_qty_per_100
         },
-        carbohydrate: {
-            unit: customFood.carbohydrate_unit,
-            qty_per_serving: customFood.carbohydrate_qty_per_serving,
-            percent_RDI: customFood.carbohydrate_percent_RDI,
-            qty_per_100: customFood.carbohydrate_qty_per_100
+        carbohydrates: {
+            unit: customFood.carbohydrates_unit,
+            qty_per_serving: customFood.carbohydrates_qty_per_serving,
+            percent_RDI: customFood.carbohydrates_percent_RDI,
+            qty_per_100: customFood.carbohydrates_qty_per_100
         },
         sugars: {
             unit: customFood.sugars_unit,
@@ -129,10 +129,10 @@ function mapCustomFoodToCreateEntity(customFood: CustomFoodDTO): Partial<CustomF
         saturatedFat_qty_per_serving: customFood.saturatedFat.qty_per_serving,
         saturatedFat_percent_RDI: customFood.saturatedFat.percent_RDI,
         saturatedFat_qty_per_100: customFood.saturatedFat.qty_per_100,
-        carbohydrate_unit: customFood.carbohydrate.unit,
-        carbohydrate_qty_per_serving: customFood.carbohydrate.qty_per_serving,
-        carbohydrate_percent_RDI: customFood.carbohydrate.percent_RDI,
-        carbohydrate_qty_per_100: customFood.carbohydrate.qty_per_100,
+        carbohydrates_unit: customFood.carbohydrates.unit,
+        carbohydrates_qty_per_serving: customFood.carbohydrates.qty_per_serving,
+        carbohydrates_percent_RDI: customFood.carbohydrates.percent_RDI,
+        carbohydrates_qty_per_100: customFood.carbohydrates.qty_per_100,
         sugars_unit: customFood.sugars.unit,
         sugars_qty_per_serving: customFood.sugars.qty_per_serving,
         sugars_percent_RDI: customFood.sugars.percent_RDI,

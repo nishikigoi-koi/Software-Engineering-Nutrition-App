@@ -13,7 +13,7 @@ export interface FoodFile{
     protein: FoodFileNutrients,
     totalFat: FoodFileNutrients,
     saturatedFat: FoodFileNutrients,
-    carbohydrate: FoodFileNutrients,
+    carbohydrates: FoodFileNutrients,
     sugars: FoodFileNutrients,
     fiber: FoodFileNutrients,
     sodium: FoodFileNutrients,

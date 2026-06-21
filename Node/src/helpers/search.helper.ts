@@ -78,11 +78,11 @@ function mapEntityToCustomFood(customFood:CustomFoodEntity): CustomFood{
             percent_RDI: customFood.saturatedFat_percent_RDI,
             qty_per_100: customFood.saturatedFat_qty_per_100
         },
-        carbohydrate: {
-            unit: customFood.carbohydrate_unit,
-            qty_per_serving: customFood.carbohydrate_qty_per_serving,
-            percent_RDI: customFood.carbohydrate_percent_RDI,
-            qty_per_100: customFood.carbohydrate_qty_per_100
+        carbohydrates: {
+            unit: customFood.carbohydrates_unit,
+            qty_per_serving: customFood.carbohydrates_qty_per_serving,
+            percent_RDI: customFood.carbohydrates_percent_RDI,
+            qty_per_100: customFood.carbohydrates_qty_per_100
         },
         sugars: {
             unit: customFood.sugars_unit,
@@ -201,7 +201,7 @@ function mapFoodFileShortAndFoodFileFoodFileNutrients(foodFileShort:FoodFileShor
         protein: foodFileNutrients[1],
         totalFat: foodFileNutrients[2],
         saturatedFat: foodFileNutrients[3],
-        carbohydrate:foodFileNutrients[4],
+        carbohydrates:foodFileNutrients[4],
         sugars: foodFileNutrients[5],
         fiber: foodFileNutrients[6],
         sodium: foodFileNutrients[7],
