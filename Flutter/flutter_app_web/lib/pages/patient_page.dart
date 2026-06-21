@@ -33,7 +33,7 @@ class _PatientPageState extends State<PatientPage> {
   String? _selectedGender;
   String? _selectedActivityLevel;
 
-  final List<String> _genderOptions = ['Male', 'Female', 'Non-binary'];
+  final List<String> _genderOptions = ['Male', 'Female'];
   final List<String> _activityOptions = ['Sedentary', 'Light', 'Moderate', 'High', 'Extreme'];
 
   @override
