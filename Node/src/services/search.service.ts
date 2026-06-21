@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { SearchFoodFileAndCustomInDatabaseAndAPI, SearchGetCustomFromDatabase, SearchGetFoodFileFromAPI } from '../helpers/search.helper.ts';
-import { customFoodRepository } from '../database/repostitories.ts';
-import { userRepository } from '../database/repostitories.ts';
+import { customFoodRepository, userRepository } from '../database/repostitories.ts';
+
 
 export async function SearchFoodFileAndCustom(req:Request, res:Response, next: NextFunction) {
     try{
@@ -29,12 +29,3 @@ export async function SearchGetCustom(req:Request, res:Response, next: NextFunct
         next(error)
     }
 }
-
-
-
-
-SearchFoodFileAndCustomInDatabaseAndAPI
-
-SearchGetFoodFileFromAPI
-
-SearchGetCustomFromDatabase

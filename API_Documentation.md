@@ -1194,51 +1194,60 @@ User needs to be Signed in to access this endpoint
     "energy" : {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "protein": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "totalFat": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "saturatedFat": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
-    "carbohydrate": {
+    "carbohydrates": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "sugars": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "fiber": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "sodium": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
-    }
+    },
+    "micronutrients": [
+        {
+            "name": string,
+            "unit": string,
+            "qty_per_serving": string,
+            "percent_RDI": string,
+            "qty_per_100": string
+        }
+    ]
 }</pre>
 </details>
 
@@ -1256,51 +1265,60 @@ User needs to be Signed in to access this endpoint
     "energy" : {
         "unit": "KJ",
         "qty_per_serving": "270",
-        "percent_RQI": "3",
+        "percent_RDI": "3",
         "qty_per_100": "190"
     },
     "protein": {
         "unit": "g",
         "qty_per_serving": "0.3",
-        "percent_RQI": "1",
+        "percent_RDI": "1",
         "qty_per_100": "0.2"
     },
     "totalFat": {
         "unit": "g",
         "qty_per_serving": "0.4",
-        "percent_RQI": "1",
+        "percent_RDI": "1",
         "qty_per_100": "0.3"
     },
     "saturatedFat": {
         "unit": "g",
         "qty_per_serving": "0.03",
-        "percent_RQI": "0",
+        "percent_RDI": "0",
         "qty_per_100": "0.02"
     },
-    "carbohydrate": {
+    "carbohydrates": {
         "unit": "g",
         "qty_per_serving": "14",
-        "percent_RQI": "4",
+        "percent_RDI": "4",
         "qty_per_100": "9.3"
     },
     "sugars": {
         "unit": "g",
         "qty_per_serving": "13",
-        "percent_RQI": "14",
+        "percent_RDI": "14",
         "qty_per_100": "9.0"
     },
     "fiber": {
         "unit": "g",
         "qty_per_serving": "2.8",
-        "percent_RQI": "9",
+        "percent_RDI": "9",
         "qty_per_100": "1.9"
     },
     "sodium": {
         "unit": "mg",
         "qty_per_serving": "1",
-        "percent_RQI": "0",
+        "percent_RDI": "0",
         "qty_per_100": "1"
-    }
+    },
+    "micronutrients": [
+        {
+            "name": "Vitamin C",
+            "unit": "mg",
+            "qty_per_serving": "14",
+            "percent_RDI": "35",
+            "qty_per_100": "9.7"
+        }
+    ]
 }</pre>
 </details>
 
@@ -1335,51 +1353,61 @@ User needs to be Signed in and have the same user id as the userId to access thi
     "energy" : {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "protein": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "totalFat": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "saturatedFat": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
-    "carbohydrate": {
+    "carbohydrates": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "sugars": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "fiber": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "sodium": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
-    }
+    },
+    "micronutrients": [
+        {
+            "name": string,
+            "unit": string,
+            "qty_per_serving": string,
+            "percent_RDI": string,
+            "qty_per_100": string
+        }
+    ]
+
 }</pre>
 </details>
 
@@ -1397,51 +1425,60 @@ User needs to be Signed in and have the same user id as the userId to access thi
     "energy" : {
         "unit": "KJ",
         "qty_per_serving": "1900",
-        "percent_RQI": "22",
+        "percent_RDI": "22",
         "qty_per_100": "750"
     },
     "protein": {
         "unit": "g",
         "qty_per_serving": "30",
-        "percent_RQI": "60",
+        "percent_RDI": "60",
         "qty_per_100": "12"
     },
     "totalFat": {
         "unit": "g",
         "qty_per_serving": "31",
-        "percent_RQI": "44",
+        "percent_RDI": "44",
         "qty_per_100": "12"
     },
     "saturatedFat": {
         "unit": "g",
         "qty_per_serving": "14",
-        "percent_RQI": "60",
+        "percent_RDI": "60",
         "qty_per_100": "5.6"
     },
-    "carbohydrate": {
+    "carbohydrates": {
         "unit": "g",
         "qty_per_serving": "13",
-        "percent_RQI": "4",
+        "percent_RDI": "4",
         "qty_per_100": "5.1"
     },
     "sugars": {
         "unit": "g",
         "qty_per_serving": "13",
-        "percent_RQI": "14",
+        "percent_RDI": "14",
         "qty_per_100": "5.0"
     },
     "fiber": {
         "unit": "g",
         "qty_per_serving": "5.7",
-        "percent_RQI": "19",
+        "percent_RDI": "19",
         "qty_per_100": "2.2"
     },
     "sodium": {
         "unit": "mg",
         "qty_per_serving": "990",
-        "percent_RQI": "43",
+        "percent_RDI": "43",
         "qty_per_100": "380"
-    }
+    },
+    "micronutrients": [
+        {
+            "name": "Iron",
+            "unit": "mg",
+            "qty_per_serving": "4.6",
+            "percent_RDI": "38",
+            "qty_per_100": "1.8"
+        }
+    ]
 }</pre>
 </details>
 
@@ -1641,7 +1678,7 @@ User needs to be Signed in and have the same ID as the user id in the patient th
 ## Get food log by date and patient id
 ``` GET: http://localhost:3000/api/log/getbypatientanddate?date=:date&patientid=:patientId ``` <br>
 For example <br>
-``` GET: http://localhost:3000/api/log/getbypatientanddate?date=:2026-05-12&patientid=9ad83156-5ed1-4e2f-8358-abcdef12345 ``` <br>
+``` GET: http://localhost:3000/api/log/getbypatientanddate?date=2026-05-12&patientid=9ad83156-5ed1-4e2f-8358-abcdef12345 ``` <br>
 ### Description 
 get all food logs for a given day for a patient
 
@@ -1756,51 +1793,60 @@ creates a custom food item or meal in the databse linked to a user
     "energy" : {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "protein": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "totalFat": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "saturatedFat": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
-    "carbohydrate": {
+    "carbohydrates": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "sugars": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "fiber": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "sodium": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
-    }
+    },
+    "micronutrients": [
+        {
+            "name": string,
+            "unit": string,
+            "qty_per_serving": string,
+            "percent_RDI": string,
+            "qty_per_100": string
+        }
+    ]
 }</pre>
 </details>
 
@@ -1817,51 +1863,60 @@ creates a custom food item or meal in the databse linked to a user
     "energy" : {
         "unit": "KJ",
         "qty_per_serving": "1900",
-        "percent_RQI": "22",
+        "percent_RDI": "22",
         "qty_per_100": "750"
     },
     "protein": {
         "unit": "g",
         "qty_per_serving": "30",
-        "percent_RQI": "60",
+        "percent_RDI": "60",
         "qty_per_100": "12"
     },
     "totalFat": {
         "unit": "g",
         "qty_per_serving": "31",
-        "percent_RQI": "44",
+        "percent_RDI": "44",
         "qty_per_100": "12"
     },
     "saturatedFat": {
         "unit": "g",
         "qty_per_serving": "14",
-        "percent_RQI": "60",
+        "percent_RDI": "60",
         "qty_per_100": "5.6"
     },
-    "carbohydrate": {
+    "carbohydrates": {
         "unit": "g",
         "qty_per_serving": "13",
-        "percent_RQI": "4",
+        "percent_RDI": "4",
         "qty_per_100": "5.1"
     },
     "sugars": {
         "unit": "g",
         "qty_per_serving": "13",
-        "percent_RQI": "14",
+        "percent_RDI": "14",
         "qty_per_100": "5.0"
     },
     "fiber": {
         "unit": "g",
         "qty_per_serving": "5.7",
-        "percent_RQI": "19",
+        "percent_RDI": "19",
         "qty_per_100": "2.2"
     },
     "sodium": {
         "unit": "mg",
         "qty_per_serving": "990",
-        "percent_RQI": "43",
+        "percent_RDI": "43",
         "qty_per_100": "380"
-    }
+    },
+    "micronutrients": [
+        {
+            "name": "Iron",
+            "unit": "mg",
+            "qty_per_serving": "4.6",
+            "percent_RDI": "38",
+            "qty_per_100": "1.8"
+        }
+    ]
 }</pre>
 </details>
 
@@ -1887,51 +1942,60 @@ User needs to be Signed in and have the same ID as the userId to access this end
     "energy" : {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "protein": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "totalFat": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "saturatedFat": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
-    "carbohydrate": {
+    "carbohydrates": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "sugars": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "fiber": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "sodium": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
-    }
+    },
+    "micronutrients": [
+        {
+            "name": string,
+            "unit": string,
+            "qty_per_serving": string,
+            "percent_RDI": string,
+            "qty_per_100": string
+        }
+    ]
 }</pre>
 </details>
 
@@ -1949,51 +2013,60 @@ User needs to be Signed in and have the same ID as the userId to access this end
     "energy" : {
         "unit": "KJ",
         "qty_per_serving": "1900",
-        "percent_RQI": "22",
+        "percent_RDI": "22",
         "qty_per_100": "750"
     },
     "protein": {
         "unit": "g",
         "qty_per_serving": "30",
-        "percent_RQI": "60",
+        "percent_RDI": "60",
         "qty_per_100": "12"
     },
     "totalFat": {
         "unit": "g",
         "qty_per_serving": "31",
-        "percent_RQI": "44",
+        "percent_RDI": "44",
         "qty_per_100": "12"
     },
     "saturatedFat": {
         "unit": "g",
         "qty_per_serving": "14",
-        "percent_RQI": "60",
+        "percent_RDI": "60",
         "qty_per_100": "5.6"
     },
-    "carbohydrate": {
+    "carbohydrates": {
         "unit": "g",
         "qty_per_serving": "13",
-        "percent_RQI": "4",
+        "percent_RDI": "4",
         "qty_per_100": "5.1"
     },
     "sugars": {
         "unit": "g",
         "qty_per_serving": "13",
-        "percent_RQI": "14",
+        "percent_RDI": "14",
         "qty_per_100": "5.0"
     },
     "fiber": {
         "unit": "g",
         "qty_per_serving": "5.7",
-        "percent_RQI": "19",
+        "percent_RDI": "19",
         "qty_per_100": "2.2"
     },
     "sodium": {
         "unit": "mg",
         "qty_per_serving": "990",
-        "percent_RQI": "43",
+        "percent_RDI": "43",
         "qty_per_100": "380"
-    }
+    },
+    "micronutrients": [
+        {
+            "name": "Iron",
+            "unit": "mg",
+            "qty_per_serving": "4.6",
+            "percent_RDI": "38",
+            "qty_per_100": "1.8"
+        }
+    ]
 }</pre>
 </details>
 
@@ -2019,51 +2092,60 @@ updates the custome food item that has the same id
     "energy" : {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "protein": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "totalFat": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "saturatedFat": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
-    "carbohydrate": {
+    "carbohydrates": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "sugars": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "fiber": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "sodium": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
-    }
+    },
+    "micronutrients": [
+        {
+            "name": string,
+            "unit": string,
+            "qty_per_serving": string,
+            "percent_RDI": string,
+            "qty_per_100": string
+        }
+    ]
 }</pre>
 </details>
 
@@ -2080,51 +2162,60 @@ updates the custome food item that has the same id
     "energy" : {
         "unit": "KJ",
         "qty_per_serving": "1900",
-        "percent_RQI": "22",
+        "percent_RDI": "22",
         "qty_per_100": "750"
     },
     "protein": {
         "unit": "g",
         "qty_per_serving": "30",
-        "percent_RQI": "60",
+        "percent_RDI": "60",
         "qty_per_100": "12"
     },
     "totalFat": {
         "unit": "g",
         "qty_per_serving": "31",
-        "percent_RQI": "44",
+        "percent_RDI": "44",
         "qty_per_100": "12"
     },
     "saturatedFat": {
         "unit": "g",
         "qty_per_serving": "14",
-        "percent_RQI": "60",
+        "percent_RDI": "60",
         "qty_per_100": "5.6"
     },
-    "carbohydrate": {
+    "carbohydrates": {
         "unit": "g",
         "qty_per_serving": "13",
-        "percent_RQI": "4",
+        "percent_RDI": "4",
         "qty_per_100": "5.1"
     },
     "sugars": {
         "unit": "g",
         "qty_per_serving": "13",
-        "percent_RQI": "14",
+        "percent_RDI": "14",
         "qty_per_100": "5.0"
     },
     "fiber": {
         "unit": "g",
         "qty_per_serving": "5.7",
-        "percent_RQI": "19",
+        "percent_RDI": "19",
         "qty_per_100": "2.2"
     },
     "sodium": {
         "unit": "mg",
         "qty_per_serving": "990",
-        "percent_RQI": "43",
+        "percent_RDI": "43",
         "qty_per_100": "380"
-    }
+    },
+    "micronutrients": [
+        {
+            "name": "Iron",
+            "unit": "mg",
+            "qty_per_serving": "4.6",
+            "percent_RDI": "38",
+            "qty_per_100": "1.8"
+        }
+    ]
 }</pre>
 </details>
 
@@ -2197,51 +2288,60 @@ User needs to be Signed in and have the same user id as the userId to access thi
     "energy" : {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "protein": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "totalFat": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "saturatedFat": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
-    "carbohydrate": {
+    "carbohydrates": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "sugars": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "fiber": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "sodium": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
-    }
+    },
+    "micronutrients": [
+        {
+            "name": string,
+            "unit": string,
+            "qty_per_serving": string,
+            "percent_RDI": string,
+            "qty_per_100": string
+        }
+    ]
 }</pre>
 </details>
 
@@ -2259,51 +2359,60 @@ User needs to be Signed in and have the same user id as the userId to access thi
     "energy" : {
         "unit": "KJ",
         "qty_per_serving": "1900",
-        "percent_RQI": "22",
+        "percent_RDI": "22",
         "qty_per_100": "750"
     },
     "protein": {
         "unit": "g",
         "qty_per_serving": "30",
-        "percent_RQI": "60",
+        "percent_RDI": "60",
         "qty_per_100": "12"
     },
     "totalFat": {
         "unit": "g",
         "qty_per_serving": "31",
-        "percent_RQI": "44",
+        "percent_RDI": "44",
         "qty_per_100": "12"
     },
     "saturatedFat": {
         "unit": "g",
         "qty_per_serving": "14",
-        "percent_RQI": "60",
+        "percent_RDI": "60",
         "qty_per_100": "5.6"
     },
-    "carbohydrate": {
+    "carbohydrates": {
         "unit": "g",
         "qty_per_serving": "13",
-        "percent_RQI": "4",
+        "percent_RDI": "4",
         "qty_per_100": "5.1"
     },
     "sugars": {
         "unit": "g",
         "qty_per_serving": "13",
-        "percent_RQI": "14",
+        "percent_RDI": "14",
         "qty_per_100": "5.0"
     },
     "fiber": {
         "unit": "g",
         "qty_per_serving": "5.7",
-        "percent_RQI": "19",
+        "percent_RDI": "19",
         "qty_per_100": "2.2"
     },
     "sodium": {
         "unit": "mg",
         "qty_per_serving": "990",
-        "percent_RQI": "43",
+        "percent_RDI": "43",
         "qty_per_100": "380"
-    }
+    },
+    "micronutrients": [
+        {
+            "name": "Iron",
+            "unit": "mg",
+            "qty_per_serving": "4.6",
+            "percent_RDI": "38",
+            "qty_per_100": "1.8"
+        }
+    ]
 }</pre>
 </details>
 
@@ -2311,7 +2420,7 @@ User needs to be Signed in and have the same user id as the userId to access thi
 ```GET: http://localhost:3000/api/customfood/getbyuserid/:id ``` <br>
 
 For example <br>
-```GET: http://localhost:3000/api/customfood/get/9ad83156-5ed1-4e2f-8358-c6e2ce906f3a ```
+```GET: http://localhost:3000/api/customfood/getbyuserid/9ad83156-5ed1-4e2f-8358-c6e2ce906f3a ```
 
 ## Description  
 Gets all the matching custom food items that have the same user id linked
@@ -2339,51 +2448,60 @@ User needs to be Signed in and have the same user id as the userId to access thi
         "energy" : {
             "unit": string,
             "qty_per_serving": string,
-            "percent_RQI": string,
+            "percent_RDI": string,
             "qty_per_100": string
         },
         "protein": {
             "unit": string,
             "qty_per_serving": string,
-            "percent_RQI": string,
+            "percent_RDI": string,
             "qty_per_100": string
         },
         "totalFat": {
             "unit": string,
             "qty_per_serving": string,
-            "percent_RQI": string,
+            "percent_RDI": string,
             "qty_per_100": string
         },
         "saturatedFat": {
             "unit": string,
             "qty_per_serving": string,
-            "percent_RQI": string,
+            "percent_RDI": string,
             "qty_per_100": string
         },
-        "carbohydrate": {
+        "carbohydrates": {
             "unit": string,
             "qty_per_serving": string,
-            "percent_RQI": string,
+            "percent_RDI": string,
             "qty_per_100": string
         },
         "sugars": {
             "unit": string,
             "qty_per_serving": string,
-            "percent_RQI": string,
+            "percent_RDI": string,
             "qty_per_100": string
         },
         "fiber": {
             "unit": string,
             "qty_per_serving": string,
-            "percent_RQI": string,
+            "percent_RDI": string,
             "qty_per_100": string
         },
         "sodium": {
             "unit": string,
             "qty_per_serving": string,
-            "percent_RQI": string,
+            "percent_RDI": string,
             "qty_per_100": string
-        }
+        },
+        "micronutrients": [
+            {
+                "name": string,
+                "unit": string,
+                "qty_per_serving": string,
+                "percent_RDI": string,
+                "qty_per_100": string
+            }
+        ]
     }
 ]</pre>
 </details>
@@ -2391,7 +2509,7 @@ User needs to be Signed in and have the same user id as the userId to access thi
 <details>
 <summary>Example</summary>
 <pre>[
-        {
+    {
         "id": "9ad83156-5ed1-4e2f-8358-111111111111",
         "userId" : "9ad83156-5ed1-4e2f-8358-c6e2ce906f3a",
         "foodName": "Butter Chicken with rice",
@@ -2403,52 +2521,1946 @@ User needs to be Signed in and have the same user id as the userId to access thi
         "energy" : {
             "unit": "KJ",
             "qty_per_serving": "1900",
-            "percent_RQI": "22",
+            "percent_RDI": "22",
             "qty_per_100": "750"
         },
         "protein": {
             "unit": "g",
             "qty_per_serving": "30",
-            "percent_RQI": "60",
+            "percent_RDI": "60",
             "qty_per_100": "12"
         },
         "totalFat": {
             "unit": "g",
             "qty_per_serving": "31",
-            "percent_RQI": "44",
+            "percent_RDI": "44",
             "qty_per_100": "12"
         },
         "saturatedFat": {
             "unit": "g",
             "qty_per_serving": "14",
-            "percent_RQI": "60",
+            "percent_RDI": "60",
             "qty_per_100": "5.6"
         },
-        "carbohydrate": {
+        "carbohydrates": {
             "unit": "g",
             "qty_per_serving": "13",
-            "percent_RQI": "4",
+            "percent_RDI": "4",
             "qty_per_100": "5.1"
         },
         "sugars": {
             "unit": "g",
             "qty_per_serving": "13",
-            "percent_RQI": "14",
+            "percent_RDI": "14",
             "qty_per_100": "5.0"
         },
         "fiber": {
             "unit": "g",
             "qty_per_serving": "5.7",
-            "percent_RQI": "19",
+            "percent_RDI": "19",
             "qty_per_100": "2.2"
         },
         "sodium": {
             "unit": "mg",
             "qty_per_serving": "990",
-            "percent_RQI": "43",
+            "percent_RDI": "43",
             "qty_per_100": "380"
-        }
+        },
+        "micronutrients": [
+            {
+                "name": "Iron",
+                "unit": "mg",
+                "qty_per_serving": "4.6",
+                "percent_RDI": "38",
+                "qty_per_100": "1.8"
+            }
+        ]
     }
 ]</pre>
 </details>
 
+# RDI
+
+## Calculate RDI off patient id 
+
+```GET: http://localhost:3000/api/rdi/:id ``` <br>
+
+For example <br>
+```GET: http://localhost:3000/api/rdi/9ad83156-5ed1-4e2f-8358-abcdef12345 ```
+
+### Description 
+Calculates RDI based off patient id using the Mifflin-St Jeor equation
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the user id in the patient that is linked to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "EnergyUnit": string,
+    "TotalEnergy": string,
+    "macronutrients": [
+        {
+            "name": string,
+            "unit": string,
+            "minAmount": string,
+            "maxAmount": string
+        }
+    ],
+    "micronutrients": [
+        {
+            "name": string,
+            "unit": string,
+            "amount": string
+        }
+    ]
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "EnergyUnit": "kJ",
+    "TotalEnergy": 10701,
+    "macronutrients": [
+        {
+            "name": "protein",
+            "unit": "g",
+            "minAmount": 94.4,
+            "maxAmount": 157.4
+        },
+        {
+            "name": "carbohydrates",
+            "unit": "g",
+            "minAmount": 283.3,
+            "maxAmount": 409.2
+        },
+        {
+            "name": "totalFat",
+            "unit": "g",
+            "minAmount": 57.8,
+            "maxAmount": 101.2
+        },
+        {
+            "name": "saturatedFat",
+            "unit": "g",
+            "minAmount": 0,
+            "maxAmount": 28.9
+        },
+        {
+            "name": "Sodium",
+            "unit": "mg",
+            "minAmount": 460,
+            "maxAmount": 920
+        }
+    ],
+    "micronutrients": [
+        {
+            "name": "Calcium",
+            "unit": "mg",
+            "amount": 1000
+        },
+        {
+            "name": "Copper",
+            "unit": "mg",
+            "amount": 1.7
+        },
+        {
+            "name": "Iron",
+            "unit": "mg",
+            "amount": 8
+        },
+        {
+            "name": "Folate",
+            "unit": "µg",
+            "amount": 400
+        },
+        {
+            "name": "Iodide (iodine)",
+            "unit": "µg",
+            "amount": 150
+        },
+        {
+            "name": "Potassium",
+            "unit": "mg",
+            "amount": 3800
+        },
+        {
+            "name": "Magnesium",
+            "unit": "mg",
+            "amount": 400
+        },
+        {
+            "name": "Manganese",
+            "unit": "µg",
+            "amount": 5.5
+        },
+        {
+            "name": "Niacin (vitamin B3)",
+            "unit": "mg",
+            "amount": 16
+        },
+        {
+            "name": "Phosphorus",
+            "unit": "mg",
+            "amount": 1000
+        },
+        {
+            "name": "Riboflavin (vitamin B2)",
+            "unit": "mg",
+            "amount": 1.3
+        },
+        {
+            "name": "Selenium",
+            "unit": "µg",
+            "amount": 70
+        },
+        {
+            "name": "Thiamin (vitamin B1)",
+            "unit": "mg",
+            "amount": 1.2
+        },
+        {
+            "name": "Vitamin A, FSANZ",
+            "unit": "µg",
+            "amount": 900
+        },
+        {
+            "name": "Vitamin B12 (cobalamin)",
+            "unit": "µg",
+            "amount": 2.4
+        },
+        {
+            "name": "Vitamin B6 (pyridoxal phosphate)",
+            "unit": "mg",
+            "amount": 1.3
+        },
+        {
+            "name": "Vitamin C (ascorbic acid)",
+            "unit": "mg",
+            "amount": 45
+        },
+        {
+            "name": "Vitamin D",
+            "unit": "µg",
+            "amount": 5
+        },
+        {
+            "name": "Vitamin E (tocopherols)",
+            "unit": "mg",
+            "amount": 10
+        },
+        {
+            "name": "Zinc",
+            "unit": "mg",
+            "amount": 14
+        }
+    ]
+}</pre>
+</details>
+
+# total nutrients
+
+## get total nutrients for a day for a patient
+
+```GET: http://localhost:3000/api/totalnutrients/day?date=:date&patientid=:patientId ``` <br>
+
+For example <br>
+```GET: http://localhost:3000/api/totalnutrients/day?date=2026-05-12&patientid=9ad83156-5ed1-4e2f-8358-abcdef12345 ```
+
+### Description 
+calculates the total nutrients intake for a given day for a patient from their food logs
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the user id in the patient that is linked to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "EnergyUnit": string,
+    "TotalEnergy": number,
+    "macronutrients": [
+        {
+            "name": string,
+            "unit": string,
+            "amount": number
+        }
+    ],
+    "micronutrients": [
+        {
+            "name": string,
+            "unit": string,
+            "amount": number
+        }
+    ]
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "EnergyUnit": "kj",
+    "TotalEnergy": 494,
+    "macronutrients": [
+        {
+            "name": "protein",
+            "unit": "g",
+            "amount": 0.52
+        },
+        {
+            "name": "carbohydrates",
+            "unit": "g",
+            "amount": 24.18
+        },
+        {
+            "name": "totalFat",
+            "unit": "g",
+            "amount": 0.78
+        },
+        {
+            "name": "saturatedFat",
+            "unit": "g",
+            "amount": 0.06
+        },
+        {
+            "name": "Sodium",
+            "unit": "mg",
+            "amount": 2.6
+        }
+    ],
+    "micronutrients": [
+        {
+            "name": "Calcium",
+            "unit": "mg",
+            "amount": 10.4
+        },
+        {
+            "name": "Copper",
+            "unit": "mg",
+            "amount": 0.1
+        },
+        {
+            "name": "Iron",
+            "unit": "mg",
+            "amount": 0.32
+        },
+        {
+            "name": "Folate",
+            "unit": "µg",
+            "amount": 0
+        },
+        {
+            "name": "Iodide (iodine)",
+            "unit": "µg",
+            "amount": 0.52
+        },
+        {
+            "name": "Potassium",
+            "unit": "mg",
+            "amount": 252.2
+        },
+        {
+            "name": "Magnesium",
+            "unit": "mg",
+            "amount": 10.4
+        },
+        {
+            "name": "Manganese",
+            "unit": "µg",
+            "amount": 80.6
+        },
+        {
+            "name": "Niacin (vitamin B3)",
+            "unit": "mg",
+            "amount": 0.1
+        },
+        {
+            "name": "Phosphorus",
+            "unit": "mg",
+            "amount": 23.4
+        },
+        {
+            "name": "Riboflavin (vitamin B2)",
+            "unit": "mg",
+            "amount": 0.18
+        },
+        {
+            "name": "Selenium",
+            "unit": "µg",
+            "amount": 0
+        },
+        {
+            "name": "Thiamin (vitamin B1)",
+            "unit": "mg",
+            "amount": 0.02
+        },
+        {
+            "name": "Vitamin A, FSANZ",
+            "unit": "µg",
+            "amount": 5.2
+        },
+        {
+            "name": "Vitamin B12 (cobalamin)",
+            "unit": "µg",
+            "amount": 0
+        },
+        {
+            "name": "Vitamin B6 (pyridoxal phosphate)",
+            "unit": "mg",
+            "amount": 0.08
+        },
+        {
+            "name": "Vitamin C (ascorbic acid)",
+            "unit": "mg",
+            "amount": 25.22
+        },
+        {
+            "name": "Vitamin D",
+            "unit": "µg",
+            "amount": 0
+        },
+        {
+            "name": "Vitamin E (tocopherols)",
+            "unit": "mg",
+            "amount": 0.62
+        },
+        {
+            "name": "Zinc",
+            "unit": "mg",
+            "amount": 0.06
+        }
+    ]
+}</pre>
+</details>
+
+## get total nutrients for a week for a patient
+
+```GET: http://localhost:3000/api/totalnutrients/week?startdate=:date&patientid=:patientId ``` <br>
+
+For example <br>
+```GET: http://localhost:3000/api/totalnutrients/week?startdate=2026-05-12&patientid=9ad83156-5ed1-4e2f-8358-abcdef12345 ```
+
+### Description 
+calculates the total nutrients intake for a given week (7 days from the start date (inclusive)) for a patient from their food logs
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the user id in the patient that is linked to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "EnergyUnit": string,
+    "TotalEnergy": number,
+    "macronutrients": [
+        {
+            "name": string,
+            "unit": string,
+            "amount": number
+        }
+    ],
+    "micronutrients": [
+        {
+            "name": string,
+            "unit": string,
+            "amount": number
+        }
+    ]
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "EnergyUnit": "kj",
+    "TotalEnergy": 2444,
+    "macronutrients": [
+        {
+            "name": "protein",
+            "unit": "g",
+            "amount": 31.72
+        },
+        {
+            "name": "carbohydrates",
+            "unit": "g",
+            "amount": 37.44
+        },
+        {
+            "name": "totalFat",
+            "unit": "g",
+            "amount": 31.98
+        },
+        {
+            "name": "saturatedFat",
+            "unit": "g",
+            "amount": 14.620000000000001
+        },
+        {
+            "name": "Sodium",
+            "unit": "mg",
+            "amount": 990.6
+        }
+    ],
+    "micronutrients": [
+        {
+            "name": "Calcium",
+            "unit": "mg",
+            "amount": 10.4
+        },
+        {
+            "name": "Copper",
+            "unit": "mg",
+            "amount": 0.1
+        },
+        {
+            "name": "Iron",
+            "unit": "mg",
+            "amount": 5
+        },
+        {
+            "name": "Folate",
+            "unit": "µg",
+            "amount": 0
+        },
+        {
+            "name": "Iodide (iodine)",
+            "unit": "µg",
+            "amount": 0.52
+        },
+        {
+            "name": "Potassium",
+            "unit": "mg",
+            "amount": 252.2
+        },
+        {
+            "name": "Magnesium",
+            "unit": "mg",
+            "amount": 10.4
+        },
+        {
+            "name": "Manganese",
+            "unit": "µg",
+            "amount": 80.6
+        },
+        {
+            "name": "Niacin (vitamin B3)",
+            "unit": "mg",
+            "amount": 0.1
+        },
+        {
+            "name": "Phosphorus",
+            "unit": "mg",
+            "amount": 23.4
+        },
+        {
+            "name": "Riboflavin (vitamin B2)",
+            "unit": "mg",
+            "amount": 0.18
+        },
+        {
+            "name": "Selenium",
+            "unit": "µg",
+            "amount": 0
+        },
+        {
+            "name": "Thiamin (vitamin B1)",
+            "unit": "mg",
+            "amount": 0.02
+        },
+        {
+            "name": "Vitamin A, FSANZ",
+            "unit": "µg",
+            "amount": 5.2
+        },
+        {
+            "name": "Vitamin B12 (cobalamin)",
+            "unit": "µg",
+            "amount": 0
+        },
+        {
+            "name": "Vitamin B6 (pyridoxal phosphate)",
+            "unit": "mg",
+            "amount": 0.08
+        },
+        {
+            "name": "Vitamin C (ascorbic acid)",
+            "unit": "mg",
+            "amount": 25.22
+        },
+        {
+            "name": "Vitamin D",
+            "unit": "µg",
+            "amount": 0
+        },
+        {
+            "name": "Vitamin E (tocopherols)",
+            "unit": "mg",
+            "amount": 0.62
+        },
+        {
+            "name": "Zinc",
+            "unit": "mg",
+            "amount": 0.06
+        }
+    ]
+}</pre>
+</details>
+
+## get total nutrients for a custom time period for a patient
+
+```GET: http://localhost:3000/api/totalnutrients/customperiod?startdate=:date&enddate=:date&patientid=:patientId ``` <br>
+
+For example <br>
+```GET: http://localhost:3000/api/totalnutrients/customperiod?startdate=2026-05-12&enddate=2026-05-19&patientid=9ad83156-5ed1-4e2f-8358-abcdef12345 ```
+
+### Description 
+calculates the total nutrients intake for a custom time period (days from the start date to the end date (inclusive)) for a patient from their food logs
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the user id in the patient that is linked to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "EnergyUnit": string,
+    "TotalEnergy": number,
+    "macronutrients": [
+        {
+            "name": string,
+            "unit": string,
+            "amount": number
+        }
+    ],
+    "micronutrients": [
+        {
+            "name": string,
+            "unit": string,
+            "amount": number
+        }
+    ]
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "EnergyUnit": "kj",
+    "TotalEnergy": 2444,
+    "macronutrients": [
+        {
+            "name": "protein",
+            "unit": "g",
+            "amount": 31.72
+        },
+        {
+            "name": "carbohydrates",
+            "unit": "g",
+            "amount": 37.44
+        },
+        {
+            "name": "totalFat",
+            "unit": "g",
+            "amount": 31.98
+        },
+        {
+            "name": "saturatedFat",
+            "unit": "g",
+            "amount": 14.620000000000001
+        },
+        {
+            "name": "Sodium",
+            "unit": "mg",
+            "amount": 990.6
+        }
+    ],
+    "micronutrients": [
+        {
+            "name": "Calcium",
+            "unit": "mg",
+            "amount": 10.4
+        },
+        {
+            "name": "Copper",
+            "unit": "mg",
+            "amount": 0.1
+        },
+        {
+            "name": "Iron",
+            "unit": "mg",
+            "amount": 5
+        },
+        {
+            "name": "Folate",
+            "unit": "µg",
+            "amount": 0
+        },
+        {
+            "name": "Iodide (iodine)",
+            "unit": "µg",
+            "amount": 0.52
+        },
+        {
+            "name": "Potassium",
+            "unit": "mg",
+            "amount": 252.2
+        },
+        {
+            "name": "Magnesium",
+            "unit": "mg",
+            "amount": 10.4
+        },
+        {
+            "name": "Manganese",
+            "unit": "µg",
+            "amount": 80.6
+        },
+        {
+            "name": "Niacin (vitamin B3)",
+            "unit": "mg",
+            "amount": 0.1
+        },
+        {
+            "name": "Phosphorus",
+            "unit": "mg",
+            "amount": 23.4
+        },
+        {
+            "name": "Riboflavin (vitamin B2)",
+            "unit": "mg",
+            "amount": 0.18
+        },
+        {
+            "name": "Selenium",
+            "unit": "µg",
+            "amount": 0
+        },
+        {
+            "name": "Thiamin (vitamin B1)",
+            "unit": "mg",
+            "amount": 0.02
+        },
+        {
+            "name": "Vitamin A, FSANZ",
+            "unit": "µg",
+            "amount": 5.2
+        },
+        {
+            "name": "Vitamin B12 (cobalamin)",
+            "unit": "µg",
+            "amount": 0
+        },
+        {
+            "name": "Vitamin B6 (pyridoxal phosphate)",
+            "unit": "mg",
+            "amount": 0.08
+        },
+        {
+            "name": "Vitamin C (ascorbic acid)",
+            "unit": "mg",
+            "amount": 25.22
+        },
+        {
+            "name": "Vitamin D",
+            "unit": "µg",
+            "amount": 0
+        },
+        {
+            "name": "Vitamin E (tocopherols)",
+            "unit": "mg",
+            "amount": 0.62
+        },
+        {
+            "name": "Zinc",
+            "unit": "mg",
+            "amount": 0.06
+        }
+    ]
+}</pre>
+</details>
+
+# flag lacking or too much nutrients 
+
+## flag lacking or too much nutrients for a day for a patient
+
+```GET: http://localhost:3000/api/flag/day?date=:date&patientid=:patientId ``` <br>
+
+For example <br>
+```GET: http://localhost:3000/api/flag/day?date=2026-05-12&patientid=9ad83156-5ed1-4e2f-8358-abcdef12345 ```
+
+### Description 
+calculates the total nutrients intake and RDI then compares them and flags any that are out of range or more then 5% diffrent for a given day for a patient from their food logs
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the user id in the patient that is linked to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "flags": {
+        "energy": {
+            "name": string,
+            "unit": string,
+            "RDI": string,
+            "intake": string,
+            "direction": string
+        },
+        "macronutrients": [
+            {
+                "name": string,
+                "unit": string,
+                "minRDI": string,
+                "maxRDI": string,
+                "intake": string,
+                "direction": string
+            }
+        ],
+        "micronutrients": [
+            {
+                "name": string,
+                "unit": string,
+                "RDI": string,
+                "intake": string,
+                "direction": string
+            }
+        ]
+    }
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "flags": {
+        "energy": {
+            "name": "energy",
+            "unit": "kJ",
+            "RDI": "8700",
+            "intake": "8150",
+            "direction": "below"
+        },
+        "macronutrients": [
+            {
+                "name": "carbohydrates",
+                "unit": "g",
+                "minRDI": "234",
+                "maxRDI": "338",
+                "intake": "220",
+                "direction": "below"
+            }
+        ],
+        "micronutrients": [
+            {
+                "name": "Vitamin B2",
+                "unit": "mg",
+                "RDI": "1.3",
+                "intake": "1.2",
+                "direction": "below"
+            },
+            {
+                "name": "Manganese",
+                "unit": "mg",
+                "RDI": "5.5",
+                "intake": "5.8",
+                "direction": "above"
+            }
+        ]
+    }
+}</pre>
+</details>
+
+## flag lacking nutrients for a week for a patient
+
+```GET: http://localhost:3000/api/flag/week?startdate=:date&patientid=:patientId ``` <br>
+
+For example <br>
+```GET: http://localhost:3000/api/flag/week?startdate=2026-05-12&patientid=9ad83156-5ed1-4e2f-8358-abcdef12345 ```
+
+### Description 
+calculates the total nutrients intake and RDI then compares them and flags any that are out of range or more then 5% diffrent for a given week (7 days from the start date (inclusive)) for a patient from their food logs
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the user id in the patient that is linked to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "flags": {
+        "energy": {
+            "name": string,
+            "unit": string,
+            "RDI": string,
+            "intake": string,
+            "direction": string
+        },
+        "macronutrients": [
+            {
+                "name": string,
+                "unit": string,
+                "minRDI": string,
+                "maxRDI": string,
+                "intake": string,
+                "direction": string
+            }
+        ],
+        "micronutrients": [
+            {
+                "name": string,
+                "unit": string,
+                "RDI": string,
+                "intake": string,
+                "direction": string
+            }
+        ]
+    }
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "flags": {
+        "energy": {
+            "name": "energy",
+            "unit": "kJ",
+            "RDI": "60900",
+            "intake": "57000",
+            "direction": "below"
+        },
+        "macronutrients": [
+            {
+                "name": "carbohydrates",
+                "unit": "g",
+                "minRDI": "1638",
+                "maxRDI": "2366",
+                "intake": "1540",
+                "direction": "below"
+            }
+        ],
+        "micronutrients": [
+            {
+                "name": "Vitamin B2",
+                "unit": "mg",
+                "RDI": "9.1",
+                "intake": "8.4",
+                "direction": "below"
+            },
+            {
+                "name": "Manganese",
+                "unit": "mg",
+                "RDI": "38.5",
+                "intake": "40.6",
+                "direction": "above"
+            }
+        ]
+    }
+}</pre>
+</details>
+
+## flag lacking nutrients for a custom time period for a patient
+
+```GET: http://localhost:3000/api/flag/customperiod?startdate=:date&enddate=:date&patientid=:patientId ``` <br>
+
+For example <br>
+```GET: http://localhost:3000/api/flag/customperiod?startdate=2026-05-12&enddate=2026-05-19&patientid=9ad83156-5ed1-4e2f-8358-abcdef12345 ```
+
+### Description 
+calculates the total nutrients intake and RDI then compares them and flags any that are out of range or more then 5% diffrent for a custom time period (days from the start date to the end date (inclusive)) for a patient from their food logs
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the user id in the patient that is linked to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "flags": {
+        "energy": {
+            "name": string,
+            "unit": string,
+            "RDI": string,
+            "intake": string,
+            "direction": string
+        },
+        "macronutrients": [
+            {
+                "name": string,
+                "unit": string,
+                "minRDI": string,
+                "maxRDI": string,
+                "intake": string,
+                "direction": string
+            }
+        ],
+        "micronutrients": [
+            {
+                "name": string,
+                "unit": string,
+                "RDI": string,
+                "intake": string,
+                "direction": string
+            }
+        ]
+    }
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "flags": {
+        "energy": {
+            "name": "energy",
+            "unit": "kJ",
+            "RDI": "60900",
+            "intake": "57000",
+            "direction": "below"
+        },
+        "macronutrients": [
+            {
+                "name": "carbohydrates",
+                "unit": "g",
+                "minRDI": "1638",
+                "maxRDI": "2366",
+                "intake": "1540",
+                "direction": "below"
+            }
+        ],
+        "micronutrients": [
+            {
+                "name": "Vitamin B2",
+                "unit": "mg",
+                "RDI": "9.1",
+                "intake": "8.4",
+                "direction": "below"
+            },
+            {
+                "name": "Manganese",
+                "unit": "mg",
+                "RDI": "38.5",
+                "intake": "40.6",
+                "direction": "above"
+            }
+        ]
+    }
+}</pre>
+</details>
+
+# report
+
+## generate a daily report 
+
+```GET: http://localhost:3000/api/report/day?date=:date&patientid=:patientId ``` <br>
+
+For example <br>
+```GET: http://localhost:3000/api/report/day?date=2026-05-12&patientid=9ad83156-5ed1-4e2f-8358-abcdef12345 ```
+
+### Description 
+Generates a report containing RDI compared to total intake and if there are any flags for a given day for a patient
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the user id in the patient that is linked to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "title": string,
+    "date": string,
+    "patientName": string,
+    "foodLogs": [
+        {
+            "foodLogId": string
+        }
+    ],
+    "RDIComparedToTotalIntake": {
+        "energy": {
+            "name": string,
+            "unit": string,
+            "RDI": string,
+            "intake": string,
+            "direction": string
+        },
+        "macronutrients": [
+            {
+                "name": string,
+                "unit": string,
+                "minRDI": string,
+                "maxRDI": string,
+                "intake": string,
+                "direction": string
+            }
+        ],
+        "micronutrients": [
+            {
+                "name": string,
+                "unit": string,
+                "RDI": string,
+                "intake": string,
+                "direction": string
+            }
+        ]
+    }
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "title": "Report For John Doe on the 12th of May 2026",
+    "date": "2026-05-12",
+    "patientName": "John Doe",
+    "foodLogs": [
+        {
+            "foodLogId": "9ad83156-5ed1-4e2f-8358-22222222222"
+        }
+    ],
+    "RDIComparedToTotalIntake": {
+        "energy": {
+            "name": "energy",
+            "unit": "kJ",
+            "RDI": "8700",
+            "intake": "8150",
+            "direction": "below"
+        },
+        "macronutrients": [
+            {
+                "name": "protien",
+                "unit": "g",
+                "minRDI": "78",
+                "maxRDI": "130",
+                "intake": "90",
+                "direction": "in range"
+            },
+            {
+                "name": "carbohydrates",
+                "unit": "g",
+                "minRDI": "234",
+                "maxRDI": "338",
+                "intake": "270",
+                "direction": "in range"
+            },
+            {
+                "name": "totalFat",
+                "unit": "g",
+                "minRDI": "46",
+                "maxRDI": "81",
+                "intake": "65",
+                "direction": "in range"
+            },
+            {
+                "name": "saturatedFat",
+                "unit": "g",
+                "minRDI": "0",
+                "maxRDI": "23.5",
+                "intake": "10",
+                "direction": "in range"
+            },
+            {
+                "name": "Sodium",
+                "unit": "mg",
+                "minRDI": "460",
+                "maxRDI": "920",
+                "intake": "460",
+                "direction": "in range"
+            }
+        ],
+        "micronutrients": [
+            {
+                "name": "Vitamin A",
+                "unit": "µg RE",
+                "RDI": "900",
+                "intake": "900",
+                "direction": "in range"
+            },
+            {
+                "name": "Vitamin B1",
+                "unit": "mg",
+                "RDI": "1.2",
+                "intake": "1.2",
+                "direction": "in range"
+            },
+            {
+                "name": "Vitamin B2",
+                "unit": "mg",
+                "RDI": "1.3",
+                "intake": "1.2",
+                "direction": "below"
+            },
+            {
+                "name": "Vitamin B3",
+                "unit": "mg NE",
+                "RDI": "16",
+                "intake": "16",
+                "direction": "in range"
+            },
+            {
+                "name": "Vitamin B6",
+                "unit": "mg",
+                "RDI": "1.3",
+                "intake": "1.3",
+                "direction": "in range"
+            },
+            {
+                "name": "Folate",
+                "unit": "µg",
+                "RDI": "400",
+                "intake": "400",
+                "direction": "in range"
+            },
+            {
+                "name": "Vitamin B12",
+                "unit": "µg",
+                "RDI": "2.4",
+                "intake": "2.4",
+                "direction": "in range"
+            },
+            {
+                "name": "Vitamin C",
+                "unit": "mg",
+                "RDI": "45",
+                "intake": "45",
+                "direction": "in range"
+            },
+            {
+                "name": "Vitamin D",
+                "unit": "µg",
+                "RDI": "5",
+                "intake": "5",
+                "direction": "in range"
+            },
+            {
+                "name": "Vitamin E",
+                "unit": "mg",
+                "RDI": "10",
+                "intake": "10",
+                "direction": "in range"
+            },
+            {
+                "name": "Vitamin K",
+                "unit": "µg",
+                "RDI": "70",
+                "intake": "70",
+                "direction": "in range"
+            },
+            {
+                "name": "Calcium",
+                "unit": "mg",
+                "RDI": "1000",
+                "intake": "1000",
+                "direction": "in range"
+            },
+            {
+                "name": "Iron",
+                "unit": "mg",
+                "RDI": "8",
+                "intake": "8",
+                "direction": "in range"
+            },
+            {
+                "name": "Magnesium",
+                "unit": "mg",
+                "RDI": "400",
+                "intake": "400",
+                "direction": "in range"
+            },
+            {
+                "name": "Zinc",
+                "unit": "mg",
+                "RDI": "14",
+                "intake": "14",
+                "direction": "in range"
+            },
+            {
+                "name": "Iodine",
+                "unit": "µg",
+                "RDI": "150",
+                "intake": "150",
+                "direction": "in range"
+            },
+            {
+                "name": "Selenium",
+                "unit": "µg",
+                "RDI": "70",
+                "intake": "70",
+                "direction": "in range"
+            },
+            {
+                "name": "Phosphorus",
+                "unit": "mg",
+                "RDI": "1000",
+                "intake": "1000",
+                "direction": "in range"
+            },
+            {
+                "name": "Potassium",
+                "unit": "mg",
+                "RDI": "3800",
+                "intake": "3800",
+                "direction": "in range"
+            },
+            {
+                "name": "Copper",
+                "unit": "mg",
+                "RDI": "3.0",
+                "intake": "3.0",
+                "direction": "in range"
+            },
+            {
+                "name": "Chromium",
+                "unit": "µg",
+                "RDI": "35",
+                "intake": "35",
+                "direction": "in range"
+            },
+            {
+                "name": "Manganese",
+                "unit": "mg",
+                "RDI": "5.5",
+                "intake": "5.8",
+                "direction": "above"
+            },
+            {
+                "name": "Fluoride",
+                "unit": "mg",
+                "RDI": "4.0",
+                "intake": "4.0",
+                "direction": "in range"
+            },
+            {
+                "name": "Molybdenum",
+                "unit": "µg",
+                "RDI": "45",
+                "intake": "45",
+                "direction": "in range"
+            }
+        ]
+    }
+}</pre>
+</details>
+
+## generate a weekly report
+
+```GET: http://localhost:3000/api/report/week?startdate=:date&patientid=:patientId ``` <br>
+
+For example <br>
+```GET: http://localhost:3000/api/report/week?startdate=2026-05-12&patientid=9ad83156-5ed1-4e2f-8358-abcdef12345 ```
+
+### Description 
+Generates a report containing RDI compared to total intake and if there are any flags for a given week (7 days from the start date (inclusive)) for a patient
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the user id in the patient that is linked to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "title": string,
+    "date": string,
+    "patientName": string,
+    "foodLogs": [
+        {
+            "foodLogId": string
+        }
+    ],
+    "RDIComparedToTotalIntake": {
+        "energy": {
+            "name": string,
+            "unit": string,
+            "RDI": string,
+            "intake": string,
+            "direction": string
+        },
+        "macronutrients": [
+            {
+                "name": string,
+                "unit": string,
+                "minRDI": string,
+                "maxRDI": string,
+                "intake": string,
+                "direction": string
+            }
+        ],
+        "micronutrients": [
+            {
+                "name": string,
+                "unit": string,
+                "RDI": string,
+                "intake": string,
+                "direction": string
+            }
+        ]
+    }
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "title": "Report For John Doe on the 12th of May 2026",
+    "date": "2026-05-12",
+    "patientName": "John Doe",
+    "foodLogs": [
+        {
+            "foodLogId": "9ad83156-5ed1-4e2f-8358-22222222222"
+        }
+    ],
+    "RDIComparedToTotalIntake": {
+        "energy": {
+            "name": "energy",
+            "unit": "kJ",
+            "RDI": "60900",
+            "intake": "57000",
+            "direction": "below"
+        },
+        "macronutrients": [
+            {
+                "name": "protien",
+                "unit": "g",
+                "minRDI": "546",
+                "maxRDI": "910",
+                "intake": "630",
+                "direction": "in range"
+            },
+            {
+                "name": "carbohydrates",
+                "unit": "g",
+                "minRDI": "1638",
+                "maxRDI": "2366",
+                "intake": "1890",
+                "direction": "in range"
+            },
+            {
+                "name": "totalFat",
+                "unit": "g",
+                "minRDI": "322",
+                "maxRDI": "567",
+                "intake": "455",
+                "direction": "in range"
+            },
+            {
+                "name": "saturatedFat",
+                "unit": "g",
+                "minRDI": "0",
+                "maxRDI": "164.5",
+                "intake": "70",
+                "direction": "in range"
+            },
+            {
+                "name": "Sodium",
+                "unit": "mg",
+                "minRDI": "3220",
+                "maxRDI": "6440",
+                "intake": "3220",
+                "direction": "in range"
+            }
+        ],
+        "micronutrients": [
+            {
+                "name": "Vitamin A",
+                "unit": "µg RE",
+                "RDI": "6300",
+                "intake": "6300",
+                "direction": "in range"
+            },
+            {
+                "name": "Vitamin B1",
+                "unit": "mg",
+                "RDI": "8.4,
+                "intake": "8.4",
+                "direction": "in range"
+            },
+            {
+                "name": "Vitamin B2",
+                "unit": "mg",
+                "RDI": "9.1",
+                "intake": "8.4",
+                "direction": "below"
+            },
+            {
+                "name": "Vitamin B3",
+                "unit": "mg NE",
+                "RDI": "112",
+                "intake": "112",
+                "direction": "in range"
+            },
+            {
+                "name": "Vitamin B6",
+                "unit": "mg",
+                "RDI": "9.1",
+                "intake": "9.1",
+                "direction": "in range"
+            },
+            {
+                "name": "Folate",
+                "unit": "µg",
+                "RDI": "2800",
+                "intake": "2800",
+                "direction": "in range"
+            },
+            {
+                "name": "Vitamin B12",
+                "unit": "µg",
+                "RDI": "16.8",
+                "intake": "16.8",
+                "direction": "in range"
+            },
+            {
+                "name": "Vitamin C",
+                "unit": "mg",
+                "RDI": "315",
+                "intake": "315",
+                "direction": "in range"
+            },
+            {
+                "name": "Vitamin D",
+                "unit": "µg",
+                "RDI": "35",
+                "intake": "35",
+                "direction": "in range"
+            },
+            {
+                "name": "Vitamin E",
+                "unit": "mg",
+                "RDI": "70",
+                "intake": "70",
+                "direction": "in range"
+            },
+            {
+                "name": "Vitamin K",
+                "unit": "µg",
+                "RDI": "490",
+                "intake": "490",
+                "direction": "in range"
+            },
+            {
+                "name": "Calcium",
+                "unit": "mg",
+                "RDI": "7000",
+                "intake": "7000",
+                "direction": "in range"
+            },
+            {
+                "name": "Iron",
+                "unit": "mg",
+                "RDI": "56",
+                "intake": "56",
+                "direction": "in range"
+            },
+            {
+                "name": "Magnesium",
+                "unit": "mg",
+                "RDI": "2800",
+                "intake": "2800",
+                "direction": "in range"
+            },
+            {
+                "name": "Zinc",
+                "unit": "mg",
+                "RDI": "98",
+                "intake": "98",
+                "direction": "in range"
+            },
+            {
+                "name": "Iodine",
+                "unit": "µg",
+                "RDI": "1050",
+                "intake": "1050",
+                "direction": "in range"
+            },
+            {
+                "name": "Selenium",
+                "unit": "µg",
+                "RDI": "490",
+                "intake": "490",
+                "direction": "in range"
+            },
+            {
+                "name": "Phosphorus",
+                "unit": "mg",
+                "RDI": "7000",
+                "intake": "7000",
+                "direction": "in range"
+            },
+            {
+                "name": "Potassium",
+                "unit": "mg",
+                "RDI": "26600",
+                "intake": "26600",
+                "direction": "in range"
+            },
+            {
+                "name": "Copper",
+                "unit": "mg",
+                "RDI": "21.0",
+                "intake": "21.0",
+                "direction": "in range"
+            },
+            {
+                "name": "Chromium",
+                "unit": "µg",
+                "RDI": "245",
+                "intake": "245",
+                "direction": "in range"
+            },
+            {
+                "name": "Manganese",
+                "unit": "mg",
+                "RDI": "38.5",
+                "intake": "40.6",
+                "direction": "above"
+            },
+            {
+                "name": "Fluoride",
+                "unit": "mg",
+                "RDI": "28.0",
+                "intake": "28.0",
+                "direction": "in range"
+            },
+            {
+                "name": "Molybdenum",
+                "unit": "µg",
+                "RDI": "315",
+                "intake": "315",
+                "direction": "in range"
+            }
+        ]
+    }
+}</pre>
+</details>
+
+## generate a custom time period report
+
+```GET: http://localhost:3000/api/report/customperiod?startdate=:date&enddate=:date&patientid=:patientId ``` <br>
+
+For example <br>
+```GET: http://localhost:3000/api/report/customperiod?startdate=2026-05-12&enddate=2026-05-19&patientid=9ad83156-5ed1-4e2f-8358-abcdef12345 ```
+
+### Description 
+Generates a report containing RDI compared to total intake and if there are any flags for a custom time period (days from the start date to the end date (inclusive)) for a patient
+
+### Headers
+Authorization: Bearer {token}
+
+### Authorization
+User needs to be Signed in and have the same ID as the user id in the patient that is linked to access this endpoint
+
+### Returns
+**status**: 200
+<details>
+<summary>Format</summary>
+<pre>{
+    "title": string,
+    "date": string,
+    "patientName": string,
+    "foodLogs": [
+        {
+            "foodLogId": string
+        }
+    ],
+    "RDIComparedToTotalIntake": {
+        "energy": {
+            "name": string,
+            "unit": string,
+            "RDI": string,
+            "intake": string,
+            "direction": string
+        },
+        "macronutrients": [
+            {
+                "name": string,
+                "unit": string,
+                "minRDI": string,
+                "maxRDI": string,
+                "intake": string,
+                "direction": string
+            }
+        ],
+        "micronutrients": [
+            {
+                "name": string,
+                "unit": string,
+                "RDI": string,
+                "intake": string,
+                "direction": string
+            }
+        ]
+    }
+}</pre>
+</details>
+
+<details>
+<summary>Example</summary>
+<pre>{
+    "title": "Report For John Doe on the 12th of May 2026",
+    "date": "2026-05-12",
+    "patientName": "John Doe",
+    "foodLogs": [
+        {
+            "foodLogId": "9ad83156-5ed1-4e2f-8358-22222222222"
+        }
+    ],
+    "RDIComparedToTotalIntake": {
+        "energy": {
+            "name": "energy",
+            "unit": "kJ",
+            "RDI": "60900",
+            "intake": "57000",
+            "direction": "below"
+        },
+        "macronutrients": [
+            {
+                "name": "protien",
+                "unit": "g",
+                "minRDI": "546",
+                "maxRDI": "910",
+                "intake": "630",
+                "direction": "in range"
+            },
+            {
+                "name": "carbohydrates",
+                "unit": "g",
+                "minRDI": "1638",
+                "maxRDI": "2366",
+                "intake": "1890",
+                "direction": "in range"
+            },
+            {
+                "name": "totalFat",
+                "unit": "g",
+                "minRDI": "322",
+                "maxRDI": "567",
+                "intake": "455",
+                "direction": "in range"
+            },
+            {
+                "name": "saturatedFat",
+                "unit": "g",
+                "minRDI": "0",
+                "maxRDI": "164.5",
+                "intake": "70",
+                "direction": "in range"
+            },
+            {
+                "name": "Sodium",
+                "unit": "mg",
+                "minRDI": "3220",
+                "maxRDI": "6440",
+                "intake": "3220",
+                "direction": "in range"
+            }
+        ],
+        "micronutrients": [
+            {
+                "name": "Vitamin A",
+                "unit": "µg RE",
+                "RDI": "6300",
+                "intake": "6300",
+                "direction": "in range"
+            },
+            {
+                "name": "Vitamin B1",
+                "unit": "mg",
+                "RDI": "8.4,
+                "intake": "8.4",
+                "direction": "in range"
+            },
+            {
+                "name": "Vitamin B2",
+                "unit": "mg",
+                "RDI": "9.1",
+                "intake": "8.4",
+                "direction": "below"
+            },
+            {
+                "name": "Vitamin B3",
+                "unit": "mg NE",
+                "RDI": "112",
+                "intake": "112",
+                "direction": "in range"
+            },
+            {
+                "name": "Vitamin B6",
+                "unit": "mg",
+                "RDI": "9.1",
+                "intake": "9.1",
+                "direction": "in range"
+            },
+            {
+                "name": "Folate",
+                "unit": "µg",
+                "RDI": "2800",
+                "intake": "2800",
+                "direction": "in range"
+            },
+            {
+                "name": "Vitamin B12",
+                "unit": "µg",
+                "RDI": "16.8",
+                "intake": "16.8",
+                "direction": "in range"
+            },
+            {
+                "name": "Vitamin C",
+                "unit": "mg",
+                "RDI": "315",
+                "intake": "315",
+                "direction": "in range"
+            },
+            {
+                "name": "Vitamin D",
+                "unit": "µg",
+                "RDI": "35",
+                "intake": "35",
+                "direction": "in range"
+            },
+            {
+                "name": "Vitamin E",
+                "unit": "mg",
+                "RDI": "70",
+                "intake": "70",
+                "direction": "in range"
+            },
+            {
+                "name": "Vitamin K",
+                "unit": "µg",
+                "RDI": "490",
+                "intake": "490",
+                "direction": "in range"
+            },
+            {
+                "name": "Calcium",
+                "unit": "mg",
+                "RDI": "7000",
+                "intake": "7000",
+                "direction": "in range"
+            },
+            {
+                "name": "Iron",
+                "unit": "mg",
+                "RDI": "56",
+                "intake": "56",
+                "direction": "in range"
+            },
+            {
+                "name": "Magnesium",
+                "unit": "mg",
+                "RDI": "2800",
+                "intake": "2800",
+                "direction": "in range"
+            },
+            {
+                "name": "Zinc",
+                "unit": "mg",
+                "RDI": "98",
+                "intake": "98",
+                "direction": "in range"
+            },
+            {
+                "name": "Iodine",
+                "unit": "µg",
+                "RDI": "1050",
+                "intake": "1050",
+                "direction": "in range"
+            },
+            {
+                "name": "Selenium",
+                "unit": "µg",
+                "RDI": "490",
+                "intake": "490",
+                "direction": "in range"
+            },
+            {
+                "name": "Phosphorus",
+                "unit": "mg",
+                "RDI": "7000",
+                "intake": "7000",
+                "direction": "in range"
+            },
+            {
+                "name": "Potassium",
+                "unit": "mg",
+                "RDI": "26600",
+                "intake": "26600",
+                "direction": "in range"
+            },
+            {
+                "name": "Copper",
+                "unit": "mg",
+                "RDI": "21.0",
+                "intake": "21.0",
+                "direction": "in range"
+            },
+            {
+                "name": "Chromium",
+                "unit": "µg",
+                "RDI": "245",
+                "intake": "245",
+                "direction": "in range"
+            },
+            {
+                "name": "Manganese",
+                "unit": "mg",
+                "RDI": "38.5",
+                "intake": "40.6",
+                "direction": "above"
+            },
+            {
+                "name": "Fluoride",
+                "unit": "mg",
+                "RDI": "28.0",
+                "intake": "28.0",
+                "direction": "in range"
+            },
+            {
+                "name": "Molybdenum",
+                "unit": "µg",
+                "RDI": "315",
+                "intake": "315",
+                "direction": "in range"
+            }
+        ]
+    }
+}</pre>
+</details>

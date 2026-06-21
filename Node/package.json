@@ -114,6 +114,7 @@
     "type-is": "^2.0.1",
     "typeorm": "^0.3.6",
     "undefsafe": "^2.0.5",
+    "undici": "^8.5.0",
     "undici-types": "^7.21.0",
     "unpipe": "^1.0.0",
     "v8-compile-cache-lib": "^3.0.1",
