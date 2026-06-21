@@ -202,7 +202,7 @@ class _ReportPageState extends State<ReportPage> {
           pw.SizedBox(height: 12),
 
           pw.Text('Macronutrients', style: pw.TextStyle(fontSize: 14, fontWeight: pw.FontWeight.bold)),
-          pw.Table.fromTextArray(
+          pw.TableHelper.fromTextArray(
             headers: ['Name', 'Intake', 'Min RDI', 'Max RDI', 'Direction'],
             data: report.macronutrients
                 .map((m) => [m.name, '${m.intake} ${m.unit}', '${m.minRDI} ${m.unit}', '${m.maxRDI} ${m.unit}', m.direction])
@@ -211,7 +211,7 @@ class _ReportPageState extends State<ReportPage> {
           pw.SizedBox(height: 12),
 
           pw.Text('Micronutrients', style: pw.TextStyle(fontSize: 14, fontWeight: pw.FontWeight.bold)),
-          pw.Table.fromTextArray(
+          pw.TableHelper.fromTextArray(
             headers: ['Name', 'Intake', 'RDI', 'Direction'],
             data: report.micronutrients
                 .map((m) => [m.name, '${m.intake} ${m.unit}', '${m.rdi} ${m.unit}', m.direction])
@@ -222,7 +222,7 @@ class _ReportPageState extends State<ReportPage> {
           pw.Text('Logged Meals', style: pw.TextStyle(fontSize: 14, fontWeight: pw.FontWeight.bold)),
           _mealDetails.isEmpty
               ? pw.Text('No meals logged for this period.')
-              : pw.Table.fromTextArray(
+              : pw.TableHelper.fromTextArray(
                   headers: ['Food', 'Meal Type', 'Date/Time', 'Amount'],
                   data: _mealDetails
                       .map((m) => [
