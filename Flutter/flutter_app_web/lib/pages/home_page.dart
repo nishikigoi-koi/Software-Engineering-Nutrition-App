@@ -3,6 +3,7 @@ import 'package:flutter_app_web/pages/meal_log_page.dart';
 import 'package:flutter_app_web/services/session_manager.dart';
 import 'login_page.dart';
 import 'patient_page.dart';
+import 'report_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -114,7 +115,13 @@ class _HomePageState extends State<HomePage> {
                     (route) => false,
                   );
                 }),
-                _navButton('Reports', Icons.bar_chart, () {}),
+                _navButton('Reports', Icons.bar_chart, () {
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => ReportPage()),
+                    (route) => false,
+                  );
+                }),
                 _navButton('Settings', Icons.settings, () {}),
               ],
             ),
