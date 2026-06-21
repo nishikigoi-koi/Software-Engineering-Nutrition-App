@@ -118,7 +118,8 @@ describe('foodLog.helper.ts with in-memory database', () => {
                 qty_per_serving: "990",
                 percent_RDI: "43",
                 qty_per_100: "380"
-            } as CustomFoodNutrients
+            } as CustomFoodNutrients,
+            microNutrients:[]
         } as CustomFoodDTO
 
         basePatient = {
