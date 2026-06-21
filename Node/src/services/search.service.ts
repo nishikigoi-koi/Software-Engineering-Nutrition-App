@@ -29,12 +29,3 @@ export async function SearchGetCustom(req:Request, res:Response, next: NextFunct
         next(error)
     }
 }
-
-
-
-
-SearchFoodFileAndCustomInDatabaseAndAPI
-
-SearchGetFoodFileFromAPI
-
-SearchGetCustomFromDatabase
