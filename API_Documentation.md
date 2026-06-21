@@ -1194,49 +1194,49 @@ User needs to be Signed in to access this endpoint
     "energy" : {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "protein": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "totalFat": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "saturatedFat": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "carbohydrate": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "sugars": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "fiber": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "sodium": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "micronutrients": [
@@ -1244,7 +1244,7 @@ User needs to be Signed in to access this endpoint
             "name": string,
             "unit": string,
             "qty_per_serving": string,
-            "percent_RQI": string,
+            "percent_RDI": string,
             "qty_per_100": string
         }
     ]
@@ -1265,49 +1265,49 @@ User needs to be Signed in to access this endpoint
     "energy" : {
         "unit": "KJ",
         "qty_per_serving": "270",
-        "percent_RQI": "3",
+        "percent_RDI": "3",
         "qty_per_100": "190"
     },
     "protein": {
         "unit": "g",
         "qty_per_serving": "0.3",
-        "percent_RQI": "1",
+        "percent_RDI": "1",
         "qty_per_100": "0.2"
     },
     "totalFat": {
         "unit": "g",
         "qty_per_serving": "0.4",
-        "percent_RQI": "1",
+        "percent_RDI": "1",
         "qty_per_100": "0.3"
     },
     "saturatedFat": {
         "unit": "g",
         "qty_per_serving": "0.03",
-        "percent_RQI": "0",
+        "percent_RDI": "0",
         "qty_per_100": "0.02"
     },
     "carbohydrate": {
         "unit": "g",
         "qty_per_serving": "14",
-        "percent_RQI": "4",
+        "percent_RDI": "4",
         "qty_per_100": "9.3"
     },
     "sugars": {
         "unit": "g",
         "qty_per_serving": "13",
-        "percent_RQI": "14",
+        "percent_RDI": "14",
         "qty_per_100": "9.0"
     },
     "fiber": {
         "unit": "g",
         "qty_per_serving": "2.8",
-        "percent_RQI": "9",
+        "percent_RDI": "9",
         "qty_per_100": "1.9"
     },
     "sodium": {
         "unit": "mg",
         "qty_per_serving": "1",
-        "percent_RQI": "0",
+        "percent_RDI": "0",
         "qty_per_100": "1"
     },
     "micronutrients": [
@@ -1315,7 +1315,7 @@ User needs to be Signed in to access this endpoint
             "name": "Vitamin C",
             "unit": "mg",
             "qty_per_serving": "14",
-            "percent_RQI": "35",
+            "percent_RDI": "35",
             "qty_per_100": "9.7"
         }
     ]
@@ -1353,49 +1353,49 @@ User needs to be Signed in and have the same user id as the userId to access thi
     "energy" : {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "protein": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "totalFat": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "saturatedFat": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "carbohydrate": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "sugars": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "fiber": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "sodium": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "micronutrients": [
@@ -1403,7 +1403,7 @@ User needs to be Signed in and have the same user id as the userId to access thi
             "name": string,
             "unit": string,
             "qty_per_serving": string,
-            "percent_RQI": string,
+            "percent_RDI": string,
             "qty_per_100": string
         }
     ]
@@ -1425,49 +1425,49 @@ User needs to be Signed in and have the same user id as the userId to access thi
     "energy" : {
         "unit": "KJ",
         "qty_per_serving": "1900",
-        "percent_RQI": "22",
+        "percent_RDI": "22",
         "qty_per_100": "750"
     },
     "protein": {
         "unit": "g",
         "qty_per_serving": "30",
-        "percent_RQI": "60",
+        "percent_RDI": "60",
         "qty_per_100": "12"
     },
     "totalFat": {
         "unit": "g",
         "qty_per_serving": "31",
-        "percent_RQI": "44",
+        "percent_RDI": "44",
         "qty_per_100": "12"
     },
     "saturatedFat": {
         "unit": "g",
         "qty_per_serving": "14",
-        "percent_RQI": "60",
+        "percent_RDI": "60",
         "qty_per_100": "5.6"
     },
     "carbohydrate": {
         "unit": "g",
         "qty_per_serving": "13",
-        "percent_RQI": "4",
+        "percent_RDI": "4",
         "qty_per_100": "5.1"
     },
     "sugars": {
         "unit": "g",
         "qty_per_serving": "13",
-        "percent_RQI": "14",
+        "percent_RDI": "14",
         "qty_per_100": "5.0"
     },
     "fiber": {
         "unit": "g",
         "qty_per_serving": "5.7",
-        "percent_RQI": "19",
+        "percent_RDI": "19",
         "qty_per_100": "2.2"
     },
     "sodium": {
         "unit": "mg",
         "qty_per_serving": "990",
-        "percent_RQI": "43",
+        "percent_RDI": "43",
         "qty_per_100": "380"
     },
     "micronutrients": [
@@ -1475,7 +1475,7 @@ User needs to be Signed in and have the same user id as the userId to access thi
             "name": "Iron",
             "unit": "mg",
             "qty_per_serving": "4.6",
-            "percent_RQI": "38",
+            "percent_RDI": "38",
             "qty_per_100": "1.8"
         }
     ]
@@ -1793,49 +1793,49 @@ creates a custom food item or meal in the databse linked to a user
     "energy" : {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "protein": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "totalFat": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "saturatedFat": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "carbohydrate": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "sugars": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "fiber": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "sodium": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "micronutrients": [
@@ -1843,7 +1843,7 @@ creates a custom food item or meal in the databse linked to a user
             "name": string,
             "unit": string,
             "qty_per_serving": string,
-            "percent_RQI": string,
+            "percent_RDI": string,
             "qty_per_100": string
         }
     ]
@@ -1863,49 +1863,49 @@ creates a custom food item or meal in the databse linked to a user
     "energy" : {
         "unit": "KJ",
         "qty_per_serving": "1900",
-        "percent_RQI": "22",
+        "percent_RDI": "22",
         "qty_per_100": "750"
     },
     "protein": {
         "unit": "g",
         "qty_per_serving": "30",
-        "percent_RQI": "60",
+        "percent_RDI": "60",
         "qty_per_100": "12"
     },
     "totalFat": {
         "unit": "g",
         "qty_per_serving": "31",
-        "percent_RQI": "44",
+        "percent_RDI": "44",
         "qty_per_100": "12"
     },
     "saturatedFat": {
         "unit": "g",
         "qty_per_serving": "14",
-        "percent_RQI": "60",
+        "percent_RDI": "60",
         "qty_per_100": "5.6"
     },
     "carbohydrate": {
         "unit": "g",
         "qty_per_serving": "13",
-        "percent_RQI": "4",
+        "percent_RDI": "4",
         "qty_per_100": "5.1"
     },
     "sugars": {
         "unit": "g",
         "qty_per_serving": "13",
-        "percent_RQI": "14",
+        "percent_RDI": "14",
         "qty_per_100": "5.0"
     },
     "fiber": {
         "unit": "g",
         "qty_per_serving": "5.7",
-        "percent_RQI": "19",
+        "percent_RDI": "19",
         "qty_per_100": "2.2"
     },
     "sodium": {
         "unit": "mg",
         "qty_per_serving": "990",
-        "percent_RQI": "43",
+        "percent_RDI": "43",
         "qty_per_100": "380"
     },
     "micronutrients": [
@@ -1913,7 +1913,7 @@ creates a custom food item or meal in the databse linked to a user
             "name": "Iron",
             "unit": "mg",
             "qty_per_serving": "4.6",
-            "percent_RQI": "38",
+            "percent_RDI": "38",
             "qty_per_100": "1.8"
         }
     ]
@@ -1942,49 +1942,49 @@ User needs to be Signed in and have the same ID as the userId to access this end
     "energy" : {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "protein": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "totalFat": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "saturatedFat": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "carbohydrate": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "sugars": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "fiber": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "sodium": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "micronutrients": [
@@ -1992,7 +1992,7 @@ User needs to be Signed in and have the same ID as the userId to access this end
             "name": string,
             "unit": string,
             "qty_per_serving": string,
-            "percent_RQI": string,
+            "percent_RDI": string,
             "qty_per_100": string
         }
     ]
@@ -2013,49 +2013,49 @@ User needs to be Signed in and have the same ID as the userId to access this end
     "energy" : {
         "unit": "KJ",
         "qty_per_serving": "1900",
-        "percent_RQI": "22",
+        "percent_RDI": "22",
         "qty_per_100": "750"
     },
     "protein": {
         "unit": "g",
         "qty_per_serving": "30",
-        "percent_RQI": "60",
+        "percent_RDI": "60",
         "qty_per_100": "12"
     },
     "totalFat": {
         "unit": "g",
         "qty_per_serving": "31",
-        "percent_RQI": "44",
+        "percent_RDI": "44",
         "qty_per_100": "12"
     },
     "saturatedFat": {
         "unit": "g",
         "qty_per_serving": "14",
-        "percent_RQI": "60",
+        "percent_RDI": "60",
         "qty_per_100": "5.6"
     },
     "carbohydrate": {
         "unit": "g",
         "qty_per_serving": "13",
-        "percent_RQI": "4",
+        "percent_RDI": "4",
         "qty_per_100": "5.1"
     },
     "sugars": {
         "unit": "g",
         "qty_per_serving": "13",
-        "percent_RQI": "14",
+        "percent_RDI": "14",
         "qty_per_100": "5.0"
     },
     "fiber": {
         "unit": "g",
         "qty_per_serving": "5.7",
-        "percent_RQI": "19",
+        "percent_RDI": "19",
         "qty_per_100": "2.2"
     },
     "sodium": {
         "unit": "mg",
         "qty_per_serving": "990",
-        "percent_RQI": "43",
+        "percent_RDI": "43",
         "qty_per_100": "380"
     },
     "micronutrients": [
@@ -2063,7 +2063,7 @@ User needs to be Signed in and have the same ID as the userId to access this end
             "name": "Iron",
             "unit": "mg",
             "qty_per_serving": "4.6",
-            "percent_RQI": "38",
+            "percent_RDI": "38",
             "qty_per_100": "1.8"
         }
     ]
@@ -2092,49 +2092,49 @@ updates the custome food item that has the same id
     "energy" : {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "protein": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "totalFat": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "saturatedFat": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "carbohydrate": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "sugars": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "fiber": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "sodium": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "micronutrients": [
@@ -2142,7 +2142,7 @@ updates the custome food item that has the same id
             "name": string,
             "unit": string,
             "qty_per_serving": string,
-            "percent_RQI": string,
+            "percent_RDI": string,
             "qty_per_100": string
         }
     ]
@@ -2162,49 +2162,49 @@ updates the custome food item that has the same id
     "energy" : {
         "unit": "KJ",
         "qty_per_serving": "1900",
-        "percent_RQI": "22",
+        "percent_RDI": "22",
         "qty_per_100": "750"
     },
     "protein": {
         "unit": "g",
         "qty_per_serving": "30",
-        "percent_RQI": "60",
+        "percent_RDI": "60",
         "qty_per_100": "12"
     },
     "totalFat": {
         "unit": "g",
         "qty_per_serving": "31",
-        "percent_RQI": "44",
+        "percent_RDI": "44",
         "qty_per_100": "12"
     },
     "saturatedFat": {
         "unit": "g",
         "qty_per_serving": "14",
-        "percent_RQI": "60",
+        "percent_RDI": "60",
         "qty_per_100": "5.6"
     },
     "carbohydrate": {
         "unit": "g",
         "qty_per_serving": "13",
-        "percent_RQI": "4",
+        "percent_RDI": "4",
         "qty_per_100": "5.1"
     },
     "sugars": {
         "unit": "g",
         "qty_per_serving": "13",
-        "percent_RQI": "14",
+        "percent_RDI": "14",
         "qty_per_100": "5.0"
     },
     "fiber": {
         "unit": "g",
         "qty_per_serving": "5.7",
-        "percent_RQI": "19",
+        "percent_RDI": "19",
         "qty_per_100": "2.2"
     },
     "sodium": {
         "unit": "mg",
         "qty_per_serving": "990",
-        "percent_RQI": "43",
+        "percent_RDI": "43",
         "qty_per_100": "380"
     },
     "micronutrients": [
@@ -2212,7 +2212,7 @@ updates the custome food item that has the same id
             "name": "Iron",
             "unit": "mg",
             "qty_per_serving": "4.6",
-            "percent_RQI": "38",
+            "percent_RDI": "38",
             "qty_per_100": "1.8"
         }
     ]
@@ -2288,49 +2288,49 @@ User needs to be Signed in and have the same user id as the userId to access thi
     "energy" : {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "protein": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "totalFat": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "saturatedFat": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "carbohydrate": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "sugars": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "fiber": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "sodium": {
         "unit": string,
         "qty_per_serving": string,
-        "percent_RQI": string,
+        "percent_RDI": string,
         "qty_per_100": string
     },
     "micronutrients": [
@@ -2338,7 +2338,7 @@ User needs to be Signed in and have the same user id as the userId to access thi
             "name": string,
             "unit": string,
             "qty_per_serving": string,
-            "percent_RQI": string,
+            "percent_RDI": string,
             "qty_per_100": string
         }
     ]
@@ -2359,49 +2359,49 @@ User needs to be Signed in and have the same user id as the userId to access thi
     "energy" : {
         "unit": "KJ",
         "qty_per_serving": "1900",
-        "percent_RQI": "22",
+        "percent_RDI": "22",
         "qty_per_100": "750"
     },
     "protein": {
         "unit": "g",
         "qty_per_serving": "30",
-        "percent_RQI": "60",
+        "percent_RDI": "60",
         "qty_per_100": "12"
     },
     "totalFat": {
         "unit": "g",
         "qty_per_serving": "31",
-        "percent_RQI": "44",
+        "percent_RDI": "44",
         "qty_per_100": "12"
     },
     "saturatedFat": {
         "unit": "g",
         "qty_per_serving": "14",
-        "percent_RQI": "60",
+        "percent_RDI": "60",
         "qty_per_100": "5.6"
     },
     "carbohydrate": {
         "unit": "g",
         "qty_per_serving": "13",
-        "percent_RQI": "4",
+        "percent_RDI": "4",
         "qty_per_100": "5.1"
     },
     "sugars": {
         "unit": "g",
         "qty_per_serving": "13",
-        "percent_RQI": "14",
+        "percent_RDI": "14",
         "qty_per_100": "5.0"
     },
     "fiber": {
         "unit": "g",
         "qty_per_serving": "5.7",
-        "percent_RQI": "19",
+        "percent_RDI": "19",
         "qty_per_100": "2.2"
     },
     "sodium": {
         "unit": "mg",
         "qty_per_serving": "990",
-        "percent_RQI": "43",
+        "percent_RDI": "43",
         "qty_per_100": "380"
     },
     "micronutrients": [
@@ -2409,7 +2409,7 @@ User needs to be Signed in and have the same user id as the userId to access thi
             "name": "Iron",
             "unit": "mg",
             "qty_per_serving": "4.6",
-            "percent_RQI": "38",
+            "percent_RDI": "38",
             "qty_per_100": "1.8"
         }
     ]
@@ -2448,68 +2448,68 @@ User needs to be Signed in and have the same user id as the userId to access thi
         "energy" : {
             "unit": string,
             "qty_per_serving": string,
-            "percent_RQI": string,
+            "percent_RDI": string,
             "qty_per_100": string
         },
         "protein": {
             "unit": string,
             "qty_per_serving": string,
-            "percent_RQI": string,
+            "percent_RDI": string,
             "qty_per_100": string
         },
         "totalFat": {
             "unit": string,
             "qty_per_serving": string,
-            "percent_RQI": string,
+            "percent_RDI": string,
             "qty_per_100": string
         },
         "saturatedFat": {
             "unit": string,
             "qty_per_serving": string,
-            "percent_RQI": string,
+            "percent_RDI": string,
             "qty_per_100": string
         },
         "carbohydrate": {
             "unit": string,
             "qty_per_serving": string,
-            "percent_RQI": string,
+            "percent_RDI": string,
             "qty_per_100": string
         },
         "sugars": {
             "unit": string,
             "qty_per_serving": string,
-            "percent_RQI": string,
+            "percent_RDI": string,
             "qty_per_100": string
         },
         "fiber": {
             "unit": string,
             "qty_per_serving": string,
-            "percent_RQI": string,
+            "percent_RDI": string,
             "qty_per_100": string
         },
         "sodium": {
             "unit": string,
             "qty_per_serving": string,
-            "percent_RQI": string,
+            "percent_RDI": string,
             "qty_per_100": string
-        }
-    },
-    "micronutrients": [
-        {
-            "name": string,
-            "unit": string,
-            "qty_per_serving": string,
-            "percent_RQI": string,
-            "qty_per_100": string
-        }
-    ]
+        },
+        "micronutrients": [
+            {
+                "name": string,
+                "unit": string,
+                "qty_per_serving": string,
+                "percent_RDI": string,
+                "qty_per_100": string
+            }
+        ]
+    }
 ]</pre>
 </details>
 
 <details>
 <summary>Example</summary>
 <pre>[
-        {
+    {
         "id": "9ad83156-5ed1-4e2f-8358-111111111111",
         "userId" : "9ad83156-5ed1-4e2f-8358-c6e2ce906f3a",
         "foodName": "Butter Chicken with rice",
@@ -2521,61 +2521,61 @@ User needs to be Signed in and have the same user id as the userId to access thi
         "energy" : {
             "unit": "KJ",
             "qty_per_serving": "1900",
-            "percent_RQI": "22",
+            "percent_RDI": "22",
             "qty_per_100": "750"
         },
         "protein": {
             "unit": "g",
             "qty_per_serving": "30",
-            "percent_RQI": "60",
+            "percent_RDI": "60",
             "qty_per_100": "12"
         },
         "totalFat": {
             "unit": "g",
             "qty_per_serving": "31",
-            "percent_RQI": "44",
+            "percent_RDI": "44",
             "qty_per_100": "12"
         },
         "saturatedFat": {
             "unit": "g",
             "qty_per_serving": "14",
-            "percent_RQI": "60",
+            "percent_RDI": "60",
             "qty_per_100": "5.6"
         },
         "carbohydrate": {
             "unit": "g",
             "qty_per_serving": "13",
-            "percent_RQI": "4",
+            "percent_RDI": "4",
             "qty_per_100": "5.1"
         },
         "sugars": {
             "unit": "g",
             "qty_per_serving": "13",
-            "percent_RQI": "14",
+            "percent_RDI": "14",
             "qty_per_100": "5.0"
         },
         "fiber": {
             "unit": "g",
             "qty_per_serving": "5.7",
-            "percent_RQI": "19",
+            "percent_RDI": "19",
             "qty_per_100": "2.2"
         },
         "sodium": {
             "unit": "mg",
             "qty_per_serving": "990",
-            "percent_RQI": "43",
+            "percent_RDI": "43",
             "qty_per_100": "380"
-        }
-    },
-    "micronutrients": [
-        {
-            "name": "Iron",
-            "unit": "mg",
-            "qty_per_serving": "4.6",
-            "percent_RQI": "38",
-            "qty_per_100": "1.8"
-        }
-    ]
+        },
+        "micronutrients": [
+            {
+                "name": "Iron",
+                "unit": "mg",
+                "qty_per_serving": "4.6",
+                "percent_RDI": "38",
+                "qty_per_100": "1.8"
+            }
+        ]
+    }
 ]</pre>
 </details>
 
