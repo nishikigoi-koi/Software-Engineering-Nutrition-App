@@ -10,7 +10,7 @@ import { CreateUserInDatabase } from '../src/helpers/user.helper.ts';
 import { CreateCustomFoodInDatabase, UpdateCustomFoodInDatabase, DeleteCustomFoodInDatabase, GetCustomFoodByUserIdFromDatabase, GetCustomFoodByIdFromDatabase} from '../src/helpers/customFood.helper.ts'
 import { CustomFoodMicroNutrientsEntity } from '../src/database/entities/customFoodMicroNutrients.entity.ts';
 
-describe('patient.helper.ts with in-memory database', () => {
+describe('customFood.helper.ts with in-memory database', () => {
     let dataSource: DataSource;
     let userRepository: Repository<UserEntity>;
     let customFoodRepository: Repository<CustomFoodEntity>;

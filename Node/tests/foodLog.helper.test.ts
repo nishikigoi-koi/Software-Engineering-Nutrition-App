@@ -14,14 +14,17 @@ import { CustomFoodEntity} from '../src/database/entities/customFood.entity.ts';
 import { CreateCustomFoodInDatabase, UpdateCustomFoodInDatabase, DeleteCustomFoodInDatabase, GetCustomFoodByUserIdFromDatabase, GetCustomFoodByIdFromDatabase} from '../src/helpers/customFood.helper.ts'
 import { CreatePatientInDatabase, GetPatientByIdInDatabase, GetAllPatientsByUserIdInDatabase, UpdatePatientInDatabase, DeletePatientInDatabase} from '../src/helpers/patient.helper.ts';
 import { Patient, PatientDTO } from '../src/models/patient.types.ts';
+import { CustomFoodMicroNutrientsEntity } from '../src/database/entities/customFoodMicroNutrients.entity.ts';
 
 
-describe('patient.helper.ts with in-memory database', () => {
+describe('foodLog.helper.ts with in-memory database', () => {
     let dataSource: DataSource;
     let userRepository: Repository<UserEntity>;
     let patientRepository: Repository<PatientEntity>;
     let foodLogRepository: Repository<FoodLogEntity>;
     let customFoodRepository: Repository<CustomFoodEntity>;
+    let customFoodMicroNutrientsRepository: Repository<CustomFoodMicroNutrientsEntity>;
+
     let user1: UserDatabaseObject;
     let baseCustomFood: CustomFoodDTO;
     let basePatient: PatientDTO;
@@ -51,6 +54,7 @@ describe('patient.helper.ts with in-memory database', () => {
         patientRepository = dataSource.getRepository(PatientEntity);
         foodLogRepository = dataSource.getRepository(FoodLogEntity);
         customFoodRepository = dataSource.getRepository(CustomFoodEntity);
+        customFoodMicroNutrientsRepository = dataSource.getRepository(CustomFoodMicroNutrientsEntity)
 
         // Create some users for tests
         const user1DTO = {
@@ -70,49 +74,49 @@ describe('patient.helper.ts with in-memory database', () => {
             energy: {
                 unit: "KJ",
                 qty_per_serving: "1900",
-                percent_RQI: "22",
+                percent_RDI: "22",
                 qty_per_100: "750"
             } as CustomFoodNutrients,
             protein: {
                 unit: "g",
                 qty_per_serving: "30",
-                percent_RQI: "60",
+                percent_RDI: "60",
                 qty_per_100: "12"
             } as CustomFoodNutrients,
             totalFat: {
                 unit: "g",
                 qty_per_serving: "31",
-                percent_RQI: "44",
+                percent_RDI: "44",
                 qty_per_100: "12"
             } as CustomFoodNutrients,
             saturatedFat: {
                 unit: "g",
                 qty_per_serving: "14",
-                percent_RQI: "60",
+                percent_RDI: "60",
                 qty_per_100: "5.6"
             } as CustomFoodNutrients,
             carbohydrate: {
                 unit: "g",
                 qty_per_serving: "13",
-                percent_RQI: "4",
+                percent_RDI: "4",
                 qty_per_100: "5.1"
             } as CustomFoodNutrients,
             sugars: {
                 unit: "g",
                 qty_per_serving: "13",
-                percent_RQI: "14",
+                percent_RDI: "14",
                 qty_per_100: "5.0"
             } as CustomFoodNutrients,
             fiber: {
                 unit: "g",
                 qty_per_serving: "5.7",
-                percent_RQI: "19",
+                percent_RDI: "19",
                 qty_per_100: "2.2"
             } as CustomFoodNutrients,
             sodium: {
                 unit: "mg",
                 qty_per_serving: "990",
-                percent_RQI: "43",
+                percent_RDI: "43",
                 qty_per_100: "380"
             } as CustomFoodNutrients
         } as CustomFoodDTO
@@ -129,12 +133,12 @@ describe('patient.helper.ts with in-memory database', () => {
             activityLevel: "Moderate"
         } as PatientDTO
 
-        CustomFood1 = await CreateCustomFoodInDatabase(baseCustomFood, customFoodRepository);
+        CustomFood1 = await CreateCustomFoodInDatabase(baseCustomFood, customFoodRepository,customFoodMicroNutrientsRepository);
 
         const tempCustomeFood2 = {...baseCustomFood};
         tempCustomeFood2.foodName = 'Food number 2';
 
-        CustomFood2 = await CreateCustomFoodInDatabase(tempCustomeFood2, customFoodRepository);
+        CustomFood2 = await CreateCustomFoodInDatabase(tempCustomeFood2, customFoodRepository,customFoodMicroNutrientsRepository);
 
         patient1 = await CreatePatientInDatabase(basePatient, patientRepository);
 

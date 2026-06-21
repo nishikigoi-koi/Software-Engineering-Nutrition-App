@@ -15,7 +15,7 @@ import {SearchFoodFileAndCustomInDatabaseAndAPI, SearchGetFoodFileFromAPI, Searc
 import { CustomFoodMicroNutrientsEntity } from '../src/database/entities/customFoodMicroNutrients.entity.ts';
 
 
-describe('patient.helper.ts with in-memory database', () => {
+describe('search.helper.ts with in-memory database', () => {
     let dataSource: DataSource;
     let userRepository: Repository<UserEntity>;
 
