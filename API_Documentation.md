@@ -2626,159 +2626,139 @@ User needs to be Signed in and have the same ID as the user id in the patient th
 <summary>Example</summary>
 <pre>{
     "EnergyUnit": "kJ",
-    "TotalEnergy": "8700",
+    "TotalEnergy": 10701,
     "macronutrients": [
         {
-            "name": "protien",
+            "name": "protein",
             "unit": "g",
-            "minAmount": "78",
-            "maxAmount": "130"
+            "minAmount": 94.4,
+            "maxAmount": 157.4
         },
         {
             "name": "carbohydrates",
             "unit": "g",
-            "minAmount": "234",
-            "maxAmount": "338"
+            "minAmount": 283.3,
+            "maxAmount": 409.2
         },
         {
             "name": "totalFat",
             "unit": "g",
-            "minAmount": "46",
-            "maxAmount": "81"
+            "minAmount": 57.8,
+            "maxAmount": 101.2
         },
         {
             "name": "saturatedFat",
             "unit": "g",
-            "minAmount": "0",
-            "maxAmount": "23.5"
+            "minAmount": 0,
+            "maxAmount": 28.9
         },
         {
             "name": "Sodium",
             "unit": "mg",
-            "minAmount": "460",
-            "maxAmount": "920"
-        },
+            "minAmount": 460,
+            "maxAmount": 920
+        }
     ],
     "micronutrients": [
         {
-            "name": "Vitamin A",
-            "unit": "µg RE",
-            "amount": "900"
-        },
-        {
-            "name": "Vitamin B1",
-            "unit": "mg",
-            "amount": "1.2"
-        },
-        {
-            "name": "Vitamin B2",
-            "unit": "mg",
-            "amount": "1.3"
-        },
-        {
-            "name": "Vitamin B3",
-            "unit": "mg NE",
-            "amount": "16"
-        },
-        {
-            "name": "Vitamin B6",
-            "unit": "mg",
-            "amount": "1.3"
-        },
-        {
-            "name": "Folate",
-            "unit": "µg",
-            "amount": "400"
-        },
-        {
-            "name": "Vitamin B12",
-            "unit": "µg",
-            "amount": "2.4"
-        },
-        {
-            "name": "Vitamin C",
-            "unit": "mg",
-            "amount": "45"
-        },
-        {
-            "name": "Vitamin D",
-            "unit": "µg",
-            "amount": "5"
-        },
-        {
-            "name": "Vitamin E",
-            "unit": "mg",
-            "amount": "10"
-        },
-        {
-            "name": "Vitamin K",
-            "unit": "µg",
-            "amount": "70"
-        },
-        {
             "name": "Calcium",
             "unit": "mg",
-            "amount": "1000"
-        },
-        {
-            "name": "Iron",
-            "unit": "mg",
-            "amount": "8"
-        },
-        {
-            "name": "Magnesium",
-            "unit": "mg",
-            "amount": "400"
-        },
-        {
-            "name": "Zinc",
-            "unit": "mg",
-            "amount": "14"
-        },
-        {
-            "name": "Iodine",
-            "unit": "µg",
-            "amount": "150"
-        },
-        {
-            "name": "Selenium",
-            "unit": "µg",
-            "amount": "70"
-        },
-        {
-            "name": "Phosphorus",
-            "unit": "mg",
-            "amount": "1000"
-        },
-        {
-            "name": "Potassium",
-            "unit": "mg",
-            "amount": "3800"
+            "amount": 1000
         },
         {
             "name": "Copper",
             "unit": "mg",
-            "amount": "3.0"
+            "amount": 1.7
         },
         {
-            "name": "Chromium",
+            "name": "Iron",
+            "unit": "mg",
+            "amount": 8
+        },
+        {
+            "name": "Folate",
             "unit": "µg",
-            "amount": "35"
+            "amount": 400
+        },
+        {
+            "name": "Iodide (iodine)",
+            "unit": "µg",
+            "amount": 150
+        },
+        {
+            "name": "Potassium",
+            "unit": "mg",
+            "amount": 3800
+        },
+        {
+            "name": "Magnesium",
+            "unit": "mg",
+            "amount": 400
         },
         {
             "name": "Manganese",
-            "unit": "mg",
-            "amount": "5.5"
-        },
-        {
-            "name": "Fluoride",
-            "unit": "mg",
-            "amount": "4.0"
-        },
-        {
-            "name": "Molybdenum",
             "unit": "µg",
-            "amount": "45"
+            "amount": 5.5
+        },
+        {
+            "name": "Niacin (vitamin B3)",
+            "unit": "mg",
+            "amount": 16
+        },
+        {
+            "name": "Phosphorus",
+            "unit": "mg",
+            "amount": 1000
+        },
+        {
+            "name": "Riboflavin (vitamin B2)",
+            "unit": "mg",
+            "amount": 1.3
+        },
+        {
+            "name": "Selenium",
+            "unit": "µg",
+            "amount": 70
+        },
+        {
+            "name": "Thiamin (vitamin B1)",
+            "unit": "mg",
+            "amount": 1.2
+        },
+        {
+            "name": "Vitamin A, FSANZ",
+            "unit": "µg",
+            "amount": 900
+        },
+        {
+            "name": "Vitamin B12 (cobalamin)",
+            "unit": "µg",
+            "amount": 2.4
+        },
+        {
+            "name": "Vitamin B6 (pyridoxal phosphate)",
+            "unit": "mg",
+            "amount": 1.3
+        },
+        {
+            "name": "Vitamin C (ascorbic acid)",
+            "unit": "mg",
+            "amount": 45
+        },
+        {
+            "name": "Vitamin D",
+            "unit": "µg",
+            "amount": 5
+        },
+        {
+            "name": "Vitamin E (tocopherols)",
+            "unit": "mg",
+            "amount": 10
+        },
+        {
+            "name": "Zinc",
+            "unit": "mg",
+            "amount": 14
         }
     ]
 }</pre>
