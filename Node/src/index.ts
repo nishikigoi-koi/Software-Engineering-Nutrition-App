@@ -14,6 +14,7 @@ import searchGetRoute from './routes/searchGet.route.ts'
 import RDIRoute from './routes/RDI.route.ts'
 import totalNutrientsRoute from './routes/totalNutrients.route.ts'
 import flagRoute from './routes/flag.route.ts'
+import reportRoute from './routes/report.route.ts'
 
 import "./database/db.connect.ts";
 
@@ -44,6 +45,7 @@ app.use('/api/search-get',searchGetRoute)
 app.use('/api/RDI', RDIRoute)
 app.use('/api/totalnutrients',totalNutrientsRoute)
 app.use('/api/flag', flagRoute)
+app.use('/api/report', reportRoute)
 
 app.use(handlerError);
 
