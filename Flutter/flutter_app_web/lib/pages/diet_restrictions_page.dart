@@ -122,9 +122,18 @@ Future<void> _load() async {
   }
 
   Future<void> _create() async {
+    
+    final name = _name.text.trim();
+    final desc = _desc.text.trim();
+
+    if (name.isEmpty || desc.isEmpty) {
+      DialogUtils.showError(context, 'Please ensure all fields are filled out.');
+      return;
+    } 
+
     await DietRestrictionService.createRestriction(
-      _name.text,
-      _desc.text,
+      name,
+      desc,
     );
 
     _clear();
@@ -134,10 +143,18 @@ Future<void> _load() async {
   Future<void> _update() async {
     if (_selected == null) return;
 
+    final name = _name.text.trim();
+    final desc = _desc.text.trim();
+
+    if (name.isEmpty || desc.isEmpty) {
+      DialogUtils.showError(context, 'Please ensure all fields are filled out.');
+      return;
+    } 
+
     await DietRestrictionService.updateRestriction(
       _selected!.id,
-      _name.text,
-      _desc.text,
+      name,
+      desc,
     );
 
     _load();

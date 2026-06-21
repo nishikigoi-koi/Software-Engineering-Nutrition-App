@@ -120,9 +120,17 @@ class _MedicalConditionsPageState extends State<MedicalConditionsPage> {
   }
 
   Future<void> _create() async {
+    final name = _nameController.text.trim();
+    final desc = _descController.text.trim();
+
+    if (name.isEmpty || desc.isEmpty) {
+      DialogUtils.showError(context, 'Please ensure all fields are filled out.');
+      return;
+    }    
+
     await MedicalConditionService.createCondition(
-      _nameController.text,
-      _descController.text,
+      name,
+      desc,
     );
 
     _clear();
@@ -132,10 +140,18 @@ class _MedicalConditionsPageState extends State<MedicalConditionsPage> {
   Future<void> _update() async {
     if (_selectedCondition == null) return;
 
+    final name = _nameController.text.trim();
+    final desc = _descController.text.trim();
+
+    if (name.isEmpty || desc.isEmpty) {
+      DialogUtils.showError(context, 'Please ensure all fields are filled out.');
+      return;
+    } 
+
     await MedicalConditionService.updateCondition(
       _selectedCondition!.id,
-      _nameController.text,
-      _descController.text,
+      name,
+      desc,
     );
 
     _loadAll();
