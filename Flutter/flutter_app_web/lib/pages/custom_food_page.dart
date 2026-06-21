@@ -36,7 +36,7 @@ class _CustomFoodPageState extends State<CustomFoodPage> {
     'protein':      {'unit': TextEditingController(), 'qty_per_serving': TextEditingController(), 'percent_RDI': TextEditingController(), 'qty_per_100': TextEditingController()},
     'totalFat':     {'unit': TextEditingController(), 'qty_per_serving': TextEditingController(), 'percent_RDI': TextEditingController(), 'qty_per_100': TextEditingController()},
     'saturatedFat': {'unit': TextEditingController(), 'qty_per_serving': TextEditingController(), 'percent_RDI': TextEditingController(), 'qty_per_100': TextEditingController()},
-    'carbohydrate': {'unit': TextEditingController(), 'qty_per_serving': TextEditingController(), 'percent_RDI': TextEditingController(), 'qty_per_100': TextEditingController()},
+    'carbohydrates': {'unit': TextEditingController(), 'qty_per_serving': TextEditingController(), 'percent_RDI': TextEditingController(), 'qty_per_100': TextEditingController()},
     'sugars':       {'unit': TextEditingController(), 'qty_per_serving': TextEditingController(), 'percent_RDI': TextEditingController(), 'qty_per_100': TextEditingController()},
     'fiber':        {'unit': TextEditingController(), 'qty_per_serving': TextEditingController(), 'percent_RDI': TextEditingController(), 'qty_per_100': TextEditingController()},
     'sodium':       {'unit': TextEditingController(), 'qty_per_serving': TextEditingController(), 'percent_RDI': TextEditingController(), 'qty_per_100': TextEditingController()},
@@ -195,7 +195,7 @@ class _CustomFoodPageState extends State<CustomFoodPage> {
         _buildNutritionInfo('protein'),
         _buildNutritionInfo('totalFat'),
         _buildNutritionInfo('saturatedFat'),
-        _buildNutritionInfo('carbohydrate'),
+        _buildNutritionInfo('carbohydrates'),
         _buildNutritionInfo('sugars'),
         _buildNutritionInfo('fiber'),
         _buildNutritionInfo('sodium'),
@@ -224,7 +224,7 @@ class _CustomFoodPageState extends State<CustomFoodPage> {
         _buildNutritionInfo('protein'),
         _buildNutritionInfo('totalFat'),
         _buildNutritionInfo('saturatedFat'),
-        _buildNutritionInfo('carbohydrate'),
+        _buildNutritionInfo('carbohydrates'),
         _buildNutritionInfo('sugars'),
         _buildNutritionInfo('fiber'),
         _buildNutritionInfo('sodium'),
@@ -292,7 +292,7 @@ class _CustomFoodPageState extends State<CustomFoodPage> {
     fill('protein', food.protein);
     fill('totalFat', food.totalFat);
     fill('saturatedFat', food.saturatedFat);
-    fill('carbohydrate', food.carbohydrate);
+    fill('carbohydrates', food.carbohydrates);
     fill('sugars', food.sugars);
     fill('fiber', food.fiber);
     fill('sodium', food.sodium);
@@ -564,7 +564,7 @@ class _CustomFoodPageState extends State<CustomFoodPage> {
                               _nutritionRow('Protein', 'protein'),
                               _nutritionRow('Total fat', 'totalFat'),
                               _nutritionRow('Saturated fat', 'saturatedFat'),
-                              _nutritionRow('Carbohydrate', 'carbohydrate'),
+                              _nutritionRow('carbohydrates', 'carbohydrates'),
                               _nutritionRow('Sugars', 'sugars'),
                               _nutritionRow('Fiber', 'fiber'),
                               _nutritionRow('Sodium', 'sodium'),

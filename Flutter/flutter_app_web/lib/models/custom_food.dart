@@ -8,7 +8,7 @@ class CustomFood extends FoodBase {
   final NutritionInfo protein;
   final NutritionInfo totalFat;
   final NutritionInfo saturatedFat;
-  final NutritionInfo carbohydrate;
+  final NutritionInfo carbohydrates;
   final NutritionInfo sugars;
   final NutritionInfo fiber;
   final NutritionInfo sodium;
@@ -27,7 +27,7 @@ class CustomFood extends FoodBase {
     required this.protein,
     required this.totalFat,
     required this.saturatedFat,
-    required this.carbohydrate,
+    required this.carbohydrates,
     required this.sugars,
     required this.fiber,
     required this.sodium,
@@ -48,7 +48,7 @@ class CustomFood extends FoodBase {
       protein: NutritionInfo.fromJson(json['protein']),
       totalFat: NutritionInfo.fromJson(json['totalFat']),
       saturatedFat: NutritionInfo.fromJson(json['saturatedFat']),
-      carbohydrate: NutritionInfo.fromJson(json['carbohydrate']),
+      carbohydrates: NutritionInfo.fromJson(json['carbohydrates']),
       sugars: NutritionInfo.fromJson(json['sugars']),
       fiber: NutritionInfo.fromJson(json['fiber']),
       sodium: NutritionInfo.fromJson(json['sodium']),

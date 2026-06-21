@@ -1,7 +1,7 @@
 class TotalNutrient {
   final String name;
   final String unit;
-  final String amount;
+  final double amount;
 
   TotalNutrient({
     required this.name,
@@ -13,14 +13,14 @@ class TotalNutrient {
     return TotalNutrient(
       name: json['name'],
       unit: json['unit'],
-      amount: json['amount'],
+      amount: (json['amount'] as num).toDouble(),
     );
   }
 }
 
 class TotalNutrients {
   final String energyUnit;
-  final String totalEnergy;
+  final double totalEnergy;
   final List<TotalNutrient> macronutrients;
   final List<TotalNutrient> micronutrients;
 
@@ -34,7 +34,7 @@ class TotalNutrients {
   factory TotalNutrients.fromJson(Map<String, dynamic> json) {
     return TotalNutrients(
       energyUnit: json['EnergyUnit'],
-      totalEnergy: json['TotalEnergy'],
+      totalEnergy: (json['TotalEnergy'] as num).toDouble(),
       macronutrients: (json['macronutrients'] as List)
           .map((m) => TotalNutrient.fromJson(m))
           .toList(),
