@@ -20,7 +20,7 @@ import { Flags } from '../src/models/flag.types.ts';
 import { PatientConditionEntity } from '../src/database/entities/patientConditions.entity.ts';
 import { MedicalConditionEntity } from '../src/database/entities/medicalCondition.entity.ts';
 import {Report} from '../src/models/report.types.ts'
-import { GetReportCustomTimePeriodFromDatabase, GetReportDayFromDatabase, GetReportWeekFromDatabase } from '../src/helpers/Report.helper.ts';
+import { GetReportCustomTimePeriodFromDatabase, GetReportDayFromDatabase, GetReportWeekFromDatabase } from '../src/helpers/report.helper.ts';
 
 
 describe('flag.helper.ts with in-memory database', () => {
