@@ -95,7 +95,7 @@ describe('foodLog.helper.ts with in-memory database', () => {
                 percent_RDI: "60",
                 qty_per_100: "5.6"
             } as CustomFoodNutrients,
-            carbohydrate: {
+            carbohydrates: {
                 unit: "g",
                 qty_per_serving: "13",
                 percent_RDI: "4",

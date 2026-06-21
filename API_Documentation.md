@@ -1215,7 +1215,7 @@ User needs to be Signed in to access this endpoint
         "percent_RDI": string,
         "qty_per_100": string
     },
-    "carbohydrate": {
+    "carbohydrates": {
         "unit": string,
         "qty_per_serving": string,
         "percent_RDI": string,
@@ -1286,7 +1286,7 @@ User needs to be Signed in to access this endpoint
         "percent_RDI": "0",
         "qty_per_100": "0.02"
     },
-    "carbohydrate": {
+    "carbohydrates": {
         "unit": "g",
         "qty_per_serving": "14",
         "percent_RDI": "4",
@@ -1374,7 +1374,7 @@ User needs to be Signed in and have the same user id as the userId to access thi
         "percent_RDI": string,
         "qty_per_100": string
     },
-    "carbohydrate": {
+    "carbohydrates": {
         "unit": string,
         "qty_per_serving": string,
         "percent_RDI": string,
@@ -1446,7 +1446,7 @@ User needs to be Signed in and have the same user id as the userId to access thi
         "percent_RDI": "60",
         "qty_per_100": "5.6"
     },
-    "carbohydrate": {
+    "carbohydrates": {
         "unit": "g",
         "qty_per_serving": "13",
         "percent_RDI": "4",
@@ -1814,7 +1814,7 @@ creates a custom food item or meal in the databse linked to a user
         "percent_RDI": string,
         "qty_per_100": string
     },
-    "carbohydrate": {
+    "carbohydrates": {
         "unit": string,
         "qty_per_serving": string,
         "percent_RDI": string,
@@ -1884,7 +1884,7 @@ creates a custom food item or meal in the databse linked to a user
         "percent_RDI": "60",
         "qty_per_100": "5.6"
     },
-    "carbohydrate": {
+    "carbohydrates": {
         "unit": "g",
         "qty_per_serving": "13",
         "percent_RDI": "4",
@@ -1963,7 +1963,7 @@ User needs to be Signed in and have the same ID as the userId to access this end
         "percent_RDI": string,
         "qty_per_100": string
     },
-    "carbohydrate": {
+    "carbohydrates": {
         "unit": string,
         "qty_per_serving": string,
         "percent_RDI": string,
@@ -2034,7 +2034,7 @@ User needs to be Signed in and have the same ID as the userId to access this end
         "percent_RDI": "60",
         "qty_per_100": "5.6"
     },
-    "carbohydrate": {
+    "carbohydrates": {
         "unit": "g",
         "qty_per_serving": "13",
         "percent_RDI": "4",
@@ -2113,7 +2113,7 @@ updates the custome food item that has the same id
         "percent_RDI": string,
         "qty_per_100": string
     },
-    "carbohydrate": {
+    "carbohydrates": {
         "unit": string,
         "qty_per_serving": string,
         "percent_RDI": string,
@@ -2183,7 +2183,7 @@ updates the custome food item that has the same id
         "percent_RDI": "60",
         "qty_per_100": "5.6"
     },
-    "carbohydrate": {
+    "carbohydrates": {
         "unit": "g",
         "qty_per_serving": "13",
         "percent_RDI": "4",
@@ -2309,7 +2309,7 @@ User needs to be Signed in and have the same user id as the userId to access thi
         "percent_RDI": string,
         "qty_per_100": string
     },
-    "carbohydrate": {
+    "carbohydrates": {
         "unit": string,
         "qty_per_serving": string,
         "percent_RDI": string,
@@ -2380,7 +2380,7 @@ User needs to be Signed in and have the same user id as the userId to access thi
         "percent_RDI": "60",
         "qty_per_100": "5.6"
     },
-    "carbohydrate": {
+    "carbohydrates": {
         "unit": "g",
         "qty_per_serving": "13",
         "percent_RDI": "4",
@@ -2469,7 +2469,7 @@ User needs to be Signed in and have the same user id as the userId to access thi
             "percent_RDI": string,
             "qty_per_100": string
         },
-        "carbohydrate": {
+        "carbohydrates": {
             "unit": string,
             "qty_per_serving": string,
             "percent_RDI": string,
@@ -2542,7 +2542,7 @@ User needs to be Signed in and have the same user id as the userId to access thi
             "percent_RDI": "60",
             "qty_per_100": "5.6"
         },
-        "carbohydrate": {
+        "carbohydrates": {
             "unit": "g",
             "qty_per_serving": "13",
             "percent_RDI": "4",
@@ -2635,7 +2635,7 @@ User needs to be Signed in and have the same ID as the user id in the patient th
             "maxAmount": "130"
         },
         {
-            "name": "carbohydrate",
+            "name": "carbohydrates",
             "unit": "g",
             "minAmount": "234",
             "maxAmount": "338"
@@ -2838,7 +2838,7 @@ User needs to be Signed in and have the same ID as the user id in the patient th
             "amount": "90"
         },
         {
-            "name": "carbohydrate",
+            "name": "carbohydrates",
             "unit": "g",
             "amount": "270",
         },
@@ -3035,7 +3035,7 @@ User needs to be Signed in and have the same ID as the user id in the patient th
             "amount": "630"
         },
         {
-            "name": "carbohydrate",
+            "name": "carbohydrates",
             "unit": "g",
             "amount": "1890",
         },
@@ -3232,7 +3232,7 @@ User needs to be Signed in and have the same ID as the user id in the patient th
             "amount": "630"
         },
         {
-            "name": "carbohydrate",
+            "name": "carbohydrates",
             "unit": "g",
             "amount": "1890",
         },
@@ -3444,7 +3444,7 @@ User needs to be Signed in and have the same ID as the user id in the patient th
         },
         "macronutrients": [
             {
-                "name": "carbohydrate",
+                "name": "carbohydrates",
                 "unit": "g",
                 "minRDI": "234",
                 "maxRDI": "338",
@@ -3537,7 +3537,7 @@ User needs to be Signed in and have the same ID as the user id in the patient th
         },
         "macronutrients": [
             {
-                "name": "carbohydrate",
+                "name": "carbohydrates",
                 "unit": "g",
                 "minRDI": "1638",
                 "maxRDI": "2366",
@@ -3630,7 +3630,7 @@ User needs to be Signed in and have the same ID as the user id in the patient th
         },
         "macronutrients": [
             {
-                "name": "carbohydrate",
+                "name": "carbohydrates",
                 "unit": "g",
                 "minRDI": "1638",
                 "maxRDI": "2366",
@@ -3749,7 +3749,7 @@ User needs to be Signed in and have the same ID as the user id in the patient th
                 "direction": "in range"
             },
             {
-                "name": "carbohydrate",
+                "name": "carbohydrates",
                 "unit": "g",
                 "minRDI": "234",
                 "maxRDI": "338",
@@ -4044,7 +4044,7 @@ User needs to be Signed in and have the same ID as the user id in the patient th
                 "direction": "in range"
             },
             {
-                "name": "carbohydrate",
+                "name": "carbohydrates",
                 "unit": "g",
                 "minRDI": "1638",
                 "maxRDI": "2366",
@@ -4339,7 +4339,7 @@ User needs to be Signed in and have the same ID as the user id in the patient th
                 "direction": "in range"
             },
             {
-                "name": "carbohydrate",
+                "name": "carbohydrates",
                 "unit": "g",
                 "minRDI": "1638",
                 "maxRDI": "2366",
