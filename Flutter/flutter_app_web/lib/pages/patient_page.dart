@@ -34,7 +34,7 @@ class _PatientPageState extends State<PatientPage> {
   String? _selectedActivityLevel;
 
   final List<String> _genderOptions = ['Male', 'Female', 'Non-binary'];
-  final List<String> _activityOptions = ['Light', 'Moderate', 'Active'];
+  final List<String> _activityOptions = ['Sedentary', 'Light', 'Moderate', 'High', 'Extreme'];
 
   @override
   void initState() {
