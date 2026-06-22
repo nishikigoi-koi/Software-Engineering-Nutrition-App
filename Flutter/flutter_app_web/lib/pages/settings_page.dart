@@ -6,6 +6,7 @@ import 'login_page.dart';
 import 'home_page.dart';
 import 'patient_page.dart';
 import 'meal_log_page.dart';
+import 'report_page.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -282,7 +283,13 @@ class _SettingsPageState extends State<SettingsPage> {
                     (route) => false,
                   );
                 }),
-                _navButton('Reports', Icons.bar_chart, () {}),
+                _navButton('Reports', Icons.bar_chart, () {
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => ReportPage()),
+                    (route) => false,
+                  );
+                }),
                 _navButton('Settings', Icons.settings, null),
               ],
             ),
