@@ -101,8 +101,7 @@ class _LoginPageState extends State<LoginPage> {
 
                       // Call Login API
                       final response = await UserService.login(username, password);
-
-                      // TODO: Navigate to home page
+                      
                       if (response.statusCode == 200) {
                         try {
 
@@ -124,7 +123,6 @@ class _LoginPageState extends State<LoginPage> {
                           debugPrint('  JWT: $token');
 
                           // Remove all previous items from navigation queue, so pressing back does nothing.
-                          // TODO: Create home page
                           Navigator.pushAndRemoveUntil(
                             context,
                             MaterialPageRoute(builder: (context) => HomePage()),

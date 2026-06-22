@@ -31,7 +31,7 @@ class _MealLogPageState extends State<MealLogPage> {
   List<dynamic> _mealLogs = [];
   bool _isLoading = true;
   bool _isLoadingMeals = false;
-  Map<String, String> _foodNames = {};
+  final Map<String, String> _foodNames = {};
 
   // Search
   final _searchController = TextEditingController();

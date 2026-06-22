@@ -20,7 +20,7 @@ class _MedicalConditionsPageState extends State<MedicalConditionsPage> {
   List<Patient> _patients = [];
 
   MedicalCondition? _selectedCondition;
-  Set<String> _assignedPatientIds = {};
+  final Set<String> _assignedPatientIds = {};
 
   bool _isNew = false;
   bool _isLoading = true;

@@ -31,7 +31,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: Edit home page contents
     return Scaffold(
       body: Column(
         children: [

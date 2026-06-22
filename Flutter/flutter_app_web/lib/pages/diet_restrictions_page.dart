@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
-
 import '../models/diet_restriction.dart';
 import '../models/patient.dart';
 import '../services/patient_service.dart';
@@ -22,7 +21,7 @@ class _DietRestrictionsPageState extends State<DietRestrictionsPage> {
   List<Patient> _patients = [];
 
   DietRestriction? _selected;
-  Set<String> _assigned = {};
+  final Set<String> _assigned = {};
 
   bool _isNew = false;
   bool _loading = true;
