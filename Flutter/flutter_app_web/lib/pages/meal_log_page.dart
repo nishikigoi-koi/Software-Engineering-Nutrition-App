@@ -14,6 +14,7 @@ import 'home_page.dart';
 import 'patient_page.dart';
 import 'custom_food_page.dart';
 import 'report_page.dart';
+import 'settings_page.dart';
 
 class MealLogPage extends StatefulWidget {
   const MealLogPage({super.key});
@@ -816,7 +817,13 @@ class _MealLogPageState extends State<MealLogPage> {
                     (route) => false,
                   );
                 }),
-                _navButton('Settings', Icons.settings, () {}),
+                _navButton('Settings', Icons.settings, () {
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => SettingsPage()),
+                    (route) => false,
+                  );
+                }),
               ],
             ),
           ),
