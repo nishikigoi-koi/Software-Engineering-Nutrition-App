@@ -49,7 +49,7 @@ class CustomFoodService {
         "sugars": sugars.toJson(),
         "fiber": fiber.toJson(),
         "sodium": sodium.toJson(),
-        "micronutrients": micronutrients.map((m) => m.toJson()).toList(),
+        "microNutrients": micronutrients.map((m) => m.toJson()).toList(),
       }),
     );
   }
@@ -97,7 +97,7 @@ class CustomFoodService {
         "sugars": sugars.toJson(),
         "fiber": fiber.toJson(),
         "sodium": sodium.toJson(),
-        "micronutrients": micronutrients.map((m) => m.toJson()).toList(),
+        "microNutrients": micronutrients.map((m) => m.toJson()).toList(),
       }),
     );
   }

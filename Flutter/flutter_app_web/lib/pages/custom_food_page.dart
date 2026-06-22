@@ -564,7 +564,7 @@ class _CustomFoodPageState extends State<CustomFoodPage> {
                               _nutritionRow('Protein', 'protein'),
                               _nutritionRow('Total fat', 'totalFat'),
                               _nutritionRow('Saturated fat', 'saturatedFat'),
-                              _nutritionRow('carbohydrates', 'carbohydrates'),
+                              _nutritionRow('Carbohydrates', 'carbohydrates'),
                               _nutritionRow('Sugars', 'sugars'),
                               _nutritionRow('Fiber', 'fiber'),
                               _nutritionRow('Sodium', 'sodium'),
