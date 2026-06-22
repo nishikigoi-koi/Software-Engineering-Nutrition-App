@@ -5,10 +5,12 @@ import 'package:flutter_app_web/pages/meal_log_page.dart';
 import 'package:flutter_app_web/services/session_manager.dart';
 import 'package:flutter_app_web/services/patient_service.dart';
 import 'package:flutter_app_web/utils/dialog_utils.dart';
+import 'package:flutter_app_web/utils/string_utils.dart';
 import 'dart:convert';
 import 'login_page.dart';
 import 'medical_conditions_page.dart';
 import 'diet_restrictions_page.dart';
+import 'report_page.dart';
 import 'settings_page.dart';
 
 class PatientPage extends StatefulWidget {
@@ -28,14 +30,31 @@ class _PatientPageState extends State<PatientPage> {
   final _firstNameController = TextEditingController();
   final _lastNameController = TextEditingController();
   DateTime? _selectedBirthDate;
-  final _ethnicityController = TextEditingController();
   final _weightController = TextEditingController();
   final _heightController = TextEditingController();
   String? _selectedGender;
   String? _selectedActivityLevel;
-
-  final List<String> _genderOptions = ['Male', 'Female', 'Non-binary'];
-  final List<String> _activityOptions = ['Light', 'Moderate', 'Active'];
+  String? _selectedEthnicity;
+  
+  final List<String> _genderOptions = ['Male', 'Female'];
+  final List<String> _activityOptions = ['Sedentary', 'Light', 'Moderate', 'High', 'Extreme'];
+  final List<String> _ethnicityOptions = [
+    'New Zealand European',
+    'Māori',
+    'Samoan',
+    'Cook Island Māori',
+    'Tongan',
+    'Niuean',
+    'Chinese',
+    'Indian',
+    'Other European',
+    'Other Pacific Peoples',
+    'Other Asian',
+    'Middle Eastern',
+    'Latin American',
+    'African',
+    'Other',
+  ];
 
   @override
   void initState() {
@@ -58,7 +77,6 @@ class _PatientPageState extends State<PatientPage> {
   void dispose() {
     _firstNameController.dispose();
     _lastNameController.dispose();
-    _ethnicityController.dispose();
     _weightController.dispose();
     _heightController.dispose();
     super.dispose();
@@ -96,15 +114,14 @@ class _PatientPageState extends State<PatientPage> {
     final userId = SessionManager().currentUser!.id;
     final firstName = _firstNameController.text.trim();
     final lastName = _lastNameController.text.trim();
-    final ethnicity = _ethnicityController.text.trim();
     final weight = _weightController.text.trim();
     final height = _heightController.text.trim();
 
     if (firstName.isEmpty          ||
         lastName.isEmpty           ||
-        ethnicity.isEmpty          ||
         weight.isEmpty             ||
         height.isEmpty             ||
+        _selectedEthnicity == null ||
         _selectedBirthDate == null ||
         _selectedGender == null    ||
         _selectedActivityLevel == null) {
@@ -114,11 +131,11 @@ class _PatientPageState extends State<PatientPage> {
 
     final response = await PatientService.createPatient(
       userId,
-      _firstNameController.text,
-      _lastNameController.text,
+      StringUtils.capitalize(_firstNameController.text),
+      StringUtils.capitalize(_lastNameController.text),
       _formatDate(_selectedBirthDate!),
       _selectedGender ?? '',
-      _ethnicityController.text,
+      _selectedEthnicity ?? '',
       double.tryParse(_weightController.text) ?? 0,
       double.tryParse(_heightController.text) ?? 0,
       _selectedActivityLevel ?? '',
@@ -137,15 +154,14 @@ class _PatientPageState extends State<PatientPage> {
 
     final firstName = _firstNameController.text.trim();
     final lastName = _lastNameController.text.trim();
-    final ethnicity = _ethnicityController.text.trim();
     final weight = _weightController.text.trim();
     final height = _heightController.text.trim();
 
     if (firstName.isEmpty          ||
         lastName.isEmpty           ||
-        ethnicity.isEmpty          ||
         weight.isEmpty             ||
         height.isEmpty             ||
+        _selectedEthnicity == null ||
         _selectedBirthDate == null ||
         _selectedGender == null    ||
         _selectedActivityLevel == null) {
@@ -155,11 +171,11 @@ class _PatientPageState extends State<PatientPage> {
 
     final response = await PatientService.updatePatient(
       _selectedPatient!.id,
-      _firstNameController.text,
-      _lastNameController.text,
+      StringUtils.capitalize(_firstNameController.text),
+      StringUtils.capitalize(_lastNameController.text),
       _formatDate(_selectedBirthDate!),
       _selectedGender ?? '',
-      _ethnicityController.text,
+      _selectedEthnicity ?? '',
       double.tryParse(_weightController.text) ?? 0,
       double.tryParse(_heightController.text) ?? 0,
       _selectedActivityLevel ?? '',
@@ -193,8 +209,8 @@ class _PatientPageState extends State<PatientPage> {
       _isNewPatient = false;
       _firstNameController.text = patient.firstName;
       _lastNameController.text = patient.lastName;
+      _selectedEthnicity = patient.ethnicity;
       _selectedBirthDate = patient.birthDate;
-      _ethnicityController.text = patient.ethnicity;
       _weightController.text = patient.weight.toString();
       _heightController.text = patient.height.toString();
       _selectedGender = patient.gender;
@@ -208,8 +224,8 @@ class _PatientPageState extends State<PatientPage> {
       _isNewPatient = true;
       _firstNameController.clear();
       _lastNameController.clear();
+      _selectedEthnicity = null;
       _selectedBirthDate = null;
-      _ethnicityController.clear();
       _weightController.clear();
       _heightController.clear();
       _selectedGender = null;
@@ -223,8 +239,8 @@ class _PatientPageState extends State<PatientPage> {
       _isNewPatient = false;
       _firstNameController.clear();
       _lastNameController.clear();
+      _selectedEthnicity = null;
       _selectedBirthDate = null;
-      _ethnicityController.clear();
       _weightController.clear();
       _heightController.clear();
       _selectedGender = null;
@@ -407,12 +423,16 @@ class _PatientPageState extends State<PatientPage> {
                                     ),
                                     SizedBox(width: 16),
                                     Expanded(
-                                      child: TextField(
-                                        controller: _ethnicityController,
+                                      child: DropdownButtonFormField<String>(
+                                        initialValue: _selectedEthnicity,
                                         decoration: InputDecoration(
                                           labelText: 'Ethnicity',
                                           border: OutlineInputBorder(),
                                         ),
+                                        items: _ethnicityOptions
+                                            .map((e) => DropdownMenuItem(value: e, child: Text(e)))
+                                            .toList(),
+                                        onChanged: (value) => setState(() => _selectedEthnicity = value),
                                       ),
                                     ),
                                   ],
@@ -650,7 +670,13 @@ class _PatientPageState extends State<PatientPage> {
                     (route) => false,
                   );
                 }),
-                _navButton('Reports', Icons.bar_chart, () {}),
+                _navButton('Reports', Icons.bar_chart, () {
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => ReportPage()),
+                    (route) => false,
+                  );
+                }),
                 _navButton('Settings', Icons.settings, () {
                   Navigator.pushAndRemoveUntil(
                     context,

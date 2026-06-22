@@ -13,10 +13,11 @@ export interface FoodFile{
     protein: FoodFileNutrients,
     totalFat: FoodFileNutrients,
     saturatedFat: FoodFileNutrients,
-    carbohydrate: FoodFileNutrients,
+    carbohydrates: FoodFileNutrients,
     sugars: FoodFileNutrients,
     fiber: FoodFileNutrients,
-    sodium: FoodFileNutrients
+    sodium: FoodFileNutrients,
+    microNutrients: FoodFileMicroNutrients[]
 }
 
 export interface FoodFileShort{
@@ -33,11 +34,19 @@ export interface FoodFileShort{
 export interface FoodFileNutrients{
     unit: string,
     qty_per_serving: string,
-    percent_RQI: string,
+    percent_RDI: string,
+    qty_per_100: string
+}
+
+export interface FoodFileMicroNutrients {
+    name: string,
+    unit: string,
+    qty_per_serving: string,
+    percent_RDI: string | undefined,
     qty_per_100: string
 }
 
 export interface SearchResult{
     foodFile: FoodFileShort[],
-    customFood: CustomFoodShort[]
+    customFood: CustomFoodShort[] 
 }

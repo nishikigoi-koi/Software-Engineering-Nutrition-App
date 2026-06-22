@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_web/services/session_manager.dart';
 import 'login_page.dart';
 import 'patient_page.dart';
+import 'report_page.dart';
 import 'meal_log_page.dart';
 import 'settings_page.dart';
 
@@ -115,7 +116,13 @@ class _HomePageState extends State<HomePage> {
                     (route) => false,
                   );
                 }),
-                _navButton('Reports', Icons.bar_chart, () {}),
+                _navButton('Reports', Icons.bar_chart, () {
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => ReportPage()),
+                    (route) => false,
+                  );
+                }),
                 _navButton('Settings', Icons.settings, () {
                   Navigator.pushAndRemoveUntil(
                     context,

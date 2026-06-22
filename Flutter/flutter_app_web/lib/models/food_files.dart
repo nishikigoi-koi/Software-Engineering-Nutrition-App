@@ -1,5 +1,6 @@
 import 'food_base.dart';
 import 'nutrition_info.dart';
+import 'micronutrient.dart';
 
 class FoodFile extends FoodBase {
   final String sortName;
@@ -7,10 +8,11 @@ class FoodFile extends FoodBase {
   final NutritionInfo protein;
   final NutritionInfo totalFat;
   final NutritionInfo saturatedFat;
-  final NutritionInfo carbohydrate;
+  final NutritionInfo carbohydrates;
   final NutritionInfo sugars;
   final NutritionInfo fiber;
   final NutritionInfo sodium;
+  final List<Micronutrient> micronutrients;
 
   FoodFile({
     required super.id,
@@ -25,10 +27,11 @@ class FoodFile extends FoodBase {
     required this.protein,
     required this.totalFat,
     required this.saturatedFat,
-    required this.carbohydrate,
+    required this.carbohydrates,
     required this.sugars,
     required this.fiber,
     required this.sodium,
+    this.micronutrients = const [],
   });
 
   factory FoodFile.fromJson(Map<String, dynamic> json) {
@@ -45,10 +48,13 @@ class FoodFile extends FoodBase {
       protein: NutritionInfo.fromJson(json['protein']),
       totalFat: NutritionInfo.fromJson(json['totalFat']),
       saturatedFat: NutritionInfo.fromJson(json['saturatedFat']),
-      carbohydrate: NutritionInfo.fromJson(json['carbohydrate']),
+      carbohydrates: NutritionInfo.fromJson(json['carbohydrates']),
       sugars: NutritionInfo.fromJson(json['sugars']),
       fiber: NutritionInfo.fromJson(json['fiber']),
       sodium: NutritionInfo.fromJson(json['sodium']),
+      micronutrients: (json['micronutrients'] as List? ?? [])
+        .map((m) => Micronutrient.fromJson(m))
+        .toList(),
     );
   }
 }

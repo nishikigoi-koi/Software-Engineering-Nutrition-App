@@ -2,6 +2,7 @@ import 'session_manager.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter_app_web/models/nutrition_info.dart';
+import 'package:flutter_app_web/models/micronutrient.dart';
 
 class CustomFoodService {
   static const String _base = 'http://localhost:3000/api/customfood';
@@ -21,8 +22,9 @@ class CustomFoodService {
     NutritionInfo carbohydrate,
     NutritionInfo sugars,
     NutritionInfo fiber,
-    NutritionInfo sodium,
-  ) async {
+    NutritionInfo sodium, {
+    List<Micronutrient> micronutrients = const [],
+  }) async {
     final token = SessionManager().token;
 
     return await http.post(
@@ -47,6 +49,7 @@ class CustomFoodService {
         "sugars": sugars.toJson(),
         "fiber": fiber.toJson(),
         "sodium": sodium.toJson(),
+        "microNutrients": micronutrients.map((m) => m.toJson()).toList(),
       }),
     );
   }
@@ -67,8 +70,9 @@ class CustomFoodService {
     NutritionInfo carbohydrate,
     NutritionInfo sugars,
     NutritionInfo fiber,
-    NutritionInfo sodium,
-  ) async {
+    NutritionInfo sodium, {
+    List<Micronutrient> micronutrients = const [],
+  }) async {
     final token = SessionManager().token;
 
     return await http.put(
@@ -93,6 +97,7 @@ class CustomFoodService {
         "sugars": sugars.toJson(),
         "fiber": fiber.toJson(),
         "sodium": sodium.toJson(),
+        "microNutrients": micronutrients.map((m) => m.toJson()).toList(),
       }),
     );
   }

@@ -13,6 +13,7 @@ import 'login_page.dart';
 import 'home_page.dart';
 import 'patient_page.dart';
 import 'custom_food_page.dart';
+import 'report_page.dart';
 import 'settings_page.dart';
 
 class MealLogPage extends StatefulWidget {
@@ -809,7 +810,13 @@ class _MealLogPageState extends State<MealLogPage> {
                   Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => PatientPage()), (route) => false);
                 }),
                 _navButton('Meals', Icons.restaurant, null),
-                _navButton('Reports', Icons.bar_chart, () {}),
+                _navButton('Reports', Icons.bar_chart, () {
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => ReportPage()),
+                    (route) => false,
+                  );
+                }),
                 _navButton('Settings', Icons.settings, () {
                   Navigator.pushAndRemoveUntil(
                     context,

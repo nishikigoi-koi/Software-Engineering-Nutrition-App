@@ -1,18 +1,20 @@
 import 'reflect-metadata';
 import { DataSource, Repository } from 'typeorm';
 import CustomerError from '../src/models/error.types.ts';
-import {CustomFoodDTO, CustomFood, CustomFoodNutrients} from '../src/models/customFood.types.ts';
+import {CustomFoodDTO, CustomFood, CustomFoodNutrients, CustomFoodMicroNutrients} from '../src/models/customFood.types.ts';
 import { UserEntity } from '../src/database/entities/user.entity.ts';
 import { UserDTO,UserDatabaseObject } from '../src/models/user.types.ts';
 import { CustomFoodEntity} from '../src/database/entities/customFood.entity.ts';
 import { entities } from '../src/database/index.ts';
 import { CreateUserInDatabase } from '../src/helpers/user.helper.ts';
 import { CreateCustomFoodInDatabase, UpdateCustomFoodInDatabase, DeleteCustomFoodInDatabase, GetCustomFoodByUserIdFromDatabase, GetCustomFoodByIdFromDatabase} from '../src/helpers/customFood.helper.ts'
+import { CustomFoodMicroNutrientsEntity } from '../src/database/entities/customFoodMicroNutrients.entity.ts';
 
-describe('patient.helper.ts with in-memory database', () => {
+describe('customFood.helper.ts with in-memory database', () => {
     let dataSource: DataSource;
     let userRepository: Repository<UserEntity>;
     let customFoodRepository: Repository<CustomFoodEntity>;
+    let customFoodMicroNutrientsRepository: Repository<CustomFoodMicroNutrientsEntity>;
     let user1: UserDatabaseObject;
     let user2: UserDatabaseObject;
     let baseTestCustomFood: CustomFoodDTO;
@@ -33,6 +35,7 @@ describe('patient.helper.ts with in-memory database', () => {
         await dataSource.initialize();
         userRepository = dataSource.getRepository(UserEntity);
         customFoodRepository = dataSource.getRepository(CustomFoodEntity);
+        customFoodMicroNutrientsRepository = dataSource.getRepository(CustomFoodMicroNutrientsEntity)
 
         // Create some users for tests
         const user1DTO = {
@@ -57,51 +60,60 @@ describe('patient.helper.ts with in-memory database', () => {
             energy: {
                 unit: "KJ",
                 qty_per_serving: "1900",
-                percent_RQI: "22",
+                percent_RDI: "22",
                 qty_per_100: "750"
             } as CustomFoodNutrients,
             protein: {
                 unit: "g",
                 qty_per_serving: "30",
-                percent_RQI: "60",
+                percent_RDI: "60",
                 qty_per_100: "12"
             } as CustomFoodNutrients,
             totalFat: {
                 unit: "g",
                 qty_per_serving: "31",
-                percent_RQI: "44",
+                percent_RDI: "44",
                 qty_per_100: "12"
             } as CustomFoodNutrients,
             saturatedFat: {
                 unit: "g",
                 qty_per_serving: "14",
-                percent_RQI: "60",
+                percent_RDI: "60",
                 qty_per_100: "5.6"
             } as CustomFoodNutrients,
-            carbohydrate: {
+            carbohydrates: {
                 unit: "g",
                 qty_per_serving: "13",
-                percent_RQI: "4",
+                percent_RDI: "4",
                 qty_per_100: "5.1"
             } as CustomFoodNutrients,
             sugars: {
                 unit: "g",
                 qty_per_serving: "13",
-                percent_RQI: "14",
+                percent_RDI: "14",
                 qty_per_100: "5.0"
             } as CustomFoodNutrients,
             fiber: {
                 unit: "g",
                 qty_per_serving: "5.7",
-                percent_RQI: "19",
+                percent_RDI: "19",
                 qty_per_100: "2.2"
             } as CustomFoodNutrients,
             sodium: {
                 unit: "mg",
                 qty_per_serving: "990",
-                percent_RQI: "43",
+                percent_RDI: "43",
                 qty_per_100: "380"
-            } as CustomFoodNutrients
+            } as CustomFoodNutrients,
+            microNutrients:[
+                {
+                    name: "Iron",
+                    unit: "mg",
+                    qty_per_serving: "4.6",
+                    percent_RDI: "38",
+                    qty_per_100: "1.8"
+                } as CustomFoodMicroNutrients
+            ] as CustomFoodMicroNutrients[]
         } as CustomFoodDTO
     });
 
@@ -116,6 +128,7 @@ describe('patient.helper.ts with in-memory database', () => {
 
     beforeEach(async () => {
         // Clear users before each test
+        await customFoodMicroNutrientsRepository.clear();
         await customFoodRepository.clear();
     });
 
@@ -129,7 +142,7 @@ describe('patient.helper.ts with in-memory database', () => {
 
             delete incompleteCustomFood[key]
 
-            await expect(CreateCustomFoodInDatabase(incompleteCustomFood,customFoodRepository)).rejects.toThrow();
+            await expect(CreateCustomFoodInDatabase(incompleteCustomFood,customFoodRepository,customFoodMicroNutrientsRepository)).rejects.toThrow();
         }
     });
 
@@ -137,13 +150,13 @@ describe('patient.helper.ts with in-memory database', () => {
         const testCustomFood = {...baseTestCustomFood}
         testCustomFood.userId = 'notinthedatabase'
 
-        await expect(CreateCustomFoodInDatabase(testCustomFood,customFoodRepository)).rejects.toThrow();
+        await expect(CreateCustomFoodInDatabase(testCustomFood,customFoodRepository,customFoodMicroNutrientsRepository)).rejects.toThrow();
     });
 
     it('CreateCustomFoodInDatabase returns sanitized object', async () =>{
         const testCustomFood = {...baseTestCustomFood} as CustomFoodDTO
 
-        const result = await CreateCustomFoodInDatabase(testCustomFood,customFoodRepository);
+        const result = await CreateCustomFoodInDatabase(testCustomFood,customFoodRepository,customFoodMicroNutrientsRepository);
 
         const keys = Object.keys(testCustomFood) as Array<keyof CustomFoodDTO>
 
@@ -165,7 +178,7 @@ describe('patient.helper.ts with in-memory database', () => {
     it('GetCustomFoodByIdFromDatabase returns ', async () =>{
         const testCustomFood = {...baseTestCustomFood}
 
-        const created = await CreateCustomFoodInDatabase(testCustomFood,customFoodRepository);
+        const created = await CreateCustomFoodInDatabase(testCustomFood,customFoodRepository,customFoodMicroNutrientsRepository);
 
         const result = await GetCustomFoodByIdFromDatabase(created.id,customFoodRepository);
 
@@ -192,12 +205,12 @@ describe('patient.helper.ts with in-memory database', () => {
     it('GetCustomFoodByUserIdFromDatabase returns right custom food for a given user id', async () =>{
 
         const testCustomFood1 = {...baseTestCustomFood}
-        const created1 = await CreateCustomFoodInDatabase(testCustomFood1,customFoodRepository);
+        const created1 = await CreateCustomFoodInDatabase(testCustomFood1,customFoodRepository,customFoodMicroNutrientsRepository);
 
         const testCustomFood2 = {...baseTestCustomFood}
         testCustomFood2.userId = user2.id
         testCustomFood2.foodName = 'superDifrent'
-        const created2 = await CreateCustomFoodInDatabase(testCustomFood2,customFoodRepository);
+        const created2 = await CreateCustomFoodInDatabase(testCustomFood2,customFoodRepository,customFoodMicroNutrientsRepository);
 
         const result1 = await GetCustomFoodByUserIdFromDatabase(user1.id,customFoodRepository);
         const result2 = await GetCustomFoodByUserIdFromDatabase(user2.id,customFoodRepository);
@@ -208,12 +221,12 @@ describe('patient.helper.ts with in-memory database', () => {
 
     it('UpdateCustomFoodInDatabase updates an existing custom food', async () =>{
         const testCustomFood = {...baseTestCustomFood}
-        const created = await CreateCustomFoodInDatabase(testCustomFood,customFoodRepository);
+        const created = await CreateCustomFoodInDatabase(testCustomFood,customFoodRepository,customFoodMicroNutrientsRepository);
 
         const updatedCustomFood = {...baseTestCustomFood}
         updatedCustomFood.foodName = 'updatedName'
 
-        await UpdateCustomFoodInDatabase(created.id as string, updatedCustomFood,customFoodRepository);
+        await UpdateCustomFoodInDatabase(created.id as string, updatedCustomFood,customFoodRepository,customFoodMicroNutrientsRepository);
 
         const updated = await GetCustomFoodByIdFromDatabase(created.id as string, customFoodRepository);
         expect(updated.foodName).toBe(updatedCustomFood.foodName)
@@ -221,24 +234,24 @@ describe('patient.helper.ts with in-memory database', () => {
 
     it('UpdateCustomFoodInDatabase updates an existing custom food', async () =>{
         const testCustomFood = {...baseTestCustomFood}
-        const created = await CreateCustomFoodInDatabase(testCustomFood,customFoodRepository);
+        const created = await CreateCustomFoodInDatabase(testCustomFood,customFoodRepository,customFoodMicroNutrientsRepository);
 
         const updatedCustomFood = {...baseTestCustomFood}
         updatedCustomFood.foodName = 'updatedName'
 
-        await expect(UpdateCustomFoodInDatabase('notindatabase', updatedCustomFood,customFoodRepository)).rejects.toThrow();
+        await expect(UpdateCustomFoodInDatabase('notindatabase', updatedCustomFood,customFoodRepository,customFoodMicroNutrientsRepository)).rejects.toThrow();
     });
 
     it('DeleteCustomFoodInDatabase removes a custom food', async () =>{
         const testCustomFood = {...baseTestCustomFood}
-        const created = await CreateCustomFoodInDatabase(testCustomFood,customFoodRepository);
+        const created = await CreateCustomFoodInDatabase(testCustomFood,customFoodRepository,customFoodMicroNutrientsRepository);
 
-        await DeleteCustomFoodInDatabase(created.id as string,customFoodRepository);
+        await DeleteCustomFoodInDatabase(created.id as string,customFoodRepository,customFoodMicroNutrientsRepository);
 
         await expect(GetCustomFoodByIdFromDatabase(created.id as string, customFoodRepository)).rejects.toThrow();
     });
 
     it('DeleteCustomFoodInDatabase throws if user doesnt exist', async () => {
-        await expect(DeleteCustomFoodInDatabase('notindatabase' as string,customFoodRepository)).rejects.toThrow();
+        await expect(DeleteCustomFoodInDatabase('notindatabase' as string,customFoodRepository,customFoodMicroNutrientsRepository)).rejects.toThrow();
     })
 });
