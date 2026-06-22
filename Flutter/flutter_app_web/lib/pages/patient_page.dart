@@ -5,6 +5,7 @@ import 'package:flutter_app_web/pages/meal_log_page.dart';
 import 'package:flutter_app_web/services/session_manager.dart';
 import 'package:flutter_app_web/services/patient_service.dart';
 import 'package:flutter_app_web/utils/dialog_utils.dart';
+import 'package:flutter_app_web/utils/string_utils.dart';
 import 'dart:convert';
 import 'login_page.dart';
 import 'medical_conditions_page.dart';
@@ -94,8 +95,8 @@ class _PatientPageState extends State<PatientPage> {
 
     final response = await PatientService.createPatient(
       userId,
-      _firstNameController.text,
-      _lastNameController.text,
+      StringUtils.capitalize(_firstNameController.text),
+      StringUtils.capitalize(_lastNameController.text),
       _birthDateController.text,
       _selectedGender ?? '',
       _ethnicityController.text,

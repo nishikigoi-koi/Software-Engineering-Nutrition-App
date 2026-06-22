@@ -16,7 +16,7 @@ import 'home_page.dart';
 import 'patient_page.dart';
 import 'meal_log_page.dart';
 // TODO: Import settings once pushed to main
-// import 'settings_page.dart';
+//import 'settings_page.dart';
 
 enum ReportPeriod { day, week, custom }
 
@@ -61,6 +61,36 @@ class _ReportPageState extends State<ReportPage> {
 
   String _formatDate(DateTime date) {
     return '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}';
+  }
+
+  // DD-MM-YYYY for display purposes
+  String _formatDateDisplay(String isoDate) {
+    final parts = isoDate.split('-');
+    if (parts.length < 3) return isoDate;
+    return '${parts[2]}-${parts[1]}-${parts[0]}';
+  }
+
+  // DD-MM-YYYY HH:MM from an ISO datetime string
+  String _formatDateTimeDisplay(String? isoDateTime) {
+    if (isoDateTime == null) return '';
+    final dt = DateTime.tryParse(isoDateTime);
+    if (dt == null) return isoDateTime;
+    return '${dt.day.toString().padLeft(2, '0')}-${dt.month.toString().padLeft(2, '0')}-${dt.year} ${dt.hour.toString().padLeft(2, '0')}:${dt.minute.toString().padLeft(2, '0')}';
+  }
+
+  // Converts API macro names like "totalFat", "saturatedFat", "protien" to display names
+  String _formatMacroName(String name) {
+    const Map<String, String> macroNames = {
+      'protien': 'Protein', // Fallback for any old spelling mistakes
+      'protein': 'Protein',
+      'carbohydrates': 'Carbohydrates',
+      'totalFat': 'Total Fat',
+      'saturatedFat': 'Saturated Fat',
+      'sodium': 'Sodium',
+      'sugars': 'Sugars',
+      'fiber': 'Fiber',
+    };
+    return macroNames[name] ?? name;
   }
 
   // ── API calls ─────────────────────────────────────────────────────────────
@@ -190,8 +220,8 @@ class _ReportPageState extends State<ReportPage> {
       pw.MultiPage(
         pageFormat: PdfPageFormat.a4,
         build: (context) => [
-          pw.Header(level: 0, child: pw.Text(report.title, style: pw.TextStyle(fontSize: 20, fontWeight: pw.FontWeight.bold))),
-          pw.Text('Date: ${report.date}'),
+          pw.Header(level: 0, child: pw.Text(report.title.replaceAllMapped(RegExp(r'\d{4}-\d{2}-\d{2}'), (m) => _formatDateDisplay(m.group(0)!)), style: pw.TextStyle(fontSize: 20, fontWeight: pw.FontWeight.bold))),
+          pw.Text('Date: ${_formatDateDisplay(report.date)}'),
           pw.Text('Patient: ${report.patientName}'),
           pw.SizedBox(height: 16),
 
@@ -205,7 +235,7 @@ class _ReportPageState extends State<ReportPage> {
           pw.TableHelper.fromTextArray(
             headers: ['Name', 'Intake', 'Min RDI', 'Max RDI', 'Direction'],
             data: report.macronutrients
-                .map((m) => [m.name, '${m.intake} ${m.unit}', '${m.minRDI} ${m.unit}', '${m.maxRDI} ${m.unit}', m.direction])
+                .map((m) => [_formatMacroName(m.name), '${m.intake} ${m.unit}', '${m.minRDI} ${m.unit}', '${m.maxRDI} ${m.unit}', m.direction])
                 .toList(),
           ),
           pw.SizedBox(height: 12),
@@ -228,7 +258,7 @@ class _ReportPageState extends State<ReportPage> {
                       .map((m) => [
                             m['foodName'].toString(),
                             m['mealType'].toString(),
-                            m['dateTime'].toString(),
+                            _formatDateTimeDisplay(m['dateTime']?.toString()),
                             '${m['amount']} ${m['unit']}',
                           ])
                       .toList(),
@@ -432,11 +462,11 @@ class _ReportPageState extends State<ReportPage> {
                   Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => MealLogPage()), (route) => false);
                 }),
                 _navButton('Reports', Icons.bar_chart, null),
+                _navButton('Settings', Icons.settings, () {})
                 // TODO: Import settings once pushed to main
                 // _navButton('Settings', Icons.settings, () {
                 //   Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => SettingsPage()), (route) => false);
                 // }),
-                _navButton('Settings', Icons.settings, () {}),
               ],
             ),
           ),
@@ -465,7 +495,9 @@ class _ReportPageState extends State<ReportPage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(report.title, style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.bold, fontSize: 16, color: Color(0xFF1C1C1C))),
+          Text(report.title.replaceAllMapped(RegExp(r'\d{4}-\d{2}-\d{2}'), (m) => _formatDateDisplay(m.group(0)!)), style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.bold, fontSize: 16, color: Color(0xFF1C1C1C))),
+          SizedBox(height: 4),
+          Text('Date: ${_formatDateDisplay(report.date)}', style: TextStyle(fontFamily: 'Poppins', fontSize: 13, color: Color(0xFF87879D))),
           SizedBox(height: 16),
 
           Text('Energy', style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.bold, fontSize: 14, color: Color(0xFF1C1C1C))),
@@ -481,7 +513,7 @@ class _ReportPageState extends State<ReportPage> {
           ...report.macronutrients.map((m) => Padding(
                 padding: EdgeInsets.symmetric(vertical: 2),
                 child: Text(
-                  '${m.name}: ${m.intake} ${m.unit} (RDI ${m.minRDI}–${m.maxRDI} ${m.unit}) — ${m.direction}',
+                  '${_formatMacroName(m.name)}: ${m.intake} ${m.unit} (RDI ${m.minRDI}–${m.maxRDI} ${m.unit}) — ${m.direction}',
                   style: TextStyle(fontFamily: 'Poppins', fontSize: 13, color: Color(0xFF1C1C1C)),
                 ),
               )),
@@ -519,7 +551,7 @@ class _ReportPageState extends State<ReportPage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(m['foodName'].toString(), style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.bold, fontSize: 13, color: Color(0xFF1C1C1C))),
-                                Text('${m['mealType']} · ${m['dateTime']}', style: TextStyle(fontFamily: 'Poppins', fontSize: 11, color: Color(0xFF87879D))),
+                                Text('${m['mealType']} · ${_formatDateTimeDisplay(m['dateTime']?.toString())}', style: TextStyle(fontFamily: 'Poppins', fontSize: 11, color: Color(0xFF87879D))),
                               ],
                             ),
                           ),
