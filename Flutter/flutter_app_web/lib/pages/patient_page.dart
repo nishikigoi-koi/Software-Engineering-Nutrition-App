@@ -114,7 +114,6 @@ class _PatientPageState extends State<PatientPage> {
     final userId = SessionManager().currentUser!.id;
     final firstName = _firstNameController.text.trim();
     final lastName = _lastNameController.text.trim();
-    final ethnicity = _ethnicityController.text.trim();
     final weight = _weightController.text.trim();
     final height = _heightController.text.trim();
 
@@ -122,7 +121,7 @@ class _PatientPageState extends State<PatientPage> {
         lastName.isEmpty           ||
         weight.isEmpty             ||
         height.isEmpty             ||
-        _selectEthnicity == null   ||
+        _selectedEthnicity == null ||
         _selectedBirthDate == null ||
         _selectedGender == null    ||
         _selectedActivityLevel == null) {
@@ -155,15 +154,14 @@ class _PatientPageState extends State<PatientPage> {
 
     final firstName = _firstNameController.text.trim();
     final lastName = _lastNameController.text.trim();
-    final ethnicity = _ethnicityController.text.trim();
     final weight = _weightController.text.trim();
     final height = _heightController.text.trim();
 
     if (firstName.isEmpty          ||
         lastName.isEmpty           ||
-        ethnicity.isEmpty          ||
         weight.isEmpty             ||
         height.isEmpty             ||
+        _selectedEthnicity == null ||
         _selectedBirthDate == null ||
         _selectedGender == null    ||
         _selectedActivityLevel == null) {
