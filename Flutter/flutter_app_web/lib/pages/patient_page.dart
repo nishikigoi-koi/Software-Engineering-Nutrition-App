@@ -29,14 +29,31 @@ class _PatientPageState extends State<PatientPage> {
   final _firstNameController = TextEditingController();
   final _lastNameController = TextEditingController();
   final _birthDateController = TextEditingController();
-  final _ethnicityController = TextEditingController();
   final _weightController = TextEditingController();
   final _heightController = TextEditingController();
   String? _selectedGender;
   String? _selectedActivityLevel;
-
+  String? _selectedEthnicity;
+  
   final List<String> _genderOptions = ['Male', 'Female'];
   final List<String> _activityOptions = ['Sedentary', 'Light', 'Moderate', 'High', 'Extreme'];
+  final List<String> _ethnicityOptions = [
+    'New Zealand European',
+    'Māori',
+    'Samoan',
+    'Cook Island Māori',
+    'Tongan',
+    'Niuean',
+    'Chinese',
+    'Indian',
+    'Other European',
+    'Other Pacific Peoples',
+    'Other Asian',
+    'Middle Eastern',
+    'Latin American',
+    'African',
+    'Other',
+  ];
 
   @override
   void initState() {
@@ -60,7 +77,6 @@ class _PatientPageState extends State<PatientPage> {
     _firstNameController.dispose();
     _lastNameController.dispose();
     _birthDateController.dispose();
-    _ethnicityController.dispose();
     _weightController.dispose();
     _heightController.dispose();
     super.dispose();
@@ -99,7 +115,7 @@ class _PatientPageState extends State<PatientPage> {
       StringUtils.capitalize(_lastNameController.text),
       _birthDateController.text,
       _selectedGender ?? '',
-      _ethnicityController.text,
+      _selectedEthnicity ?? '',
       double.tryParse(_weightController.text) ?? 0,
       double.tryParse(_heightController.text) ?? 0,
       _selectedActivityLevel ?? '',
@@ -118,11 +134,11 @@ class _PatientPageState extends State<PatientPage> {
 
     final response = await PatientService.updatePatient(
       _selectedPatient!.id,
-      _firstNameController.text,
-      _lastNameController.text,
+      StringUtils.capitalize(_firstNameController.text),
+      StringUtils.capitalize(_lastNameController.text),
       _birthDateController.text,
       _selectedGender ?? '',
-      _ethnicityController.text,
+      _selectedEthnicity ?? '',
       double.tryParse(_weightController.text) ?? 0,
       double.tryParse(_heightController.text) ?? 0,
       _selectedActivityLevel ?? '',
@@ -157,7 +173,7 @@ class _PatientPageState extends State<PatientPage> {
       _firstNameController.text = patient.firstName;
       _lastNameController.text = patient.lastName;
       _birthDateController.text = patient.birthDate.toIso8601String().split('T')[0];
-      _ethnicityController.text = patient.ethnicity;
+      _selectedEthnicity = patient.ethnicity;
       _weightController.text = patient.weight.toString();
       _heightController.text = patient.height.toString();
       _selectedGender = patient.gender;
@@ -172,7 +188,7 @@ class _PatientPageState extends State<PatientPage> {
       _firstNameController.clear();
       _lastNameController.clear();
       _birthDateController.clear();
-      _ethnicityController.clear();
+    _selectedEthnicity = null;
       _weightController.clear();
       _heightController.clear();
       _selectedGender = null;
@@ -187,7 +203,7 @@ class _PatientPageState extends State<PatientPage> {
       _firstNameController.clear();
       _lastNameController.clear();
       _birthDateController.clear();
-      _ethnicityController.clear();
+      _selectedEthnicity = null;
       _weightController.clear();
       _heightController.clear();
       _selectedGender = null;
@@ -350,12 +366,16 @@ class _PatientPageState extends State<PatientPage> {
                                     ),
                                     SizedBox(width: 16),
                                     Expanded(
-                                      child: TextField(
-                                        controller: _ethnicityController,
+                                      child: DropdownButtonFormField<String>(
+                                        initialValue: _selectedEthnicity,
                                         decoration: InputDecoration(
                                           labelText: 'Ethnicity',
                                           border: OutlineInputBorder(),
                                         ),
+                                        items: _ethnicityOptions
+                                            .map((e) => DropdownMenuItem(value: e, child: Text(e)))
+                                            .toList(),
+                                        onChanged: (value) => setState(() => _selectedEthnicity = value),
                                       ),
                                     ),
                                   ],
