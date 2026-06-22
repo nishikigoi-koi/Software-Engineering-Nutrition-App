@@ -15,8 +15,7 @@ import 'login_page.dart';
 import 'home_page.dart';
 import 'patient_page.dart';
 import 'meal_log_page.dart';
-// TODO: Import settings once pushed to main
-//import 'settings_page.dart';
+import 'settings_page.dart';
 
 enum ReportPeriod { day, week, custom }
 
@@ -462,11 +461,9 @@ class _ReportPageState extends State<ReportPage> {
                   Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => MealLogPage()), (route) => false);
                 }),
                 _navButton('Reports', Icons.bar_chart, null),
-                _navButton('Settings', Icons.settings, () {})
-                // TODO: Import settings once pushed to main
-                // _navButton('Settings', Icons.settings, () {
-                //   Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => SettingsPage()), (route) => false);
-                // }),
+                _navButton('Settings', Icons.settings, () {
+                  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => SettingsPage()), (route) => false);
+                }),
               ],
             ),
           ),
