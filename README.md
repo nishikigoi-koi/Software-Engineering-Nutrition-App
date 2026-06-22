@@ -17,7 +17,10 @@ To use this program, do the following steps:
 4. Run `npm start` inside of your terminal to start the API server (to stop it press ctrl + c).
 <br> (for Dev env use `npm run dev` instead) 
 5. Open a **New** terminal window and navigate back to the main directory of the program
-6. Run `cd .\Flutter\flutter_web_app\; flutter run -d chrome` inside of this new terminal to run the Flutter UI inside of Chrome.
+6. Run `cd Flutter/flutter_app_web; flutter pub get` inside of this new terminal to install the required packages.
+7. Run `flutter run -d chrome` in the same terminal to run the Flutter UI inside of Chrome.
+
+[!] If any errors occur around missing packages in flutter, run `flutter pub 
 
 ### Example of flutter run
 ```
