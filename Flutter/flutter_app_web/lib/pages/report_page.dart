@@ -8,6 +8,7 @@ import 'package:flutter_app_web/services/report_service.dart';
 import 'package:flutter_app_web/services/meal_log_service.dart';
 import 'package:flutter_app_web/services/food_search_service.dart';
 import 'package:flutter_app_web/utils/dialog_utils.dart';
+import 'package:flutter_app_web/utils/string_utils.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
@@ -90,6 +91,14 @@ class _ReportPageState extends State<ReportPage> {
       'fiber': 'Fiber',
     };
     return macroNames[name] ?? name;
+  }
+
+  // Formats numbers to 2dp, fallback to original string
+  String _format2DP(String? value) {
+    if (value == null) return '';
+    final d = double.tryParse(value);
+    if (d == null) return value;
+    return d.toStringAsFixed(2);
   }
 
   // ── API calls ─────────────────────────────────────────────────────────────
@@ -226,7 +235,7 @@ class _ReportPageState extends State<ReportPage> {
 
           pw.Text('Energy', style: pw.TextStyle(fontSize: 14, fontWeight: pw.FontWeight.bold)),
           pw.Text(
-            '${report.energy.name}: intake ${report.energy.intake} ${report.energy.unit} / RDI ${report.energy.rdi} ${report.energy.unit} (${report.energy.direction})',
+            '${StringUtils.capitalize(report.energy.name)}: intake ${_format2DP(report.energy.intake)} ${report.energy.unit} / RDI ${_format2DP(report.energy.rdi)} ${report.energy.unit} (${report.energy.direction})',
           ),
           pw.SizedBox(height: 12),
 
@@ -234,7 +243,7 @@ class _ReportPageState extends State<ReportPage> {
           pw.TableHelper.fromTextArray(
             headers: ['Name', 'Intake', 'Min RDI', 'Max RDI', 'Direction'],
             data: report.macronutrients
-                .map((m) => [_formatMacroName(m.name), '${m.intake} ${m.unit}', '${m.minRDI} ${m.unit}', '${m.maxRDI} ${m.unit}', m.direction])
+                .map((m) => [_formatMacroName(m.name), '${_format2DP(m.intake)} ${m.unit}', '${_format2DP(m.minRDI)} ${m.unit}', '${_format2DP(m.maxRDI)} ${m.unit}', m.direction])
                 .toList(),
           ),
           pw.SizedBox(height: 12),
@@ -243,7 +252,7 @@ class _ReportPageState extends State<ReportPage> {
           pw.TableHelper.fromTextArray(
             headers: ['Name', 'Intake', 'RDI', 'Direction'],
             data: report.micronutrients
-                .map((m) => [m.name, '${m.intake} ${m.unit}', '${m.rdi} ${m.unit}', m.direction])
+                .map((m) => [m.name, '${_format2DP(m.intake)} ${m.unit}', '${_format2DP(m.rdi)} ${m.unit}', m.direction])
                 .toList(),
           ),
           pw.SizedBox(height: 12),
@@ -255,7 +264,7 @@ class _ReportPageState extends State<ReportPage> {
                   headers: ['Food', 'Meal Type', 'Date/Time', 'Amount'],
                   data: _mealDetails
                       .map((m) => [
-                            m['foodName'].toString(),
+                            StringUtils.pdfSafe(m['foodName'].toString()),
                             m['mealType'].toString(),
                             _formatDateTimeDisplay(m['dateTime']?.toString()),
                             '${m['amount']} ${m['unit']}',
@@ -500,7 +509,7 @@ class _ReportPageState extends State<ReportPage> {
           Text('Energy', style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.bold, fontSize: 14, color: Color(0xFF1C1C1C))),
           SizedBox(height: 6),
           Text(
-            '${report.energy.intake} ${report.energy.unit} / ${report.energy.rdi} ${report.energy.unit} RDI (${report.energy.direction})',
+            '${_format2DP(report.energy.intake)} ${report.energy.unit} / ${_format2DP(report.energy.rdi)} ${report.energy.unit} RDI (${report.energy.direction})',
             style: TextStyle(fontFamily: 'Poppins', fontSize: 13, color: Color(0xFF1C1C1C)),
           ),
           SizedBox(height: 20),
@@ -510,7 +519,7 @@ class _ReportPageState extends State<ReportPage> {
           ...report.macronutrients.map((m) => Padding(
                 padding: EdgeInsets.symmetric(vertical: 2),
                 child: Text(
-                  '${_formatMacroName(m.name)}: ${m.intake} ${m.unit} (RDI ${m.minRDI}–${m.maxRDI} ${m.unit}) — ${m.direction}',
+                  '${_formatMacroName(m.name)}: ${_format2DP(m.intake)} ${m.unit} (RDI ${_format2DP(m.minRDI)}–${_format2DP(m.maxRDI)} ${m.unit}) — ${m.direction}',
                   style: TextStyle(fontFamily: 'Poppins', fontSize: 13, color: Color(0xFF1C1C1C)),
                 ),
               )),
@@ -521,7 +530,7 @@ class _ReportPageState extends State<ReportPage> {
           ...report.micronutrients.map((m) => Padding(
                 padding: EdgeInsets.symmetric(vertical: 2),
                 child: Text(
-                  '${m.name}: ${m.intake} ${m.unit} (RDI ${m.rdi} ${m.unit}) — ${m.direction}',
+                  '${m.name}: ${_format2DP(m.intake)} ${m.unit} (RDI ${_format2DP(m.rdi)} ${m.unit}) — ${m.direction}',
                   style: TextStyle(fontFamily: 'Poppins', fontSize: 13, color: Color(0xFF1C1C1C)),
                 ),
               )),
