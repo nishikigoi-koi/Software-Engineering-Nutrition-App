@@ -1,0 +1,1685 @@
+{
+  "info": {
+    "_postman_id": "109dd690-4fda-4474-980a-de8ce65a5226",
+    "name": "Tests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "54752520",
+    "_collection_link": "https://go.postman.co/collection/54752520-109dd690-4fda-4474-980a-de8ce65a5226?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "user",
+      "item": [
+        {
+          "name": "Get all users",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{jwt}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/users/all-users",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "users",
+                "all-users"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get user by id",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/users/get-by-id/{{id}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "users",
+                "get-by-id",
+                "{{id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create User",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\" : \"{{createusername}}\",\r\n    \"password\" : \"{{createpassword}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/users/create-user",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "users",
+                "create-user"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update user",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\" : \"testuser\",\r\n    \"password\" : \"password\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/users/update-user/9ad83156-5ed1-4e2f-8358-c6e2ce906f3a",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "users",
+                "update-user",
+                "9ad83156-5ed1-4e2f-8358-c6e2ce906f3a"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete user",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/users/delete-user/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "users",
+                "delete-user",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Check user password",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"{{username}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/users/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "users",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "patient",
+      "item": [
+        {
+          "name": "Create patient",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"userId\": \"{{userId}}\",\r\n    \"firstName\": \"John\",\r\n    \"lastName\": \"Doe\",\r\n    \"birthDate\": \"1990-01-01\",\r\n    \"gender\": \"Male\",\r\n    \"ethnicity\": \"Caucasian\",\r\n    \"weight\": 70,\r\n    \"height\": 180,\r\n    \"activityLevel\": \"Moderate\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/patients/create-patient",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "patients",
+                "create-patient"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get all Patients for a user",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/patients/all-patients/{{userId}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "patients",
+                "all-patients",
+                "{{userId}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Patients by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/patients/get-by-id/{{id}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "patients",
+                "get-by-id",
+                "{{id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Patient",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"firstName\": \"Jane\",\r\n    \"lastName\": \"Doe\",\r\n    \"birthDate\": \"1990-01-01\",\r\n    \"gender\": \"Female\",\r\n    \"ethnicity\": \"Caucasian\",\r\n    \"weight\": 65,\r\n    \"height\": 165,\r\n    \"activity level\": \"Low\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/patients/update-patient/{{id}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "patients",
+                "update-patient",
+                "{{id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Patient",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/patients/delete-patient/{{id}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "patients",
+                "delete-patient",
+                "{{id}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "dietary restrictions",
+      "item": [
+        {
+          "name": "Create Dietary Restriction",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Gluten Free\",\r\n    \"description\": \"Avoid all products containing gluten\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/dietary-restrictions/create-dietary-restriction",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "dietary-restrictions",
+                "create-dietary-restriction"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Assign Dietary Restriction to Patient",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"patientId\": \"{{patientId}}\",\r\n    \"dietaryRestrictionId\": \"{{dietaryRestrictionId}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/dietary-restrictions/assign-to-patient",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "dietary-restrictions",
+                "assign-to-patient"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Remove Dietary Restriction from Patient",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"patientId\": \"{{patientId}}\",\r\n    \"dietaryRestrictionId\": \"{{dietaryRestrictionId}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/dietary-restrictions/remove-from-patient",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "dietary-restrictions",
+                "remove-from-patient"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Dietary Restrictions for a Patient",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/dietary-restrictions/patient-dietary-restrictions/{{id}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "dietary-restrictions",
+                "patient-dietary-restrictions",
+                "{{id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get all dietary restrictions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/dietary-restrictions/all-dietary-restrictions",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "dietary-restrictions",
+                "all-dietary-restrictions"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get dietary restrictions by id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/dietary-restrictions/get-by-id/{{id}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "dietary-restrictions",
+                "get-by-id",
+                "{{id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Dietary Restriction",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Vegan\",\r\n    \"description\": \"Avoid all animal products\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/dietary-restrictions/update-dietary-restriction/{{id}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "dietary-restrictions",
+                "update-dietary-restriction",
+                "{{id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Dietary Restriction",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/dietary-restrictions/delete-dietary-restriction/{{id}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "dietary-restrictions",
+                "delete-dietary-restriction",
+                "{{id}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "medical condition",
+      "item": [
+        {
+          "name": "Create medical condition",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Diabetes\",\r\n    \"description\": \"Chronic condition that affects how the body processes blood sugar\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/medical-conditions/create-medical-condition",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "medical-conditions",
+                "create-medical-condition"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Assign medical condition to Patient",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"patientId\": \"{{patientId}}\",\r\n    \"medicalConditionId\": \"{{medicalConditionId}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/medical-conditions/assign-to-patient",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "medical-conditions",
+                "assign-to-patient"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Remove medical condition from Patient",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"patientId\": \"{{patientId}}\",\r\n    \"medicalConditionId\": \"{{medicalConditionId}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/medical-conditions/remove-from-patient",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "medical-conditions",
+                "remove-from-patient"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All medical conditions for a Patient",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/medical-conditions/patient-medical-conditions/{{id}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "medical-conditions",
+                "patient-medical-conditions",
+                "{{id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get all medical conditions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/medical-conditions/all-medical-conditions",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "medical-conditions",
+                "all-medical-conditions"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get medical condition by id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/medical-conditions/get-by-id/{{id}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "medical-conditions",
+                "get-by-id",
+                "{{id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update medical condition",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Type 2 Diabetes\",\r\n    \"description\": \"Metabolic disorder characterized by high blood sugar, insulin resistance\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/medical-conditions/update-medical-condition/{{id}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "medical-conditions",
+                "update-medical-condition",
+                "{{id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete medical condition",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/medical-conditions/delete-medical-condition/{{id}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "medical-conditions",
+                "delete-medical-condition",
+                "{{id}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "CustomFood",
+      "item": [
+        {
+          "name": "Create custom food",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"userId\" : \"{{userId}}\",\r\n    \"foodName\": \"Butter Chicken with rice\",\r\n    \"description\": \"A curry made from chicken cooked in a spiced tomato and butter-based gravy served with rice\",\r\n    \"serving_size\": 350.0,\r\n    \"group\": \"Meal\",\r\n    \"serving_size_unit\": \"g\",\r\n    \"measure_description\": \"1 bowl\",\r\n    \"energy\" : {\r\n        \"unit\": \"KJ\",\r\n        \"qty_per_serving\": \"1900\",\r\n        \"percent_RQI\": \"22\",\r\n        \"qty_per_100\": \"750\"\r\n    },\r\n    \"protein\": {\r\n        \"unit\": \"g\",\r\n        \"qty_per_serving\": \"30\",\r\n        \"percent_RQI\": \"60\",\r\n        \"qty_per_100\": \"12\"\r\n    },\r\n    \"totalFat\": {\r\n        \"unit\": \"g\",\r\n        \"qty_per_serving\": \"31\",\r\n        \"percent_RQI\": \"44\",\r\n        \"qty_per_100\": \"12\"\r\n    },\r\n    \"saturatedFat\": {\r\n        \"unit\": \"g\",\r\n        \"qty_per_serving\": \"14\",\r\n        \"percent_RQI\": \"60\",\r\n        \"qty_per_100\": \"5.6\"\r\n    },\r\n    \"carbohydrate\": {\r\n        \"unit\": \"g\",\r\n        \"qty_per_serving\": \"13\",\r\n        \"percent_RQI\": \"4\",\r\n        \"qty_per_100\": \"5.1\"\r\n    },\r\n    \"sugars\": {\r\n        \"unit\": \"g\",\r\n        \"qty_per_serving\": \"13\",\r\n        \"percent_RQI\": \"14\",\r\n        \"qty_per_100\": \"5.0\"\r\n    },\r\n    \"fiber\": {\r\n        \"unit\": \"g\",\r\n        \"qty_per_serving\": \"5.7\",\r\n        \"percent_RQI\": \"19\",\r\n        \"qty_per_100\": \"2.2\"\r\n    },\r\n    \"sodium\": {\r\n        \"unit\": \"mg\",\r\n        \"qty_per_serving\": \"990\",\r\n        \"percent_RQI\": \"43\",\r\n        \"qty_per_100\": \"380\"\r\n    }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/customfood/create",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "customfood",
+                "create"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update custom food",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"userId\" : \"{{userId}}\",\r\n    \"foodName\": \"Butter Chicken without rice\",\r\n    \"description\": \"A curry made from chicken cooked in a spiced tomato and butter-based gravy served with rice\",\r\n    \"serving_size\": 350.0,\r\n    \"group\": \"Meal\",\r\n    \"serving_size_unit\": \"g\",\r\n    \"measure_description\": \"1 bowl\",\r\n    \"energy\" : {\r\n        \"unit\": \"KJ\",\r\n        \"qty_per_serving\": \"1900\",\r\n        \"percent_RQI\": \"22\",\r\n        \"qty_per_100\": \"750\"\r\n    },\r\n    \"protein\": {\r\n        \"unit\": \"g\",\r\n        \"qty_per_serving\": \"30\",\r\n        \"percent_RQI\": \"60\",\r\n        \"qty_per_100\": \"12\"\r\n    },\r\n    \"totalFat\": {\r\n        \"unit\": \"g\",\r\n        \"qty_per_serving\": \"31\",\r\n        \"percent_RQI\": \"44\",\r\n        \"qty_per_100\": \"12\"\r\n    },\r\n    \"saturatedFat\": {\r\n        \"unit\": \"g\",\r\n        \"qty_per_serving\": \"14\",\r\n        \"percent_RQI\": \"60\",\r\n        \"qty_per_100\": \"5.6\"\r\n    },\r\n    \"carbohydrate\": {\r\n        \"unit\": \"g\",\r\n        \"qty_per_serving\": \"13\",\r\n        \"percent_RQI\": \"4\",\r\n        \"qty_per_100\": \"5.1\"\r\n    },\r\n    \"sugars\": {\r\n        \"unit\": \"g\",\r\n        \"qty_per_serving\": \"13\",\r\n        \"percent_RQI\": \"14\",\r\n        \"qty_per_100\": \"5.0\"\r\n    },\r\n    \"fiber\": {\r\n        \"unit\": \"g\",\r\n        \"qty_per_serving\": \"5.7\",\r\n        \"percent_RQI\": \"19\",\r\n        \"qty_per_100\": \"2.2\"\r\n    },\r\n    \"sodium\": {\r\n        \"unit\": \"mg\",\r\n        \"qty_per_serving\": \"990\",\r\n        \"percent_RQI\": \"43\",\r\n        \"qty_per_100\": \"380\"\r\n    }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/customfood/update/{{id}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "customfood",
+                "update",
+                "{{id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete custom food",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/customfood/delete/{{id}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "customfood",
+                "delete",
+                "{{id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get custom food",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/customfood/get/{{id}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "customfood",
+                "get",
+                "{{id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get  custom food by user id",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/customfood/getbyuserid/{{userId}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "customfood",
+                "getbyuserid",
+                "{{userId}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Food log",
+      "item": [
+        {
+          "name": "Create Food log",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"patientId\": \"{{patientId}}\",\r\n    \"FCDBFoodId\": {{FCDBFoodId}},\r\n    \"CustomFoodId\": {{CustomFoodId}},\r\n    \"dateTime\": \"2026-05-12T23:52:18.000Z\",\r\n    \"amount\" : 130,\r\n    \"unit\" : \"g\",\r\n    \"mealType\" : \"snack\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/log/create",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "log",
+                "create"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete Food log",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/log/delete/{{id}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "log",
+                "delete",
+                "{{id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "updateFood log",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"patientId\": \"{{patientId}}\",\r\n    \"FCDBFoodId\": \"{{FCDBFoodId}}\",\r\n    \"CustomFoodId\": \"{{CustomFoodId}}\",\r\n    \"dateTime\": \"2026-05-12T23:52:18.000Z\",\r\n    \"amount\" : 130,\r\n    \"unit\" : \"g\",\r\n    \"mealType\" : \"snack\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/log/update/{{id}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "log",
+                "update",
+                "{{id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get Food log by id",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/log/get/{{id}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "log",
+                "get",
+                "{{id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get food log by patient id",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/log/getbypatient/{{id}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "log",
+                "getbypatient",
+                "{{id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get food log by date and patient id",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/log/getbypatientanddate?date={{date}}&patientid={{patientid}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "log",
+                "getbypatientanddate"
+              ],
+              "query": [
+                {
+                  "key": "date",
+                  "value": "{{date}}"
+                },
+                {
+                  "key": "patientid",
+                  "value": "{{patientid}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Search",
+      "item": [
+        {
+          "name": "search-get foodfile",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/search-get/foodfile/{{id}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "search-get",
+                "foodfile",
+                "{{id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "search-get custom food",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/search-get/customfood/{{id}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "search-get",
+                "customfood",
+                "{{id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "search for food",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/search?foodname={{foodname}}&userid={{userid}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "foodname",
+                  "value": "{{foodname}}",
+                  "type": "text"
+                },
+                {
+                  "key": "userid",
+                  "value": "{{userid}}",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "RDI",
+      "item": [
+        {
+          "name": "calculate RDI from patient id",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/rdi/{{id}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "rdi",
+                "{{id}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "total Nutrients",
+      "item": [
+        {
+          "name": "get total nutrients for a day",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/totalnutrients/day?date={{date}}&patientid={{patientId}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "totalnutrients",
+                "day"
+              ],
+              "query": [
+                {
+                  "key": "date",
+                  "value": "{{date}}"
+                },
+                {
+                  "key": "patientid",
+                  "value": "{{patientId}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get total nutrients for a week",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/totalnutrients/week?startdate={{date}}&patientid={{patientId}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "totalnutrients",
+                "week"
+              ],
+              "query": [
+                {
+                  "key": "startdate",
+                  "value": "{{date}}"
+                },
+                {
+                  "key": "patientid",
+                  "value": "{{patientId}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Flag",
+      "item": [
+        {
+          "name": "get flags for a day",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/flag/day?date={{date}}&patientid={{patientId}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "flag",
+                "day"
+              ],
+              "query": [
+                {
+                  "key": "date",
+                  "value": "{{date}}"
+                },
+                {
+                  "key": "patientid",
+                  "value": "{{patientId}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get flag for a week",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/flag/week?startdate={{date}}&patientid={{patientId}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "flag",
+                "week"
+              ],
+              "query": [
+                {
+                  "key": "startdate",
+                  "value": "{{date}}"
+                },
+                {
+                  "key": "patientid",
+                  "value": "{{patientId}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Report",
+      "item": [
+        {
+          "name": "get report for a day",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/report/day?date={{date}}&patientid={{patientId}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "report",
+                "day"
+              ],
+              "query": [
+                {
+                  "key": "date",
+                  "value": "{{date}}"
+                },
+                {
+                  "key": "patientid",
+                  "value": "{{patientId}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get report for a week",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/report/week?startdate={{date}}&patientid={{patientId}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "report",
+                "week"
+              ],
+              "query": [
+                {
+                  "key": "startdate",
+                  "value": "{{date}}"
+                },
+                {
+                  "key": "patientid",
+                  "value": "{{patientId}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get report for a custom period",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/report/week?startdate={{date}}&patientid={{patientId}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "report",
+                "week"
+              ],
+              "query": [
+                {
+                  "key": "startdate",
+                  "value": "{{date}}"
+                },
+                {
+                  "key": "patientid",
+                  "value": "{{patientId}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "http://localhost:3000/api",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "url",
+      "value": "https://9e76f6cd-29ef-4ef9-94c6-c0f56150970f.mock.pstmn.io"
+    },
+    {
+      "key": "username",
+      "value": ""
+    },
+    {
+      "key": "createusername",
+      "value": ""
+    }
+  ]
+}
