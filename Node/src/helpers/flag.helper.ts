@@ -195,7 +195,7 @@ export async function GetFlagsCustomTimePeriodFromDatabase(
         Flags.energy ={
             name: "energy",
             unit: totalNutrients.EnergyUnit,
-            RDI: (RDI.TotalEnergy*7).toString(),
+            RDI: (RDI.TotalEnergy*amountOfDays).toString(),
             intake: totalNutrients.TotalEnergy.toString(),
             direction: energyDirection
         }
