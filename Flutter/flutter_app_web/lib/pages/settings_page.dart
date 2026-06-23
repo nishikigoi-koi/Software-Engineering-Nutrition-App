@@ -69,7 +69,7 @@ class _SettingsPageState extends State<SettingsPage> {
         ),
       );
     } else {
-      DialogUtils.showError(context, 'Failed to update account. (${response.statusCode})');
+      DialogUtils.showError(context, 'This username already exists.');
     }
   }
 
@@ -89,7 +89,7 @@ class _SettingsPageState extends State<SettingsPage> {
         (route) => false,
       );
     } else {
-      DialogUtils.showError(context, 'Failed to delete account. (${response.statusCode})');
+      DialogUtils.showError(context, 'Failed to delete account. (${response.statusCode} ${response.body})');
     }
   }
 
