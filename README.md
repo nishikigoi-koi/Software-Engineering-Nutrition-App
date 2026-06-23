@@ -20,7 +20,8 @@ To use this program, do the following steps:
 6. Run `cd Flutter/flutter_app_web; flutter pub get` inside of this new terminal to install the required packages.
 7. Run `flutter run -d chrome` in the same terminal to run the Flutter UI inside of Chrome.
 
-[!] If any errors occur around missing packages in flutter, run `flutter pub 
+> [!TIP]
+> If you encounter any errors in the Problems tab of VSCode relating to Flutter's missing URIs, don't panic. `flutter run -d chrome` will check for packages a second time. Flutter's SDK analyser also takes some times to register it has new packages installed, which can also cause this issue.
 
 ### Example of flutter run
 ```
