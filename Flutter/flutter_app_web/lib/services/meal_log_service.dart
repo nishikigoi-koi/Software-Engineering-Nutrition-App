@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'session_manager.dart';
 import '../models/meal_log.dart';
-import 'package:flutter/material.dart';
 
 class MealLogService {
   static const String _base = 'http://localhost:3000/api/log';
