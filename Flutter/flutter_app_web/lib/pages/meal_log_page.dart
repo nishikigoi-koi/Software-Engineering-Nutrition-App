@@ -369,6 +369,13 @@ class _MealLogPageState extends State<MealLogPage> {
     );
   }
 
+  String _formatDateTimeDisplay(String? isoDateTime) {
+    if (isoDateTime == null) return '';
+    final dt = DateTime.tryParse(isoDateTime);
+    if (dt == null) return isoDateTime;
+    return '${dt.day.toString().padLeft(2, '0')}-${dt.month.toString().padLeft(2, '0')}-${dt.year} ${dt.hour.toString().padLeft(2, '0')}:${dt.minute.toString().padLeft(2, '0')}';
+  }
+
   // ── Build ─────────────────────────────────────────────────────────────────
 
   @override
@@ -500,7 +507,7 @@ class _MealLogPageState extends State<MealLogPage> {
                                                       ),
                                                       child: ListTile(
                                                         title: Text(foodName, style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.bold, fontSize: 14, color: Color(0xFF1C1C1C))),
-                                                        subtitle: Text(meal['dateTime'] ?? '', style: TextStyle(fontFamily: 'Poppins', fontSize: 12, color: Color(0xFF87879D))),
+                                                        subtitle: Text(_formatDateTimeDisplay(meal['dateTime']?.toString()), style: TextStyle(fontFamily: 'Poppins', fontSize: 12, color: Color(0xFF87879D))),
                                                         trailing: Row(
                                                           mainAxisSize: MainAxisSize.min,
                                                           children: [
