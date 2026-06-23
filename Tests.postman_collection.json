@@ -20,7 +20,7 @@
             "header": [
               {
                 "key": "Authorization",
-                "value": "{{jwt}}",
+                "value": "Bearer {{jwt}}",
                 "type": "text"
               }
             ],
@@ -55,7 +55,7 @@
               }
             ],
             "url": {
-              "raw": "http://localhost:3000/api/users/get-by-id/{{id}}",
+              "raw": "http://localhost:3000/api/users/get-by-id/{{userid}}",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -65,7 +65,7 @@
                 "api",
                 "users",
                 "get-by-id",
-                "{{id}}"
+                "{{userid}}"
               ]
             }
           },
@@ -128,7 +128,7 @@
               }
             },
             "url": {
-              "raw": "http://localhost:3000/api/users/update-user/9ad83156-5ed1-4e2f-8358-c6e2ce906f3a",
+              "raw": "http://localhost:3000/api/users/update-user/{{userid}}",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -138,7 +138,7 @@
                 "api",
                 "users",
                 "update-user",
-                "9ad83156-5ed1-4e2f-8358-c6e2ce906f3a"
+                "{{userid}}"
               ]
             }
           },
@@ -168,7 +168,7 @@
               }
             },
             "url": {
-              "raw": "http://localhost:3000/api/users/delete-user/1",
+              "raw": "http://localhost:3000/api/users/delete-user/{{userid}}",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -178,7 +178,7 @@
                 "api",
                 "users",
                 "delete-user",
-                "1"
+                "{{userid}}"
               ]
             }
           },
@@ -895,7 +895,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"userId\" : \"{{userId}}\",\r\n    \"foodName\": \"Butter Chicken with rice\",\r\n    \"description\": \"A curry made from chicken cooked in a spiced tomato and butter-based gravy served with rice\",\r\n    \"serving_size\": 350.0,\r\n    \"group\": \"Meal\",\r\n    \"serving_size_unit\": \"g\",\r\n    \"measure_description\": \"1 bowl\",\r\n    \"energy\" : {\r\n        \"unit\": \"KJ\",\r\n        \"qty_per_serving\": \"1900\",\r\n        \"percent_RQI\": \"22\",\r\n        \"qty_per_100\": \"750\"\r\n    },\r\n    \"protein\": {\r\n        \"unit\": \"g\",\r\n        \"qty_per_serving\": \"30\",\r\n        \"percent_RQI\": \"60\",\r\n        \"qty_per_100\": \"12\"\r\n    },\r\n    \"totalFat\": {\r\n        \"unit\": \"g\",\r\n        \"qty_per_serving\": \"31\",\r\n        \"percent_RQI\": \"44\",\r\n        \"qty_per_100\": \"12\"\r\n    },\r\n    \"saturatedFat\": {\r\n        \"unit\": \"g\",\r\n        \"qty_per_serving\": \"14\",\r\n        \"percent_RQI\": \"60\",\r\n        \"qty_per_100\": \"5.6\"\r\n    },\r\n    \"carbohydrate\": {\r\n        \"unit\": \"g\",\r\n        \"qty_per_serving\": \"13\",\r\n        \"percent_RQI\": \"4\",\r\n        \"qty_per_100\": \"5.1\"\r\n    },\r\n    \"sugars\": {\r\n        \"unit\": \"g\",\r\n        \"qty_per_serving\": \"13\",\r\n        \"percent_RQI\": \"14\",\r\n        \"qty_per_100\": \"5.0\"\r\n    },\r\n    \"fiber\": {\r\n        \"unit\": \"g\",\r\n        \"qty_per_serving\": \"5.7\",\r\n        \"percent_RQI\": \"19\",\r\n        \"qty_per_100\": \"2.2\"\r\n    },\r\n    \"sodium\": {\r\n        \"unit\": \"mg\",\r\n        \"qty_per_serving\": \"990\",\r\n        \"percent_RQI\": \"43\",\r\n        \"qty_per_100\": \"380\"\r\n    }\r\n}",
+              "raw": "{\r\n    \"userId\" : \"{{userId}}\",\r\n    \"foodName\": \"Butter Chicken with rice\",\r\n    \"description\": \"A curry made from chicken cooked in a spiced tomato and butter-based gravy served with rice\",\r\n    \"serving_size\": 350.0,\r\n    \"group\": \"Meal\",\r\n    \"serving_size_unit\": \"g\",\r\n    \"measure_description\": \"1 bowl\",\r\n    \"energy\" : {\r\n        \"unit\": \"KJ\",\r\n        \"qty_per_serving\": \"1900\",\r\n        \"percent_RDI\": \"22\",\r\n        \"qty_per_100\": \"750\"\r\n    },\r\n    \"protein\": {\r\n        \"unit\": \"g\",\r\n        \"qty_per_serving\": \"30\",\r\n        \"percent_RDI\": \"60\",\r\n        \"qty_per_100\": \"12\"\r\n    },\r\n    \"totalFat\": {\r\n        \"unit\": \"g\",\r\n        \"qty_per_serving\": \"31\",\r\n        \"percent_RDI\": \"44\",\r\n        \"qty_per_100\": \"12\"\r\n    },\r\n    \"saturatedFat\": {\r\n        \"unit\": \"g\",\r\n        \"qty_per_serving\": \"14\",\r\n        \"percent_RDI\": \"60\",\r\n        \"qty_per_100\": \"5.6\"\r\n    },\r\n    \"carbohydrates\": {\r\n        \"unit\": \"g\",\r\n        \"qty_per_serving\": \"13\",\r\n        \"percent_RDI\": \"4\",\r\n        \"qty_per_100\": \"5.1\"\r\n    },\r\n    \"sugars\": {\r\n        \"unit\": \"g\",\r\n        \"qty_per_serving\": \"13\",\r\n        \"percent_RDI\": \"14\",\r\n        \"qty_per_100\": \"5.0\"\r\n    },\r\n    \"fiber\": {\r\n        \"unit\": \"g\",\r\n        \"qty_per_serving\": \"5.7\",\r\n        \"percent_RDI\": \"19\",\r\n        \"qty_per_100\": \"2.2\"\r\n    },\r\n    \"sodium\": {\r\n        \"unit\": \"mg\",\r\n        \"qty_per_serving\": \"990\",\r\n        \"percent_RDI\": \"43\",\r\n        \"qty_per_100\": \"380\"\r\n    },\r\n    \"microNutrients\":[\r\n        {\r\n            \"name\": \"Iron\",\r\n            \"unit\": \"mg\",\r\n            \"qty_per_serving\": \"4.6\",\r\n            \"percent_RDI\": \"38\",\r\n            \"qty_per_100\": \"1.8\"\r\n        }\r\n    ]\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -931,7 +931,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"userId\" : \"{{userId}}\",\r\n    \"foodName\": \"Butter Chicken without rice\",\r\n    \"description\": \"A curry made from chicken cooked in a spiced tomato and butter-based gravy served with rice\",\r\n    \"serving_size\": 350.0,\r\n    \"group\": \"Meal\",\r\n    \"serving_size_unit\": \"g\",\r\n    \"measure_description\": \"1 bowl\",\r\n    \"energy\" : {\r\n        \"unit\": \"KJ\",\r\n        \"qty_per_serving\": \"1900\",\r\n        \"percent_RQI\": \"22\",\r\n        \"qty_per_100\": \"750\"\r\n    },\r\n    \"protein\": {\r\n        \"unit\": \"g\",\r\n        \"qty_per_serving\": \"30\",\r\n        \"percent_RQI\": \"60\",\r\n        \"qty_per_100\": \"12\"\r\n    },\r\n    \"totalFat\": {\r\n        \"unit\": \"g\",\r\n        \"qty_per_serving\": \"31\",\r\n        \"percent_RQI\": \"44\",\r\n        \"qty_per_100\": \"12\"\r\n    },\r\n    \"saturatedFat\": {\r\n        \"unit\": \"g\",\r\n        \"qty_per_serving\": \"14\",\r\n        \"percent_RQI\": \"60\",\r\n        \"qty_per_100\": \"5.6\"\r\n    },\r\n    \"carbohydrate\": {\r\n        \"unit\": \"g\",\r\n        \"qty_per_serving\": \"13\",\r\n        \"percent_RQI\": \"4\",\r\n        \"qty_per_100\": \"5.1\"\r\n    },\r\n    \"sugars\": {\r\n        \"unit\": \"g\",\r\n        \"qty_per_serving\": \"13\",\r\n        \"percent_RQI\": \"14\",\r\n        \"qty_per_100\": \"5.0\"\r\n    },\r\n    \"fiber\": {\r\n        \"unit\": \"g\",\r\n        \"qty_per_serving\": \"5.7\",\r\n        \"percent_RQI\": \"19\",\r\n        \"qty_per_100\": \"2.2\"\r\n    },\r\n    \"sodium\": {\r\n        \"unit\": \"mg\",\r\n        \"qty_per_serving\": \"990\",\r\n        \"percent_RQI\": \"43\",\r\n        \"qty_per_100\": \"380\"\r\n    }\r\n}",
+              "raw": "{\r\n    \"userId\" : \"{{userId}}\",\r\n    \"foodName\": \"Butter Chicken without rice\",\r\n    \"description\": \"A curry made from chicken cooked in a spiced tomato and butter-based gravy served with rice\",\r\n    \"serving_size\": 350.0,\r\n    \"group\": \"Meal\",\r\n    \"serving_size_unit\": \"g\",\r\n    \"measure_description\": \"1 bowl\",\r\n    \"energy\" : {\r\n        \"unit\": \"KJ\",\r\n        \"qty_per_serving\": \"1900\",\r\n        \"percent_RQI\": \"22\",\r\n        \"qty_per_100\": \"750\"\r\n    },\r\n    \"protein\": {\r\n        \"unit\": \"g\",\r\n        \"qty_per_serving\": \"30\",\r\n        \"percent_RQI\": \"60\",\r\n        \"qty_per_100\": \"12\"\r\n    },\r\n    \"totalFat\": {\r\n        \"unit\": \"g\",\r\n        \"qty_per_serving\": \"31\",\r\n        \"percent_RQI\": \"44\",\r\n        \"qty_per_100\": \"12\"\r\n    },\r\n    \"saturatedFat\": {\r\n        \"unit\": \"g\",\r\n        \"qty_per_serving\": \"14\",\r\n        \"percent_RQI\": \"60\",\r\n        \"qty_per_100\": \"5.6\"\r\n    },\r\n    \"carbohydrates\": {\r\n        \"unit\": \"g\",\r\n        \"qty_per_serving\": \"13\",\r\n        \"percent_RQI\": \"4\",\r\n        \"qty_per_100\": \"5.1\"\r\n    },\r\n    \"sugars\": {\r\n        \"unit\": \"g\",\r\n        \"qty_per_serving\": \"13\",\r\n        \"percent_RQI\": \"14\",\r\n        \"qty_per_100\": \"5.0\"\r\n    },\r\n    \"fiber\": {\r\n        \"unit\": \"g\",\r\n        \"qty_per_serving\": \"5.7\",\r\n        \"percent_RQI\": \"19\",\r\n        \"qty_per_100\": \"2.2\"\r\n    },\r\n    \"sodium\": {\r\n        \"unit\": \"mg\",\r\n        \"qty_per_serving\": \"990\",\r\n        \"percent_RQI\": \"43\",\r\n        \"qty_per_100\": \"380\"\r\n    },\r\n    \"microNutrients\": [\r\n        {\r\n            \"name\": \"Calcium\",\r\n            \"unit\": \"mg\",\r\n            \"qty_per_serving\": \"4.6\",\r\n            \"percent_RDI\": \"38\",\r\n            \"qty_per_100\": \"1.8\"\r\n        }\r\n    ]\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1057,7 +1057,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"patientId\": \"{{patientId}}\",\r\n    \"FCDBFoodId\": {{FCDBFoodId}},\r\n    \"CustomFoodId\": {{CustomFoodId}},\r\n    \"dateTime\": \"2026-05-12T23:52:18.000Z\",\r\n    \"amount\" : 130,\r\n    \"unit\" : \"g\",\r\n    \"mealType\" : \"snack\"\r\n}",
+              "raw": "{\r\n    \"patientId\": \"{{patientId}}\",\r\n    \"FCDBFoodId\": {{FCDBFoodId}},\r\n    \"CustomFoodId\": {{CustomFoodId}},\r\n    \"dateTime\": \"2026-05-13T23:52:18.000Z\",\r\n    \"amount\" : 130,\r\n    \"unit\" : \"g\",\r\n    \"mealType\" : \"snack\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1121,7 +1121,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"patientId\": \"{{patientId}}\",\r\n    \"FCDBFoodId\": \"{{FCDBFoodId}}\",\r\n    \"CustomFoodId\": \"{{CustomFoodId}}\",\r\n    \"dateTime\": \"2026-05-12T23:52:18.000Z\",\r\n    \"amount\" : 130,\r\n    \"unit\" : \"g\",\r\n    \"mealType\" : \"snack\"\r\n}",
+              "raw": "{\r\n    \"patientId\": \"{{patientId}}\",\r\n    \"FCDBFoodId\": {{FCDBFoodId}},\r\n    \"CustomFoodId\": {{CustomFoodId}},\r\n    \"dateTime\": \"2026-05-12T23:52:18.000Z\",\r\n    \"amount\" : 130,\r\n    \"unit\" : \"g\",\r\n    \"mealType\" : \"snack\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1447,6 +1447,47 @@
             }
           },
           "response": []
+        },
+        {
+          "name": "get total nutrients for a custom period",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/totalnutrients/customperiod?startdate={{startdate}}&enddate={{enddate}}&patientid={{patientId}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "totalnutrients",
+                "customperiod"
+              ],
+              "query": [
+                {
+                  "key": "startdate",
+                  "value": "{{startdate}}"
+                },
+                {
+                  "key": "enddate",
+                  "value": "{{enddate}}"
+                },
+                {
+                  "key": "patientid",
+                  "value": "{{patientId}}"
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ]
     },
@@ -1517,6 +1558,47 @@
                 {
                   "key": "startdate",
                   "value": "{{date}}"
+                },
+                {
+                  "key": "patientid",
+                  "value": "{{patientId}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get flag for a custom period",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/flag/week?startdate={{startdate}}&enddate={{enddate}}&patientid={{patientId}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "flag",
+                "week"
+              ],
+              "query": [
+                {
+                  "key": "startdate",
+                  "value": "{{startdate}}"
+                },
+                {
+                  "key": "enddate",
+                  "value": "{{enddate}}"
                 },
                 {
                   "key": "patientid",
@@ -1618,7 +1700,7 @@
               }
             ],
             "url": {
-              "raw": "http://localhost:3000/api/report/week?startdate={{date}}&patientid={{patientId}}",
+              "raw": "http://localhost:3000/api/report/customperiod?startdate={{startdate}}&enddate={{enddate}}&patientid={{patientId}}",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -1627,12 +1709,16 @@
               "path": [
                 "api",
                 "report",
-                "week"
+                "customperiod"
               ],
               "query": [
                 {
                   "key": "startdate",
-                  "value": "{{date}}"
+                  "value": "{{startdate}}"
+                },
+                {
+                  "key": "enddate",
+                  "value": "{{enddate}}"
                 },
                 {
                   "key": "patientid",
