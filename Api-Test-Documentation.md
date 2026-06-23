@@ -70,6 +70,7 @@ all api function have a Authoriztion header unless specified
 
 ### get by id 
 <img width="486" height="79" alt="image" src="https://github.com/user-attachments/assets/6743915c-1f04-4347-8f93-9400e4a10ca8" />
+- no auth needed
 
 ### get all
 <img width="539" height="78" alt="image" src="https://github.com/user-attachments/assets/d750a1fc-9e0e-4fb8-94b1-4a8df2a1c77f" />
@@ -101,6 +102,7 @@ all api function have a Authoriztion header unless specified
 
 ### get by id 
 <img width="481" height="74" alt="image" src="https://github.com/user-attachments/assets/83479c2b-2325-40c6-9a96-398c0c37a59c" />
+- no auth needed
 
 ### get all
 <img width="517" height="73" alt="image" src="https://github.com/user-attachments/assets/6d8102ca-6873-470b-9814-41888e3c6f51" />
