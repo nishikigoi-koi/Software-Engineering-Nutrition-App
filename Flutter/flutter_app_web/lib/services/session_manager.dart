@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter_app_web/models/user.dart';
 
 class SessionManager {
