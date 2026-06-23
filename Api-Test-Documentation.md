@@ -2,6 +2,8 @@
 
 This document summarizes the flow testing through [Postman](https://www.postman.com/api-platform/api-testing/) 
 
+(I can't upload the flow it's self, but the test collection is Tests.postman_collection.json which can be imported into postman)
+
 tests are only with expected values
 
 most api function use variables e.g. {{username}}
