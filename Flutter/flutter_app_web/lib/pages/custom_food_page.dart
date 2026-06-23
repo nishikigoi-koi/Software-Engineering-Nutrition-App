@@ -42,6 +42,18 @@ class _CustomFoodPageState extends State<CustomFoodPage> {
     'sodium':       {'unit': TextEditingController(), 'qty_per_serving': TextEditingController(), 'percent_RDI': TextEditingController(), 'qty_per_100': TextEditingController()},
   };
 
+  // Macronutrients standard units
+  final Map<String, String> _macroUnits = {
+  'energy': 'kJ',
+  'protein': 'g',
+  'totalFat': 'g',
+  'saturatedFat': 'g',
+  'carbohydrates': 'g',
+  'sugars': 'g',
+  'fiber': 'g',
+  'sodium': 'mg',
+};
+
   // Micronutrients currently added to this food
   List<Micronutrient> _micronutrients = [];
 
@@ -279,6 +291,12 @@ class _CustomFoodPageState extends State<CustomFoodPage> {
 
   // ── Helpers ───────────────────────────────────────────────────────────────
 
+  void _fillDefaultUnits() {
+    _macroUnits.forEach((key, unit) {
+      _nutritionControllers[key]!['unit']!.text = unit;
+    });
+  }
+
   void _populateNutritionControllers(CustomFood food) {
     void fill(String key, NutritionInfo info) {
       final c = _nutritionControllers[key]!;
@@ -335,6 +353,8 @@ class _CustomFoodPageState extends State<CustomFoodPage> {
       _clearNutritionControllers();
       _micronutrients = [];
       _clearMicronutrientForm();
+
+      _fillDefaultUnits();
     });
   }
 
@@ -546,7 +566,20 @@ class _CustomFoodPageState extends State<CustomFoodPage> {
                                 children: [
                                   Expanded(child: _field(_servingSizeController, 'Serving size')),
                                   SizedBox(width: 8),
-                                  Expanded(child: _field(_servingUnitController, 'Unit (e.g. g)')),
+                                  Expanded(child: DropdownButtonFormField<String>(
+                                            initialValue: _servingUnitController.text.isEmpty ? null : _servingUnitController.text,
+                                            decoration: InputDecoration(
+                                              labelText: 'Serving Unit',
+                                              border: OutlineInputBorder(),
+                                              contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                                            ),
+                                            style: TextStyle(fontSize: 12, color: Color(0xFF1C1C1C)),
+                                            items: ['g', 'mL']
+                                                .map((u) => DropdownMenuItem(value: u, child: Text(u)))
+                                                .toList(),
+                                            onChanged: (v) => setState(() => _servingUnitController.text = v ?? ''),
+                                          ),
+                                  )
                                 ],
                               ),
                               SizedBox(height: 12),

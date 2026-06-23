@@ -44,8 +44,6 @@ class MealLogService {
       },
     );
 
-    debugPrint('deleteMealLog status: ${response.statusCode}');
-    debugPrint('deleteMealLog body: ${response.body}');
     return response;
     
   }

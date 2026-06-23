@@ -45,7 +45,7 @@ class CustomFoodService {
         "protein": protein.toJson(),
         "totalFat": totalFat.toJson(),
         "saturatedFat": saturatedFat.toJson(),
-        "carbohydrate": carbohydrate.toJson(),
+        "carbohydrates": carbohydrate.toJson(),
         "sugars": sugars.toJson(),
         "fiber": fiber.toJson(),
         "sodium": sodium.toJson(),

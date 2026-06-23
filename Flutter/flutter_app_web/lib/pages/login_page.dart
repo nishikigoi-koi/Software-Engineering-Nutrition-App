@@ -113,15 +113,6 @@ class _LoginPageState extends State<LoginPage> {
                           SessionManager().currentUser = user;
                           SessionManager().token = token;
 
-                          // Debug statements for console
-                          debugPrint('Session loaded:');
-                          debugPrint('  ID: ${user.id}');
-                          debugPrint('  Username: ${user.username}');
-                          debugPrint('  Created At: ${user.createdAt}');
-                          debugPrint('  Updated At: ${user.updatedAt}');
-                          debugPrint('  Deleted At: ${user.deletedAt}');
-                          debugPrint('  JWT: $token');
-
                           // Remove all previous items from navigation queue, so pressing back does nothing.
                           Navigator.pushAndRemoveUntil(
                             context,

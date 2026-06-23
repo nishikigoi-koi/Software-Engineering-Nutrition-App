@@ -10,9 +10,7 @@ class SessionManager {
   String? token;
 
   void clear() {
-    // Debug statement for console
-    debugPrint('Session cleared.');
-    
+    // Clear current session
     currentUser = null;
     token = null;
   }

@@ -58,7 +58,7 @@ class _MealLogPageState extends State<MealLogPage> {
   DateTime? _filterDate;
   bool _filterByDate = false;
 
-  final List<String> _unitOptions = ['g', 'ml'];
+  final List<String> _unitOptions = ['g', 'mL'];
   final List<String> _mealTypeOptions = ['Breakfast', 'Lunch', 'Dinner', 'Snack'];
 
   @override
@@ -123,7 +123,6 @@ class _MealLogPageState extends State<MealLogPage> {
 
     if (response.statusCode == 200) {
       final List<dynamic> data = jsonDecode(response.body);
-      debugPrint('Meals loaded: ${data.length}');
       setState(() {
         _mealLogs = data;
         _isLoadingMeals = false;
@@ -264,10 +263,7 @@ class _MealLogPageState extends State<MealLogPage> {
   }
 
   Future<void> _deleteMeal(Map<String, dynamic> meal) async {
-    debugPrint('_deleteMeal called for ${meal['id']}');
     final response = await MealLogService.deleteMealLog(meal['id']);
-    debugPrint('Delete status: ${response.statusCode}');
-    debugPrint('Delete body: ${response.body}');
     if (response.statusCode == 200 || response.statusCode == 204) {
       if (_selectedMeal?['id'] == meal['id']) _clearLogForm();
       await _loadMeals();
@@ -309,6 +305,7 @@ class _MealLogPageState extends State<MealLogPage> {
     setState(() {
       _selectedFoodFile = food;
       _selectedCustomFood = null;
+      _selectedUnit = food.servingUnit;
     });
   }
 
@@ -316,6 +313,7 @@ class _MealLogPageState extends State<MealLogPage> {
     setState(() {
       _selectedCustomFood = food;
       _selectedFoodFile = null;
+      _selectedUnit = food.servingUnit;
     });
   }
 
@@ -361,7 +359,6 @@ class _MealLogPageState extends State<MealLogPage> {
           ),
           TextButton(
             onPressed: () {
-              debugPrint('About to call _deleteMeal');
               Navigator.pop(context);
               _deleteMeal(meal);
             },
