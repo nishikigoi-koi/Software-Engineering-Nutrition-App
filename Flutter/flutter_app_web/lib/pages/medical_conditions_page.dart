@@ -246,9 +246,10 @@ class _MedicalConditionsPageState extends State<MedicalConditionsPage> {
                       Expanded(
                         child: Padding(
                           padding: const EdgeInsets.all(16),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
+                          child: _isNew || _selectedCondition != null
+                              ? Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
                               Text(
                                 _isNew
                                     ? 'New Condition'
@@ -303,6 +304,12 @@ class _MedicalConditionsPageState extends State<MedicalConditionsPage> {
                                 ],
                               ),
                             ],
+                          )
+                          : Center(
+                              child: Text(
+                                'Select a condition or create a new one.',
+                                style: TextStyle(fontSize: 14, color: Color(0xFF87879D)),
+                              ),
                           ),
                         ),
                       ),

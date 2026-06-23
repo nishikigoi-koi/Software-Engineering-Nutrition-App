@@ -205,7 +205,7 @@ Future<void> _load() async {
                             ),
 
                             ListTile(
-                              title: const Text('+ New'),
+                              title: const Text('+ New Restriction'),
                               selected: _isNew,
                               onTap: () {
                                 setState(() {
@@ -240,7 +240,8 @@ Future<void> _load() async {
                       Expanded(
                         child: Padding(
                           padding: const EdgeInsets.all(16),
-                          child: Column(
+                          child: _isNew || _selected != null
+                          ? Column(
                             crossAxisAlignment:
                                 CrossAxisAlignment.start,
                             children: [
@@ -293,7 +294,13 @@ Future<void> _load() async {
                                 ],
                               ),
                             ],
-                          ),
+                          )
+                        : Center(
+                            child: Text(
+                              'Select a restriction or create a new one.',
+                              style: TextStyle(fontSize: 14, color: Color(0xFF87879D)),             
+                            )
+                          )
                         ),
                       ),
 
